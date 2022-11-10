@@ -150,6 +150,7 @@
                     console.log(this.form);
                     axios.post('/login', this.form)
                         .then((res) => {
+                            console.log(res);
                             Swal.fire({
                                 title: 'Sukses',
                                 icon: 'success',
@@ -157,7 +158,7 @@
                             }).then((result) => {
                                 /* Read more about isConfirmed, isDenied below */
                                 if (result.isConfirmed) {
-                                    window.location.href = '/admin/dashboard'
+                                    window.location.href = res.request.responseURL
                                 }
                             })
                         });

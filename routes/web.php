@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend_layouts.main');
-});
 
+// Route::get('/', function () {
+//     return view('backend_layouts.main');
+// });
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/', function () {
+        return view('backend_layouts.main');
     })->name('dashboard');
 });
-
 require __DIR__ . '/auth.php';

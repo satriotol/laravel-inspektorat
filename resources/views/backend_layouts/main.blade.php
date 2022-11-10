@@ -34,6 +34,8 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all"
         href="{{ asset('backend_assets/colors/color1.css') }}" />
+    @stack('style')
+
 </head>
 
 <body class="app sidebar-mini ltr">
@@ -94,13 +96,19 @@
     <script src="{{ asset('backend_assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <!-- SIDEBAR JS -->
-    <script src="{{ asset('backend_assets/plugins/sidebar/sidebar.js') }}"></script>
+    <!-- SPARKLINE JS-->
+    <script src="{{ asset('backend_assets/js/jquery.sparkline.min.js') }}"></script>
+
+    <!-- SIDE-MENU JS -->
+    <script src="{{ asset('backend_assets/plugins/sidemenu/sidemenu.js') }}"></script>
 
     <!-- Perfect SCROLLBAR JS-->
     <script src="{{ asset('backend_assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/p-scroll/pscroll.js') }}"></script>
-    <script src="{{ asset('backend_assets/plugins/p-scroll/pscroll-1.js') }}"></script>
+    {{-- <script src="{{ asset('backend_assets/plugins/p-scroll/pscroll-1.js') }}"></script> --}}
+
+    <!-- SIDEBAR JS -->
+    <script src="{{ asset('backend_assets/plugins/sidebar/sidebar.js') }}"></script>
 
     <!-- Color Theme js -->
     <script src="{{ asset('backend_assets/js/themeColors.js') }}"></script>
