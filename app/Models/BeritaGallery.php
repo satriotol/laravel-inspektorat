@@ -9,4 +9,9 @@ class BeritaGallery extends Model
 {
     use HasFactory;
     protected $fillable = ['berita_id', 'image'];
+
+    public function berita()
+    {
+        return $this->belongsTo(Berita::class, 'berita_id', 'id');
+    }
 }
