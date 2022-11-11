@@ -39,6 +39,13 @@
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kategori
                             Kebijakan</span></a>
                 </li>
+                <li class="sub-category">
+                    <h3>Website</h3>
+                </li>
+                <li>
+                    <a class="side-menu__item" href="{{ route('slider.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Slider</span></a>
+                </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                     width="24" height="24" viewBox="0 0 24 24">

@@ -14,7 +14,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $sliders = Slider::all();
+        return view('backend.slider.index', compact('sliders'));
     }
 
     /**
@@ -24,7 +25,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.slider.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'nullable',
+            'subtitle' => 'nullable',
+            'image' => 'required|image',
+        ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = $image->getClientOriginalName();
+            $image_name = date('mdYHis') . '-' . $name;
+            $image = $image->storeAs('image', $image_name, 'public_uploads');
+            $data['image'] = $image;
+        };
+        Slider::create($data);
+        session()->flash('success');
+        return redirect(route('slider.index'));
     }
 
     /**
@@ -57,7 +72,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view('backend.slider.create', compact('slider'));
     }
 
     /**
@@ -69,7 +84,22 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+        $data = $request->validate([
+            'title' => 'nullable',
+            'subtitle' => 'nullable',
+            'image' => 'nullable|image',
+        ]);
+        if ($request->hasFile('image')) {
+            $slider->deleteFile();
+            $image = $request->file('image');
+            $name = $image->getClientOriginalName();
+            $image_name = date('mdYHis') . '-' . $name;
+            $image = $image->storeAs('image', $image_name, 'public_uploads');
+            $data['image'] = $image;
+        };
+        $slider->update($data);
+        session()->flash('success');
+        return redirect(route('slider.index'));
     }
 
     /**
@@ -80,6 +110,9 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        //
+        $slider->deleteFile();
+        $slider->delete();
+        session()->flash('success');
+        return redirect(route('slider.index'));
     }
 }
