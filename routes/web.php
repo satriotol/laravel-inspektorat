@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return 'halo ges';
+    return view('frontend.beranda');
 });
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
