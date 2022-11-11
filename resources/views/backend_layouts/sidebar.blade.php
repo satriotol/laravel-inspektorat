@@ -31,12 +31,14 @@
                     <h3>Kebijakan</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}" href="{{ route('kebijakan.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kebijakan</span></a>
+                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
+                        href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-grid"></i><span
+                            class="side-menu__label">Kebijakan</span></a>
                 </li>
                 <li>
-                    <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}" href="{{ route('kebijakanCategory.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kategori
+                    <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}"
+                        href="{{ route('kebijakanCategory.index') }}"><i class="side-menu__icon fe fe-grid"></i><span
+                            class="side-menu__label">Kategori
                             Kebijakan</span></a>
                 </li>
                 <li class="sub-category">
@@ -45,6 +47,13 @@
                 <li>
                     <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Slider</span></a>
+                </li>
+                <li class="sub-category">
+                    <h3>User Management</h3>
+                </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['permission.*']) }}" href="{{ route('permission.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Permission</span></a>
                 </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

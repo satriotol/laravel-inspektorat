@@ -133,6 +133,7 @@
                 .after('<span class="text-red">*</span>')
         })
     </script>
+    @stack('custom-scripts')
 </body>
 
 </html>
