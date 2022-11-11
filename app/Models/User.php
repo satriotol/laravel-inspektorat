@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function beritas()
+    {
+        return $this->hasMany(Berita::class, 'user_id', 'id');
+    }
+    public function verified_beritas()
+    {
+        return $this->hasMany(Berita::class, 'verified_by', 'id');
+    }
 }
