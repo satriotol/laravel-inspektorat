@@ -28,14 +28,22 @@
                             class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="sub-category">
-                    <h3>UI Kit</h3>
+                    <h3>Kebijakan</h3>
+                </li>
+                <li>
+                    <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span
+                            class="side-menu__label">Kebijakan</span></a>
+                </li>
+                <li>
+                    <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span
+                            class="side-menu__label">Kategori</span></a>
                 </li>
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Apps</span><i
+                            class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Kebijakan</span><i
                             class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">Apps</a></li>
+                        <li class="side-menu-label1"><a href="javascript:void(0)">Kebijakan</a></li>
                         <li><a href="cards.html" class="slide-item"> Cards design</a></li>
                         <li><a href="calendar.html" class="slide-item"> Default calendar</a></li>
                         <li><a href="calendar2.html" class="slide-item"> Full calendar</a></li>
@@ -56,134 +64,6 @@
                         <li><a href="crypto-currencies.html" class="slide-item"> Crypto-currencies</a>
                         </li>
 
-                    </ul>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-package"></i><span class="side-menu__label">Bootstrap</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">Bootstrap</a></li>
-                        <li><a href="alerts.html" class="slide-item"> Alerts</a></li>
-                        <li><a href="buttons.html" class="slide-item"> Buttons</a></li>
-                        <li><a href="colors.html" class="slide-item"> Colors</a></li>
-                        <li class="sub-slide">
-                            <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span
-                                    class="sub-side-menu__label">Avatars</span><i
-                                    class="sub-angle fe fe-chevron-right"></i></a>
-                            <ul class="sub-slide-menu">
-                                <li><a href="avatarsquare.html" class="sub-slide-item"> Avatar-Square</a>
-                                </li>
-                                <li><a href="avatar-round.html" class="sub-slide-item"> Avatar-Rounded</a>
-                                </li>
-                                <li><a href="avatar-radius.html" class="sub-slide-item"> Avatar-Radius</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="dropdown.html" class="slide-item"> Drop downs</a></li>
-                        <li><a href="listgroup.html" class="slide-item"> List Group</a></li>
-                        <li><a href="tags.html" class="slide-item"> Tags</a></li>
-                        <li><a href="pagination.html" class="slide-item"> Pagination</a></li>
-                        <li><a href="navigation.html" class="slide-item"> Navigation</a></li>
-                        <li><a href="typography.html" class="slide-item"> Typography</a></li>
-                        <li><a href="breadcrumbs.html" class="slide-item"> Breadcrumbs</a></li>
-                        <li><a href="badge.html" class="slide-item"> Badges / Pills</a></li>
-                        <li><a href="panels.html" class="slide-item"> Panels</a></li>
-                        <li><a href="thumbnails.html" class="slide-item"> Thumbnails</a></li>
-                        <li><a href="offcanvas.html" class="slide-item"> Offcanvas</a></li>
-                        <li><a href="toast.html" class="slide-item"> Toast</a></li>
-                        <li><a href="scrollspy.html" class="slide-item"> Scrollspy</a></li>
-                        <li><a href="mediaobject.html" class="slide-item"> Media Object</a></li>
-                        <li><a href="accordion.html" class="slide-item"> Accordions</a></li>
-                        <li><a href="tabs.html" class="slide-item"> Tabs</a></li>
-                        <li><a href="modal.html" class="slide-item"> Modal</a></li>
-                        <li><a href="tooltipandpopover.html" class="slide-item"> Tooltip and popover</a>
-                        </li>
-                        <li><a href="progress.html" class="slide-item"> Progress</a></li>
-                        <li><a href="carousel.html" class="slide-item"> Carousels</a></li>
-                    </ul>
-                </li>
-                <li class="sub-category">
-                    <h3>Pre-build Pages</h3>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Pages</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">Pages</a></li>
-                        <li><a href="profile.html" class="slide-item"> Profile</a></li>
-                        <li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
-                        <li><a href="notify-list.html" class="slide-item"> Notifications List</a></li>
-                        <li><a href="email-compose.html" class="slide-item"> Mail-Compose</a></li>
-                        <li><a href="email-inbox.html" class="slide-item"> Mail-Inbox</a></li>
-                        <li><a href="email-read.html" class="slide-item"> Mail-Read</a></li>
-                        <li><a href="gallery.html" class="slide-item"> Gallery</a></li>
-                        <li class="sub-slide">
-                            <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span
-                                    class="sub-side-menu__label">Forms</span><i
-                                    class="sub-angle fe fe-chevron-right"></i></a>
-                            <ul class="sub-slide-menu">
-                                <li><a href="form-elements.html" class="sub-slide-item"> Form Elements</a>
-                                </li>
-                                <li><a href="form-layouts.html" class="sub-slide-item"> Form Layouts</a>
-                                </li>
-                                <li><a href="form-advanced.html" class="sub-slide-item"> Form Advanced</a>
-                                </li>
-                                <li><a href="form-editor.html" class="sub-slide-item"> Form Editor</a>
-                                </li>
-                                <li><a href="form-wizard.html" class="sub-slide-item"> Form Wizard</a>
-                                </li>
-                                <li><a href="form-validation.html" class="sub-slide-item"> Form
-                                        Validation</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-slide">
-                            <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span
-                                    class="sub-side-menu__label">Tables</span><i
-                                    class="sub-angle fe fe-chevron-right"></i></a>
-                            <ul class="sub-slide-menu">
-                                <li><a href="tables.html" class="sub-slide-item">Default table</a></li>
-                                <li><a href="datatable.html" class="sub-slide-item"> Data Tables</a></li>
-                                <li><a href="edit-table.html" class="sub-slide-item"> Edit Tables</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-slide">
-                            <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span
-                                    class="sub-side-menu__label">Extension</span><i
-                                    class="sub-angle fe fe-chevron-right"></i></a>
-                            <ul class="sub-slide-menu">
-                                <li><a href="about.html" class="sub-slide-item"> About Company</a></li>
-                                <li><a href="services.html" class="sub-slide-item"> Services</a></li>
-                                <li><a href="faq.html" class="sub-slide-item"> FAQS</a></li>
-                                <li><a href="terms.html" class="sub-slide-item"> Terms</a></li>
-                                <li><a href="invoice.html" class="sub-slide-item"> Invoice</a></li>
-                                <li><a href="pricing.html" class="sub-slide-item"> Pricing Tables</a></li>
-                                <li><a href="settings.html" class="sub-slide-item"> Settings</a></li>
-                                <li><a href="blog.html" class="sub-slide-item"> Blog</a></li>
-                                <li><a href="blog-details.html" class="sub-slide-item"> Blog Details</a>
-                                </li>
-                                <li><a href="blog-post.html" class="sub-slide-item"> Blog Post</a></li>
-                                <li><a href="empty.html" class="sub-slide-item"> Empty Page</a></li>
-                                <li><a href="construction.html" class="sub-slide-item"> Under
-                                        Construction</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="switcher-1.html" class="slide-item"> Switcher</a></li>
-                    </ul>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-shopping-bag"></i><span
-                            class="side-menu__label">E-Commerce</span><i class="angle fe fe-chevron-right"></i></a>
-                    <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">E-Commerce</a></li>
-                        <li><a href="shop.html" class="slide-item"> Shop</a></li>
-                        <li><a href="shop-description.html" class="slide-item"> Product Details</a></li>
-                        <li><a href="cart.html" class="slide-item"> Shopping Cart</a></li>
-                        <li><a href="add-product.html" class="slide-item"> Add Product</a></li>
-                        <li><a href="wishlist.html" class="slide-item"> Wishlist</a></li>
-                        <li><a href="checkout.html" class="slide-item"> Checkout</a></li>
                     </ul>
                 </li>
                 <li class="slide">
@@ -270,10 +150,7 @@
                 <li class="sub-category">
                     <h3>General</h3>
                 </li>
-                <li>
-                    <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span
-                            class="side-menu__label">Widgets</span></a>
-                </li>
+
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
                             class="side-menu__icon fe fe-map-pin"></i><span class="side-menu__label">Maps</span><i
@@ -330,5 +207,4 @@
                 </svg></div>
         </div>
     </div>
-    <!--/APP-SIDEBAR-->
 </div>
