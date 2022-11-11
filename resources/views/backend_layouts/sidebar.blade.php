@@ -31,11 +31,11 @@
                     <h3>Kebijakan</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('kebijakan.index') }}"><i
+                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}" href="{{ route('kebijakan.index') }}"><i
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kebijakan</span></a>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('kebijakanCategory.index') }}"><i
+                    <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}" href="{{ route('kebijakanCategory.index') }}"><i
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kategori
                             Kebijakan</span></a>
                 </li>
@@ -43,7 +43,7 @@
                     <h3>Website</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('slider.index') }}"><i
+                    <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Slider</span></a>
                 </li>
             </ul>

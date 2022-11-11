@@ -147,7 +147,7 @@
                         },
                         allowOutsideClick: false
                     });
-                    console.log(this.form);
+                    // console.log(this.form);
                     axios.post('/login', this.form)
                         .then((res) => {
                             console.log(res);
@@ -160,6 +160,13 @@
                                 if (result.isConfirmed) {
                                     window.location.href = res.request.responseURL
                                 }
+                            })
+                        }).catch((err) => {
+                            Swal.fire({
+                                title: 'Error',
+                                icon: 'error',
+                                text : err.response.data.message,
+                                confirmButtonText: 'Ok',
                             })
                         });
                 }
