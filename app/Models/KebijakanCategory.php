@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class KebijakanCategory extends Model
 {
     use HasFactory;
-   protected $fillable = ['name'];
-}
+    protected $fillable = ['name'];
 
+    public function kebijakans()
+    {
+        return $this->hasMany(Kebijakan::class, 'kebijakan_category_id', 'id');
+    }
+}
