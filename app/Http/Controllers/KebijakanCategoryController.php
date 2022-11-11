@@ -15,7 +15,7 @@ class KebijakanCategoryController extends Controller
     public function index()
     {
         $kebijakanCategories = KebijakanCategory::all();
-        return view('frontend_layouts.kebijakanCategory.index', compact('kebijakanCategories'));
+        return view('backend.kebijakanCategory.index', compact('kebijakanCategories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class KebijakanCategoryController extends Controller
      */
     public function create()
     {
-        return view('frontend_layouts.kebijakanCategory.create');
+        return view('backend.kebijakanCategory.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class KebijakanCategoryController extends Controller
      */
     public function edit(KebijakanCategory $kebijakanCategory)
     {
-        //
+        return view('backend.kebijakanCategory.create', compact('kebijakanCategory'));
     }
 
     /**
@@ -75,7 +75,12 @@ class KebijakanCategoryController extends Controller
      */
     public function update(Request $request, KebijakanCategory $kebijakanCategory)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required'
+        ]);
+        $kebijakanCategory->update($data);
+        session()->flash('success');
+        return redirect(route('kebijakanCategory.index'));
     }
 
     /**
@@ -86,6 +91,8 @@ class KebijakanCategoryController extends Controller
      */
     public function destroy(KebijakanCategory $kebijakanCategory)
     {
-        //
+        $kebijakanCategory->delete();
+        session()->flash('success');
+        return redirect(route('kebijakanCategory.index'));
     }
 }

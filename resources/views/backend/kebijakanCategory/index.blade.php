@@ -31,7 +31,17 @@
                                 @foreach ($kebijakanCategories as $kebijakanCategory)
                                     <tr>
                                         <td>{{ $kebijakanCategory->name }}</td>
-                                        <td></td>
+                                        <td>
+                                            <form action="{{ route('kebijakanCategory.destroy', $kebijakanCategory->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <a href="{{ route('kebijakanCategory.edit', $kebijakanCategory->id) }}"
+                                                    class="btn btn-sm btn-warning">Edit</a>
+                                                <input type="submit" class="btn btn-sm btn-danger" value="Delete"
+                                                    id="">
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
