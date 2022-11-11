@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/', function () {
-//     return view('backend_layouts.main');
-// });
+Route::get('/', function () {
+    return 'halo ges';
+});
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('backend_layouts.main');
