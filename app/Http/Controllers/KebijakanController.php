@@ -14,7 +14,8 @@ class KebijakanController extends Controller
      */
     public function index()
     {
-        //
+        $kebijakans = Kebijakan::all();
+        return view('frontend_layouts.kebijakan.index', compact('kebijakans'));
     }
 
     /**

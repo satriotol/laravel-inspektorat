@@ -31,53 +31,12 @@
                     <h3>Kebijakan</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span
-                            class="side-menu__label">Kebijakan</span></a>
+                    <a class="side-menu__item" href="{{ route('kebijakan.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kebijakan</span></a>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span
-                            class="side-menu__label">Kategori</span></a>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Kebijakan</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">Kebijakan</a></li>
-                        <li><a href="cards.html" class="slide-item"> Cards design</a></li>
-                        <li><a href="calendar.html" class="slide-item"> Default calendar</a></li>
-                        <li><a href="calendar2.html" class="slide-item"> Full calendar</a></li>
-                        <li><a href="chat.html" class="slide-item"> Chat</a></li>
-                        <li><a href="notify.html" class="slide-item"> Notifications</a></li>
-                        <li><a href="sweetalert.html" class="slide-item"> Sweet alerts</a></li>
-                        <li><a href="rangeslider.html" class="slide-item"> Range slider</a></li>
-                        <li><a href="scroll.html" class="slide-item"> Content Scroll bar</a></li>
-                        <li><a href="loaders.html" class="slide-item"> Loaders</a></li>
-                        <li><a href="counters.html" class="slide-item"> Counters</a></li>
-                        <li><a href="rating.html" class="slide-item"> Rating</a></li>
-                        <li><a href="timeline.html" class="slide-item"> Timeline</a></li>
-                        <li><a href="treeview.html" class="slide-item"> Treeview</a></li>
-                        <li><a href="chart.html" class="slide-item"> Charts</a></li>
-                        <li><a href="footers.html" class="slide-item"> Footers</a></li>
-                        <li><a href="users-list.html" class="slide-item"> User List</a></li>
-                        <li><a href="search.html" class="slide-item">Search</a></li>
-                        <li><a href="crypto-currencies.html" class="slide-item"> Crypto-currencies</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">File
-                            Manager</span><span class="badge bg-pink side-badge">4</span><i
-                            class="angle fe fe-chevron-right hor-angle"></i></a>
-                    <ul class="slide-menu">
-                        <li class="side-menu-label1"><a href="javascript:void(0)">File Manager</a></li>
-                        <li><a href="file-manager.html" class="slide-item"> File Manager</a></li>
-                        <li><a href="filemanager-list.html" class="slide-item"> File Manager List</a></li>
-                        <li><a href="filemanager-details.html" class="slide-item"> File Details</a></li>
-                        <li><a href="file-attachments.html" class="slide-item"> File Attachments</a></li>
-                    </ul>
+                    <a class="side-menu__item" href="{{ route('kebijakanCategory.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kategori</span></a>
                 </li>
                 <li class="sub-category">
                     <h3>Misc Pages</h3>
@@ -85,8 +44,7 @@
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
                             class="side-menu__icon fe fe-users"></i><span
-                            class="side-menu__label">Authentication</span><i
-                            class="angle fe fe-chevron-right"></i></a>
+                            class="side-menu__label">Authentication</span><i class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Authentication</a></li>
                         <li><a href="login.html" class="slide-item"> Login</a></li>
@@ -111,8 +69,7 @@
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
                         <i class="side-menu__icon fe fe-cpu"></i>
-                        <span class="side-menu__label">Submenu items</span><i
-                            class="angle fe fe-chevron-right"></i></a>
+                        <span class="side-menu__label">Submenu items</span><i class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Submenu items</a></li>
                         <li><a href="javascript:void(0)" class="slide-item">Submenu-1</a></li>

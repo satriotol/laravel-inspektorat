@@ -53,31 +53,9 @@
             @include('backend_layouts.sidebar')
             <div class="main-content app-content mt-0">
                 <div class="side-app">
-
-                    <!-- CONTAINER -->
                     <div class="main-container container-fluid">
-
-                        <!-- PAGE-HEADER -->
-                        <div class="page-header">
-                            <h1 class="page-title">Empty</h1>
-                            <div>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Empty</li>
-                                </ol>
-                            </div>
-                        </div>
-                        <!-- PAGE-HEADER END -->
-
-                        <!-- ROW-1 OPEN -->
-                        <!-- Row -->
-                        <div class="row ">
-                            <div class="col-md-12">
-                            </div>
-                        </div>
-                        <!-- /Row -->
+                        @yield('content')
                     </div>
-                    <!-- CONTAINER CLOSED -->
                 </div>
             </div>
         </div>
@@ -106,6 +84,21 @@
     <script src="{{ asset('backend_assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/p-scroll/pscroll.js') }}"></script>
     {{-- <script src="{{ asset('backend_assets/plugins/p-scroll/pscroll-1.js') }}"></script> --}}
+
+    <!-- DATA TABLE JS-->
+    <script src="{{ asset('backend_assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/js/table-data.js') }}"></script>
 
     <!-- SIDEBAR JS -->
     <script src="{{ asset('backend_assets/plugins/sidebar/sidebar.js') }}"></script>

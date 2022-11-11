@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KebijakanCategoryController;
+use App\Http\Controllers\KebijakanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('backend_layouts.main');
     })->name('dashboard');
+    Route::resource('kebijakan', KebijakanController::class);
+    Route::resource('kebijakanCategory', KebijakanCategoryController::class);
 });
 require __DIR__ . '/auth.php';
