@@ -52,6 +52,10 @@
                     <h3>User Management</h3>
                 </li>
                 <li>
+                    <a class="side-menu__item {{ active_class(['role.*']) }}" href="{{ route('role.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Role</span></a>
+                </li>
+                <li>
                     <a class="side-menu__item {{ active_class(['permission.*']) }}" href="{{ route('permission.index') }}"><i
                             class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Permission</span></a>
                 </li>

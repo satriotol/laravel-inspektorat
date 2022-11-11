@@ -3,6 +3,7 @@
 use App\Http\Controllers\KebijakanCategoryController;
 use App\Http\Controllers\KebijakanController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('permission', PermissionController::class);
+    Route::resource('role', RoleController::class);
 });
 require __DIR__ . '/auth.php';

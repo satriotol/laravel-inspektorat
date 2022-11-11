@@ -41,7 +41,7 @@
                                                 @method('delete')
                                                 <a href="{{ route('slider.edit', $slider->id) }}"
                                                     class="btn btn-sm btn-warning">Edit</a>
-                                                <input type="submit" class="btn btn-sm btn-danger" value="Delete"
+                                                <input type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" value="Delete"
                                                     id="">
                                             </form>
                                         </td>
