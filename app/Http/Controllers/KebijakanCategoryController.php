@@ -25,7 +25,7 @@ class KebijakanCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend_layouts.kebijakanCategory.create');
     }
 
     /**
@@ -36,7 +36,12 @@ class KebijakanCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required'
+        ]);
+        KebijakanCategory::create($data);
+        session()->flash('success');
+        return redirect(route('kebijakanCategory.index'));
     }
 
     /**

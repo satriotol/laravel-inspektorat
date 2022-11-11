@@ -16,27 +16,24 @@
                     <h3 class="card-title">Kebijakan Kategori</h3>
                 </div>
                 <div class="card-body">
+                    <div class="text-end mb-2">
+                        <a href="{{ route('kebijakanCategory.create') }}" class="btn btn-primary">Tambah</a>
+                    </div>
                     <div class="table-responsive">
                         <table id="example2" class="table table-bordered text-nowrap border-bottom">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Nama Kategori</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
+                                @foreach ($kebijakanCategories as $kebijakanCategory)
+                                    <tr>
+                                        <td>{{ $kebijakanCategory->name }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

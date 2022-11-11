@@ -110,8 +110,29 @@
     <script src="{{ asset('backend_assets/js/sticky.js') }}"></script>
 
     <!-- CUSTOM JS -->
+    <script src="{{ asset('assets/plugins/notify/js/rainbow.js') }}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/sample.js') }}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/jquery.growl.js') }}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ asset('backend_assets/js/custom.js') }}"></script>
-
+    @if (session()->has('success'))
+        <script>
+            notif({
+                msg: "<b>Success:</b> Well done Details Submitted Successfully",
+                type: "success"
+            });
+        </script>
+    @endif
+    <script>
+        $(function() {
+            $('.form-group:has(input[required]) > label')
+                .after('<span class="text-red">*</span>')
+            $('.form-group:has(select[required]) > label')
+                .after('<span class="text-red">*</span>')
+            $('.form-group:has(textarea[required]) > label')
+                .after('<span class="text-red">*</span>')
+        })
+    </script>
 </body>
 
 </html>
