@@ -143,8 +143,8 @@
         const pond = FilePond.create(inputElement);
         FilePond.setOptions({
             server: {
-                process: '{{ route('upload.StoreImage') }}',
-                revert: '{{ route('upload.revertImage') }}',
+                process: '{{ route('upload.storeImage') }}',
+                revert: '{{ route('upload.revert') }}',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

@@ -37,7 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
-    Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.StoreImage');
-    Route::delete('revert/image', [UploadController::class, 'revertImage'])->name('upload.revertImage');
+    Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.storeImage');
+    Route::post('upload/file', [UploadController::class, 'storeFile'])->name('upload.storeFile');
+    Route::delete('revert/image', [UploadController::class, 'revert'])->name('upload.revert');
 });
 require __DIR__ . '/auth.php';
