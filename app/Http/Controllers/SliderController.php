@@ -95,13 +95,11 @@ class SliderController extends Controller
             'subtitle' => 'nullable',
             'image' => 'nullable',
         ]);
-        if ($request->hasFile('image')) {
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
             $slider->deleteFile();
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image_name = date('mdYHis') . '-' . $name;
-            $image = $image->storeAs('image', $image_name, 'public_uploads');
-            $data['image'] = $image;
+            $temporaryFile->delete();
         };
         $slider->update($data);
         session()->flash('success');
