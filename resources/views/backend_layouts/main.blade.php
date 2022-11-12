@@ -34,6 +34,8 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all"
         href="{{ asset('backend_assets/colors/color1.css') }}" />
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
     @stack('style')
 
 </head>
@@ -133,6 +135,8 @@
                 .after('<span class="text-red">*</span>')
         })
     </script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
     @stack('custom-scripts')
 </body>
 

@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\KebijakanCategoryController;
 use App\Http\Controllers\KebijakanController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
+    Route::resource('link', LinkController::class);
+    Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.StoreImage');
 });
 require __DIR__ . '/auth.php';
