@@ -53,16 +53,4 @@
 @endsection
 
 @push('custom-scripts')
-    <script>
-        const inputElement = document.querySelector('input[type="file"]');
-        const pond = FilePond.create(inputElement);
-        FilePond.setOptions({
-            server: {
-                url: '{{ route('upload.StoreImage') }}',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            },
-        });
-    </script>
 @endpush

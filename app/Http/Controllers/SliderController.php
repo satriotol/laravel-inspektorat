@@ -46,7 +46,7 @@ class SliderController extends Controller
         $data = $request->validate([
             'title' => 'nullable',
             'subtitle' => 'nullable',
-            'image' => 'required|image',
+            'image' => 'required',
         ]);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -94,7 +94,7 @@ class SliderController extends Controller
         $data = $request->validate([
             'title' => 'nullable',
             'subtitle' => 'nullable',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
         ]);
         if ($request->hasFile('image')) {
             $slider->deleteFile();

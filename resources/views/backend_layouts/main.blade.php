@@ -136,7 +136,18 @@
         })
     </script>
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-
+    <script>
+        const inputElement = document.querySelector('input[name="image"]');
+        const pond = FilePond.create(inputElement);
+        FilePond.setOptions({
+            server: {
+                url: '{{ route('upload.StoreImage') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            },
+        });
+    </script>
     @stack('custom-scripts')
 </body>
 
