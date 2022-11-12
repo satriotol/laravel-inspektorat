@@ -135,13 +135,16 @@
                 .after('<span class="text-red">*</span>')
         })
     </script>
+
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
     <script>
         const inputElement = document.querySelector('input[name="image"]');
         const pond = FilePond.create(inputElement);
         FilePond.setOptions({
             server: {
-                url: '{{ route('upload.StoreImage') }}',
+                process: '{{ route('upload.StoreImage') }}',
+                revert: '{{ route('upload.revertImage') }}',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

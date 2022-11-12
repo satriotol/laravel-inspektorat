@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slider;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -48,12 +49,10 @@ class SliderController extends Controller
             'subtitle' => 'nullable',
             'image' => 'required',
         ]);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image_name = date('mdYHis') . '-' . $name;
-            $image = $image->storeAs('image', $image_name, 'public_uploads');
-            $data['image'] = $image;
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
         };
         Slider::create($data);
         session()->flash('success');

@@ -22,4 +22,10 @@ class UploadController extends Controller
         };
         return '';
     }
+    public function revertImage(Request $request)
+    {
+        $temporaryFile = TemporaryFile::where('filename', $request->getContent())->first();
+        $temporaryFile->deleteFile();
+        $temporaryFile->delete();
+    }
 }
