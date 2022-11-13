@@ -46,16 +46,18 @@
                                 value="{{ isset($kebijakan) ? $kebijakan->subtitle : @old('kebijakan_category_id') }}" name="kategori"> --}}
                         </div>
 
+
+
                         <div class="form-group">
                             <label>File</label>
                             <input type="file" accept="pdf/*" class="form-control"
-                                @empty($kebijakan)
+                            @empty($kebijakan)
                             required
                             @endempty
-                                name="file">
+                            value="{{ isset($kebijakan) ? $kebijakan->file : @old('file') }}"  name="file">
                         </div>
                         {{-- @isset($kebijakan)
-                            <img src="{{ asset('uploads/' . $kebijakan->image) }}" class="img-thumbnail" alt="">
+                            <a src="{{ asset('uploads/file' . $kebijakan->file) }}" alt="">
                         @endisset --}}
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>

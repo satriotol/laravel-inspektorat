@@ -38,7 +38,7 @@
                                             <form action="{{ route('kebijakan.destroy', $kebijakan->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('kebijakan.edit', $kebijakan->id) }}"
+                                                <a href="{{ asset('uploads/' . $kebijakan->file) }}"
                                                     class="btn btn-sm btn-info">View</a>
                                                 <input type="submit" class="btn btn-sm btn-success" value="Download"
                                                     id="">
