@@ -40,6 +40,12 @@
                         href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
                             class="side-menu__label">Kategori Berita</span></a>
                 </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['beritaGallery.*']) }}"
+                        href="{{ route('beritaGallery.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            class="side-menu__label">Galeri Berita</span></a>
+                </li>
+
                 <li class="sub-category">
                     <h3>Kebijakan</h3>
                 </li>
@@ -69,6 +75,7 @@
                                 class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Link</span></a>
                     </li>
                 @endcan
+
                 <li class="sub-category">
                     <h3>User Management</h3>
                 </li>

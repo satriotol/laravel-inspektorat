@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaGallery;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 class BeritaGalleryController extends Controller
@@ -14,7 +15,8 @@ class BeritaGalleryController extends Controller
      */
     public function index()
     {
-        //
+        $beritaGalleries = BeritaGallery::all();
+        return view('backend.beritaGallery.index', compact('beritaGalleries'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BeritaGalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.beritaGallery.create');
     }
 
     /**
@@ -35,7 +37,18 @@ class BeritaGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'berita_id' => 'required',
+            'image' => 'required',
+        ]);
+       $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
+        BeritaGallery::create($data);
+        session()->flash('success');
+        return redirect(route('beritaGallery.index'));
     }
 
     /**
@@ -57,7 +70,7 @@ class BeritaGalleryController extends Controller
      */
     public function edit(BeritaGallery $beritaGallery)
     {
-        //
+        return view('backend.beritaGallery.create', compact('beritaGallery'));
     }
 
     /**
@@ -69,7 +82,19 @@ class BeritaGalleryController extends Controller
      */
     public function update(Request $request, BeritaGallery $beritaGallery)
     {
-        //
+        $data = $request->validate([
+            'berita_id' => 'required',
+            'image' => 'required',
+        ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $beritaGallery->deleteFile();
+            $temporaryFile->delete();
+        };
+        $beritaGallery->update($data);
+        session()->flash('success');
+        return redirect(route('beritaGallery.index'));
     }
 
     /**
@@ -80,6 +105,8 @@ class BeritaGalleryController extends Controller
      */
     public function destroy(BeritaGallery $beritaGallery)
     {
-        //
+        $beritaGallery->delete();
+        session()->flash('success');
+        return redirect(route('beritaGallery.index'));
     }
 }
