@@ -17,5 +17,6 @@ yarn-error.log
 /.idea
 /.vscode
 public/uploads/image/
+public/uploads/file/
 vendor.zip
 node_modules.zip
