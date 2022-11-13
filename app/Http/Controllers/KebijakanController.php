@@ -45,6 +45,7 @@ class KebijakanController extends Controller
             'kebijakan_category_id' => 'required',
             'file'                  => 'required|file',
         ]);
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $name = $file->getClientOriginalName();

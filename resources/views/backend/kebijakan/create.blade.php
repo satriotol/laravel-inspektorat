@@ -35,7 +35,7 @@
                             <select name="kebijakan_category_id" class="form-control">
 
                                 @foreach($kebijakan_categories as $kebijakan_category)
-                                    <option value="{{$kebijakan_category}}" @selected(old($kebijakan_category->id) == $kebijakan_category)
+                                    <option value="{{$kebijakan_category->id}}"
                                     >{{ $kebijakan_category->name }}</option>
                                 @endforeach
                             </select>
