@@ -14,7 +14,8 @@ class BeritaCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $beritaCategories = BeritaCategory::all();
+        return view('backend.beritaCategory.index', compact('beritaCategories'));
     }
 
     /**

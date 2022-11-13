@@ -79,11 +79,11 @@
                                             <button type="submit" class="login100-form-btn btn-primary"
                                                 @click="login">Masuk</button>
                                         </div>
-                                        <div class="text-center pt-3">
+                                        {{-- <div class="text-center pt-3">
                                             <p class="text-dark mb-0">Tidak Punya Akun ?<a
                                                     href="{{ route('register') }}" class="text-primary ms-1">Daftar</a>
                                             </p>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                         },
                         allowOutsideClick: false
                     });
-                    console.log(this.form);
+                    // console.log(this.form);
                     axios.post('/login', this.form)
                         .then((res) => {
                             console.log(res);
@@ -160,6 +160,13 @@
                                 if (result.isConfirmed) {
                                     window.location.href = res.request.responseURL
                                 }
+                            })
+                        }).catch((err) => {
+                            Swal.fire({
+                                title: 'Error',
+                                icon: 'error',
+                                text : err.response.data.message,
+                                confirmButtonText: 'Ok',
                             })
                         });
                 }

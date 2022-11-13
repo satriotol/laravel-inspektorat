@@ -28,23 +28,62 @@
                             class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="sub-category">
+                    <h3>Berita</h3>
+                </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
+                        href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            class="side-menu__label">Berita</span></a>
+                </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['beritaCategory.*']) }}"
+                        href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            class="side-menu__label">Kategori Berita</span></a>
+                </li>
+                <li class="sub-category">
                     <h3>Kebijakan</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('kebijakan.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kebijakan</span></a>
+                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
+                        href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-briefcase"></i><span
+                            class="side-menu__label">Kebijakan</span></a>
                 </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('kebijakanCategory.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Kategori
+                    <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}"
+                        href="{{ route('kebijakanCategory.index') }}"><i
+                            class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Kategori
                             Kebijakan</span></a>
                 </li>
                 <li class="sub-category">
                     <h3>Website</h3>
                 </li>
+                @can('slider-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
+                                class="side-menu__icon fe fe-image"></i><span class="side-menu__label">Slider</span></a>
+                    </li>
+                @endcan
+                @can('link-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['link.*']) }}" href="{{ route('link.index') }}"><i
+                                class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Link</span></a>
+                    </li>
+                @endcan
+                <li class="sub-category">
+                    <h3>User Management</h3>
+                </li>
                 <li>
-                    <a class="side-menu__item" href="{{ route('slider.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Slider</span></a>
+                    <a class="side-menu__item {{ active_class(['user.*']) }}" href="{{ route('user.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">User</span></a>
+                </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['role.*']) }}" href="{{ route('role.index') }}"><i
+                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Role</span></a>
+                </li>
+                <li>
+                    <a class="side-menu__item {{ active_class(['permission.*']) }}"
+                        href="{{ route('permission.index') }}"><i class="side-menu__icon fe fe-grid"></i><span
+                            class="side-menu__label">Permission</span></a>
                 </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

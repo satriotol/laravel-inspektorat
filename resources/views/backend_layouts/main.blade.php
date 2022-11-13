@@ -34,6 +34,8 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all"
         href="{{ asset('backend_assets/colors/color1.css') }}" />
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
     @stack('style')
 
 </head>
@@ -133,6 +135,23 @@
                 .after('<span class="text-red">*</span>')
         })
     </script>
+
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script>
+        const inputElement = document.querySelector('input[name="image"]');
+        const pond = FilePond.create(inputElement);
+        FilePond.setOptions({
+            server: {
+                process: '{{ route('upload.storeImage') }}',
+                revert: '{{ route('upload.revert') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            },
+        });
+    </script>
+    @stack('custom-scripts')
 </body>
 
 </html>

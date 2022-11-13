@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\BeritaCategoryController;
 use App\Http\Controllers\KebijakanCategoryController;
 use App\Http\Controllers\KebijakanController;
+use App\Http\Controllers\LinkController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return 'halo ges';
+    return view('frontend.beranda');
 });
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
@@ -27,5 +33,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('slider', SliderController::class);
+    Route::resource('permission', PermissionController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('user', UserController::class);
+    Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
+    Route::resource('link', LinkController::class);
+    Route::resource('beritaCategory', BeritaCategoryController::class);
+
+    Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.storeImage');
+    Route::post('upload/file', [UploadController::class, 'storeFile'])->name('upload.storeFile');
+    Route::delete('revert/image', [UploadController::class, 'revert'])->name('upload.revert');
 });
 require __DIR__ . '/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slider;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -12,6 +13,13 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:slider-index|slider-create|slider-edit|slider-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:slider-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:slider-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:slider-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $sliders = Slider::all();
@@ -39,14 +47,12 @@ class SliderController extends Controller
         $data = $request->validate([
             'title' => 'nullable',
             'subtitle' => 'nullable',
-            'image' => 'required|image',
+            'image' => 'required',
         ]);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image_name = date('mdYHis') . '-' . $name;
-            $image = $image->storeAs('image', $image_name, 'public_uploads');
-            $data['image'] = $image;
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
         };
         Slider::create($data);
         session()->flash('success');
@@ -87,15 +93,13 @@ class SliderController extends Controller
         $data = $request->validate([
             'title' => 'nullable',
             'subtitle' => 'nullable',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
         ]);
-        if ($request->hasFile('image')) {
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
             $slider->deleteFile();
-            $image = $request->file('image');
-            $name = $image->getClientOriginalName();
-            $image_name = date('mdYHis') . '-' . $name;
-            $image = $image->storeAs('image', $image_name, 'public_uploads');
-            $data['image'] = $image;
+            $temporaryFile->delete();
         };
         $slider->update($data);
         session()->flash('success');
