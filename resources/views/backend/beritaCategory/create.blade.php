@@ -1,11 +1,11 @@
 @extends('backend_layouts.main')
 @section('content')
     <div class="page-header">
-        <h1 class="page-title">Slider</h1>
+        <h1 class="page-title">Berita</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('slider.index') }}">Slider</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Slider Tabel</li>
+                <li class="breadcrumb-item"><a href="{{ route('beritaCategory.index') }}">Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Berita Tabel</li>
             </ol>
         </div>
     </div>
@@ -13,38 +13,44 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Form Slider</h3>
+                    <h3 class="card-title">Form Berita</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.errors')
                     <form
-                        action="@isset($slider) {{ route('slider.update', $slider->id) }} @endisset @empty($slider) {{ route('slider.store') }} @endempty"
+                        action="@isset($beritaCategory) {{ route('beritaCategory.update', $beritaCategory->id) }} @endisset @empty($beritaCategory) {{ route('beritaCategory.store') }} @endempty"
                         method="POST" enctype="multipart/form-data">
                         @csrf
-                        @isset($slider)
+                        @isset($beritaCategory)
                             @method('PUT')
                         @endisset
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Nama</label>
                             <input type="text" class="form-control"
-                                value="{{ isset($slider) ? $slider->title : @old('title') }}" name="title">
-                        </div>
-                        <div class="form-group">
-                            <label>Subtitle</label>
-                            <input type="text" class="form-control"
-                                value="{{ isset($slider) ? $slider->subtitle : @old('subtitle') }}" name="subtitle">
+                                value="{{ isset($beritaCategory) ? $beritaCategory->name : @old('name') }}" name="name">
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control"
-                                @empty($slider)
-                            required 
-                            @endempty
+                                {{-- @empty($beritaCategory)
+                            required
+                            @endempty --}}
                                 name="image">
                         </div>
-                        @isset($slider)
-                            <img src="{{ asset('uploads/' . $slider->image) }}" class="img-thumbnail" alt="">
+                        @isset($beritaCategory)
+                            <img src="{{ asset('uploads/' . $beritaCategory->image) }}" class="img-thumbnail" alt="">
                         @endisset
+
+                        <div class="form-group">
+
+                            <input type="checkbox" id="is_kegiatan" name="is_kegiatan" value="1">
+                            <label for="is_kegiatan"> Kegiatan</label>
+
+                            {{-- <label>Kegiatan</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($beritaCategory) ? $beritaCategory->subtitle : @old('subtitle') }}" name="subtitle"> --}}
+                        </div>
+
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>

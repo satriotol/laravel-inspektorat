@@ -23,7 +23,7 @@
                         <table id="example2" class="table table-bordered text-nowrap border-bottom">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Kategori Kebijakan</th>
                                     <th>File</th>
                                     <th>Action</th>

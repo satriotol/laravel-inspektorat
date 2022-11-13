@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaCategory;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 class BeritaCategoryController extends Controller
@@ -25,7 +26,7 @@ class BeritaCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.beritaCategory.create');
     }
 
     /**
@@ -36,7 +37,19 @@ class BeritaCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'image' => 'nullable',
+            'is_kegiatan' => 'nullable',
+        ]);
+       $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
+        BeritaCategory::create($data);
+        session()->flash('success');
+        return redirect(route('beritaCategory.index'));
     }
 
     /**
@@ -58,7 +71,7 @@ class BeritaCategoryController extends Controller
      */
     public function edit(BeritaCategory $beritaCategory)
     {
-        //
+        return view('backend.beritaCategory.create', compact('beritaCategory'));
     }
 
     /**
@@ -70,7 +83,20 @@ class BeritaCategoryController extends Controller
      */
     public function update(Request $request, BeritaCategory $beritaCategory)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'image' => 'nullable',
+            'is_kegiatan' => 'nullable',
+        ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $beritaCategory->deleteFile();
+            $temporaryFile->delete();
+        };
+        $beritaCategory->update($data);
+        session()->flash('success');
+        return redirect(route('beritaCategory.index'));
     }
 
     /**
