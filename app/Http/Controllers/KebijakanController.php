@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kebijakan;
+use App\Models\KebijakanCategory;
 use Illuminate\Http\Request;
 
 class KebijakanController extends Controller
@@ -14,7 +15,8 @@ class KebijakanController extends Controller
      */
     public function index()
     {
-        $kebijakans = Kebijakan::all();
+        $kebijakans = Kebijakan::with('kebijakan_category')->get();
+      //  $kebijakans = Kebijakan::all();
         return view('backend.kebijakan.index', compact('kebijakans'));
     }
 
@@ -25,7 +27,9 @@ class KebijakanController extends Controller
      */
     public function create()
     {
-        //
+        $kebijakan_categories = KebijakanCategory::all();
+        // return view('backend.kebijakan.index');
+        return view('backend.kebijakan.create', compact('kebijakan_categories'));
     }
 
     /**
@@ -36,7 +40,21 @@ class KebijakanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'                  => 'nullable',
+            'kebijakan_category_id' => 'required',
+            'file'                  => 'required|file',
+        ]);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file_name = date('mdYHis') . '-' . $name;
+            $file = $file->storeAs('file', $file_name, 'public_uploads');
+            $data['file'] = $file;
+        };
+        Kebijakan::create($data);
+        session()->flash('success');
+        return redirect(route('kebijakan.index'));
     }
 
     /**
@@ -58,7 +76,8 @@ class KebijakanController extends Controller
      */
     public function edit(Kebijakan $kebijakan)
     {
-        //
+        $kebijakan_categories = KebijakanCategory::all();
+        return view('backend.kebijakan.create', compact('kebijakan', 'kebijakan_categories'));
     }
 
     /**
@@ -70,7 +89,22 @@ class KebijakanController extends Controller
      */
     public function update(Request $request, Kebijakan $kebijakan)
     {
-        //
+        $data = $request->validate([
+            'name'                  => 'nullable',
+            'kebijakan_category_id' => 'required',
+            'file'                  => 'required|file',
+        ]);
+        if ($request->hasFile('file')) {
+            $kebijakan->deleteFile();
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file_name = date('mdYHis') . '-' . $name;
+            $file = $file->storeAs('file', $file_name, 'public_uploads');
+            $data['file'] = $file;
+        };
+        $kebijakan->update($data);
+        session()->flash('success');
+        return redirect(route('slider.index'));
     }
 
     /**
@@ -81,6 +115,9 @@ class KebijakanController extends Controller
      */
     public function destroy(Kebijakan $kebijakan)
     {
-        //
+        $kebijakan->deleteFile();
+        $kebijakan->delete();
+        session()->flash('success');
+        return redirect(route('kebijakan.index'));
     }
 }
