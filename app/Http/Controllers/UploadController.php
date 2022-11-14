@@ -9,6 +9,9 @@ class UploadController extends Controller
 {
     public function storeImage(Request $request)
     {
+        $request->validate([
+            'image' => 'image'
+        ]);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = $image->getClientOriginalName();
@@ -24,6 +27,9 @@ class UploadController extends Controller
     }
     public function storeFile(Request $request)
     {
+        $request->validate([
+            'file' => 'file'
+        ]);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $name = $file->getClientOriginalName();

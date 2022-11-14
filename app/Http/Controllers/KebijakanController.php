@@ -15,8 +15,7 @@ class KebijakanController extends Controller
      */
     public function index()
     {
-        $kebijakans = Kebijakan::with('kebijakan_category')->get();
-      //  $kebijakans = Kebijakan::all();
+        $kebijakans = Kebijakan::all();
         return view('backend.kebijakan.index', compact('kebijakans'));
     }
 
@@ -28,7 +27,6 @@ class KebijakanController extends Controller
     public function create()
     {
         $kebijakan_categories = KebijakanCategory::all();
-        // return view('backend.kebijakan.index');
         return view('backend.kebijakan.create', compact('kebijakan_categories'));
     }
 
@@ -43,7 +41,7 @@ class KebijakanController extends Controller
         $data = $request->validate([
             'name'                  => 'nullable',
             'kebijakan_category_id' => 'required',
-            'file'                  => 'required|file',
+            'file'                  => 'nullable',
         ]);
 
         if ($request->hasFile('file')) {
@@ -93,7 +91,7 @@ class KebijakanController extends Controller
         $data = $request->validate([
             'name'                  => 'nullable',
             'kebijakan_category_id' => 'required',
-            'file'                  => 'required|file',
+            'file'                  => 'nullable',
         ]);
         if ($request->hasFile('file')) {
             $kebijakan->deleteFile();
@@ -105,7 +103,7 @@ class KebijakanController extends Controller
         };
         $kebijakan->update($data);
         session()->flash('success');
-        return redirect(route('slider.index'));
+        return redirect(route('kebijakan.index'));
     }
 
     /**

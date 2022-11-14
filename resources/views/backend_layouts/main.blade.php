@@ -151,6 +151,19 @@
             },
         });
     </script>
+    <script>
+        const inputElementFile = document.querySelector('input[name="file"]');
+        const pond2 = FilePond.create(inputElementFile);
+        FilePond.setOptions({
+            server: {
+                process: '{{ route('upload.storeFile') }}',
+                revert: '{{ route('upload.revert') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            },
+        });
+    </script>
     @stack('custom-scripts')
 </body>
 
