@@ -74,7 +74,9 @@ class BeritaSubcategoryController extends Controller
      */
     public function edit(BeritaSubcategory $beritaSubcategory)
     {
-        return view('backend.beritaSubcategory.create', compact('beritaSubcategory'));
+
+        $berita_categories = BeritaCategory::all();
+        return view('backend.beritaSubcategory.create', compact('beritaSubcategory', 'berita_categories'));
     }
 
     /**
