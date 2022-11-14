@@ -47,7 +47,7 @@ class LinkController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'url' => 'required|active_url',
+            'url' => 'required',
             'image' => 'nullable',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();

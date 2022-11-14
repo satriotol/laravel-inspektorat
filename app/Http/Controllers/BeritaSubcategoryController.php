@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaSubcategory;
+use App\Models\BeritaCategory;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class BeritaSubcategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.beritaSubcategory.create');
+        $berita_categories = BeritaCategory::all();
+        return view('backend.beritaSubcategory.create', compact('berita_categories'));
     }
 
     /**
@@ -42,7 +44,8 @@ class BeritaSubcategoryController extends Controller
             'name' => 'required',
             'image' => 'nullable',
         ]);
-       $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();

@@ -4,7 +4,7 @@
         <h1 class="page-title">Sub Kategori Berita</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('beritaSubcategory.index') }}">Sub Kategori BeritaBerita</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('beritaSubcategory.index') }}">Sub Kategori Berita</a></li>
                 <li class="breadcrumb-item active" aria-current="page"Sub Kategori Berita>Berita Tabel</li>
             </ol>
         </div>
@@ -24,23 +24,29 @@
                         @isset($beritaSubcategory)
                             @method('PUT')
                         @endisset
+
                         <div class="form-group">
                             <label>Kategori Berita</label>
-                            <input type="text" class="form-control"
-                                value="{{ isset($beritaSubcategory) ? $beritaSubcategory->berita_category_id : @old('berita_category_id') }}" name="berita_category_id ">
+                            <select name="berita_category_id" required class="form-control">
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($berita_categories as $berita_category)
+                                    <option
+                                        @if (isset($beritaSubcategory)) @selected($berita_category->id == $beritaSubcategory->berita_category_id) @endif
+                                        value="{{ $berita_category->id }}">
+                                        {{ $berita_category->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="form-group">
                             <label>Nama</label>
                             <input type="text" class="form-control"
-                                value="{{ isset($beritaSubcategory) ? $beritaSubcategory->name : @old('name') }}" name="name">
+                                value="{{ isset($beritaSubcategory) ? $beritaSubcategory->name : @old('name') }}"
+                                name="name">
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
-                            <input type="file" accept="image/*" class="form-control"
-                                {{-- @empty($beritaSubcategory)
-                            required
-                            @endempty --}}
-                                name="image">
+                            <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
                         @isset($beritaSubcategory)
                             <img src="{{ asset('uploads/' . $beritaSubcategory->image) }}" class="img-thumbnail" alt="">
