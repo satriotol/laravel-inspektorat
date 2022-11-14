@@ -1,49 +1,9 @@
-<section class="top-bar-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-12 col-xs-12">
-                <div class="top-info">
-                    <ul>
-                        <li><span class="icon-signs"></span>Discover St, New York, NY 10012, USA</li>
-                        <li><span class="icon-clock"></span>Opening Time: Mon-Sat: 09.00 to 18.00</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-8 col-xs-9">
-                <div class="top-right">
-                    <ul>
-                        <li><a href="#">Quick Links</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Register</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-1 col-sm-4 col-xs-3">
-                <div class="language-switcher">
-                    <div id="polyglotLanguageSwitcher">
-                        <form action="#">
-                            <select id="polyglot-language-options">
-                                <option id="en" value="en" selected>English</option>
-                                <option id="fr" value="fr">French</option>
-                                <option id="de" value="de">German</option>
-                                <option id="it" value="it">Italian</option>
-                                <option id="es" value="es">Spanish</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
 <header class="header-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{ route('beranda') }}">
                         <img src="{{ asset('frontend_assets/images/resources/logo.png') }}" alt="Awesome Logo">
                     </a>
                 </div>
@@ -105,7 +65,8 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="home current"><a href="index.html"><span class="fa fa-home"></span></a></li>
+                                <li class="home current"><a href="{{ route('beranda') }}"><span
+                                            class="fa fa-home"></span></a></li>
                                 <li class="dropdown"><a href="about.html">About us</a>
                                     <ul>
                                         <li><a href="company-overview.html">Company Overview</a></li>
@@ -164,7 +125,7 @@
                         <div class="seach-toggle"><i class="fa fa-search"></i></div>
                         <ul class="search-box">
                             <li>
-                                <form method="post" action="index.html">
+                                <form method="post" action="{{ route('beranda') }}">
                                     <div class="form-group">
                                         <input type="search" name="search" placeholder="Search Here" required>
                                         <button type="submit"><i class="fa fa-search"></i></button>

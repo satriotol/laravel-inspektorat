@@ -3,6 +3,7 @@
 use App\Http\Controllers\BeritaCategoryController;
 use App\Http\Controllers\BeritaSubcategoryController;
 use App\Http\Controllers\BeritaGalleryController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\KebijakanCategoryController;
 use App\Http\Controllers\KebijakanController;
 use App\Http\Controllers\LinkController;
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.beranda');
 });
+Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('backend_layouts.main');
