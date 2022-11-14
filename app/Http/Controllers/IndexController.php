@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\BeritaCategory;
 use App\Models\Link;
 use App\Models\Slider;
@@ -20,6 +21,7 @@ class IndexController extends Controller
     {
         $sliders = Slider::all();
         $layananLinks = Link::where('image', '!=', null)->get();
-        return view('frontend.beranda', compact('sliders', 'layananLinks'));
+        $beritas = Berita::orderBy('id', 'desc')->paginate(3);
+        return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas'));
     }
 }

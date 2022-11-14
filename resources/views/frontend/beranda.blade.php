@@ -61,8 +61,6 @@
             </div>
         </div>
     </section>
-    <!--End call to action area-->
-    <!--Start video gallery area-->
     <section class="video-gallery-area">
         <div class="container">
             <div class="row">
@@ -98,8 +96,52 @@
             </div>
         </div>
     </section>
-    <!--End video gallery area-->
-    <!--Start smart approach area-->
+    <section class="latest-blog-area">
+        <div class="container">
+            <div class="sec-title text-center">
+                <h1>Berita & Kegiatan Terkini</h1>
+                <span class="border"></span>
+            </div>
+            <div class="row">
+                @foreach ($beritas as $berita)
+                    <div class="col-md-4">
+                        <div class="single-blog-post">
+                            <div class="img-holder">
+                                <img src="{{ asset('uploads/' . $berita->image) }}"
+                                    style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
+                                <div class="published-date">
+                                    <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
+                                </div>
+                                <div class="overlay-style-one">
+                                    <div class="box">
+                                        <div class="content">
+                                            <a href="blog-single.html"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <a href="blog-single.html">
+                                    <h3 class="blog-title">{{ $berita->title }}</h3>
+                                </a>
+                                <div class="text">
+                                    {!! $berita->description !!}
+                                </div>
+                                <div class="meta-info clearfix">
+                                    <div class="left pull-left">
+                                        <ul class="post-info">
+                                            <li>{{ $berita->user->name }}</li>
+                                            <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <section class="smart-approach-area">
         <div class="container">
             <div class="sec-title text-center">
@@ -472,139 +514,6 @@
         </div>
     </section>
     <!--End team area-->
-
-    <!--Start latest blog area-->
-    <section class="latest-blog-area">
-        <div class="container">
-            <div class="sec-title text-center">
-                <h1>Latest News</h1>
-                <span class="border"></span>
-            </div>
-            <div class="row">
-                <!--Start single latest blog-->
-                <div class="col-md-4">
-                    <div class="single-blog-post">
-                        <div class="img-holder">
-                            <img src="images/blog/lat-blog-1.jpg" alt="Awesome Image">
-                            <div class="published-date">
-                                <h3>21 Aug</h3>
-                            </div>
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="blog-single.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <a href="blog-single.html">
-                                <h3 class="blog-title">The best service ever get</h3>
-                            </a>
-                            <div class="text">
-                                <p>These men promptly escaped from maximum security stockade to the underground. The
-                                    Brady Bunch the Brady Bunch.</p>
-                            </div>
-                            <div class="meta-info clearfix">
-                                <div class="left pull-left">
-                                    <ul class="post-info">
-                                        <li>By <a href="#">Fletcher</a></li>
-                                        <li><a href="#">Finance, Service</a></li>
-                                    </ul>
-                                </div>
-                                <div class="right pull-right">
-                                    <a class="post-share" href="#"><i class="fa fa-share-alt"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End single latest blog-->
-                <!--Start single latest blog-->
-                <div class="col-md-4">
-                    <div class="single-blog-post">
-                        <div class="img-holder">
-                            <img src="images/blog/lat-blog-2.jpg" alt="Awesome Image">
-                            <div class="published-date">
-                                <h3>17 May</h3>
-                            </div>
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="blog-single.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <a href="blog-single.html">
-                                <h3 class="blog-title">We never said impossible</h3>
-                            </a>
-                            <div class="text">
-                                <p>The ship set ground on the shore uncharted desert isle all with Gilligan seds
-                                    that Skipper millionaire and wife. </p>
-                            </div>
-                            <div class="meta-info clearfix">
-                                <div class="left pull-left">
-                                    <ul class="post-info">
-                                        <li>By <a href="#">Robertson</a></li>
-                                        <li><a href="#">Consulting, Idea</a></li>
-                                    </ul>
-                                </div>
-                                <div class="right pull-right">
-                                    <a class="post-share" href="#"><i class="fa fa-share-alt"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End single latest blog-->
-                <!--Start single latest blog-->
-                <div class="col-md-4">
-                    <div class="single-blog-post">
-                        <div class="img-holder">
-                            <img src="images/blog/lat-blog-3.jpg" alt="Awesome Image">
-                            <div class="published-date">
-                                <h3>24 Apr</h3>
-                            </div>
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="blog-single.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <a href="blog-single.html">
-                                <h3 class="blog-title">Latest consulting seminar</h3>
-                            </a>
-                            <div class="text">
-                                <p>Team like us we had it made. Those were the days. Now were up in the big leagues
-                                    getting our turn at bat skipper team.</p>
-                            </div>
-                            <div class="meta-info clearfix">
-                                <div class="left pull-left">
-                                    <ul class="post-info">
-                                        <li>By <a href="#">Peterson</a></li>
-                                        <li><a href="#">Services, Corporate</a></li>
-                                    </ul>
-                                </div>
-                                <div class="right pull-right">
-                                    <a class="post-share" href="#"><i class="fa fa-share-alt"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End single latest blog-->
-            </div>
-        </div>
-    </section>
-    <!--End latest blog area-->
 
     <!--Start testimonial area-->
     <section class="testimonial-area" style="background-image:url(images/testimonial/testimonial-bg.jpg);">

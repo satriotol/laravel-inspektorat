@@ -1350,8 +1350,8 @@ select:focus {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 55px;
-    height: 55px;
+    width: 100px;
+    height: 50px;
     background: #f60035;
     text-align: center;
     padding: 7px 10px;
