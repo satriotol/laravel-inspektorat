@@ -26,39 +26,30 @@
                         @endisset
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" required
                                 value="{{ isset($kebijakan) ? $kebijakan->name : @old('name') }}" name="name">
                         </div>
                         <div class="form-group">
                             <label>Kategori</label>
-
-                            <select name="kebijakan_category_id" class="form-control">
-
-                                @foreach($kebijakan_categories as $kebijakan_category)
-                                    <option value="{{$kebijakan_category->id}}"
-                                    >{{ $kebijakan_category->name }}</option>
+                            <select name="kebijakan_category_id" required class="form-control">
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($kebijakan_categories as $kebijakan_category)
+                                    <option @selected($kebijakan_category->id == $kebijakan->kebijakan_category_id) value="{{ $kebijakan_category->id }}">
+                                        {{ $kebijakan_category->name }}</option>
                                 @endforeach
                             </select>
-
-                            {{-- {{ $kebijakan_category->id }}" {{isset($kebijakan) ? 'selected' : ''}}  --}}
-
-                            {{-- <input type="text" class="form-control"
-                                value="{{ isset($kebijakan) ? $kebijakan->subtitle : @old('kebijakan_category_id') }}" name="kategori"> --}}
                         </div>
-
-
-
                         <div class="form-group">
                             <label>File</label>
                             <input type="file" accept="pdf/*" class="form-control"
-                            @empty($kebijakan)
+                                @empty($kebijakan)
                             required
                             @endempty
-                            value="{{ isset($kebijakan) ? $kebijakan->file : @old('file') }}"  name="file">
+                                value="{{ isset($kebijakan) ? $kebijakan->file : @old('file') }}" name="file">
                         </div>
-                        {{-- @isset($kebijakan)
-                            <a src="{{ asset('uploads/file' . $kebijakan->file) }}" alt="">
-                        @endisset --}}
+                        @isset($kebijakan)
+                            <iframe src="{{ asset('uploads/' . $kebijakan->file) }}" frameborder="0"></iframe>
+                        @endisset
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>
