@@ -62,7 +62,43 @@
         </div>
     </section>
     <!--End call to action area-->
+    <!--Start video gallery area-->
+    <section class="video-gallery-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-holder">
+                        <h3>Sambutan Inspektorat</h3>
+                        <div class="text">
+                            <p>We have built an enviable reputation in the consumer goods, heavy industry,
+                                high-tech, manufacturing, medical, recreational vehicle, and transportation sectors.
+                                multidisciplinary team of engineering experts.</p>
+                            <p>Who loves or pursues or desires to obtain pain of itself, because it is pain, but
+                                because occasionally circumstances occur in which toil and pain.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="video-holder">
+                        <img src="{{ asset('frontend_assets/images/resources/video-gallery.jpg') }}"
+                            alt="Awesome Video Gallery">
+                        <div class="overlay-gallery">
+                            <div class="icon-holder">
+                                <div class="icon">
+                                    <a class="html5lightbox" title="Assurance Video Gallery"
+                                        href="https://www.youtube.com/watch?v=XOv7RmXi7VE"><img
+                                            src="{{ asset('frontend_assets/images/icon/play-btn.png') }}"
+                                            alt="Play Button"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
+    <!--End video gallery area-->
     <!--Start smart approach area-->
     <section class="smart-approach-area">
         <div class="container">
@@ -436,43 +472,6 @@
         </div>
     </section>
     <!--End team area-->
-
-    <!--Start video gallery area-->
-    <section class="video-gallery-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="text-holder">
-                        <h3>Everyboy has something important to say! assurance also.</h3>
-                        <div class="text">
-                            <p>We have built an enviable reputation in the consumer goods, heavy industry,
-                                high-tech, manufacturing, medical, recreational vehicle, and transportation sectors.
-                                multidisciplinary team of engineering experts.</p>
-                            <p>Who loves or pursues or desires to obtain pain of itself, because it is pain, but
-                                because occasionally circumstances occur in which toil and pain.</p>
-                            <a class="thm-btn bg-clr1" href="#">Know More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="video-holder">
-                        <img src="images/resources/video-gallery.jpg" alt="Awesome Video Gallery">
-                        <div class="overlay-gallery">
-                            <div class="icon-holder">
-                                <div class="icon">
-                                    <a class="html5lightbox" title="Assurance Video Gallery"
-                                        href="https://www.youtube.com/watch?v=XOv7RmXi7VE"><img
-                                            src="images/icon/play-btn.png" alt="Play Button"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--End video gallery area-->
 
     <!--Start latest blog area-->
     <section class="latest-blog-area">
