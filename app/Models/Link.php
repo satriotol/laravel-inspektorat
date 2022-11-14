@@ -10,7 +10,7 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url', 'image'];
+    protected $fillable = ['name', 'url', 'image', 'description'];
 
     public function deleteFile()
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BeritaCategoryController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaSubcategoryController;
 use App\Http\Controllers\BeritaGalleryController;
 use App\Http\Controllers\IndexController;
@@ -42,6 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
+    Route::resource('berita', BeritaController::class);
     Route::resource('beritaCategory', BeritaCategoryController::class);
     Route::resource('beritaGallery', BeritaGalleryController::class);
     Route::resource('beritaSubcategory', BeritaSubcategoryController::class);

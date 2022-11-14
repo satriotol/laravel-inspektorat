@@ -49,6 +49,7 @@ class LinkController extends Controller
             'name' => 'required',
             'url' => 'required',
             'image' => 'nullable',
+            'description' => 'nullable',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -95,6 +96,7 @@ class LinkController extends Controller
             'name' => 'required',
             'url' => 'required|active_url',
             'image' => 'nullable',
+            'description' => 'nullable',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {

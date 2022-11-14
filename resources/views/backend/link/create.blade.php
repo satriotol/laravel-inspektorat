@@ -35,6 +35,10 @@
                                 value="{{ isset($link) ? $link->url : @old('url') }}" name="url">
                         </div>
                         <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea name="description" class="form-control" id="" cols="30" rows="10">{{ isset($link) ? $link->description : @old('description') }}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
                         </div>

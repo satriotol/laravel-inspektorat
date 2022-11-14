@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Berita extends Model
 {
@@ -29,5 +30,9 @@ class Berita extends Model
     public function berita_galleries()
     {
         return $this->hasMany(BeritaGallery::class, 'berita_id', 'id');
+    }
+    public function deleteFile()
+    {
+        Storage::disk('public_uploads')->delete($this->attributes['image']);
     }
 }

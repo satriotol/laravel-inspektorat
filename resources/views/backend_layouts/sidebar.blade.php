@@ -31,8 +31,8 @@
                     <h3>Berita</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
-                        href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                    <a class="side-menu__item {{ active_class(['berita.*']) }}"
+                        href="{{ route('berita.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
                             class="side-menu__label">Berita</span></a>
                 </li>
                 <li>

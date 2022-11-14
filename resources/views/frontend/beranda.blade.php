@@ -32,95 +32,32 @@
     <section class="call-to-action-area">
         <div class="container">
             <div class="title text-center">
-                <h3>We are the leading provider of client solutions with over 10 years of experience helping
-                    businesses to find comprehensive solutions and high growth.</h3>
-                <p>Assurance is right choice for all type of business, See our services</p>
+                <h3>Layanan Inspektorat Kota Semarang</h3>
+                <p>Detail Layanan</p>
             </div>
             <div class="row">
-                <!--Start single item-->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-item hvr-shadow text-center">
-                        <div class="img-holder">
-                            <img src="images/callto-action/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="business-planning.html"><i class="fa fa-link" aria-hidden="true"></i></a>
+                @foreach ($layananLinks as $layananLink)
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-item hvr-shadow text-center">
+                            <div class="img-holder">
+                                <img src="{{ asset('uploads/' . $layananLink->image) }}" style="background-color: black"
+                                    alt="Awesome Image">
+                                <div class="overlay-style-one">
+                                    <div class="box">
+                                        <div class="content">
+                                            <a href="{{ $layananLink->url }}" target="_blank"><i class="fa fa-link"
+                                                    aria-hidden="true"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Business Planning</h3>
-                            <p>The process of improving measure of an enterpprise's success. Business growth can be
-                                a achieved.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End single item-->
-                <!--Start single item-->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-item hvr-shadow text-center">
-                        <div class="img-holder">
-                            <img src="images/callto-action/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="audit-assurance.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
+                            <div class="text-holder">
+                                <h3>{{ $layananLink->name }}</h3>
+                                <p>{{ $layananLink->description }}</p>
                             </div>
                         </div>
-                        <div class="text-holder">
-                            <h3>Audit & Assurance</h3>
-                            <p>Sustainability is a priority interest for many of organizations, when it comes to
-                                sustainability & corporate.</p>
-                        </div>
                     </div>
-                </div>
-                <!--End single item-->
-                <!--Start single item-->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-item hvr-shadow text-center">
-                        <div class="img-holder">
-                            <img src="images/callto-action/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="trades-stocks.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Trades & Stocks</h3>
-                            <p>The process of improving measure of an enterpprise's success. Business growth can be
-                                a achieved.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End single item-->
-                <!--Start single item-->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-item hvr-shadow text-center">
-                        <div class="img-holder">
-                            <img src="images/callto-action/4.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="investment-plan.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <h3>Investment Plan</h3>
-                            <p>The process of improving measure of an enterpprise's success. Business growth can be
-                                a achieved.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End single item-->
+                @endforeach
             </div>
         </div>
     </section>

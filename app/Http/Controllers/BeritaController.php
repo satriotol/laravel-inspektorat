@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\BeritaCategory;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaController extends Controller
 {
@@ -14,7 +17,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $beritas = Berita::all();
+        return view('backend.berita.index', compact('beritas'));
     }
 
     /**
@@ -24,7 +28,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $beritaCategories = BeritaCategory::all();
+        return view('backend.berita.create', compact('beritaCategories'));
     }
 
     /**
@@ -35,7 +40,21 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable',
+            'berita_category_id' => 'required',
+        ]);
+        $data['user_id'] = Auth::user()->id;
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
+        Berita::create($data);
+        session()->flash('success');
+        return redirect(route('berita.index'));
     }
 
     /**
@@ -55,9 +74,10 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit(Berita $beritum)
     {
-        //
+        $beritaCategories = BeritaCategory::all();
+        return view('backend.berita.create', compact('beritum', 'beritaCategories'));
     }
 
     /**
@@ -67,9 +87,24 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request, Berita $beritum)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable',
+            'berita_category_id' => 'required',
+        ]);
+        $data['user_id'] = Auth::user()->id;
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $beritum->deleteFile();
+            $temporaryFile->delete();
+        };
+        $beritum->update($data);
+        session()->flash('success');
+        return redirect(route('berita.index'));
     }
 
     /**
@@ -78,8 +113,11 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy(Berita $beritum)
     {
-        //
+        $beritum->delete();
+        $beritum->deleteFile();
+        session()->flash('success');
+        return redirect(route('berita.index'));
     }
 }
