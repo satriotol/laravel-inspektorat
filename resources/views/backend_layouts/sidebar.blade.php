@@ -41,6 +41,11 @@
                             class="side-menu__label">Kategori Berita</span></a>
                 </li>
                 <li>
+                    <a class="side-menu__item {{ active_class(['beritaSubcategory.*']) }}"
+                        href="{{ route('beritaSubcategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            class="side-menu__label">SubKategori Berita</span></a>
+                </li>
+                <li>
                     <a class="side-menu__item {{ active_class(['beritaGallery.*']) }}"
                         href="{{ route('beritaGallery.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
                             class="side-menu__label">Galeri Berita</span></a>

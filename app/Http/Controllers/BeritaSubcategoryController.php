@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaSubcategory;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 class BeritaSubcategoryController extends Controller
@@ -14,7 +15,8 @@ class BeritaSubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $beritaSubcategories = BeritaSubcategory::all();
+        return view('backend.beritaSubcategory.index', compact('beritaSubcategories'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BeritaSubcategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.beritaSubcategory.create');
     }
 
     /**
@@ -35,7 +37,19 @@ class BeritaSubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'berita_category_id' => 'required',
+            'name' => 'required',
+            'image' => 'nullable',
+        ]);
+       $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
+        BeritaSubcategory::create($data);
+        session()->flash('success');
+        return redirect(route('beritaSubcategory.index'));
     }
 
     /**
@@ -57,7 +71,7 @@ class BeritaSubcategoryController extends Controller
      */
     public function edit(BeritaSubcategory $beritaSubcategory)
     {
-        //
+        return view('backend.beritaSubcategory.create', compact('beritaSubcategory'));
     }
 
     /**
@@ -69,7 +83,20 @@ class BeritaSubcategoryController extends Controller
      */
     public function update(Request $request, BeritaSubcategory $beritaSubcategory)
     {
-        //
+        $data = $request->validate([
+            'berita_category_id' => 'required',
+            'name' => 'required',
+            'image' => 'nullable',
+        ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        if ($temporaryFile) {
+            $data['image'] = $temporaryFile->filename;
+            $beritaSubcategory->deleteFile();
+            $temporaryFile->delete();
+        };
+        $beritaSubcategory->update($data);
+        session()->flash('success');
+        return redirect(route('beritaSubcategory.index'));
     }
 
     /**
@@ -80,6 +107,9 @@ class BeritaSubcategoryController extends Controller
      */
     public function destroy(BeritaSubcategory $beritaSubcategory)
     {
-        //
+        $beritaSubcategory->deleteFile();
+        $beritaSubcategory->delete();
+        session()->flash('success');
+        return redirect(route('beritaSubcategory.index'));
     }
 }
