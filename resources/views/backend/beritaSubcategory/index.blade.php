@@ -32,7 +32,7 @@
                             <tbody>
                                 @foreach ($beritaSubcategories as $beritaSubcategory)
                                     <tr>
-                                        <td>{{ $beritaSubcategory->berita_category_id }}</td>
+                                        <td>{{ $beritaSubcategory->berita_category->name }}</td>
                                         <td>{{ $beritaSubcategory->name }}</td>
                                         <td><img src="{{ asset('uploads/' . $beritaSubcategory->image) }}" style="height: 100px" class="img-thumbnail" alt=""></td>
                                         <td>

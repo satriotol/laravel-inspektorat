@@ -49,7 +49,7 @@ class BeritaSubcategoryController extends Controller
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
-        };
+        }
         BeritaSubcategory::create($data);
         session()->flash('success');
         return redirect(route('beritaSubcategory.index'));
@@ -74,7 +74,8 @@ class BeritaSubcategoryController extends Controller
      */
     public function edit(BeritaSubcategory $beritaSubcategory)
     {
-        return view('backend.beritaSubcategory.create', compact('beritaSubcategory'));
+        $berita_categories = BeritaCategory::all();
+        return view('backend.beritaSubcategory.create', compact('beritaSubcategory', 'berita_categories'));
     }
 
     /**
@@ -96,7 +97,7 @@ class BeritaSubcategoryController extends Controller
             $data['image'] = $temporaryFile->filename;
             $beritaSubcategory->deleteFile();
             $temporaryFile->delete();
-        };
+        }
         $beritaSubcategory->update($data);
         session()->flash('success');
         return redirect(route('beritaSubcategory.index'));
