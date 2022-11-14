@@ -141,6 +141,9 @@
     <script>
         const inputElement = document.querySelector('input[name="image"]');
         if (inputElement) {
+            FilePond.registerPlugin(
+                FilePondPluginFileValidateType,
+            );
             const pond = FilePond.create(inputElement);
             FilePond.setOptions({
                 server: {
@@ -153,9 +156,30 @@
             });
         }
     </script>
+    {{-- <script>
+        const inputElementImages = document.querySelector('input[name="images[]"]');
+        if (inputElementImages) {
+            FilePond.registerPlugin(
+                FilePondPluginFileValidateType,
+            );
+            const pond = FilePond.create(inputElementImages);
+            FilePond.setOptions({
+                server: {
+                    process: '{{ route('upload.storeImage') }}',
+                    revert: '{{ route('upload.revert') }}',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                },
+            });
+        }
+    </script> --}}
     <script>
         const inputElementFile = document.querySelector('input[name="file"]');
         if (inputElementFile) {
+            FilePond.registerPlugin(
+                FilePondPluginFileValidateType,
+            );
             const pond2 = FilePond.create(inputElementFile);
             FilePond.setOptions({
                 server: {
