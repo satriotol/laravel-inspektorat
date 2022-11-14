@@ -26,28 +26,27 @@
                         @endisset
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" required
                                 value="{{ isset($beritaCategory) ? $beritaCategory->name : @old('name') }}" name="name">
                         </div>
                         <div class="form-group">
+                            <li class="list-group-item">
+                                Kegiatan
+                                <div class="material-switch pull-right">
+                                    <input id="someSwitchOptionPrimary" name="is_kegiatan" value="1"
+                                        @isset($beritaCategory) {{ $beritaCategory->is_kegiatan == 1 ? ' checked' : '' }} @endisset
+                                        type="checkbox" />
+                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="form-group">
                             <label>Gambar</label>
-                            <input type="file" accept="image/*" class="form-control"
-                                {{-- @empty($beritaCategory)
-                            required
-                            @endempty --}}
-                                name="image">
+                            <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
                         @isset($beritaCategory)
                             <img src="{{ asset('uploads/' . $beritaCategory->image) }}" class="img-thumbnail" alt="">
                         @endisset
-
-                        <div class="form-group">
-
-                            <input type="checkbox" id="is_kegiatan" name="is_kegiatan" value="1"   @isset($beritaCategory) {{($beritaCategory->is_kegiatan == 1 ? ' checked' : '') }} @endisset>
-                            Kegiatan
-
-                        </div>
-
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>

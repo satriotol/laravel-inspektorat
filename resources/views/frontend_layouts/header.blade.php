@@ -67,15 +67,12 @@
                             <ul class="navigation clearfix">
                                 <li class="home current"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
-                                <li class="dropdown"><a href="about.html">About us</a>
+                                <li class="dropdown"><a href="about.html">Kegiatan</a>
                                     <ul>
-                                        <li><a href="company-overview.html">Company Overview</a></li>
-                                        <li><a href="company-history.html">Company History</a></li>
-                                        <li><a href="our-team.html">Our Team</a></li>
-                                        <li><a href="our-partner.html">Our Partner</a></li>
-                                        <li><a href="faq.html">FAQ's</a></li>
-                                        <li><a href="client-feedback.html">Client Feedback</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
+                                        @foreach ($kegiatans as $kegiatan)
+                                            <li><a href="#">{{ $kegiatan->name }}</a></li>
+                                        @endforeach
+
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="services.html">Our Services</a>
