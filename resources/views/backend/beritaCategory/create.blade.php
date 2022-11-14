@@ -43,12 +43,9 @@
 
                         <div class="form-group">
 
-                            <input type="checkbox" id="is_kegiatan" name="is_kegiatan" value="1">
-                            <label for="is_kegiatan"> Kegiatan</label>
+                            <input type="checkbox" id="is_kegiatan" name="is_kegiatan" value="1"   @isset($beritaCategory) {{($beritaCategory->is_kegiatan == 1 ? ' checked' : '') }} @endisset>
+                            Kegiatan
 
-                            {{-- <label>Kegiatan</label>
-                            <input type="text" class="form-control"
-                                value="{{ isset($beritaCategory) ? $beritaCategory->subtitle : @old('subtitle') }}" name="subtitle"> --}}
                         </div>
 
                         <div class="text-end">

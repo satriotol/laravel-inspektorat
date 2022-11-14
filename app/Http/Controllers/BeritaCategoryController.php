@@ -42,6 +42,7 @@ class BeritaCategoryController extends Controller
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
         ]);
+
        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
@@ -88,6 +89,10 @@ class BeritaCategoryController extends Controller
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
         ]);
+        $data['is_kegiatan'] = $request->is_kegiatan;
+        // var_dump($data['is_kegiatan']);
+        // die();
+
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
@@ -107,6 +112,8 @@ class BeritaCategoryController extends Controller
      */
     public function destroy(BeritaCategory $beritaCategory)
     {
-        //
+        $beritaCategory->delete();
+        session()->flash('success');
+        return redirect(route('beritaCategory.index'));
     }
 }
