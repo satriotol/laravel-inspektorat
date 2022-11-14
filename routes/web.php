@@ -45,7 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('link', LinkController::class);
     Route::resource('berita', BeritaController::class);
     Route::resource('beritaCategory', BeritaCategoryController::class);
-    Route::resource('beritaGallery', BeritaGalleryController::class);
+    Route::resource('beritaGallery', BeritaGalleryController::class)->except([
+        'destroy'
+    ]);
+    Route::get('beritaGallery/destroy/{beritaGallery}', [BeritaGalleryController::class, 'destroy'])->name('beritaGallery.destroy');
     Route::resource('beritaSubcategory', BeritaSubcategoryController::class);
 
     Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.storeImage');

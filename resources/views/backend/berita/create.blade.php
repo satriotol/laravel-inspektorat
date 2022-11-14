@@ -9,21 +9,21 @@
             </ol>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Form Berita</h3>
-                </div>
-                <div class="card-body">
-                    @include('partials.errors')
-                    <form
-                        action="@isset($beritum) {{ route('berita.update', $beritum->id) }} @endisset @empty($beritum) {{ route('berita.store') }} @endempty"
-                        method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @isset($beritum)
-                            @method('PUT')
-                        @endisset
+    <form
+        action="@isset($beritum) {{ route('berita.update', $beritum->id) }} @endisset @empty($beritum) {{ route('berita.store') }} @endempty"
+        method="POST" enctype="multipart/form-data">
+        @csrf
+        @isset($beritum)
+            @method('PUT')
+        @endisset
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Form Berita</h3>
+                    </div>
+                    <div class="card-body">
+                        @include('partials.errors')
                         <div class="form-group">
                             <label>Judul</label>
                             <input type="text" required class="form-control"
@@ -50,30 +50,56 @@
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
-                        @empty($beritum)
-                            <div class="form-group">
-                                <label>Galeri</label>
-                                <input type="file" accept="image/*" class="form-control"
-                                    @empty($beritum)
-                            required
-                            @endempty
-                                    name="images[]" multiple>
-                            </div>
-                        @endempty
+
                         @isset($beritum)
                             <img src="{{ asset('uploads/' . $beritum->image) }}" style="height: 100px" class="img-thumbnail"
                                 alt="">
                         @endisset
 
-                        <div class="text-end">
-                            <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Galleri</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Galeri</label>
+                            <input type="file" accept="image/*" class="form-control" name="images[]" multiple>
                         </div>
-                    </form>
+                        @isset($beritum)
+                            <table id="example2" class="table table-bordered text-nowrap border-bottom">
+                                <thead>
+                                    <th>Gambar</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($beritum->berita_galleries as $berita_gallery)
+                                        <tr>
+                                            <td><img src="{{ asset('uploads/' . $berita_gallery->image) }}"
+                                                    style="height: 100px" alt=""></td>
+                                            <td>
+                                                <a href="{{ route('beritaGallery.destroy', $berita_gallery->id) }}"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure?')">Hapus</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endisset
+                    </div>
+                </div>
+                <div class="text-end">
+                    <a class="btn btn-warning" href="{{ route('berita.index') }}">Kembali</a>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 @endsection
 @push('custom-scripts')
     <script src="{{ asset('backend_assets/plugins/wysiwyag/jquery.richtext.js') }}"></script>

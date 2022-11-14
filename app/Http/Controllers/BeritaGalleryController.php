@@ -107,6 +107,6 @@ class BeritaGalleryController extends Controller
     {
         $beritaGallery->delete();
         session()->flash('success');
-        return redirect(route('beritaGallery.index'));
+        return back();
     }
 }

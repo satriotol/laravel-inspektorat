@@ -21,6 +21,8 @@ class BeritaCategory extends Model
     }
     public function deleteFile()
     {
-        Storage::disk('public_uploads')->delete($this->attributes['image']);
+        if ($this->attributes['image'] != null) {
+            Storage::disk('public_uploads')->delete($this->attributes['image']);
+        }
     }
 }

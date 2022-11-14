@@ -122,9 +122,19 @@ class BeritaController extends Controller
             }
             $temporaryFile->delete();
         };
+        foreach ($request->file('images') as $imageFile) {
+            $image = $imageFile;
+            $name = $image->getClientOriginalName();
+            $image_name = date('mdYHis') . '-' . $name;
+            $image = $image->storeAs('image', $image_name, 'public_uploads');
+            BeritaGallery::create([
+                'berita_id' => $beritum->id,
+                'image' => $image,
+            ]);
+        }
         $beritum->update($data);
         session()->flash('success');
-        return redirect(route('berita.index'));
+        return back();
     }
 
     /**
@@ -135,6 +145,12 @@ class BeritaController extends Controller
      */
     public function destroy(Berita $beritum)
     {
+        if ($beritum->berita_galleries) {
+            foreach ($beritum->berita_galleries as $berita_gallery) {
+                $berita_gallery->delete();
+                $berita_gallery->deleteFile();
+            }
+        }
         $beritum->delete();
         if ($beritum->image) {
             $beritum->deleteFile();
