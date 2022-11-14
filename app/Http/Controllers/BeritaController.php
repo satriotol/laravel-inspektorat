@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\BeritaCategory;
+use App\Models\BeritaGallery;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BeritaController extends Controller
 {
@@ -52,7 +54,23 @@ class BeritaController extends Controller
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
         };
-        Berita::create($data);
+        DB::beginTransaction();
+        try {
+            $berita = Berita::create($data);
+            foreach ($request->file('images') as $imageFile) {
+                $image = $imageFile;
+                $name = $image->getClientOriginalName();
+                $image_name = date('mdYHis') . '-' . $name;
+                $image = $image->storeAs('image', $image_name, 'public_uploads');
+                BeritaGallery::create([
+                    'berita_id' => $berita->id,
+                    'image' => $image,
+                ]);
+            }
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
         session()->flash('success');
         return redirect(route('berita.index'));
     }
@@ -99,7 +117,9 @@ class BeritaController extends Controller
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
-            $beritum->deleteFile();
+            if ($beritum->image) {
+                $beritum->deleteFile();
+            }
             $temporaryFile->delete();
         };
         $beritum->update($data);
@@ -116,7 +136,9 @@ class BeritaController extends Controller
     public function destroy(Berita $beritum)
     {
         $beritum->delete();
-        $beritum->deleteFile();
+        if ($beritum->image) {
+            $beritum->deleteFile();
+        }
         session()->flash('success');
         return redirect(route('berita.index'));
     }
