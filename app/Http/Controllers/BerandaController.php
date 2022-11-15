@@ -47,15 +47,15 @@ class BerandaController extends Controller
     {
         $data = $request->validate([
             'sambutan'        => 'required',
-            'tumbnail_video' => 'nullable',
+            'thumbnail_video' => 'nullable',
             'video_url'       => 'required'
         ]);
-        if ($request->hasFile('tumbnail_video')) {
-            $tumbnail_video = $request->file('tumbnail_video');
-            $name = $tumbnail_video->getClientOriginalName();
-            $tumbnail_video_name = date('mdYHis') . '-' . $name;
-            $tumbnail_video = $tumbnail_video->storeAs('tumbnail_video', $tumbnail_video_name, 'public_uploads');
-            $data['tumbnail_video'] = $tumbnail_video;
+        if ($request->hasFile('thumbnail_video')) {
+            $thumbnail_video = $request->file('thumbnail_video');
+            $name = $thumbnail_video->getClientOriginalName();
+            $thumbnail_video_name = date('mdYHis') . '-' . $name;
+            $thumbnail_video = $thumbnail_video->storeAs('thumbnail_video', $thumbnail_video_name, 'public_uploads');
+            $data['thumbnail_video'] = $thumbnail_video;
         };
         Beranda::create($data);
         session()->flash('success');
@@ -95,17 +95,17 @@ class BerandaController extends Controller
     {
         $data = $request->validate([
             'sambutan'        => 'required',
-            'thumbnail_video' => 'nullable',
+            'thumbnail_video' => 'required',
             'video_url'       => 'required'
         ]);
 
-        if ($request->hasFile('tumbnail_video')) {
+        if ($request->hasFile('thumbnail_video')) {
             $beranda->deleteFile();
-            $tumbnail_video = $request->file('tumbnail_video');
-            $name = $tumbnail_video->getClientOriginalName();
-            $tumbnail_video_name = date('mdYHis') . '-' . $name;
-            $tumbnail_video = $tumbnail_video->storeAs('tumbnail_video', $tumbnail_video_name, 'public_uploads');
-            $data['tumbnail_video'] = $tumbnail_video;
+            $thumbnail_video = $request->file('thumbnail_video');
+            $name = $thumbnail_video->getClientOriginalName();
+            $thumbnail_video_name = date('mdYHis') . '-' . $name;
+            $thumbnail_video = $thumbnail_video->storeAs('thumbnail_video', $thumbnail_video_name, 'public_uploads');
+            $data['thumbnail_video'] = $thumbnail_video;
         };
         $beranda->update($data);
         session()->flash('success');
