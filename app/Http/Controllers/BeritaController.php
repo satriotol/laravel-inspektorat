@@ -49,24 +49,28 @@ class BeritaController extends Controller
             'berita_category_id' => 'required',
         ]);
         $data['user_id'] = Auth::user()->id;
-        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
-        if ($temporaryFile) {
-            $data['image'] = $temporaryFile->filename;
-            $temporaryFile->delete();
-        };
         DB::beginTransaction();
         try {
+            $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+            if ($temporaryFile) {
+                $data['image'] = $temporaryFile->filename;
+                $temporaryFile->delete();
+            };
             $berita = Berita::create($data);
-            foreach ($request->file('images') as $imageFile) {
-                $image = $imageFile;
-                $name = $image->getClientOriginalName();
-                $image_name = date('mdYHis') . '-' . $name;
-                $image = $image->storeAs('image', $image_name, 'public_uploads');
-                BeritaGallery::create([
-                    'berita_id' => $berita->id,
-                    'image' => $image,
-                ]);
+            if ($request->file('images')) {
+                # code...
+                foreach ($request->file('images') as $imageFile) {
+                    $image = $imageFile;
+                    $name = $image->getClientOriginalName();
+                    $image_name = date('mdYHis') . '-' . $name;
+                    $image = $image->storeAs('image', $image_name, 'public_uploads');
+                    BeritaGallery::create([
+                        'berita_id' => $berita->id,
+                        'image' => $image,
+                    ]);
+                }
             }
+
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -113,26 +117,34 @@ class BeritaController extends Controller
             'image' => 'nullable',
             'berita_category_id' => 'required',
         ]);
-        $data['user_id'] = Auth::user()->id;
-        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
-        if ($temporaryFile) {
-            $data['image'] = $temporaryFile->filename;
-            if ($beritum->image) {
-                $beritum->deleteFile();
+        DB::beginTransaction();
+        try {
+            $data['user_id'] = Auth::user()->id;
+            $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+            if ($temporaryFile) {
+                $data['image'] = $temporaryFile->filename;
+                if ($beritum->image) {
+                    $beritum->deleteFile();
+                }
+                $temporaryFile->delete();
+            };
+            if ($request->file('images')) {
+                foreach ($request->file('images') as $imageFile) {
+                    $image = $imageFile;
+                    $name = $image->getClientOriginalName();
+                    $image_name = date('mdYHis') . '-' . $name;
+                    $image = $image->storeAs('image', $image_name, 'public_uploads');
+                    BeritaGallery::create([
+                        'berita_id' => $beritum->id,
+                        'image' => $image,
+                    ]);
+                }
             }
-            $temporaryFile->delete();
-        };
-        foreach ($request->file('images') as $imageFile) {
-            $image = $imageFile;
-            $name = $image->getClientOriginalName();
-            $image_name = date('mdYHis') . '-' . $name;
-            $image = $image->storeAs('image', $image_name, 'public_uploads');
-            BeritaGallery::create([
-                'berita_id' => $beritum->id,
-                'image' => $image,
-            ]);
+            $beritum->update($data);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
         }
-        $beritum->update($data);
         session()->flash('success');
         return back();
     }
