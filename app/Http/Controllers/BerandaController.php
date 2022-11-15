@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Beranda;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
@@ -8,7 +9,7 @@ use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,10 +50,12 @@ class BerandaController extends Controller
             'tumbnail_video' => 'nullable',
             'video_url'       => 'required'
         ]);
-        $temporaryFile = TemporaryFile::where('filename', $request->tumbnail_video)->first();
-        if ($temporaryFile) {
-            $data['tumbnail_video'] = $temporaryFile->filename;
-            $temporaryFile->delete();
+        if ($request->hasFile('tumbnail_video')) {
+            $tumbnail_video = $request->file('tumbnail_video');
+            $name = $tumbnail_video->getClientOriginalName();
+            $tumbnail_video_name = date('mdYHis') . '-' . $name;
+            $tumbnail_video = $tumbnail_video->storeAs('tumbnail_video', $tumbnail_video_name, 'public_uploads');
+            $data['tumbnail_video'] = $tumbnail_video;
         };
         Beranda::create($data);
         session()->flash('success');
@@ -96,12 +99,13 @@ class BerandaController extends Controller
             'video_url'       => 'required'
         ]);
 
-
-        $temporaryFile = TemporaryFile::where('filename', $request->thumbnail_video)->first();
-        if ($temporaryFile) {
-            $data['thumbnail_video'] = $temporaryFile->filename;
+        if ($request->hasFile('tumbnail_video')) {
             $beranda->deleteFile();
-            $temporaryFile->delete();
+            $tumbnail_video = $request->file('tumbnail_video');
+            $name = $tumbnail_video->getClientOriginalName();
+            $tumbnail_video_name = date('mdYHis') . '-' . $name;
+            $tumbnail_video = $tumbnail_video->storeAs('tumbnail_video', $tumbnail_video_name, 'public_uploads');
+            $data['tumbnail_video'] = $tumbnail_video;
         };
         $beranda->update($data);
         session()->flash('success');
@@ -122,6 +126,3 @@ class BerandaController extends Controller
         return redirect(route('beranda.index'));
     }
 }
-
-
-
