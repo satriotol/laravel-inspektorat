@@ -125,7 +125,7 @@
                                     <h3 class="blog-title">{{ $berita->title }}</h3>
                                 </a>
                                 <div class="text">
-                                    {!! $berita->description !!}
+                                    {!! Str::limit($berita->description, 50) !!}
                                 </div>
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
