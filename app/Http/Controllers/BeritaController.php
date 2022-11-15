@@ -17,6 +17,13 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:berita-index|berita-create|berita-edit|berita-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:berita-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:berita-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:berita-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $beritas = Berita::all();

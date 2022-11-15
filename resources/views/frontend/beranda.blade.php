@@ -115,13 +115,14 @@
                                 <div class="overlay-style-one">
                                     <div class="box">
                                         <div class="content">
-                                            <a href="blog-single.html"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                            <a href="{{ route('detailBerita', $berita->id) }}"><i class="fa fa-link"
+                                                    aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-holder">
-                                <a href="blog-single.html">
+                                <a href="{{ route('detailBerita', $berita->id) }}">
                                     <h3 class="blog-title">{{ $berita->title }}</h3>
                                 </a>
                                 {{-- <div class="text">

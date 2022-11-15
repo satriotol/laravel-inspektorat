@@ -45,10 +45,10 @@
                         <div class="col-md-12">
                             <div class="footer-top-content">
                                 <div class="title pull-left">
-                                    <h3>Over 20 years of experience we will ensure you always get the best.</h3>
+                                    {{-- <h3>Over 20 years of experience we will ensure you always get the best.</h3> --}}
                                 </div>
                                 <div class="button pull-right">
-                                    <a class="thm-btn bg-clr1" href="#">Book Consultation</a>
+                                    {{-- <a class="thm-btn bg-clr1" href="#">Book Consultation</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -145,12 +145,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="footer-social-links">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                     <!--End single footer widget-->
@@ -166,16 +160,11 @@
                     <div class="col-md-12">
                         <div class="footer-bottom">
                             <div class="copyright-text pull-left">
-                                <p>Copyrights © 2017 All Rights Reserved, Powered by <a href="#">Assurance.</a>
+                                <p>Copyrights © 2022 All Rights Reserved, Powered by <a
+                                        href="https://semarangkota.go.id/" target="_blank">Semarang Kota</a>
                                 </p>
                             </div>
                             <div class="footer-menu pull-right">
-                                <ul>
-                                    <li><a href="#">Legal</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Condition</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

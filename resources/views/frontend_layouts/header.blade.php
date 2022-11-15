@@ -32,17 +32,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                <div class="top-social-links">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
 
         </div>
     </div>

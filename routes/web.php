@@ -32,6 +32,7 @@ Route::get('/', function () {
     return view('frontend.beranda');
 });
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
+Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('backend_layouts.main');

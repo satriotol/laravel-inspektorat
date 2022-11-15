@@ -12,6 +12,13 @@ class KebijakanCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:kebijakanCategory-index|kebijakanCategory-create|kebijakanCategory-edit|kebijakanCategory-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:kebijakanCategory-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:kebijakanCategory-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:kebijakanCategory-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $kebijakanCategories = KebijakanCategory::all();

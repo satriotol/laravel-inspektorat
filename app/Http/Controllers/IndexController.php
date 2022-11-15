@@ -25,4 +25,10 @@ class IndexController extends Controller
         $beritas = Berita::orderBy('id', 'desc')->paginate(3);
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas'));
     }
+    public function detailBerita(Berita $berita)
+    {
+        $beritaCategories = BeritaCategory::all();
+        $recentBeritas = Berita::where('id', '!=', $berita->id)->orderBy('id', 'desc')->paginate(3);
+        return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
+    }
 }
