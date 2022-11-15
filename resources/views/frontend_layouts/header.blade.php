@@ -75,16 +75,11 @@
 
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="services.html">Our Services</a>
+                                <li class="dropdown"><a href="#">Kebijakan</a>
                                     <ul>
-                                        <li><a href="business-planning.html">Business Planning</a></li>
-                                        <li><a href="audit-assurance.html">Audit & Assurance</a></li>
-                                        <li><a href="trades-stocks.html">Trades & Stocks</a></li>
-                                        <li><a href="investment-plan.html">Investment Plan</a></li>
-                                        <li><a href="risk-management.html">Risk Management</a></li>
-                                        <li><a href="succession-planning.html">Succession Planning</a></li>
-                                        <li><a href="strategic-planning.html">Strategic Planning</a></li>
-                                        <li><a href="financial-projections.html">Financial Projections</a></li>
+                                        @foreach ($kebijakanCategories as $kebijakanCategory)
+                                            <li><a href="#">{{ $kebijakanCategory->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="blog.html">Latest News</a>
@@ -117,26 +112,6 @@
                         </div>
                     </nav>
                     <!--End mainmenu-->
-                    <!--Start search box-->
-                    <div class="outer-search-box">
-                        <div class="seach-toggle"><i class="fa fa-search"></i></div>
-                        <ul class="search-box">
-                            <li>
-                                <form method="post" action="{{ route('beranda') }}">
-                                    <div class="form-group">
-                                        <input type="search" name="search" placeholder="Search Here" required>
-                                        <button type="submit"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--End search box-->
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12">
-                    <div class="free-consulation-button pull-right">
-                        <a class="thm-btn bg-clr1" href="#">free Consultation</a>
-                    </div>
                 </div>
             </div>
         </div>

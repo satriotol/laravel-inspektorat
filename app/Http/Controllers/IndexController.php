@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\BeritaCategory;
+use App\Models\KebijakanCategory;
 use App\Models\Link;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -13,9 +14,9 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-        // Fetch the Site Settings object
         $kegiatans = BeritaCategory::where('is_kegiatan', 1)->get();
-        View::share(compact('kegiatans'));
+        $kebijakanCategories = KebijakanCategory::all();
+        View::share(compact('kegiatans', 'kebijakanCategories'));
     }
     public function beranda()
     {
