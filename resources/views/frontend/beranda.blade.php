@@ -124,9 +124,9 @@
                                 <a href="blog-single.html">
                                     <h3 class="blog-title">{{ $berita->title }}</h3>
                                 </a>
-                                <div class="text">
-                                    {!! Str::limit($berita->description, 50) !!}
-                                </div>
+                                {{-- <div class="text">
+                                    {!! Str::limit($berita->description, 10) !!}
+                                </div> --}}
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
