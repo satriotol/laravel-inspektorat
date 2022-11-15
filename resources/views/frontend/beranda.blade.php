@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="video-holder">
-                        <img src="{{ asset('public/' . $beranda->thumbnail_video) }}" alt="Awesome Video Gallery">
+                        <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" alt="Awesome Video Gallery">
                         <div class="overlay-gallery">
                             <div class="icon-holder">
                                 <div class="icon">
