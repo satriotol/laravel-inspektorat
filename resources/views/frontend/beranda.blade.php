@@ -68,11 +68,7 @@
                     <div class="text-holder">
                         <h3>Sambutan Inspektorat</h3>
                         <div class="text">
-                            <p>We have built an enviable reputation in the consumer goods, heavy industry,
-                                high-tech, manufacturing, medical, recreational vehicle, and transportation sectors.
-                                multidisciplinary team of engineering experts.</p>
-                            <p>Who loves or pursues or desires to obtain pain of itself, because it is pain, but
-                                because occasionally circumstances occur in which toil and pain.</p>
+                            <p>{{ $beranda->sambutan }}</p>
                         </div>
                     </div>
                 </div>
@@ -83,8 +79,7 @@
                         <div class="overlay-gallery">
                             <div class="icon-holder">
                                 <div class="icon">
-                                    <a class="html5lightbox" title="Assurance Video Gallery"
-                                        href="https://www.youtube.com/watch?v=XOv7RmXi7VE"><img
+                                    <a class="html5lightbox" href="{{ $beranda->video_url }}"><img
                                             src="{{ asset('frontend_assets/images/icon/play-btn.png') }}"
                                             alt="Play Button"></a>
                                 </div>
