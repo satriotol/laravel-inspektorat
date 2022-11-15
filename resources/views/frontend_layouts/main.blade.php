@@ -37,7 +37,8 @@
         @yield('content')
 
         <!--Start footer area-->
-        <footer class="footer-area" style="background-image:url(images/footer/footer-bg.jpg);">
+        <footer class="footer-area"
+            style="background-image:url({{ asset('frontend_assets/images/footer/footer-bg.jpg') }});">
             <div class="footer-top-area">
                 <div class="container">
                     <div class="row">
