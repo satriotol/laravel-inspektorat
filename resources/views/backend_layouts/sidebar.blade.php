@@ -86,6 +86,12 @@
                                 class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Link</span></a>
                     </li>
                 @endcan
+                @can('beranda-index')
+                <li>
+                    <a class="side-menu__item {{ active_class(['beranda.*']) }}" href="{{ route('beranda.index') }}"><i
+                            class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Beranda</span></a>
+                </li>
+            @endcan
 
                 <li class="sub-category">
                     <h3>User Management</h3>
