@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beranda;
 use App\Models\Berita;
 use App\Models\BeritaCategory;
 use App\Models\KebijakanCategory;
@@ -21,9 +22,10 @@ class IndexController extends Controller
     public function beranda()
     {
         $sliders = Slider::all();
+        $beranda = Beranda::first();
         $layananLinks = Link::where('image', '!=', null)->get();
         $beritas = Berita::orderBy('id', 'desc')->paginate(3);
-        return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas'));
+        return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
     public function detailBerita(Berita $berita)
     {
