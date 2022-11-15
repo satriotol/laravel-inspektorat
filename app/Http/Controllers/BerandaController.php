@@ -104,7 +104,7 @@ class BerandaController extends Controller
             $thumbnail_video = $request->file('thumbnail_video');
             $name = $thumbnail_video->getClientOriginalName();
             $thumbnail_video_name = date('mdYHis') . '-' . $name;
-            $thumbnail_video = $thumbnail_video->storeAs('thumbnail_video', $thumbnail_video_name, 'public_uploads');
+            $thumbnail_video = $thumbnail_video->storeAs('file', $thumbnail_video_name, 'public_uploads');
             $data['thumbnail_video'] = $thumbnail_video;
         };
         $beranda->update($data);
