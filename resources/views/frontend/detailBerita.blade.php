@@ -15,6 +15,7 @@
                                 <div class="text">
                                     {!! $berita->description !!}
                                 </div>
+                                <h3 class="blog-title">Galeri</h3>
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
@@ -30,7 +31,6 @@
                 <!--Start sidebar Wrapper-->
                 <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12">
                     <div class="sidebar-wrapper">
-                        <!--Start single sidebar-->
                         <div class="single-sidebar">
                             <div class="sec-title">
                                 <h3>Kategori</h3>
@@ -46,8 +46,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <!--End single sidebar-->
-                        <!--Start single sidebar-->
                         <div class="single-sidebar">
                             <div class="sec-title">
                                 <h3>Berita Terbaru</h3>
@@ -84,10 +82,8 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <!--End single sidebar-->
                     </div>
                 </div>
-                <!--End Sidebar Wrapper-->
             </div>
         </div>
     </section>
