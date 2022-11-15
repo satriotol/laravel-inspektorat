@@ -55,10 +55,10 @@
                             </div>
                             <ul class="recent-post">
                                 @foreach ($recentBeritas as $recentBerita)
-                                    <li style="height: 100%;">
-                                        <div class="img-holder">
+                                    <li>
+                                        <div style="height: 100%;" class="img-holder">
                                             <img src="{{ asset('uploads/' . $recentBerita->image) }}"
-                                                alt="{{ $recentBerita->title }}">
+                                                style="height: 100%;object-fit: cover;" alt="{{ $recentBerita->title }}">
                                             <div class="overlay-style-two">
                                                 <div class="box">
                                                     <div class="content">
