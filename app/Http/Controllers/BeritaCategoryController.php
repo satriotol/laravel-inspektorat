@@ -13,6 +13,13 @@ class BeritaCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:beritaCategory-index|beritaCategory-create|beritaCategory-edit|beritaCategory-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:beritaCategory-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:beritaCategory-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:beritaCategory-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $beritaCategories = BeritaCategory::all();
@@ -43,7 +50,7 @@ class BeritaCategoryController extends Controller
             'is_kegiatan' => 'nullable',
         ]);
 
-       $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
