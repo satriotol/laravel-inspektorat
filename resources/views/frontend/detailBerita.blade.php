@@ -55,7 +55,7 @@
                             </div>
                             <ul class="recent-post">
                                 @foreach ($recentBeritas as $recentBerita)
-                                    <li>
+                                    <li style="height: 100%;">
                                         <div class="img-holder">
                                             <img src="{{ asset('uploads/' . $recentBerita->image) }}"
                                                 alt="{{ $recentBerita->title }}">
