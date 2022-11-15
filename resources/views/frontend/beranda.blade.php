@@ -74,8 +74,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="video-holder">
-                        <img src="{{ asset('frontend_assets/images/resources/video-gallery.jpg') }}"
-                            alt="Awesome Video Gallery">
+                        <img src="{{ asset('public/' . $beranda->thumbnail_video) }}" alt="Awesome Video Gallery">
                         <div class="overlay-gallery">
                             <div class="icon-holder">
                                 <div class="icon">
@@ -120,9 +119,6 @@
                                 <a href="{{ route('detailBerita', $berita->id) }}">
                                     <h3 class="blog-title">{{ $berita->title }}</h3>
                                 </a>
-                                {{-- <div class="text">
-                                    {!! Str::limit($berita->description, 10) !!}
-                                </div> --}}
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
