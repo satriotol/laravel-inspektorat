@@ -47,7 +47,7 @@ class BerandaController extends Controller
     {
         $data = $request->validate([
             'sambutan'        => 'required',
-            'thumbnail_video' => 'nullable',
+            'thumbnail_video' => 'required',
             'video_url'       => 'required'
         ]);
         if ($request->hasFile('thumbnail_video')) {
@@ -95,7 +95,7 @@ class BerandaController extends Controller
     {
         $data = $request->validate([
             'sambutan'        => 'required',
-            'thumbnail_video' => 'required',
+            'thumbnail_video' => 'nullable',
             'video_url'       => 'required'
         ]);
 

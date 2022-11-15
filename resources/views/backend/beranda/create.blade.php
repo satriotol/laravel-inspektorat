@@ -26,7 +26,7 @@
                         @endisset
                         <div class="form-group">
                             <label>Teks Sambutan</label>
-                            <textarea name="sambutan" class="form-control" id="" cols="30" rows="10">{{ isset($beranda) ? $beranda->sambutan : @old('sambutan') }}</textarea>
+                            <textarea name="sambutan" class="form-control" id="" required cols="30" rows="10">{{ isset($beranda) ? $beranda->sambutan : @old('sambutan') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Link Video</label>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label>Thumbnail Video</label>
-                            <input type="file" accept="image/*" class="form-control" name="thumbnail_video">
+                            <input type="file" @empty($beranda) required @endempty accept="image/*" class="form-control" name="thumbnail_video">
                         </div>
                         @isset($beranda)
                             <img src="{{ asset('uploads/' .  $beranda->thumbnail_video) }}" class="img-thumbnail" alt="">
