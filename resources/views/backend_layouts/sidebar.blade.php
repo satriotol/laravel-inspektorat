@@ -31,9 +31,8 @@
                     <h3>Berita</h3>
                 </li>
                 <li>
-                    <a class="side-menu__item {{ active_class(['berita.*']) }}"
-                        href="{{ route('berita.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
-                            class="side-menu__label">Berita</span></a>
+                    <a class="side-menu__item {{ active_class(['berita.*']) }}" href="{{ route('berita.index') }}"><i
+                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Berita</span></a>
                 </li>
                 <li>
                     <a class="side-menu__item {{ active_class(['beritaCategory.*']) }}"
@@ -42,23 +41,30 @@
                 </li>
                 <li>
                     <a class="side-menu__item {{ active_class(['beritaSubcategory.*']) }}"
-                        href="{{ route('beritaSubcategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
-                            class="side-menu__label">SubKategori Berita</span></a>
+                        href="{{ route('beritaSubcategory.index') }}"><i
+                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">SubKategori
+                            Berita</span></a>
                 </li>
-                <li class="sub-category">
-                    <h3>Kebijakan</h3>
-                </li>
-                <li>
-                    <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
-                        href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-briefcase"></i><span
-                            class="side-menu__label">Kebijakan</span></a>
-                </li>
-                <li>
-                    <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}"
-                        href="{{ route('kebijakanCategory.index') }}"><i
-                            class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Kategori
-                            Kebijakan</span></a>
-                </li>
+                @canany(['kebijakan-index', 'kebijakanCategory-index'])
+                    <li class="sub-category">
+                        <h3>Kebijakan</h3>
+                    </li>
+                @endcanany
+                @can('kebijakan-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['kebijakan.*']) }}"
+                            href="{{ route('kebijakan.index') }}"><i class="side-menu__icon fe fe-briefcase"></i><span
+                                class="side-menu__label">Kebijakan</span></a>
+                    </li>
+                @endcan
+                @can('kebijakanCategory-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}"
+                            href="{{ route('kebijakanCategory.index') }}"><i
+                                class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Kategori
+                                Kebijakan</span></a>
+                    </li>
+                @endcan
                 <li class="sub-category">
                     <h3>Website</h3>
                 </li>

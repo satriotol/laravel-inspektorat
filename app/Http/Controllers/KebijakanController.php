@@ -13,6 +13,13 @@ class KebijakanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:kebijakan-index|kebijakan-create|kebijakan-edit|kebijakan-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:kebijakan-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:kebijakan-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:kebijakan-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $kebijakans = Kebijakan::all();
