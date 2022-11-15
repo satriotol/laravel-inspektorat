@@ -33,6 +33,13 @@
                             <input type="text" class="form-control" required
                                 value="{{ isset($beranda) ? $beranda->video_url : @old('url') }}" name="video_url">
                         </div>
+                        <div class="form-group">
+                            <label>Thumbnail Video</label>
+                            <input type="file" accept="image/*" class="form-control" name="thumbnail_video">
+                        </div>
+                        @isset($beranda)
+                            <img src="{{ asset('uploads/' .  $beranda->thumbnail_video) }}" class="img-thumbnail" alt="">
+                        @endisset
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>

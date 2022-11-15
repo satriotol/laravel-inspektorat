@@ -22,8 +22,8 @@
                             <thead>
                                 <tr>
                                     <th>Sambutan</th>
-                                    <th>URL</th>
-
+                                    <th>Video</th>
+                                    <th>Thumbnail Video</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -32,7 +32,10 @@
                                     <tr>
                                         <td>{{ $beranda->sambutan }}</td>
                                         <td>{{ $beranda->video_url }}</td>
-
+                                        <td>
+                                            <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" style="height: 100px"
+                                                class="img-thumbnail" alt="">
+                                        </td>
                                         <td>
                                             {{-- <form action="{{ route('beranda.destroy', $beranda->id) }}" method="post">
                                                 @csrf

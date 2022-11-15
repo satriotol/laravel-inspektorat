@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Beranda;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
 
@@ -44,9 +45,15 @@ class BerandaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'sambutan' => 'required',
-            'video_url' => 'required'
+            'sambutan'        => 'required',
+            'tumbnail_video' => 'nullable',
+            'video_url'       => 'required'
         ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->tumbnail_video)->first();
+        if ($temporaryFile) {
+            $data['tumbnail_video'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
         Beranda::create($data);
         session()->flash('success');
         return redirect(route('beranda.index'));
@@ -84,9 +91,18 @@ class BerandaController extends Controller
     public function update(Request $request, Beranda $beranda)
     {
         $data = $request->validate([
-            'sambutan' => 'required',
-            'video_url' => 'required'
+            'sambutan'        => 'required',
+            'thumbnail_video' => 'nullable',
+            'video_url'       => 'required'
         ]);
+
+
+        $temporaryFile = TemporaryFile::where('filename', $request->thumbnail_video)->first();
+        if ($temporaryFile) {
+            $data['thumbnail_video'] = $temporaryFile->filename;
+            $beranda->deleteFile();
+            $temporaryFile->delete();
+        };
         $beranda->update($data);
         session()->flash('success');
         return redirect(route('beranda.index'));
@@ -101,6 +117,7 @@ class BerandaController extends Controller
     public function destroy(Beranda $beranda)
     {
         $beranda->delete();
+        $beranda->deleteFile();
         session()->flash('success');
         return redirect(route('beranda.index'));
     }
