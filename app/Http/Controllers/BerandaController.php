@@ -12,6 +12,13 @@ class BerandaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:beranda-index|beranda-create|beranda-edit|beranda-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:beranda-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:beranda-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:beranda-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $berandas = Beranda::all();
