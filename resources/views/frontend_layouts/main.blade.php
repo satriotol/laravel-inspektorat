@@ -118,7 +118,7 @@
                                         <span class="icon-technology-1"></span>
                                     </div>
                                     <div class="text-holder">
-                                        <p>Telefon: {{ $master->phone }}</p>
+                                        <p>Telepon: {{ $master->phone }}</p>
                                     </div>
                                 </li>
                                 <li>

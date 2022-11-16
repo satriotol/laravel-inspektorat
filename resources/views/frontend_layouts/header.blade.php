@@ -16,7 +16,7 @@
                                 <span class="icon-technology"></span>
                             </div>
                             <div class="text-holder">
-                                <h6>Nomor Telefon</h6>
+                                <h6>Telepon</h6>
                                 <p>{{ $master->phone }}</p>
                             </div>
                         </li>
