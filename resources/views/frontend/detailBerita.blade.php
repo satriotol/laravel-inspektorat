@@ -18,7 +18,7 @@
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
-                                            <li>By <a href="#">{{ $berita->user->name }}</a></li>
+                                            <li>By <a href="#">{{ $berita->user?->name }}</a></li>
                                             <li><a href="#">{{ $berita->berita_category->name }}</a></li>
                                         </ul>
                                     </div>

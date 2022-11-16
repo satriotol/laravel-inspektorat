@@ -122,7 +122,7 @@
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
-                                            <li>{{ $berita->user->name }}</li>
+                                            <li>{{ $berita->user?->name }}</li>
                                             <li><a href="#">{{ $berita->berita_category->name }}</a></li>
                                         </ul>
                                     </div>
