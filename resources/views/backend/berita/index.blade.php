@@ -34,7 +34,7 @@
                                     <tr>
                                         <td>
                                             {{ $berita->title }} <br>
-                                            <div class="badge bg-primary">{{ $berita->user->name }}</div> | <div
+                                            <div class="badge bg-primary">{{ $berita->user?->name }}</div> | <div
                                                 class="badge bg-info">{{ $berita->getVerificationStatus() }}</div>
                                         </td>
                                         <td>

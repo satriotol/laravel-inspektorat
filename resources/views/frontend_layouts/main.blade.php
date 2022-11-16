@@ -62,7 +62,7 @@
                         <div class="single-footer-widget pd-bottom">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="images/footer/footer-logo.png" alt="Awesome Footer Logo">
+                                    <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Footer Logo">
                                 </a>
                             </div>
                             <div class="our-info">

@@ -4,7 +4,7 @@
             <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
                 <div class="logo">
                     <a href="{{ route('beranda') }}">
-                        <img src="{{ asset('frontend_assets/images/resources/logo.png') }}" alt="Awesome Logo">
+                        <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Logo">
                     </a>
                 </div>
             </div>
@@ -16,8 +16,8 @@
                                 <span class="icon-technology"></span>
                             </div>
                             <div class="text-holder">
-                                <h6>Call Us On</h6>
-                                <p>1-8000-978-6543</p>
+                                <h6>Nomor Telefon</h6>
+                                <p>{{ $master->phone }}</p>
                             </div>
                         </li>
                         <li>
@@ -25,8 +25,8 @@
                                 <span class="icon-letter top-envelop"></span>
                             </div>
                             <div class="text-holder">
-                                <h6>Mail Us @</h6>
-                                <p>Supportuss@gmail.com</p>
+                                <h6>Email</h6>
+                                <p>{{ $master->email }}</p>
                             </div>
                         </li>
                     </ul>
