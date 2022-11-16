@@ -65,7 +65,6 @@ $(function(e) {
         }
     } );
     $('#example2').DataTable({
-		responsive: true,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',

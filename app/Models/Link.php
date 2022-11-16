@@ -16,4 +16,9 @@ class Link extends Model
     {
         Storage::disk('public_uploads')->delete($this->attributes['image']);
     }
+
+    public static function getOnlyLink()
+    {
+        return Link::where('image', null)->get();
+    }
 }

@@ -17,14 +17,16 @@ class IndexController extends Controller
     {
         $kegiatans = BeritaCategory::where('is_kegiatan', 1)->get();
         $kebijakanCategories = KebijakanCategory::all();
-        View::share(compact('kegiatans', 'kebijakanCategories'));
+        $terkaitLinks = Link::getOnlyLink();
+        $latestBeritas = Berita::getLatestBeritas(2);
+        View::share(compact('kegiatans', 'kebijakanCategories', 'terkaitLinks', 'latestBeritas'));
     }
     public function beranda()
     {
         $sliders = Slider::all();
         $beranda = Beranda::first();
         $layananLinks = Link::where('image', '!=', null)->get();
-        $beritas = Berita::orderBy('id', 'desc')->paginate(3);
+        $beritas = Berita::getLatestBeritas(3);
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
     public function detailBerita(Berita $berita)

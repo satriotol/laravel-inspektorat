@@ -23,6 +23,7 @@ class BeritaController extends Controller
         $this->middleware('permission:berita-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:berita-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:berita-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:berita-verification', ['only' => ['verification']]);
     }
     public function index()
     {
@@ -84,6 +85,15 @@ class BeritaController extends Controller
         }
         session()->flash('success');
         return redirect(route('berita.index'));
+    }
+
+    public function verification(Berita $berita)
+    {
+        $berita->update([
+            'is_verified' => 1,
+        ]);
+        session()->flash('success');
+        return back();
     }
 
     /**

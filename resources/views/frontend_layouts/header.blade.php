@@ -71,32 +71,6 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="blog.html">Latest News</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-grid.html">Blog Grid View</a></li>
-                                        <li><a href="blog-list.html">Blog List View</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="project.html">Projects</a>
-                                    <ul>
-                                        <li><a href="project-grid.html">Grid View</a></li>
-                                        <li><a href="project-grid-with-text.html">Grid With Text</a></li>
-                                        <li><a href="project.html">Projects Gallery Style</a></li>
-                                        <li><a href="project-single.html">Projects Single Post</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="shop.html">Shop</a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop Products</a></li>
-                                        <li><a href="shop-single.html">Single Product</a></li>
-                                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="account.html">My Account</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </div>
                     </nav>

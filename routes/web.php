@@ -48,7 +48,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
+
     Route::resource('berita', BeritaController::class);
+    Route::get('berita/verifikasi/{berita}', [BeritaController::class, 'verification'])->name('berita.verification');
     Route::resource('beritaCategory', BeritaCategoryController::class);
     Route::resource('beritaGallery', BeritaGalleryController::class)->except([
         'destroy'
