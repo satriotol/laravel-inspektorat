@@ -51,7 +51,7 @@ class IndexController extends Controller
         // $beritaCategories = BeritaCategory::all();
         // $recentBeritas = Berita::getLatestBeritas(3, 2);
         // $beritas = Berita::getLatestBeritas(5, null);
-        $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->get();
+        $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->orderByDesc('id')->get();
         return view('frontend.kebijakan', compact('kebijakans'));
     }
 }

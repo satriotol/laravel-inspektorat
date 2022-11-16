@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label>File</label>
-                            <input type="file" class="form-control"
+                            <input type="file" accept="application/pdf" class="form-control"
                                 @empty($kebijakan)
                             required
                             @endempty
