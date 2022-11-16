@@ -77,15 +77,13 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget wedo pd-left pd-bottom">
                             <div class="title">
-                                <h3>What We Do</h3>
+                                <h3>Link Terkait</h3>
                             </div>
                             <ul class="we-do-list">
-                                <li><a href="#">Business Growth</a></li>
-                                <li><a href="#">Sustainability</a></li>
-                                <li><a href="#">Performance</a></li>
-                                <li><a href="#">Customer Insights</a></li>
-                                <li><a href="#">Organization</a></li>
-                                <li><a href="#">Advanced Analytics</a></li>
+                                @foreach ($terkaitLinks as $terkaitLink)
+                                    <li><a href="{{ $terkaitLink->url }}" target="_blank">{{ $terkaitLink->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -94,21 +92,17 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget">
                             <div class="title">
-                                <h3>Latest News</h3>
+                                <h3>Berita Terakhir</h3>
                             </div>
                             <ul class="latest-news-items">
-                                <li>
-                                    <a href="#">
-                                        Seminar for improve your business<br> profit & loss
-                                    </a>
-                                    <p>August 21, 2016</p>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Experts Openion for save money<br> for your future.
-                                    </a>
-                                    <p>March 14, 2016</p>
-                                </li>
+                                @foreach ($latestBeritas as $latestBerita)
+                                    <li>
+                                        <a href="{{ route('detailBerita', $latestBerita->id) }}">
+                                            {{ $latestBerita->title }}
+                                        </a>
+                                        <p>{{ $latestBerita->created_at }}</p>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

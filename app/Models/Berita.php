@@ -35,4 +35,8 @@ class Berita extends Model
     {
         Storage::disk('public_uploads')->delete($this->attributes['image']);
     }
+    public static function getLatestBeritas($paginate)
+    {
+        return Berita::orderBy('id', 'desc')->paginate($paginate);
+    }
 }
