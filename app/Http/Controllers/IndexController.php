@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Beranda;
 use App\Models\Berita;
 use App\Models\BeritaCategory;
+use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
 use App\Models\Link;
 use App\Models\Master;
@@ -44,5 +45,13 @@ class IndexController extends Controller
         $recentBeritas = Berita::getLatestBeritas(3, 2);
         $beritas = Berita::getLatestBeritas(5, null);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
+    }
+    public function kebijakan($kebijakan)
+    {
+        // $beritaCategories = BeritaCategory::all();
+        // $recentBeritas = Berita::getLatestBeritas(3, 2);
+        // $beritas = Berita::getLatestBeritas(5, null);
+        $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->get();
+        return view('frontend.kebijakan', compact('kebijakans'));
     }
 }

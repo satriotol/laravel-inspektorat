@@ -34,14 +34,14 @@
                             <select name="kebijakan_category_id" required class="form-control">
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($kebijakan_categories as $kebijakan_category)
-                                    <option @selected($kebijakan_category->id == $kebijakan->kebijakan_category_id) value="{{ $kebijakan_category->id }}">
+                                    <option @if(isset($kebijakan)) @selected($kebijakan_category->id == $kebijakan->kebijakan_category_id) @endif value="{{ $kebijakan_category->id }}">
                                         {{ $kebijakan_category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>File</label>
-                            <input type="file" accept="pdf/*" class="form-control"
+                            <input type="file" class="form-control"
                                 @empty($kebijakan)
                             required
                             @endempty

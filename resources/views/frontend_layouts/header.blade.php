@@ -73,7 +73,7 @@
                                 <li class="dropdown"><a href="#">Kebijakan</a>
                                     <ul>
                                         @foreach ($kebijakanCategories as $kebijakanCategory)
-                                            <li><a href="#">{{ $kebijakanCategory->name }}</a></li>
+                                            <li><a href="{{ route('kebijakan', $kebijakanCategory->id) }}">{{ $kebijakanCategory->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
