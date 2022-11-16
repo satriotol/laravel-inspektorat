@@ -60,15 +60,15 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget pd-bottom">
                             <div class="footer-logo">
-                                <a href="index.html">
+                                <a href="{{ route('beranda') }}">
                                     <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Footer Logo">
                                 </a>
                             </div>
-                            <div class="our-info">
+                            {{-- <div class="our-info">
                                 <p>Our team offers the most up-to-date, sustainable manufacturing solutions. teachings
                                     of the great explorer of the truth We only source materials from tried and trusted
                                     suppliers.</p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!--End single footer widget-->
@@ -110,23 +110,15 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget pd-top pd-left">
                             <div class="title">
-                                <h3>Contact Us</h3>
+                                <h3>Kontak Kami</h3>
                             </div>
                             <ul class="footer-contact-info">
-                                <li>
-                                    <div class="icon-holder">
-                                        <span class="icon-world"></span>
-                                    </div>
-                                    <div class="text-holder">
-                                        <p>22/121 Apple Street, New York,<br> NY 10012, USA</p>
-                                    </div>
-                                </li>
                                 <li>
                                     <div class="icon-holder">
                                         <span class="icon-technology-1"></span>
                                     </div>
                                     <div class="text-holder">
-                                        <p>Phone: +123-456-7890</p>
+                                        <p>Telefon: {{ $master->phone }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -134,7 +126,7 @@
                                         <span class="icon-letter-1 bottom-envelop"></span>
                                     </div>
                                     <div class="text-holder">
-                                        <p>Mail@Assuranceteam.com</p>
+                                        <p>{{ $master->email }}</p>
                                     </div>
                                 </li>
                             </ul>
