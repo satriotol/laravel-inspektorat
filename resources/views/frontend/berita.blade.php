@@ -1,30 +1,69 @@
 @extends('frontend_layouts.main')
 @section('content')
+    <!--Start breadcrumb area-->
+    <section class="breadcrumb-area" style="background-image: url({{ asset('uploads/' . $master->banner) }});">
+        <div class="container text-center">
+            <h1>Berita</h1>
+        </div>
+    </section>
+    <!--End breadcrumb area-->
     <!--Start blog area-->
-    <section id="blog-area" class="blog-single-area" style="padding-bottom: 0">
+    <section id="blog-area" class="blog-with-sidebar-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                     <div class="blog-post">
-                        <div class="single-blog-post">
-                            <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $berita->image) }}" alt="Awesome Image">
-                            </div>
-                            <div class="text-holder">
-                                <h3 class="blog-title">{{ $berita->title }}</h3>
-                                <div class="text">
-                                    {!! $berita->description !!}
+                        @foreach ($beritas as $berita)
+                            <div class="single-blog-post">
+                                <div class="img-holder">
+                                    <img src="images/blog/v1-1.jpg" alt="Awesome Image">
+                                    <div class="published-date">
+                                        <h3>21 Aug</h3>
+                                    </div>
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="content">
+                                                <a href="{{ route('detailBerita', $berita->id) }}"><i class="fa fa-link"
+                                                        aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="meta-info clearfix">
-                                    <div class="left pull-left">
-                                        <ul class="post-info">
-                                            <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
-                                            <li><a href="#">{{ $berita->berita_category->name }}</a></li>
-                                        </ul>
+                                <div class="text-holder">
+                                    <a href="{{ route('detailBerita', $berita->id) }}">
+                                        <h3 class="blog-title">{{ $berita->title }}</h3>
+                                    </a>
+                                    <div class="text">
+                                        {!! $berita->description !!}
+                                    </div>
+                                    <div class="meta-info clearfix">
+                                        <div class="left pull-left">
+                                            <ul class="post-info">
+                                                <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
+                                                <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="right pull-right">
+                                            <a class="post-share" href="#"><i class="fa fa-share-alt"
+                                                    aria-hidden="true"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
+                        <!--Start post pagination-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="post-pagination text-center">
+                                    <li><a href="#"><i class="fa fa-caret-left" aria-hidden="true"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
+                        <!--End post pagination-->
                     </div>
                 </div>
                 <!--Start sidebar Wrapper-->
@@ -83,35 +122,9 @@
                         </div>
                     </div>
                 </div>
+                <!--End Sidebar Wrapper-->
             </div>
         </div>
     </section>
-    @if ($berita->berita_galleries)
-        <section id="project-area" class="project-grid-area" style="padding-top: 0">
-            <div class="container">
-                <div class="row project-content">
-                    @foreach ($berita->berita_galleries as $berita_gallery)
-                        <div class="col-md-4 single-project-item filter-item {{ $berita_gallery->id }}">
-                            <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $berita_gallery->image) }}" alt="Awesome Image">
-                                <div class="overlay">
-                                    <div class="box">
-                                        <div class="content">
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ asset('uploads/' . $berita_gallery->image) }}"
-                                                        data-rel="prettyPhoto"><i class="fa fa-search-plus"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
     <!--End blog area-->
 @endsection

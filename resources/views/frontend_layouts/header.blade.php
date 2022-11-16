@@ -56,12 +56,18 @@
                             <ul class="navigation clearfix">
                                 <li class="home current"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
-                                <li class="dropdown"><a href="about.html">Kegiatan</a>
+                                <li class="dropdown"><a href="{{ route('berita') }}">Berita</a>
+                                    <ul>
+                                        @foreach ($masterBeritaCategories as $masterBeritaCategory)
+                                            <li><a href="#">{{ $masterBeritaCategory->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="#">Kegiatan</a>
                                     <ul>
                                         @foreach ($kegiatans as $kegiatan)
                                             <li><a href="#">{{ $kegiatan->name }}</a></li>
                                         @endforeach
-
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Kebijakan</a>

@@ -37,11 +37,21 @@ class Berita extends Model
     }
     public static function getVerifiedBeritas()
     {
-        return Berita::where('is_verified', 1);
+        return Berita::where('is_verified', 1)->orderBy('id', 'desc');
     }
-    public static function getLatestBeritas($paginate)
+    public static function getLatestBeritas($paginate, $is_kegiatan)
     {
-        return Berita::getVerifiedBeritas()->orderBy('id', 'desc')->paginate($paginate);
+        if ($is_kegiatan == 1) {
+            return Berita::getVerifiedBeritas()->whereHas('berita_category', function ($q) {
+                $q->where('is_kegiatan', 1);
+            })->paginate($paginate);
+        } elseif ($is_kegiatan == null) {
+            return Berita::getVerifiedBeritas()->whereHas('berita_category', function ($q) {
+                $q->where('is_kegiatan', null);
+            })->paginate($paginate);
+        } else {
+            return Berita::getVerifiedBeritas()->paginate($paginate);
+        }
     }
     public function getVerificationStatus()
     {
