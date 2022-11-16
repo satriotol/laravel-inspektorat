@@ -91,7 +91,13 @@
                     <a class="side-menu__item {{ active_class(['beranda.*']) }}" href="{{ route('beranda.index') }}"><i
                             class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Beranda</span></a>
                 </li>
-            @endcan
+                @endcan
+                @can('master-index')
+                <li>
+                    <a class="side-menu__item {{ active_class(['master.*']) }}" href="{{ route('master.index') }}"><i
+                            class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Master</span></a>
+                </li>
+                @endcan
 
                 <li class="sub-category">
                     <h3>User Management</h3>
