@@ -34,7 +34,8 @@
                                     <tr>
                                         <td>
                                             {{ $berita->title }} <br>
-                                            <div class="badge bg-primary">{{ $berita->user->name }}</div>
+                                            <div class="badge bg-primary">{{ $berita->user->name }}</div> | <div
+                                                class="badge bg-info">{{ $berita->getVerificationStatus() }}</div>
                                         </td>
                                         <td>
                                             <a href="{{ route('beritaCategory.edit', $berita->berita_category_id) }}">
@@ -47,10 +48,17 @@
                                             <form action="{{ route('berita.destroy', $berita->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
+                                                @if (!$berita->is_verified)
+                                                    @can('berita-verification')
+                                                        <a href="{{ route('berita.verification', $berita->id) }}"
+                                                            onclick="return confirm('Are you sure?')"
+                                                            class="btn btn-sm btn-success">Verifikasi</a>
+                                                    @endcan
+                                                @endif
                                                 <a href="{{ route('berita.edit', $berita->id) }}"
                                                     class="btn btn-sm btn-warning">Edit</a>
-                                                <input type="submit" class="btn btn-sm btn-danger" value="Delete"
-                                                    id="">
+                                                <input type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure?')" value="Delete" id="">
                                             </form>
                                         </td>
                                     </tr>
