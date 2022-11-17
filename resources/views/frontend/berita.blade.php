@@ -16,9 +16,9 @@
                         @foreach ($beritas as $berita)
                             <div class="single-blog-post">
                                 <div class="img-holder">
-                                    <img src="images/blog/v1-1.jpg" alt="Awesome Image">
-                                    <div class="published-date">
-                                        <h3>21 Aug</h3>
+                                    <img src="{{ asset('uploads/' . $berita->image) }}" alt="Awesome Image">
+                                    <div class="published-date" style="width: 170px;">
+                                        <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
                                     </div>
                                     <div class="overlay-style-one">
                                         <div class="box">
