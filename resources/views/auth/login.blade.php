@@ -45,8 +45,8 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{ asset('Lambang_Kota_Semarang.png') }}" class="header-brand-img"
-                            alt="">
+                        <img src="{{ asset('Lambang_Kota_Semarang.png') }}" style="height: 100px"
+                            class="header-brand-img" alt="">
                     </div>
                 </div>
 
@@ -160,7 +160,7 @@
                             Swal.fire({
                                 title: 'Error',
                                 icon: 'error',
-                                text : err.response.data.message,
+                                text: err.response.data.message,
                                 confirmButtonText: 'Ok',
                             })
                         });
