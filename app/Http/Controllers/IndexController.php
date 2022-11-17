@@ -12,6 +12,7 @@ use App\Models\Master;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Termwind\Components\Dd;
 
 class IndexController extends Controller
 {
@@ -51,7 +52,9 @@ class IndexController extends Controller
         // $beritaCategories = BeritaCategory::all();
         // $recentBeritas = Berita::getLatestBeritas(3, 2);
         // $beritas = Berita::getLatestBeritas(5, null);
+
+        $kebijakancategories = KebijakanCategory::where('id', $kebijakan)->first();
         $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->orderByDesc('id')->get();
-        return view('frontend.kebijakan', compact('kebijakans'));
+        return view('frontend.kebijakan', compact('kebijakans','kebijakancategories'));
     }
 }
