@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label>Banner</label>
                             <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="banner">
-                            <small class="text-red">Ukuran Rekomendasi 1920x340</small>
+                            <small class="text-red">Ukuran Rekomendasi 1920x340 </small>
                         </div>
                         @isset($master)
                             <img src="{{ asset('uploads/' .  $master->banner) }}" class="img-thumbnail" alt="">
@@ -37,6 +37,7 @@
                         <div class="form-group">
                             <label>Background</label>
                             <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="background">
+                            <small class="text-red">Ukuran Rekomendasi 1920x489</small>
                         </div>
                         @isset($master)
                             <img src="{{ asset('uploads/' .  $master->background) }}" class="img-thumbnail" alt="">
@@ -45,6 +46,7 @@
                         <div class="form-group">
                             <label>Logo</label>
                             <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="logo">
+                            <small class="text-red">Ukuran Rekomendasi 260x60</small>
                         </div>
                         @isset($master)
                             <img src="{{ asset('uploads/' .  $master->logo) }}" class="img-thumbnail" alt="">

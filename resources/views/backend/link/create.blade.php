@@ -41,6 +41,7 @@
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
+                            <small class="text-red">Ukuran Rekomendasi 270x170</small>
                         </div>
                         @isset($link)
                             <img src="{{ asset('uploads/' . $link->image) }}" class="img-thumbnail" alt="">

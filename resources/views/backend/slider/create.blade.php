@@ -38,9 +38,10 @@
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control"
                                 @empty($slider)
-                            required 
+                            required
                             @endempty
                                 name="image">
+                                <small class="text-red">Ukuran Rekomendasi 1920x550</small>
                         </div>
                         @isset($slider)
                             <img src="{{ asset('uploads/' . $slider->image) }}" class="img-thumbnail" alt="">
