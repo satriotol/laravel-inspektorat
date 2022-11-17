@@ -54,9 +54,10 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="home current"><a href="{{ route('beranda') }}"><span
+                                <li class="home {{ current_class(['beranda']) }}"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
-                                <li class="dropdown"><a href="{{ route('berita') }}">Berita</a>
+                                <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">
+                                    <a href="{{ route('berita') }}">Berita</a>
                                     <ul>
                                         @foreach ($masterBeritaCategories as $masterBeritaCategory)
                                             <li><a
@@ -65,7 +66,9 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="{{ route('kegiatan') }}">Kegiatan</a>
+                                <li
+                                    class="dropdown {{ current_class(['kegiatan', 'kegiatanCategory', 'detailKegiatan']) }}">
+                                    <a href="{{ route('kegiatan') }}">Kegiatan</a>
                                     <ul>
                                         @foreach ($kegiatans as $kegiatan)
                                             <li><a
@@ -74,7 +77,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Kebijakan</a>
+                                <li class="dropdown" {{ current_class(['kebijakan']) }}><a href="#">Kebijakan</a>
                                     <ul>
                                         @foreach ($kebijakanCategories as $kebijakanCategory)
                                             <li><a

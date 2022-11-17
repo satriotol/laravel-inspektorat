@@ -4,6 +4,10 @@ function active_class($path, $active = 'active')
 {
   return call_user_func_array('Request::routeIs', $path) ? $active : '';
 }
+function current_class($path, $current = 'current')
+{
+  return call_user_func_array('Request::routeIs', $path) ? $current : '';
+}
 function expanded_class($path, $active = 'is-expanded')
 {
   return call_user_func_array('Request::routeIs', $path) ? $active : '';
