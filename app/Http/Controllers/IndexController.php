@@ -36,8 +36,8 @@ class IndexController extends Controller
     }
     public function detailBerita(Berita $berita)
     {
-        $beritaCategories = BeritaCategory::all();
-        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
+        $beritaCategories = BeritaCategory::getBeritaCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 2, $berita->berita_category->is_kegiatan);
         return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
     }
     public function berita()

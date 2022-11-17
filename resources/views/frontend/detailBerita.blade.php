@@ -38,7 +38,7 @@
                             <ul class="categories clearfix">
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
                                             {{ $beritaCategory->name }}
                                         </a>
                                     </li>
