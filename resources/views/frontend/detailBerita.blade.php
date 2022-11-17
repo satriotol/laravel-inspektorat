@@ -38,7 +38,7 @@
                             <ul class="categories clearfix">
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <li>
-                                        @if (Route::is('berita', 'beritaCategory'))
+                                        @if (Route::is('berita', 'beritaCategory', 'detailBerita', 'detailBerita'))
                                             <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
                                                 {{ $beritaCategory->name }}
                                             </a>
@@ -66,7 +66,7 @@
                                             <div class="overlay-style-two">
                                                 <div class="box">
                                                     <div class="content">
-                                                        @if (Route::is('berita', 'beritaCategory'))
+                                                        @if (Route::is('berita', 'beritaCategory', 'detailBerita'))
                                                             <a href="{{ route('detailBerita', $recentBerita->id) }}">
                                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                                             </a>
@@ -81,7 +81,7 @@
                                             </div>
                                         </div>
                                         <div class="title-holder">
-                                            @if (Route::is('berita', 'beritaCategory'))
+                                            @if (Route::is('berita', 'beritaCategory', 'detailBerita'))
                                                 <a href="{{ route('detailBerita', $recentBerita->id) }}">
                                                     <h5 class="post-title">
                                                         {{ Str::limit($recentBerita->title, 30, '...') }}
