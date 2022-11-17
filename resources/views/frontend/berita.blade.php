@@ -3,7 +3,10 @@
     <!--Start breadcrumb area-->
     <section class="breadcrumb-area" style="background-image: url({{ asset('uploads/' . $master->banner) }});">
         <div class="container text-center">
-            <h1>Berita</h1>
+            <h1>Berita @isset($beritaCategory)
+                    / {{ $beritaCategory->name }}
+                @endisset
+            </h1>
         </div>
     </section>
     <!--End breadcrumb area-->
@@ -34,13 +37,17 @@
                                         <h3 class="blog-title">{{ $berita->title }}</h3>
                                     </a>
                                     <div class="text">
-                                        {!! $berita->description !!}
+                                        <p>
+                                            {!! Str::limit($berita->description, 100) !!}
+                                        </p>
                                     </div>
                                     <div class="meta-info clearfix">
                                         <div class="left pull-left">
                                             <ul class="post-info">
                                                 <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
-                                                <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                                <li><a
+                                                        href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="right pull-right">
@@ -56,11 +63,6 @@
                             <div class="col-md-12">
                                 <ul class="post-pagination text-center">
                                     {{ $beritas->links() }}
-                                    {{-- <li><a href="#"><i class="fa fa-caret-left" aria-hidden="true"></i></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -76,7 +78,7 @@
                             <ul class="categories clearfix">
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
                                             {{ $beritaCategory->name }}
                                         </a>
                                     </li>

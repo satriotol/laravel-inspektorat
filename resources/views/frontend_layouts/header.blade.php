@@ -59,7 +59,9 @@
                                 <li class="dropdown"><a href="{{ route('berita') }}">Berita</a>
                                     <ul>
                                         @foreach ($masterBeritaCategories as $masterBeritaCategory)
-                                            <li><a href="#">{{ $masterBeritaCategory->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('beritaCategory', $masterBeritaCategory->id) }}">{{ $masterBeritaCategory->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -73,7 +75,9 @@
                                 <li class="dropdown"><a href="#">Kebijakan</a>
                                     <ul>
                                         @foreach ($kebijakanCategories as $kebijakanCategory)
-                                            <li><a href="{{ route('kebijakan', $kebijakanCategory->id) }}">{{ $kebijakanCategory->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('kebijakan', $kebijakanCategory->id) }}">{{ $kebijakanCategory->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </li>
