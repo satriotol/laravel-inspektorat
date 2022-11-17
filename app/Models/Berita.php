@@ -54,6 +54,8 @@ class Berita extends Model
             $berita->whereHas('berita_category', function ($q) {
                 $q->where('is_kegiatan', null);
             });
+        } else {
+            return $berita->paginate($paginate);
         }
         return $berita->paginate($paginate);
     }
