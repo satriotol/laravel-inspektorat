@@ -36,6 +36,9 @@ Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
 Route::get('/berita/category/{beritaCategory}', [IndexController::class, 'beritaCategory'])->name('beritaCategory');
+Route::get('/kegiatan', [IndexController::class, 'kegiatan'])->name('kegiatan');
+Route::get('/kegiatan/{berita}', [IndexController::class, 'detailKegiatan'])->name('detailKegiatan');
+Route::get('/kegiatan/category/{beritaCategory}', [IndexController::class, 'kegiatanCategory'])->name('kegiatanCategory');
 Route::get('/kebijakan/{kebijakan}', [IndexController::class, 'kebijakan'])->name('kebijakan');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
