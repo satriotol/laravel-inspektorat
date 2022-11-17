@@ -1,5 +1,21 @@
 @extends('frontend_layouts.main')
 @section('content')
+ <!--Start breadcrumb area-->
+ <section class="breadcrumb-area" style="background-image: url({{ asset('uploads/' . $master->banner) }});">
+    <div class="container text-center">
+        <h1>
+            @if (Route::is('kebijakan', 'kebijakanCategory'))
+               Kebijakan
+            @else
+                Kegiatan
+            @endif
+            @isset($kebijakancategories)
+                / {{ $kebijakancategories->name }}
+            @endisset
+        </h1>
+    </div>
+</section>
+<!--End breadcrumb area-->
     <!--Start blog area-->
     <section id="project-area" class="latest-project-area grid-with-text">
         <div class="container">
