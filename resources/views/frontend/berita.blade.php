@@ -1,9 +1,4 @@
 @extends('frontend_layouts.main')
-@push('css')
-    <style>
-
-    </style>
-@endpush
 @section('content')
     <!--Start breadcrumb area-->
     <section class="breadcrumb-area" style="">
