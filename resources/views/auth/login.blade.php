@@ -45,7 +45,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{ asset('Lambang_Kota_Semarang.png') }}" style="height: 100px"
+                        <img src="{{ asset('Lambang_Kota_Semarang.png') }}" style="height: 50px"
                             class="header-brand-img" alt="">
                     </div>
                 </div>
@@ -74,6 +74,15 @@
                                             </a>
                                             <input class="input100 border-start-0 form-control ms-0" type="password"
                                                 v-model="form.password" name="password" required placeholder="Password">
+                                        </div>
+                                        <div class="form-group mt-4 mb-4">
+                                            <div class="captcha">
+                                                <span>{!! captcha_img('default') !!}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <input id="captcha" type="text" class="form-control"
+                                                placeholder="Enter Captcha" v-model="form.captcha" name="captcha">
                                         </div>
                                         <div class="container-login100-form-btn">
                                             <button type="submit" class="login100-form-btn btn-primary"
@@ -128,6 +137,7 @@
                     form: {
                         email: '',
                         password: '',
+                        capcha: '',
                     },
                 }
             },
