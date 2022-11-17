@@ -28,6 +28,7 @@
                         <div class="form-group">
                             <label>Banner</label>
                             <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="banner">
+                            <small class="text-red">Ukuran Rekomendasi 1920x340</small>
                         </div>
                         @isset($master)
                             <img src="{{ asset('uploads/' .  $master->banner) }}" class="img-thumbnail" alt="">
