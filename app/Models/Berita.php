@@ -35,6 +35,17 @@ class Berita extends Model
     {
         Storage::disk('public_uploads')->delete($this->attributes['image']);
     }
+    public static function getBeritaAll($request)
+    {
+        $is_verified = $request->is_verified;
+        $berita = Berita::query();
+        if ($is_verified == 'null') {
+            $berita->where('is_verified', null);
+        } else if ($is_verified) {
+            $berita->where('is_verified', $is_verified);
+        }
+        return $berita->orderBy('id', 'desc')->paginate();
+    }
     public static function getVerifiedBeritas()
     {
         return Berita::where('is_verified', 1)->orderBy('id', 'desc');

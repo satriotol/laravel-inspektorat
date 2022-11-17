@@ -25,9 +25,10 @@ class BeritaController extends Controller
         $this->middleware('permission:berita-delete', ['only' => ['destroy']]);
         $this->middleware('permission:berita-verification', ['only' => ['verification']]);
     }
-    public function index()
+    public function index(Request $request)
     {
-        $beritas = Berita::all();
+        $beritas = Berita::getBeritaAll($request);
+        $request->flash();
         return view('backend.berita.index', compact('beritas'));
     }
 

@@ -10,6 +10,28 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Pencarian</h3>
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="is_verified" class="form-control" id="">
+                                <option value="">Pilih Status</option>
+                                <option value="1" @selected(@old('is_verified') == '1')>Terverifikasi</option>
+                                <option value="null" @selected(@old('is_verified') == 'null')>Belum</option>
+                            </select>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-sm btn-success" type="submit">Cari</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
@@ -20,7 +42,7 @@
                         <a href="{{ route('berita.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
                     <div class="table-responsive">
-                        <table id="example2" class="table table-bordered text-nowrap border-bottom">
+                        <table class="table border text-nowrap text-md-nowrap table-hover mb-0">
                             <thead>
                                 <tr>
                                     <th>Judul</th>
@@ -36,6 +58,7 @@
                                             {{ $berita->title }} <br>
                                             <div class="badge bg-primary">{{ $berita->user?->name }}</div> | <div
                                                 class="badge bg-info">{{ $berita->getVerificationStatus() }}</div>
+                                            <small>{{ $berita->created_at }}</small>
                                         </td>
                                         <td>
                                             <a href="{{ route('beritaCategory.edit', $berita->berita_category_id) }}">
@@ -65,6 +88,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $beritas->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
