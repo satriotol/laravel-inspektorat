@@ -45,7 +45,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{ asset('backend_assets/images/brand/logo-white.png') }}" class="header-brand-img"
+                        <img src="{{ asset('Lambang_Kota_Semarang.png') }}" class="header-brand-img"
                             alt="">
                     </div>
                 </div>
@@ -79,11 +79,6 @@
                                             <button type="submit" class="login100-form-btn btn-primary"
                                                 @click="login">Masuk</button>
                                         </div>
-                                        {{-- <div class="text-center pt-3">
-                                            <p class="text-dark mb-0">Tidak Punya Akun ?<a
-                                                    href="{{ route('register') }}" class="text-primary ms-1">Daftar</a>
-                                            </p>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
