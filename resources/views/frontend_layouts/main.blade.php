@@ -23,6 +23,13 @@
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="js/html5shiv.js"></script>
     <![endif]-->
+    @stack('css')
+    <style>
+        .breadcrumb-area {
+            background: linear-gradient(0deg, rgba(185, 185, 185, 0.3), rgba(255, 255, 255, 0.3)), url('{{ asset('uploads/' . $master->banner) }}');
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
