@@ -19,6 +19,10 @@ class BeritaCategory extends Model
     {
         return $this->hasMany(Berita::class, 'berita_category_id', 'id');
     }
+    public static function getBeritaCategories()
+    {
+        return BeritaCategory::where('is_kegiatan', null)->get();
+    }
     public function deleteFile()
     {
         if ($this->attributes['image'] != null) {

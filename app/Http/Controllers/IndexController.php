@@ -22,7 +22,7 @@ class IndexController extends Controller
         $masterBeritaCategories = BeritaCategory::where('is_kegiatan', null)->get();
         $kebijakanCategories = KebijakanCategory::all();
         $terkaitLinks = Link::getOnlyLink();
-        $latestBeritas = Berita::getLatestBeritas(2, 2);
+        $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
         View::share(compact('kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'terkaitLinks', 'latestBeritas', 'master'));
     }
@@ -31,21 +31,28 @@ class IndexController extends Controller
         $sliders = Slider::all();
         $beranda = Beranda::first();
         $layananLinks = Link::where('image', '!=', 2)->get();
-        $beritas = Berita::getLatestBeritas(3, null);
+        $beritas = Berita::getLatestBeritas(3, null, '');
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
     public function detailBerita(Berita $berita)
     {
         $beritaCategories = BeritaCategory::all();
-        $recentBeritas = Berita::getLatestBeritas(3, 2);
+        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
         return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
     }
     public function berita()
     {
-        $beritaCategories = BeritaCategory::all();
-        $recentBeritas = Berita::getLatestBeritas(3, 2);
-        $beritas = Berita::getLatestBeritas(5, null);
+        $beritaCategories = BeritaCategory::getBeritaCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
+        $beritas = Berita::getLatestBeritas(5, null, '');
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
+    }
+    public function beritaCategory(BeritaCategory $beritaCategory)
+    {
+        $beritaCategories = BeritaCategory::getBeritaCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
+        $beritas = Berita::getLatestBeritas(5, null, $beritaCategory->id);
+        return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
     }
     public function kebijakan($kebijakan)
     {

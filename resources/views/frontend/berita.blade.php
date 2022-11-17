@@ -3,7 +3,10 @@
     <!--Start breadcrumb area-->
     <section class="breadcrumb-area" style="background-image: url({{ asset('uploads/' . $master->banner) }});">
         <div class="container text-center">
-            <h1>Berita</h1>
+            <h1>Berita @isset($beritaCategory)
+                    / {{ $beritaCategory->name }}
+                @endisset
+            </h1>
         </div>
     </section>
     <!--End breadcrumb area-->
@@ -16,9 +19,9 @@
                         @foreach ($beritas as $berita)
                             <div class="single-blog-post">
                                 <div class="img-holder">
-                                    <img src="images/blog/v1-1.jpg" alt="Awesome Image">
-                                    <div class="published-date">
-                                        <h3>21 Aug</h3>
+                                    <img src="{{ asset('uploads/' . $berita->image) }}" alt="Awesome Image">
+                                    <div class="published-date" style="width: 170px;">
+                                        <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
                                     </div>
                                     <div class="overlay-style-one">
                                         <div class="box">
@@ -34,13 +37,17 @@
                                         <h3 class="blog-title">{{ $berita->title }}</h3>
                                     </a>
                                     <div class="text">
-                                        {!! $berita->description !!}
+                                        <p>
+                                            {!! Str::limit($berita->description, 100) !!}
+                                        </p>
                                     </div>
                                     <div class="meta-info clearfix">
                                         <div class="left pull-left">
                                             <ul class="post-info">
                                                 <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
-                                                <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                                <li><a
+                                                        href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="right pull-right">
@@ -55,18 +62,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="post-pagination text-center">
-                                    <li><a href="#"><i class="fa fa-caret-left" aria-hidden="true"></i></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                                    {{ $beritas->links() }}
                                 </ul>
                             </div>
                         </div>
-                        <!--End post pagination-->
                     </div>
                 </div>
-                <!--Start sidebar Wrapper-->
                 <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12">
                     <div class="sidebar-wrapper">
                         <div class="single-sidebar">
@@ -77,7 +78,7 @@
                             <ul class="categories clearfix">
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
                                             {{ $beritaCategory->name }}
                                         </a>
                                     </li>
@@ -122,9 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <!--End Sidebar Wrapper-->
             </div>
         </div>
     </section>
-    <!--End blog area-->
 @endsection
