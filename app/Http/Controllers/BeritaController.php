@@ -6,6 +6,7 @@ use App\Models\Berita;
 use App\Models\BeritaCategory;
 use App\Models\BeritaGallery;
 use App\Models\TemporaryFile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,9 @@ class BeritaController extends Controller
             'berita_category_id' => 'required',
         ]);
         $data['user_id'] = Auth::user()->id;
+        if (User::getUserRole(Auth::user()) != 'OPERATOR') {
+            $data['is_verified'] = 1;
+        }
         DB::beginTransaction();
         try {
             $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
