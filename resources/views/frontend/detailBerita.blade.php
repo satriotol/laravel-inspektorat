@@ -38,9 +38,16 @@
                             <ul class="categories clearfix">
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <li>
-                                        <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
-                                            {{ $beritaCategory->name }}
-                                        </a>
+                                        @if (Route::is('berita', 'beritaCategory'))
+                                            <a href="{{ route('beritaCategory', $beritaCategory->id) }}">
+                                                {{ $beritaCategory->name }}
+                                            </a>
+                                        @else
+                                            <a href="{{ route('kegiatanCategory', $beritaCategory->id) }}">
+                                                {{ $beritaCategory->name }}
+                                            </a>
+                                        @endif
+
                                     </li>
                                 @endforeach
                             </ul>
@@ -59,19 +66,35 @@
                                             <div class="overlay-style-two">
                                                 <div class="box">
                                                     <div class="content">
-                                                        <a href="{{ route('detailBerita', $recentBerita->id) }}">
-                                                            <i class="fa fa-link" aria-hidden="true"></i>
-                                                        </a>
+                                                        @if (Route::is('berita', 'beritaCategory'))
+                                                            <a href="{{ route('detailBerita', $recentBerita->id) }}">
+                                                                <i class="fa fa-link" aria-hidden="true"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ route('detailKegiatan', $recentBerita->id) }}">
+                                                                <i class="fa fa-link" aria-hidden="true"></i>
+                                                            </a>
+                                                        @endif
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="title-holder">
-                                            <a href="{{ route('detailBerita', $recentBerita->id) }}">
-                                                <h5 class="post-title">
-                                                    {{ Str::limit($recentBerita->title, 30, '...') }}
-                                                </h5>
-                                            </a>
+                                            @if (Route::is('berita', 'beritaCategory'))
+                                                <a href="{{ route('detailBerita', $recentBerita->id) }}">
+                                                    <h5 class="post-title">
+                                                        {{ Str::limit($recentBerita->title, 30, '...') }}
+                                                    </h5>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('detailKegiatan', $recentBerita->id) }}">
+                                                    <h5 class="post-title">
+                                                        {{ Str::limit($recentBerita->title, 30, '...') }}
+                                                    </h5>
+                                                </a>
+                                            @endif
+
                                             <h6 class="post-date">
                                                 <i class="icon-calendar-with-spring-binder-and-date-blocks"></i>
                                                 {{ date($recentBerita->created_at) }}

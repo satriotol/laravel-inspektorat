@@ -34,25 +34,48 @@ class IndexController extends Controller
         $beritas = Berita::getLatestBeritas(3, null, '');
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
-    public function detailBerita(Berita $berita)
-    {
-        $beritaCategories = BeritaCategory::getBeritaCategories();
-        $recentBeritas = Berita::getLatestBeritas(3, 2, $berita->berita_category->is_kegiatan);
-        return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
-    }
     public function berita()
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
-        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
         $beritas = Berita::getLatestBeritas(5, null, '');
+        $recentBeritas = Berita::getLatestBeritas(3, null, '');
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }
+
+    public function detailBerita(Berita $berita)
+    {
+        $beritaCategories = BeritaCategory::getBeritaCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, null, $berita->berita_category_id);
+        return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
+    }
+
     public function beritaCategory(BeritaCategory $beritaCategory)
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
-        $recentBeritas = Berita::getLatestBeritas(3, 2, '');
+        $recentBeritas = Berita::getLatestBeritas(3, null, '');
         $beritas = Berita::getLatestBeritas(5, null, $beritaCategory->id);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
+    }
+
+    public function kegiatan()
+    {
+        $beritaCategories = BeritaCategory::getKategoriCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 1, '');
+        $beritas = Berita::getLatestBeritas(5, 1, '');
+        return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
+    }
+    public function kegiatanCategory(BeritaCategory $beritaCategory)
+    {
+        $beritaCategories = BeritaCategory::getKategoriCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 1, '');
+        $beritas = Berita::getLatestBeritas(5, 1, $beritaCategory->id);
+        return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
+    }
+    public function detailKegiatan(Berita $berita)
+    {
+        $beritaCategories = BeritaCategory::getKategoriCategories();
+        $recentBeritas = Berita::getLatestBeritas(3, 1, $berita->berita_category_id);
+        return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
     }
     public function kebijakan($kebijakan)
     {
@@ -62,6 +85,6 @@ class IndexController extends Controller
 
         $kebijakancategories = KebijakanCategory::where('id', $kebijakan)->first();
         $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->orderByDesc('id')->get();
-        return view('frontend.kebijakan', compact('kebijakans','kebijakancategories'));
+        return view('frontend.kebijakan', compact('kebijakans', 'kebijakancategories'));
     }
 }

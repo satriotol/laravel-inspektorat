@@ -65,7 +65,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Kegiatan</a>
+                                <li class="dropdown"><a href="{{ route('kegiatan') }}">Kegiatan</a>
                                     <ul>
                                         @foreach ($kegiatans as $kegiatan)
                                             <li><a href="#">{{ $kegiatan->name }}</a></li>

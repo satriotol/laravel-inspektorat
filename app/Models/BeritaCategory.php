@@ -23,6 +23,10 @@ class BeritaCategory extends Model
     {
         return BeritaCategory::where('is_kegiatan', null)->get();
     }
+    public static function getKategoriCategories()
+    {
+        return BeritaCategory::where('is_kegiatan', 1)->get();
+    }
     public function deleteFile()
     {
         if ($this->attributes['image'] != null) {
