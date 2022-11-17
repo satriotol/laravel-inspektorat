@@ -39,11 +39,11 @@
                     </li>
                 @endcan
                 @can('beritaCategory-index')
-                <li>
-                    <a class="side-menu__item {{ active_class(['beritaCategory.*']) }}"
-                        href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
-                            class="side-menu__label">Kategori Berita</span></a>
-                </li>
+                    <li>
+                        <a class="side-menu__item {{ active_class(['beritaCategory.*']) }}"
+                            href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                                class="side-menu__label">Kategori Berita</span></a>
+                    </li>
                 @endcan
                 {{-- <li>
                     <a class="side-menu__item {{ active_class(['beritaSubcategory.*']) }}"
@@ -71,9 +71,11 @@
                                 Kebijakan</span></a>
                     </li>
                 @endcan
-                <li class="sub-category">
-                    <h3>Website</h3>
-                </li>
+                @canany(['slider-index', 'link-index', 'beranda-index', 'master-index'])
+                    <li class="sub-category">
+                        <h3>Website</h3>
+                    </li>
+                @endcan
                 @can('slider-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
@@ -87,34 +89,42 @@
                     </li>
                 @endcan
                 @can('beranda-index')
-                <li>
-                    <a class="side-menu__item {{ active_class(['beranda.*']) }}" href="{{ route('beranda.index') }}"><i
-                            class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Beranda</span></a>
-                </li>
+                    <li>
+                        <a class="side-menu__item {{ active_class(['beranda.*']) }}"
+                            href="{{ route('beranda.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                                class="side-menu__label">Beranda</span></a>
+                    </li>
                 @endcan
                 @can('master-index')
-                <li>
-                    <a class="side-menu__item {{ active_class(['master.*']) }}" href="{{ route('master.index') }}"><i
-                            class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Master</span></a>
-                </li>
+                    <li>
+                        <a class="side-menu__item {{ active_class(['master.*']) }}" href="{{ route('master.index') }}"><i
+                                class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Master</span></a>
+                    </li>
                 @endcan
-
-                <li class="sub-category">
-                    <h3>User Management</h3>
-                </li>
-                <li>
-                    <a class="side-menu__item {{ active_class(['user.*']) }}" href="{{ route('user.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">User</span></a>
-                </li>
-                <li>
-                    <a class="side-menu__item {{ active_class(['role.*']) }}" href="{{ route('role.index') }}"><i
-                            class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Role</span></a>
-                </li>
-                <li>
-                    <a class="side-menu__item {{ active_class(['permission.*']) }}"
-                        href="{{ route('permission.index') }}"><i class="side-menu__icon fe fe-grid"></i><span
-                            class="side-menu__label">Permission</span></a>
-                </li>
+                @canany(['user-index', 'role-index', 'permission-index'])
+                    <li class="sub-category">
+                        <h3>User Management</h3>
+                    </li>
+                @endcan
+                @can('user-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['user.*']) }}" href="{{ route('user.index') }}"><i
+                                class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">User</span></a>
+                    </li>
+                @endcan
+                @can('role-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['role.*']) }}" href="{{ route('role.index') }}"><i
+                                class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Role</span></a>
+                    </li>
+                @endcan
+                @can('permission-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['permission.*']) }}"
+                            href="{{ route('permission.index') }}"><i class="side-menu__icon fe fe-grid"></i><span
+                                class="side-menu__label">Permission</span></a>
+                    </li>
+                @endcan
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                     width="24" height="24" viewBox="0 0 24 24">
