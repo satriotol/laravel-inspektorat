@@ -6,7 +6,7 @@
             <a class="logo-horizontal " href="index.html">
                 <img src="{{ asset('backend_assets/images/logoinspektorat.png') }}" class="header-brand-img desktop-logo"
                     alt="logo">
-                <img src="{{ asset('backend_assets/images/pemkotsmg.png') }}" class="header-brand-img light-logo1"
+                <img src="{{ asset('backend_assets/images/LambangSemarang.png') }}" style="height: 50px" class="header-brand-img light-logo1"
                     alt="logo">
             </a>
             <!-- LOGO -->
