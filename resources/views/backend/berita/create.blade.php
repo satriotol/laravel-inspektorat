@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kategori</label>
-                            <select name="berita_category_id" class="form-control" required>
+                            <select name="berita_category_id" class="form-control select2-show-search form-select" required>
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($beritaCategories as $beritaCategory)
                                     <option value="{{ $beritaCategory->id }}"

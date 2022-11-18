@@ -38,11 +38,15 @@ class Berita extends Model
     public static function getBeritaAll($request)
     {
         $is_verified = $request->is_verified;
+        $title = $request->title;
         $berita = Berita::query();
         if ($is_verified == 'null') {
             $berita->where('is_verified', null);
         } else if ($is_verified) {
             $berita->where('is_verified', $is_verified);
+        }
+        if ($title) {
+            $berita->where('title', 'LIKE', '%' . $title . '%');
         }
         return $berita->orderBy('id', 'desc')->paginate();
     }

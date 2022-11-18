@@ -117,6 +117,8 @@
     <script src="{{ asset('backend_assets/plugins/notify/js/jquery.growl.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ asset('backend_assets/js/custom.js') }}"></script>
+    <script src="{{ asset('backend_assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('backend_assets/js/select2.js') }}"></script>
     @if (session()->has('success'))
         <script>
             notif({

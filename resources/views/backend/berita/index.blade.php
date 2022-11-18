@@ -17,13 +17,24 @@
                 </div>
                 <div class="card-body">
                     <form action="">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select name="is_verified" class="form-control" id="">
-                                <option value="">Pilih Status</option>
-                                <option value="1" @selected(@old('is_verified') == '1')>Terverifikasi</option>
-                                <option value="null" @selected(@old('is_verified') == 'null')>Belum</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select name="is_verified" class="form-control select2-show-search" id="">
+                                        <option value="">Pilih Status</option>
+                                        <option value="1" @selected(@old('is_verified') == '1')>Terverifikasi</option>
+                                        <option value="null" @selected(@old('is_verified') == 'null')>Belum</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Judul</label>
+                                    <input type="text" class="form-control" name="title" value="{{ @old('title') }}"
+                                        id="">
+                                </div>
+                            </div>
                         </div>
                         <div class="text-end">
                             <button class="btn btn-sm btn-success" type="submit">Cari</button>
