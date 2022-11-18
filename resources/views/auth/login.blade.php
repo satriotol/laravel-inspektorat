@@ -77,7 +77,11 @@
                                         </div>
                                         <div class="form-group mt-4 mb-4">
                                             <div class="captcha">
-                                                <span>{!! captcha_img('default') !!}</span>
+                                                <span v-html="captchaImage"></span>
+                                                <button type="button" class="btn btn-danger" class="reload"
+                                                    id="reload" @click="reloadCaptcha()">
+                                                    &#x21bb;
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
@@ -139,7 +143,11 @@
                         password: '',
                         capcha: '',
                     },
+                    captchaImage: '',
                 }
+            },
+            mounted() {
+                this.reloadCaptcha();
             },
             methods: {
                 login() {
@@ -173,6 +181,13 @@
                                 text: err.response.data.message,
                                 confirmButtonText: 'Ok',
                             })
+                        });
+                },
+                reloadCaptcha() {
+                    axios.get('/reload-captcha')
+                        .then((res) => {
+                            this.captchaImage = res.data.captcha;
+                            console.log(this.captchaImage);
                         });
                 }
             },

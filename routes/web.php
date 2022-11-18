@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -28,10 +29,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
-Route::get('/', function () {
-    return view('frontend.beranda');
-});
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
