@@ -3,27 +3,14 @@
         <div class="d-flex">
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
-            <a class="logo-horizontal " href="index.html">
+            <a class="logo-horizontal " href="{{ route('dashboard') }}">
                 <img src="{{ asset('backend_assets/images/logoinspektorat.png') }}" class="header-brand-img desktop-logo"
                     alt="logo">
-                <img src="{{ asset('backend_assets/images/LambangSemarang.png') }}" style="height: 50px" class="header-brand-img light-logo1"
-                    alt="logo">
+                <img src="{{ asset('backend_assets/images/LambangSemarang.png') }}" style="height: 50px"
+                    class="header-brand-img light-logo1" alt="logo">
             </a>
             <!-- LOGO -->
             <div class="d-flex order-lg-2 ms-auto header-right-icons">
-                <div class="dropdown d-none">
-                    <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
-                        <i class="fe fe-search"></i>
-                    </a>
-                    <div class="dropdown-menu header-search dropdown-menu-start">
-                        <div class="input-group w-100 p-2">
-                            <input type="text" class="form-control" placeholder="Search....">
-                            <div class="input-group-text btn btn-primary">
-                                <i class="fe fe-search" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- SEARCH -->
                 <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
                     data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
@@ -34,9 +21,6 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                         <div class="d-flex order-lg-2">
                             <div class="dropdown d-lg-none d-flex">
-                                <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">
-                                    <i class="fe fe-search"></i>
-                                </a>
                                 <div class="dropdown-menu header-search dropdown-menu-start">
                                     <div class="input-group w-100 p-2">
                                         <input type="text" class="form-control" placeholder="Search....">
@@ -60,9 +44,9 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item" href="profile.html">
+                                    {{-- <a class="dropdown-item" href="profile.html">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
-                                    </a>
+                                    </a> --}}
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item">
