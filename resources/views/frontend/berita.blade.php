@@ -25,7 +25,8 @@
                         @foreach ($beritas as $berita)
                             <div class="single-blog-post">
                                 <div class="img-holder">
-                                    <img src="{{ asset('uploads/' . $berita->image) }}" alt="Awesome Image">
+                                    <img src="{{ asset('uploads/' . $berita->image) }}"
+                                        style="height: 300px; object-fit:cover" alt="Awesome Image">
                                     <div class="published-date" style="width: 170px;">
                                         <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
                                     </div>
@@ -56,9 +57,7 @@
                                     @endif
 
                                     <div class="text">
-                                        <p>
-                                            {!! Str::limit($berita->description, 100) !!}
-                                        </p>
+                                        {{-- {!! Str::limit($berita->description, 100) !!} --}}
                                     </div>
                                     <div class="meta-info clearfix">
                                         <div class="left pull-left">

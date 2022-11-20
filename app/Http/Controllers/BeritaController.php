@@ -168,7 +168,7 @@ class BeritaController extends Controller
             DB::rollBack();
         }
         session()->flash('success');
-        return back();
+        return redirect(route('berita.index'));
     }
 
     /**
