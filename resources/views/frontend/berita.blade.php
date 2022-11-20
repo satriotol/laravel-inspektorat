@@ -44,7 +44,7 @@
                                     <div class="text-holder">
                                         @if (Route::is('berita', 'beritaCategory'))
                                             <a href="{{ route('detailBerita', $berita->id) }}">
-                                                <h3 class="blog-title">{{ Str::limit($berita->title, 40, '...')  }}</h3>
+                                                <h3 class="blog-title">{{ Str::limit($berita->title, 40, '...') }}</h3>
                                             </a>
                                         @else
                                             <a href="{{ route('detailKegiatan', $berita->id) }}">
@@ -81,6 +81,12 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12">
                     <div class="sidebar-wrapper">
+                        <div class="single-sidebar">
+                            <form class="search-form" action="">
+                                <input placeholder="Cari..." type="text" name="title" value="{{ @old('title') }}">
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
                         <div class="single-sidebar">
                             <div class="sec-title">
                                 <h3>Kategori</h3>

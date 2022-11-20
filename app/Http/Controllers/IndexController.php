@@ -34,11 +34,12 @@ class IndexController extends Controller
         $beritas = Berita::getLatestBeritas(3, 2, '');
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
-    public function berita()
+    public function berita(Request $request)
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
-        $beritas = Berita::getLatestBeritas(6, null, '');
+        $beritas = Berita::getBeritas(6, null, '', $request);
         $recentBeritas = Berita::getLatestBeritas(3, null, '');
+        $request->flash();
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }
 
@@ -49,26 +50,26 @@ class IndexController extends Controller
         return view('frontend.detailBerita', compact('berita', 'beritaCategories', 'recentBeritas'));
     }
 
-    public function beritaCategory(BeritaCategory $beritaCategory)
+    public function beritaCategory(BeritaCategory $beritaCategory, Request $request)
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
         $recentBeritas = Berita::getLatestBeritas(3, null, '');
-        $beritas = Berita::getLatestBeritas(6, null, $beritaCategory->id);
+        $beritas = Berita::getBeritas(6, null, $beritaCategory->id, $request);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
     }
 
-    public function kegiatan()
+    public function kegiatan(Request $request)
     {
         $beritaCategories = BeritaCategory::getKategoriCategories();
         $recentBeritas = Berita::getLatestBeritas(3, 1, '');
-        $beritas = Berita::getLatestBeritas(6, 1, '');
+        $beritas = Berita::getBeritas(6, 1, '', $request);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }
-    public function kegiatanCategory(BeritaCategory $beritaCategory)
+    public function kegiatanCategory(BeritaCategory $beritaCategory, Request $request)
     {
         $beritaCategories = BeritaCategory::getKategoriCategories();
         $recentBeritas = Berita::getLatestBeritas(3, 1, '');
-        $beritas = Berita::getLatestBeritas(6, 1, $beritaCategory->id);
+        $beritas = Berita::getBeritas(6, 1, $beritaCategory->id, $request);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
     }
     public function detailKegiatan(Berita $berita)
@@ -85,7 +86,7 @@ class IndexController extends Controller
 
         $parameters = $request->search;
         $kebijakancategories = KebijakanCategory::where('id', $kebijakan)->first();
-       // $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->orderByDesc('id')->paginate(5);
+        // $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakan)->orderByDesc('id')->paginate(5);
         $kebijakans = Kebijakan::getFrontenddata($kebijakan, $parameters)->paginate(5);
         return view('frontend.kebijakan', compact('kebijakans', 'kebijakancategories'));
     }

@@ -54,6 +54,30 @@ class Berita extends Model
     {
         return Berita::where('is_verified', 1)->orderBy('id', 'desc');
     }
+    public static function getBeritas($paginate, $is_kegiatan, $berita_category_id, $request)
+    {
+        $berita = Berita::getVerifiedBeritas();
+        $title = $request->title;
+        if ($title) {
+            $berita->where('title', 'LIKE', '%' . $title . '%');
+        }
+        if ($berita_category_id != '') {
+            $berita->where('berita_category_id', $berita_category_id);
+        }
+
+        if ($is_kegiatan == 1) {
+            $berita->whereHas('berita_category', function ($q) {
+                $q->where('is_kegiatan', 1);
+            });
+        } elseif ($is_kegiatan == null) {
+            $berita->whereHas('berita_category', function ($q) {
+                $q->where('is_kegiatan', null);
+            });
+        } else {
+            return $berita->paginate($paginate);
+        }
+        return $berita->paginate($paginate)->withQueryString();
+    }
     public static function getLatestBeritas($paginate, $is_kegiatan, $berita_category_id)
     {
         $berita = Berita::getVerifiedBeritas();
