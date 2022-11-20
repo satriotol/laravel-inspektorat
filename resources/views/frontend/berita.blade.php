@@ -69,8 +69,8 @@
                                             </ul>
                                         </div>
                                         <div class="right pull-right">
-                                            <a class="post-share" href="#"><i class="fa fa-share-alt"
-                                                    aria-hidden="true"></i></a>
+                                            {{-- <a class="post-share" href="#"><i class="fa fa-share-alt"
+                                                    aria-hidden="true"></i></a> --}}
                                         </div>
                                     </div>
                                 </div>
