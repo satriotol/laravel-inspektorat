@@ -67,7 +67,7 @@
                 @foreach ($sliders as $slider)
                     <li data-transition="slidingoverlayleft">
                         <img src="{{ asset('uploads/' . $slider->image) }}" alt="" width="1920" height="550"
-                            data-bgposition="top center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1">
+                            data-bgposition="top center" data-bgfit="100% 100%" data-bgrepeat="no-repeat" data-bgparallax="1">
 
                         <div class="tp-caption  tp-resizeme" data-x="left" data-hoffset="0" data-y="top"
                             data-voffset="130" data-transform_idle="o:1;"
