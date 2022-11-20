@@ -60,15 +60,15 @@ class IndexController extends Controller
     public function kegiatan()
     {
         $beritaCategories = BeritaCategory::getKategoriCategories();
-        $recentBeritas = Berita::getLatestBeritas(6, 1, '');
-        $beritas = Berita::getLatestBeritas(5, 1, '');
+        $recentBeritas = Berita::getLatestBeritas(3, 1, '');
+        $beritas = Berita::getLatestBeritas(6, 1, '');
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }
     public function kegiatanCategory(BeritaCategory $beritaCategory)
     {
         $beritaCategories = BeritaCategory::getKategoriCategories();
         $recentBeritas = Berita::getLatestBeritas(3, 1, '');
-        $beritas = Berita::getLatestBeritas(5, 1, $beritaCategory->id);
+        $beritas = Berita::getLatestBeritas(6, 1, $beritaCategory->id);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
     }
     public function detailKegiatan(Berita $berita)
