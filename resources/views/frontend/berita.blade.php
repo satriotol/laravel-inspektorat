@@ -44,7 +44,7 @@
                                     <div class="text-holder">
                                         @if (Route::is('berita', 'beritaCategory'))
                                             <a href="{{ route('detailBerita', $berita->id) }}">
-                                                <h3 class="blog-title">{{ $berita->title }}</h3>
+                                                <h3 class="blog-title">{{ Str::limit($berita->title, 40, '...')  }}</h3>
                                             </a>
                                         @else
                                             <a href="{{ route('detailKegiatan', $berita->id) }}">
