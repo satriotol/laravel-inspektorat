@@ -35,14 +35,15 @@
                         </div>
                         <div class="form-group">
                             <label>Thumbnail Video</label>
-                            <input type="file" @empty($beranda) required @endempty accept="image/*" class="form-control" name="thumbnail_video">
+                            <input type="file" @empty($beranda) required @endempty accept="image/*"
+                                class="form-control" name="thumbnail_video">
                             <small class="text-red">Ukuran Rekomendasi 570x314</small>
                         </div>
                         @isset($beranda)
-                            <img src="{{ asset('uploads/' .  $beranda->thumbnail_video) }}" class="img-thumbnail" alt="">
+                            <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" class="img-thumbnail"
+                                alt="">
                         @endisset
                         <div class="text-end">
-                            <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>

@@ -23,8 +23,11 @@ class BerandaController extends Controller
     }
     public function index()
     {
-        $berandas = Beranda::all();
-        return view('backend.beranda.index', compact('berandas'));
+        $beranda = Beranda::all()->first();
+        if ($beranda) {
+            return view('backend.beranda.create', compact('beranda'));
+        }
+        return view('backend.beranda.create');
     }
 
     /**
