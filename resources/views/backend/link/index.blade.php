@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>Nama</th>
                                     <th>URL</th>
+                                    <th>Whatsapp</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -33,7 +34,13 @@
                                 @foreach ($links as $link)
                                     <tr>
                                         <td>{{ $link->name }}</td>
-                                        <td>{{ $link->url }}</td>
+                                        <td>
+                                            <a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ $link->whatsapp_url }}"
+                                                target="_blank">{{ $link->whatsapp_url }}</a>
+                                        </td>4
                                         <td>
                                             <img src="{{ asset('uploads/' . $link->image) }}" style="height: 100px"
                                                 class="img-thumbnail" alt="">

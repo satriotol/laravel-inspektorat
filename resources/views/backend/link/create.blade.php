@@ -35,6 +35,11 @@
                                 value="{{ isset($link) ? $link->url : @old('url') }}" name="url">
                         </div>
                         <div class="form-group">
+                            <label>Whatsapp Url</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($link) ? $link->whatsapp_url : @old('whatsapp_url') }}" name="whatsapp_url">
+                        </div>
+                        <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea name="description" class="form-control" id="" cols="30" rows="10">{{ isset($link) ? $link->description : @old('description') }}</textarea>
                         </div>

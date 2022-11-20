@@ -10,7 +10,7 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url', 'image', 'description'];
+    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url'];
 
     public function deleteFile()
     {
@@ -20,5 +20,10 @@ class Link extends Model
     public static function getOnlyLink()
     {
         return Link::where('image', null)->get();
+    }
+
+    public static function getLayananLinks()
+    {
+        return Link::where('image', '!=', 2)->get();
     }
 }
