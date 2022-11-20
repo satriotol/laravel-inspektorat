@@ -53,14 +53,14 @@ class IndexController extends Controller
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
         $recentBeritas = Berita::getLatestBeritas(3, null, '');
-        $beritas = Berita::getLatestBeritas(5, null, $beritaCategory->id);
+        $beritas = Berita::getLatestBeritas(6, null, $beritaCategory->id);
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas', 'beritaCategory'));
     }
 
     public function kegiatan()
     {
         $beritaCategories = BeritaCategory::getKategoriCategories();
-        $recentBeritas = Berita::getLatestBeritas(3, 1, '');
+        $recentBeritas = Berita::getLatestBeritas(6, 1, '');
         $beritas = Berita::getLatestBeritas(5, 1, '');
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }

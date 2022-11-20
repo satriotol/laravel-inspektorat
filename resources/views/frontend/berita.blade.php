@@ -27,7 +27,6 @@
                                     <div class="img-holder">
                                         <img src="{{ asset('uploads/' . $berita->image) }}"
                                             style="height: 300px; object-fit:cover">
-
                                         <div class="overlay-style-one">
                                             <div class="box">
                                                 <div class="content">
