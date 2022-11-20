@@ -28,7 +28,7 @@
         .breadcrumb-area {
             background: linear-gradient(0deg, rgba(185, 185, 185, 0.3), rgba(255, 255, 255, 0.3)), url('{{ asset('uploads/' . $master->banner) }}');
             background-repeat: no-repeat;
-            background-size: 1920px 340px;
+            background-size: 100% 100%;
         }
     </style>
 

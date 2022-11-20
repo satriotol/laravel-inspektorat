@@ -16,67 +16,61 @@
         </div>
     </section>
     <!--End breadcrumb area-->
-    <!--Start blog area-->
-    <section id="blog-area" class="blog-with-sidebar-area">
+    <section class="blog-grid-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-                    <div class="blog-post">
+                    <div class="row">
                         @foreach ($beritas as $berita)
-                            <div class="single-blog-post">
-                                <div class="img-holder">
-                                    <img src="{{ asset('uploads/' . $berita->image) }}"
-                                        style="height: 300px; object-fit:cover" alt="Awesome Image">
-                                    <div class="published-date" style="width: 170px;">
-                                        <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
-                                    </div>
-                                    <div class="overlay-style-one">
-                                        <div class="box">
-                                            <div class="content">
-                                                @if (Route::is('berita', 'beritaCategory'))
-                                                    <a href="{{ route('detailBerita', $berita->id) }}"><i class="fa fa-link"
-                                                            aria-hidden="true"></i></a>
-                                                @else
-                                                    <a href="{{ route('detailKegiatan', $berita->id) }}"><i
-                                                            class="fa fa-link" aria-hidden="true"></i></a>
-                                                @endif
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="single-blog-post">
+                                    <div class="img-holder">
+                                        <img src="{{ asset('uploads/' . $berita->image) }}"
+                                            style="height: 300px; object-fit:cover">
 
+                                        <div class="overlay-style-one">
+                                            <div class="box">
+                                                <div class="content">
+                                                    @if (Route::is('berita', 'beritaCategory'))
+                                                        <a href="{{ route('detailBerita', $berita->id) }}"><i
+                                                                class="fa fa-link" aria-hidden="true"></i></a>
+                                                    @else
+                                                        <a href="{{ route('detailKegiatan', $berita->id) }}"><i
+                                                                class="fa fa-link" aria-hidden="true"></i></a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-holder">
-                                    @if (Route::is('berita', 'beritaCategory'))
-                                        <a href="{{ route('detailBerita', $berita->id) }}">
-                                            <h3 class="blog-title">{{ $berita->title }}</h3>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('detailKegiatan', $berita->id) }}">
-                                            <h3 class="blog-title">{{ $berita->title }}</h3>
-                                        </a>
-                                    @endif
-
-                                    <div class="text">
-                                        {{-- {!! Str::limit($berita->description, 100) !!} --}}
-                                    </div>
-                                    <div class="meta-info clearfix">
-                                        <div class="left pull-left">
-                                            <ul class="post-info">
-                                                <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
-                                                <li><a
-                                                        href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
-                                                </li>
-                                            </ul>
+                                    <div class="text-holder">
+                                        @if (Route::is('berita', 'beritaCategory'))
+                                            <a href="{{ route('detailBerita', $berita->id) }}">
+                                                <h3 class="blog-title">{{ $berita->title }}</h3>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('detailKegiatan', $berita->id) }}">
+                                                <h3 class="blog-title">{{ $berita->title }}</h3>
+                                            </a>
+                                        @endif
+                                        <div class="text">
+                                            <small>{{ date('d/m/Y', strtotime($berita->created_at)) }}</small>
                                         </div>
-                                        <div class="right pull-right">
-                                            {{-- <a class="post-share" href="#"><i class="fa fa-share-alt"
-                                                    aria-hidden="true"></i></a> --}}
+                                        <div class="meta-info clearfix">
+                                            <div class="left pull-left">
+                                                <ul class="post-info">
+                                                    <li><a href="#">{{ $berita->user?->name }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="right pull-right">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                        <!--Start post pagination-->
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="post-pagination text-center">

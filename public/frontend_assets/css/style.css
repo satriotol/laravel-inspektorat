@@ -1408,7 +1408,7 @@ select:focus {
 } 
 .single-blog-post .text-holder .blog-title{
     color: #222222;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     margin: 0 0 15px;
     line-height: 28px;
@@ -2894,7 +2894,7 @@ select:focus {
     line-height: 24px;
 }
 #blog-area .single-blog-post .text-holder .blog-title{
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
 }
 

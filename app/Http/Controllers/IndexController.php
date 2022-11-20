@@ -37,7 +37,7 @@ class IndexController extends Controller
     public function berita()
     {
         $beritaCategories = BeritaCategory::getBeritaCategories();
-        $beritas = Berita::getLatestBeritas(5, null, '');
+        $beritas = Berita::getLatestBeritas(6, null, '');
         $recentBeritas = Berita::getLatestBeritas(3, null, '');
         return view('frontend.berita', compact('beritas', 'beritaCategories', 'recentBeritas'));
     }
