@@ -22,8 +22,14 @@ class MasterController extends Controller
     }
     public function index()
     {
-        $masters = Master::all();
-        return view('backend.master.index', compact('masters'));
+        $masters = Master::all()->first();
+        if ($masters) {
+            return view('backend.master.create', compact('masters'));
+        }
+        return view('backend.master.create');
+
+        // $masters = Master::all();
+        // return view('backend.master.index', compact('masters'));
     }
 
     /**

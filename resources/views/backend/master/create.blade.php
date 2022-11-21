@@ -18,50 +18,50 @@
                 <div class="card-body">
                     @include('partials.errors')
                     <form
-                        action="@isset($master) {{ route('master.update', $master->id) }} @endisset @empty($master) {{ route('master.store') }} @endempty"
+                        action="@isset($masters) {{ route('master.update', $masters->id) }} @endisset @empty($masters) {{ route('master.store') }} @endempty"
                         method="POST" enctype="multipart/form-data">
                         @csrf
-                        @isset($master)
+                        @isset($masters)
                             @method('PUT')
                         @endisset
 
                         <div class="form-group">
                             <label>Banner</label>
-                            <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="banner">
+                            <input type="file" @empty($masters) required @endempty accept="image/*" class="form-control" name="banner">
                             <small class="text-red">Ukuran Rekomendasi 1920x340 </small>
                         </div>
-                        @isset($master)
-                            <img src="{{ asset('uploads/' .  $master->banner) }}" class="img-thumbnail" alt="">
+                        @isset($masters)
+                            <img src="{{ asset('uploads/' .  $masters->banner) }}" class="img-thumbnail" alt="">
                         @endisset
 
                         <div class="form-group">
                             <label>Background</label>
-                            <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="background">
+                            <input type="file" @empty($masters) required @endempty accept="image/*" class="form-control" name="background">
                             <small class="text-red">Ukuran Rekomendasi 1920x489</small>
                         </div>
-                        @isset($master)
-                            <img src="{{ asset('uploads/' .  $master->background) }}" class="img-thumbnail" alt="">
+                        @isset($masters)
+                            <img src="{{ asset('uploads/' .  $masters->background) }}" class="img-thumbnail" alt="">
                         @endisset
 
                         <div class="form-group">
                             <label>Logo</label>
-                            <input type="file" @empty($master) required @endempty accept="image/*" class="form-control" name="logo">
+                            <input type="file" @empty($masters) required @endempty accept="image/*" class="form-control" name="logo">
                             <small class="text-red">Ukuran Rekomendasi 260x60</small>
                         </div>
-                        @isset($master)
-                            <img src="{{ asset('uploads/' .  $master->logo) }}" class="img-thumbnail" alt="">
+                        @isset($masters)
+                            <img src="{{ asset('uploads/' .  $masters->logo) }}" class="img-thumbnail" alt="">
                         @endisset
 
                        <div class="form-group">
                             <label>Nomor Telepon</label>
                             <input type="text" class="form-control" required
-                                value="{{ isset($master) ? $master->phone : @old('phone') }}" name="phone">
+                                value="{{ isset($masters) ? $masters->phone : @old('phone') }}" name="phone">
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" required
-                                value="{{ isset($master) ? $master->email : @old('email') }}" name="email">
+                                value="{{ isset($masters) ? $masters->email : @old('email') }}" name="email">
                         </div>
 
                         <div class="text-end">
