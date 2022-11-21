@@ -71,7 +71,8 @@
                                 </li>
                                 <li
                                     class="dropdown {{ current_class(['kegiatan', 'kegiatanCategory', 'detailKegiatan']) }}">
-                                    <a href="{{ route('kegiatan') }}"><i class="fa-solid fa-person-running"></i> Kegiatan</a>
+                                    <a href="{{ route('kegiatan') }}"><i class="fa-solid fa-person-running"></i>
+                                        Kegiatan</a>
                                     <ul>
                                         @foreach ($kegiatans as $kegiatan)
                                             <li><a
@@ -80,7 +81,8 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown {{ current_class(['kebijakan']) }}"><a href="#"><i class="fa-solid fa-scale-balanced"></i> Kebijakan</a>
+                                <li class="dropdown {{ current_class(['kebijakan', 'detailKebijakan']) }}"><a
+                                        href="#"><i class="fa-solid fa-scale-balanced"></i> Kebijakan</a>
                                     <ul>
                                         @foreach ($kebijakanCategories as $kebijakanCategory)
                                             <li><a

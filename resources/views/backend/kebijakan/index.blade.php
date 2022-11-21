@@ -49,7 +49,7 @@
                                                 <a href="{{ route('kebijakan.edit', $kebijakan->id) }}"
                                                     class="btn btn-sm btn-warning">Edit</a>
                                                 <input type="submit" class="btn btn-sm btn-danger" value="Delete"
-                                                    id="">
+                                                    onclick="return confirm('Are you sure?')" id="">
                                             </form>
                                         </td>
                                     </tr>

@@ -40,6 +40,7 @@ Route::get('/kegiatan', [IndexController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/kegiatan/{berita}', [IndexController::class, 'detailKegiatan'])->name('detailKegiatan');
 Route::get('/kegiatan/category/{beritaCategory}', [IndexController::class, 'kegiatanCategory'])->name('kegiatanCategory');
 Route::get('/kebijakan/{kebijakan}', [IndexController::class, 'kebijakan'])->name('kebijakan');
+Route::get('/kebijakan/detailKebijakan/{kebijakan}', [IndexController::class, 'detailKebijakan'])->name('detailKebijakan');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
         return view('backend_layouts.main');

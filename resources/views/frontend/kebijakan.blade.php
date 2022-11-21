@@ -41,7 +41,8 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-info">Detail</a>
+                                            <a href="{{ route('detailKebijakan', $kebijakan->id) }}"
+                                                class="btn btn-info">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach

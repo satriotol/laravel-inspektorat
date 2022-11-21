@@ -87,4 +87,8 @@ class IndexController extends Controller
         $request->flash();
         return view('frontend.kebijakan', compact('kebijakans', 'kebijakancategories'));
     }
+    public function detailKebijakan(Request $request, Kebijakan $kebijakan)
+    {
+        return view('frontend.detailKebijakan', compact('kebijakan'));
+    }
 }
