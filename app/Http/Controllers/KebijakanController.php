@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
+use App\Models\KebijakanTema;
+use App\Models\Tema;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KebijakanController extends Controller
 {
@@ -34,7 +38,8 @@ class KebijakanController extends Controller
     public function create()
     {
         $kebijakan_categories = KebijakanCategory::all();
-        return view('backend.kebijakan.create', compact('kebijakan_categories'));
+        $temas = Tema::all();
+        return view('backend.kebijakan.create', compact('kebijakan_categories', 'temas'));
     }
 
     /**
@@ -46,19 +51,30 @@ class KebijakanController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'                  => 'nullable',
+            'name'                  => 'required',
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
+            'tema_id'               => 'nullable',
         ]);
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $name = $file->getClientOriginalName();
-            $file_name = date('mdYHis') . '-' . $name;
-            $file = $file->storeAs('file', $file_name, 'public_uploads');
-            $data['file'] = $file;
-        };
-        Kebijakan::create($data);
+        DB::beginTransaction();
+        try {
+            $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFile) {
+                $data['file'] = $temporaryFile->filename;
+                $temporaryFile->delete();
+            };
+            $kebijakan = Kebijakan::create($data);
+            foreach ($request->tema_id as $tema_id) {
+                KebijakanTema::create([
+                    'kebijakan_id' => $kebijakan->id,
+                    'tema_id' => $tema_id
+                ]);
+            }
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
         session()->flash('success');
         return redirect(route('kebijakan.index'));
     }
@@ -83,7 +99,8 @@ class KebijakanController extends Controller
     public function edit(Kebijakan $kebijakan)
     {
         $kebijakan_categories = KebijakanCategory::all();
-        return view('backend.kebijakan.create', compact('kebijakan', 'kebijakan_categories'));
+        $temas = Tema::all();
+        return view('backend.kebijakan.create', compact('kebijakan', 'kebijakan_categories', 'temas'));
     }
 
     /**
@@ -96,19 +113,24 @@ class KebijakanController extends Controller
     public function update(Request $request, Kebijakan $kebijakan)
     {
         $data = $request->validate([
-            'name'                  => 'nullable',
+            'name'                  => 'required',
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
         ]);
-        if ($request->hasFile('file')) {
-            $kebijakan->deleteFile();
-            $file = $request->file('file');
-            $name = $file->getClientOriginalName();
-            $file_name = date('mdYHis') . '-' . $name;
-            $file = $file->storeAs('file', $file_name, 'public_uploads');
-            $data['file'] = $file;
-        };
-        $kebijakan->update($data);
+        DB::beginTransaction();
+        try {
+            $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFile) {
+                $data['file'] = $temporaryFile->filename;
+                $kebijakan->deleteFile();
+                $temporaryFile->delete();
+            };
+            $kebijakan->update($data);
+            $kebijakan->temas()->sync($request->tema_id);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
         session()->flash('success');
         return redirect(route('kebijakan.index'));
     }

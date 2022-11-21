@@ -19,18 +19,22 @@ class Kebijakan extends Model
     {
         Storage::disk('public_uploads')->delete($this->attributes['file']);
     }
-    public static function getFrontenddata($kebijakancategory, $paramaters=Null)
+    public function temas()
     {
-        if ($paramaters != '')
-        {
-            $kebijakans = Kebijakan::where('name','LIKE',"%{$paramaters}%")
-            ->where('kebijakan_category_id', $kebijakancategory);
-        }
-        else
-        {
+        return $this->belongsToMany(Tema::class, KebijakanTema::class);
+    }
+    public function kebijakan_temas()
+    {
+        return $this->hasMany(KebijakanTema::class, 'kebijakan_id', 'id');
+    }
+    public static function getFrontenddata($kebijakancategory, $paramaters = Null)
+    {
+        if ($paramaters != '') {
+            $kebijakans = Kebijakan::where('name', 'LIKE', "%{$paramaters}%")
+                ->where('kebijakan_category_id', $kebijakancategory);
+        } else {
             $kebijakans = Kebijakan::where('kebijakan_category_id', $kebijakancategory)->orderByDesc('id');
         }
         return $kebijakans;
-
     }
 }
