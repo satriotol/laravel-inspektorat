@@ -56,6 +56,9 @@
                             <ul class="navigation clearfix">
                                 <li class="home {{ current_class(['beranda']) }}"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
+                                <li class="">
+                                    <a href="#">PPID</a>
+                                </li>
                                 <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">
                                     <a href="{{ route('berita') }}">Berita</a>
                                     <ul>

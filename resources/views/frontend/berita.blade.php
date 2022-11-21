@@ -58,8 +58,16 @@
                                             <div class="left pull-left">
                                                 <ul class="post-info">
                                                     <li><a href="#">{{ $berita->user?->name }}</a></li>
-                                                    <li><a
-                                                            href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                    <li>
+                                                        @if (Route::is('berita', 'beritaCategory'))
+                                                            <a
+                                                                href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                        @else
+                                                            <a
+                                                                href="{{ route('kegiatanCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                                        @endif
+
+
                                                     </li>
                                                 </ul>
                                             </div>

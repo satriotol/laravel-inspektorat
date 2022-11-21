@@ -24,7 +24,8 @@
                         <table class="cart-table">
                             <thead class="cart-header">
                                 <tr>
-                                    <th class="product-column">Nama</th>
+                                    <th>Nama</th>
+                                    <th>Tema</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -33,9 +34,14 @@
                                     <tr>
                                         <td>{{ $kebijakan->name }}</td>
                                         <td>
-                                            <a href="#"
-                                                onclick="window.open('{{ asset('uploads/' . $kebijakan->file) }}','_blank')"
-                                                class="btn btn-sm btn-info">Detail</a>
+                                            @foreach ($kebijakan->temas as $tema)
+                                                <div class="badge bg-clr1">
+                                                    {{ $tema->name }}
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-info">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach
