@@ -177,7 +177,7 @@
         }
     </script> --}}
     <script>
-        const inputElementFile = document.querySelector('input[name="file"]');
+        const inputElementFile = document.querySelector('.upload-file');
         if (inputElementFile) {
             FilePond.registerPlugin(
                 FilePondPluginFileValidateType,

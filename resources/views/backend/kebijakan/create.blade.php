@@ -59,8 +59,46 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Entitas</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->entitas : @old('entitas') }}" name="entitas">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->nomor : @old('nomor') }}" name="nomor">
+                        </div>
+                        <div class="form-group">
+                            <label>Sumber</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->sumber : @old('sumber') }}" name="sumber">
+                        </div>
+                        <div class="form-group">
+                            <label>Tahun</label>
+                            <input type="number" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->tahun : @old('tahun') }}" name="tahun">
+                        </div>
+                        <div class="form-group">
+                            <label>Ditetapkan Tanggal</label>
+                            <input type="date" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->ditetapkan_tanggal : @old('ditetapkan_tanggal') }}"
+                                name="ditetapkan_tanggal">
+                        </div>
+                        <div class="form-group">
+                            <label>Diundangkan Tanggal</label>
+                            <input type="date" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->diundangkan_tanggal : @old('diundangkan_tanggal') }}"
+                                name="diundangkan_tanggal">
+                        </div>
+                        <div class="form-group">
+                            <label>Berlaku Tanggal</label>
+                            <input type="date" class="form-control"
+                                value="{{ isset($kebijakan) ? $kebijakan->berlaku_tanggal : @old('berlaku_tanggal') }}"
+                                name="berlaku_tanggal">
+                        </div>
+                        <div class="form-group">
                             <label>File</label>
-                            <input type="file" accept="application/pdf" class="form-control"
+                            <input type="file" accept="application/pdf" class="form-control upload-file"
                                 @empty($kebijakan)
                             required
                             @endempty

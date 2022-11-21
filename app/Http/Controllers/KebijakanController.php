@@ -55,8 +55,14 @@ class KebijakanController extends Controller
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
             'tema_id'               => 'nullable',
+            'entitas' => 'nullable',
+            'nomor' => 'nullable',
+            'tahun' => 'nullable',
+            'ditetapkan_tanggal' => 'nullable',
+            'diundangkan_tanggal' => 'nullable',
+            'berlaku_tanggal' => 'nullable',
+            'sumber' => 'nullable',
         ]);
-
         DB::beginTransaction();
         try {
             $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
@@ -73,6 +79,7 @@ class KebijakanController extends Controller
             }
             DB::commit();
         } catch (\Throwable $th) {
+            return $th;
             DB::rollBack();
         }
         session()->flash('success');
@@ -116,6 +123,14 @@ class KebijakanController extends Controller
             'name'                  => 'required',
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
+            'tema_id'               => 'nullable',
+            'entitas' => 'nullable',
+            'nomor' => 'nullable',
+            'tahun' => 'nullable',
+            'ditetapkan_tanggal' => 'nullable',
+            'diundangkan_tanggal' => 'nullable',
+            'berlaku_tanggal' => 'nullable',
+            'sumber' => 'nullable',
         ]);
         DB::beginTransaction();
         try {

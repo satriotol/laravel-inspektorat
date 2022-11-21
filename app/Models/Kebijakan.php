@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class Kebijakan extends Model
 {
     use HasFactory;
-    protected $fillable = ['kebijakan_category_id', 'name', 'file'];
+    protected $fillable = ['kebijakan_category_id', 'name', 'file', 'entitas', 'nomor', 'tahun', 'ditetapkan_tanggal', 'diundangkan_tanggal', 'berlaku_tanggal', 'sumber'];
 
     public function kebijakan_category()
     {
