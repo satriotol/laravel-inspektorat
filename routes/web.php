@@ -14,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         return view('backend_layouts.main');
     })->name('dashboard');
     Route::resource('kebijakan', KebijakanController::class);
+    Route::resource('tema', TemaController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('beranda', BerandaController::class);

@@ -71,6 +71,13 @@
                                 Kebijakan</span></a>
                     </li>
                 @endcan
+                @can('tema-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['tema.*']) }}" href="{{ route('tema.index') }}"><i
+                                class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Tema
+                                Kategori</span></a>
+                    </li>
+                @endcan
                 @canany(['slider-index', 'link-index', 'beranda-index', 'master-index'])
                     <li class="sub-category">
                         <h3>Website</h3>
