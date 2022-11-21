@@ -77,7 +77,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown" {{ current_class(['kebijakan']) }}><a href="#">Kebijakan</a>
+                                <li class="dropdown {{ current_class(['kebijakan']) }}"><a href="#">Kebijakan</a>
                                     <ul>
                                         @foreach ($kebijakanCategories as $kebijakanCategory)
                                             <li><a

@@ -4,11 +4,7 @@
     <section class="breadcrumb-area">
         <div class="container text-center">
             <h1>
-                @if (Route::is('kebijakan', 'kebijakanCategory'))
-                    Kebijakan
-                @else
-                    Kegiatan
-                @endif
+                Kebijakan
                 @isset($kebijakancategories)
                     / {{ $kebijakancategories->name }}
                 @endisset
@@ -16,18 +12,20 @@
         </div>
     </section>
     <!--End breadcrumb area-->
-    <!--Start blog area-->
-    <section id="project-area" class="latest-project-area grid-with-text">
+    <section class="checkout-area" style="padding-top: 0">
         <div class="container">
-            <div class="row">
+            <div class="row bottom">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-                    <h3 class="page-title">{{ $kebijakancategories->name }}</h3>
-                    <div class="table-responsive">
-                        <table id="example2" class="table text-nowrap border-bottom">
-                            <thead>
+                    <div class="table">
+                        <div class="sec-title">
+                            <h2>{{ $kebijakancategories->name }}</h2>
+                            <span class="border"></span>
+                        </div>
+                        <table class="cart-table">
+                            <thead class="cart-header">
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>File</th>
+                                    <th class="product-column">Nama</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,7 +35,7 @@
                                         <td>
                                             <a href="#"
                                                 onclick="window.open('{{ asset('uploads/' . $kebijakan->file) }}','_blank')"
-                                                class="btn btn-sm btn-info">View</a>
+                                                class="btn btn-sm btn-info">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -45,30 +43,20 @@
                         </table>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12">
                     <div class="sidebar-wrapper">
                         <!--Start single sidebar-->
                         <div class="single-sidebar">
                             <form class="search-form" action="">
-                                <input placeholder="Search..." type="text" name="search">
+                                <input placeholder="Cari..." value="{{ @old('search') }}" type="text" name="search">
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
 
-
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="post-pagination text-center">
-                        {{ $kebijakans->links() }}
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </section>
-    <!--End blog area-->
 @endsection
