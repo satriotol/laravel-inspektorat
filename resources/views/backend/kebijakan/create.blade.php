@@ -29,28 +29,34 @@
                             <input type="text" class="form-control" required
                                 value="{{ isset($kebijakan) ? $kebijakan->name : @old('name') }}" name="name">
                         </div>
-                        <div class="form-group">
-                            <label>Kategori</label>
-                            <select name="kebijakan_category_id" required class="form-control select2-show-search">
-                                <option value="">Pilih Kategori</option>
-                                @foreach ($kebijakan_categories as $kebijakan_category)
-                                    <option
-                                        @isset($kebijakan) @selected($kebijakan_category->id == $kebijakan->kebijakan_category_id) @endisset
-                                        value="{{ $kebijakan_category->id }}">
-                                        {{ $kebijakan_category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Tema</label>
-                            <select name="tema_id[]" required class="form-control select2-show-search" multiple>
-                                @foreach ($temas as $tema)
-                                    <option
-                                        @isset($kebijakan) @foreach ($kebijakan->kebijakan_temas as $kebijakan_tema) @selected($tema->id == $kebijakan_tema->tema_id) @endforeach @endisset
-                                        value="{{ $tema->id }}">
-                                        {{ $tema->name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kategori</label>
+                                    <select name="kebijakan_category_id" required class="form-control select2-show-search">
+                                        <option value="">Pilih Kategori</option>
+                                        @foreach ($kebijakan_categories as $kebijakan_category)
+                                            <option
+                                                @isset($kebijakan) @selected($kebijakan_category->id == $kebijakan->kebijakan_category_id) @endisset
+                                                value="{{ $kebijakan_category->id }}">
+                                                {{ $kebijakan_category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tema</label>
+                                    <select name="tema_id[]" required class="form-control select2-show-search" multiple>
+                                        @foreach ($temas as $tema)
+                                            <option
+                                                @isset($kebijakan) @foreach ($kebijakan->kebijakan_temas as $kebijakan_tema) @selected($tema->id == $kebijakan_tema->tema_id) @endforeach @endisset
+                                                value="{{ $tema->id }}">
+                                                {{ $tema->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>File</label>
