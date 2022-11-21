@@ -24,7 +24,7 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Kategori Kebijakan</th>
+                                    <th>Kategori Kebijakan & Tema</th>
                                     <th>File</th>
                                     <th>Action</th>
                                 </tr>
@@ -33,7 +33,10 @@
                                 @foreach ($kebijakans as $kebijakan)
                                     <tr>
                                         <td>{{ $kebijakan->name }}</td>
-                                        <td>{{ $kebijakan->kebijakan_category->name }}</td>
+                                        <td>{{ $kebijakan->kebijakan_category->name }} | @foreach ($kebijakan->temas as $tema)
+                                                <div class="badge bg-primary">{{ $tema->name }}</div>
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <a href="#"
                                                 onclick="window.open('{{ asset('uploads/' . $kebijakan->file) }}','_blank')"
