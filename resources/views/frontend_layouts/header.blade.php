@@ -56,8 +56,14 @@
                             <ul class="navigation clearfix">
                                 <li class="home {{ current_class(['beranda']) }}"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
-                                <li class="">
+                                <li class="dropdown {{ current_class(['']) }}">
                                     <a href="#"><i class="fa-solid fa-circle-question"></i> PPID</a>
+                                    <ul>
+                                        <li><a href="">Profil PPID</a></li>
+                                        <li><a href="">Dasar Hukum</a></li>
+                                        <li><a href="">Layanan Informasi</a></li>
+                                        <li><a href="">Informasi Publik</a></li>
+                                    </ul>
                                 </li>
                                 <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">
                                     <a href="{{ route('berita') }}"><i class="far fa-newspaper"></i> Berita</a>
