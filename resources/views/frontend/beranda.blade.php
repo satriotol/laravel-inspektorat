@@ -122,44 +122,6 @@
             </div>
         </div>
     </section>
-
-    <!--Start call to action area-->
-    <section class="call-to-action-area">
-        <div class="container">
-            <div class="sec-title text-center">
-                <h1>Layanan Pengaduan <br>
-                    <span class="text-red">Inspektorat Kota Semarang</span>
-                </h1>
-                <span class="border"></span>
-            </div>
-            <div class="row">
-                @foreach ($layananLinks as $layananLink)
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="single-item hvr-shadow text-center">
-                            <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $layananLink->image) }}" style="background-color: black"
-                                    alt="Awesome Image">
-                                <div class="overlay-style-one">
-                                    <div class="box">
-                                        <div class="content">
-                                            <a href="{{ $layananLink->url }}" target="_blank"><i class="fa fa-link"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>{{ $layananLink->name }}</h3>
-                                <p>{{ $layananLink->description }}</p>
-                                <a href="{{ $layananLink->whatsapp_url }}" target="_blank" class="btn btn-success"><i
-                                        class="fa-brands fa-whatsapp"></i> Lapor Sekarang</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
     <section class="video-gallery-area">
         <div class="container">
             <div class="row">
