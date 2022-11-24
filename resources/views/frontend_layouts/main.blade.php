@@ -33,6 +33,24 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
+
+        .row-flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .text-red {
+            color: #f60035;
+            font-weight: bold;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .h-100 {
+            height: 100%;
+        }
     </style>
 
 </head>

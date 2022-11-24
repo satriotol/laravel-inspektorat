@@ -31,7 +31,7 @@ class IndexController extends Controller
         $sliders = Slider::all();
         $beranda = Beranda::first();
         $layananLinks = Link::where('image', '!=', 2)->get();
-        $beritas = Berita::getLatestBeritas(3, 2, '');
+        $beritas = Berita::getLatestBeritas(6, 2, '');
         return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
     }
     public function berita(Request $request)

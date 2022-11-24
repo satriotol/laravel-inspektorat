@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-                    <div class="row">
+                    <div class="row row-flex">
                         @foreach ($beritas as $berita)
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="single-blog-post">
@@ -44,7 +44,7 @@
                                     <div class="text-holder">
                                         @if (Route::is('berita', 'beritaCategory'))
                                             <a href="{{ route('detailBerita', $berita->id) }}">
-                                                <h3 class="blog-title">{{ Str::limit($berita->title, 40, '...') }}</h3>
+                                                <h3 class="blog-title">{{ $berita->title }}</h3>
                                             </a>
                                         @else
                                             <a href="{{ route('detailKegiatan', $berita->id) }}">

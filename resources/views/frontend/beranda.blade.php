@@ -67,7 +67,8 @@
                 @foreach ($sliders as $slider)
                     <li data-transition="slidingoverlayleft">
                         <img src="{{ asset('uploads/' . $slider->image) }}" alt="" width="1920" height="550"
-                            data-bgposition="top center" data-bgfit="100% 100%" data-bgrepeat="no-repeat" data-bgparallax="1">
+                            data-bgposition="top center" data-bgfit="100% 100%" data-bgrepeat="no-repeat"
+                            data-bgparallax="1">
 
                         <div class="tp-caption  tp-resizeme" data-x="left" data-hoffset="0" data-y="top"
                             data-voffset="130" data-transform_idle="o:1;"
@@ -121,19 +122,49 @@
             </div>
         </div>
     </section>
+
+    <!--Start call to action area-->
+    <section class="call-to-action-area">
+        <div class="container">
+            <div class="sec-title text-center">
+                <h1>Layanan Pengaduan <br>
+                    <span class="text-red">Inspektorat Kota Semarang</span>
+                </h1>
+                <span class="border"></span>
+            </div>
+            <div class="row">
+                @foreach ($layananLinks as $layananLink)
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-item hvr-shadow text-center">
+                            <div class="img-holder">
+                                <img src="{{ asset('uploads/' . $layananLink->image) }}" style="background-color: black"
+                                    alt="Awesome Image">
+                                <div class="overlay-style-one">
+                                    <div class="box">
+                                        <div class="content">
+                                            <a href="{{ $layananLink->url }}" target="_blank"><i class="fa fa-link"
+                                                    aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3>{{ $layananLink->name }}</h3>
+                                <p>{{ $layananLink->description }}</p>
+                                <a href="{{ $layananLink->whatsapp_url }}" target="_blank" class="btn btn-success"><i
+                                        class="fa-brands fa-whatsapp"></i> Lapor Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <section class="video-gallery-area">
         <div class="container">
             <div class="row">
-                {{-- <div class="col-md-6">
-                    <div class="text-holder">
-                        <h3>Sambutan Inspektorat</h3>
-                        <div class="text">
-                            <p>{{ $beranda->sambutan }}</p>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-md-6"> --}}
-                    <div class="video-holder" style="height: 3%; width:50%;  margin-left: auto; margin-right: auto;" >
+                <div class="col-md-6">
+                    <div class="video-holder" style="width:100%;  margin-left: auto; margin-right: auto;">
                         <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" alt="Awesome Video Gallery">
                         <div class="overlay-gallery">
                             <div class="icon-holder">
@@ -145,18 +176,27 @@
                             </div>
                         </div>
                     </div>
-                {{-- </div> --}}
+                </div>
+                <div class="col-md-6">
+                    <div class="text-holder">
+                        <h3>Sambutan Inspektorat</h3>
+                        <div class="text">
+                            <p>{{ $beranda->sambutan }}</p>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </section>
-    <section class="latest-blog-area">
+    <section class="smart-approach-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h1>Berita & Kegiatan Terkini</h1>
+                <h1>Berita & Kegiatan <span class="text-red">Terkini</span></h1>
                 <span class="border"></span>
             </div>
-            <div class="row">
+
+            <div class="row row-flex">
                 @foreach ($beritas as $berita)
                     <div class="col-md-4">
                         <div class="single-blog-post">
@@ -177,7 +217,7 @@
                             </div>
                             <div class="text-holder">
                                 <a href="{{ route('detailBerita', $berita->id) }}">
-                                    <h3 class="blog-title">{{ $berita->title }}</h3>
+                                    <h3 class="blog-title">{{ Str::limit($berita->title, 100, '...') }}</h3>
                                 </a>
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">

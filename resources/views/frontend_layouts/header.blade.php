@@ -1,14 +1,14 @@
 <header class="header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="logo">
                     <a href="{{ route('beranda') }}">
                         <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Logo">
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="header-contact-info">
                     <ul>
                         <li>
