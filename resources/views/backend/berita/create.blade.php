@@ -93,6 +93,45 @@
                         @endisset
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">File Pendukung</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" name="nameFile">
+                        </div>
+                        <div class="form-group">
+                            <label>File</label>
+                            <input type="file" class="form-control upload-file" name="file">
+                        </div>
+                        @isset($beritum)
+                            <table id="example2" class="table table-bordered text-nowrap border-bottom">
+                                <thead>
+                                    <th>Name</th>
+                                    <th>File</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($beritum->berita_files as $berita_file)
+                                        <tr>
+                                            <td>{{ $berita_file->name }}</td>
+                                            <td><a href="{{ asset('uploads/' . $berita_file->file) }}" target="_blank"
+                                                    class="btn btn-success">Buka
+                                                    File</a></td>
+                                            <td>
+                                                <a href="{{ route('beritaFile.destroy', $berita_file->id) }}"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure?')">Hapus</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endisset
+                    </div>
+                </div>
                 <div class="text-end">
                     <a class="btn btn-warning" href="{{ route('berita.index') }}">Kembali</a>
                     <button class="btn btn-primary" type="submit">Submit</button>

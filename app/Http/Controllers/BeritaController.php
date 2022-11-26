@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\BeritaCategory;
+use App\Models\BeritaFile;
 use App\Models\BeritaGallery;
 use App\Models\TemporaryFile;
 use App\Models\User;
@@ -70,8 +71,17 @@ class BeritaController extends Controller
                 $temporaryFile->delete();
             };
             $berita = Berita::create($data);
+            $temporaryFilePendukung = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFilePendukung) {
+                $data['file'] = $temporaryFilePendukung->filename;
+                BeritaFile::create([
+                    'berita_id' => $berita->id,
+                    'name' => 'test',
+                    'file' => $data['file'],
+                ]);
+                $temporaryFile->delete();
+            };
             if ($request->file('images')) {
-                # code...
                 foreach ($request->file('images') as $imageFile) {
                     $image = $imageFile;
                     $name = $image->getClientOriginalName();
@@ -150,6 +160,16 @@ class BeritaController extends Controller
                 }
                 $temporaryFile->delete();
             };
+            $temporaryFilePendukung = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFilePendukung) {
+                $data['file'] = $temporaryFilePendukung->filename;
+                BeritaFile::create([
+                    'berita_id' => $beritum->id,
+                    'name' => $request->nameFile,
+                    'file' => $data['file'],
+                ]);
+                $temporaryFile->delete();
+            };
             if ($request->file('images')) {
                 foreach ($request->file('images') as $imageFile) {
                     $image = $imageFile;
@@ -168,7 +188,7 @@ class BeritaController extends Controller
             DB::rollBack();
         }
         session()->flash('success');
-        return redirect(route('berita.index'));
+        return back();
     }
 
     /**
