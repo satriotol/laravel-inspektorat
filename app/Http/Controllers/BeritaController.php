@@ -155,9 +155,6 @@ class BeritaController extends Controller
             $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
             if ($temporaryFile) {
                 $data['image'] = $temporaryFile->filename;
-                if ($beritum->image) {
-                    $beritum->deleteFile();
-                }
                 $temporaryFile->delete();
             };
             $temporaryFilePendukung = TemporaryFile::where('filename', $request->file)->first();

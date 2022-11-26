@@ -48,14 +48,17 @@
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
-                            <input type="file" accept="image/*" class="form-control" name="image">
+                            <input type="file" accept="image/*" class="form-control upload-image"
+                                @empty($beritum)
+                                required
+                                @endempty
+                                name="image">
                         </div>
 
                         @isset($beritum)
                             <img src="{{ asset('uploads/' . $beritum->image) }}" style="height: 100px" class="img-thumbnail"
                                 alt="">
                         @endisset
-
 
                     </div>
                 </div>

@@ -140,59 +140,24 @@
 
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
     <script>
         const inputElement = document.querySelector('input[name="image"]');
-        if (inputElement) {
-            FilePond.registerPlugin(
-                FilePondPluginFileValidateType,
-            );
-            const pond = FilePond.create(inputElement);
-            FilePond.setOptions({
-                server: {
-                    process: '{{ route('upload.storeImage') }}',
-                    revert: '{{ route('upload.revert') }}',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                },
-            });
-        }
-    </script>
-    {{-- <script>
-        const inputElementImages = document.querySelector('input[name="images[]"]');
-        if (inputElementImages) {
-            FilePond.registerPlugin(
-                FilePondPluginFileValidateType,
-            );
-            const pond = FilePond.create(inputElementImages);
-            FilePond.setOptions({
-                server: {
-                    process: '{{ route('upload.storeImage') }}',
-                    revert: '{{ route('upload.revert') }}',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                },
-            });
-        }
-    </script> --}}
-    <script>
         const inputElementFile = document.querySelector('.upload-file');
-        if (inputElementFile) {
-            FilePond.registerPlugin(
-                FilePondPluginFileValidateType,
-            );
-            const pond2 = FilePond.create(inputElementFile);
-            FilePond.setOptions({
-                server: {
-                    process: '{{ route('upload.storeFile') }}',
-                    revert: '{{ route('upload.revert') }}',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                },
-            });
-        }
+        FilePond.registerPlugin(
+            FilePondPluginFileValidateType,
+        );
+        const pond = FilePond.create(inputElement);
+        const pond2 = FilePond.create(inputElementFile);
+        FilePond.setOptions({
+            server: {
+                process: '{{ route('upload.storeImage') }}',
+                revert: '{{ route('upload.revert') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            },
+        });
     </script>
     @stack('custom-scripts')
 </body>

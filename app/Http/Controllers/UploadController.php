@@ -10,7 +10,8 @@ class UploadController extends Controller
     public function storeImage(Request $request)
     {
         $request->validate([
-            'image' => 'image'
+            'image' => 'image',
+            'file' => 'file'
         ]);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -22,6 +23,17 @@ class UploadController extends Controller
                 'filename' => $image
             ]);
             return $image;
+        };
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file_name = date('mdYHis') . '-' . $name;
+            $file = $file->storeAs('file', $file_name, 'public_uploads');
+
+            TemporaryFile::create([
+                'filename' => $file
+            ]);
+            return $file;
         };
         return '';
     }
