@@ -86,7 +86,8 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <input id="captcha" type="text" class="form-control"
-                                                placeholder="Enter Captcha" v-model="form.captcha" name="captcha">
+                                                placeholder="Enter Captcha" v-on:keyup.enter="login"
+                                                v-model="form.captcha" name="captcha">
                                         </div>
                                         <div class="container-login100-form-btn">
                                             <button type="submit" class="login100-form-btn btn-primary"
