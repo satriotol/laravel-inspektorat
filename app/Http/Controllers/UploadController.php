@@ -11,8 +11,20 @@ class UploadController extends Controller
     {
         $request->validate([
             'image' => 'image',
-            'file' => 'file'
+            'file' => 'file',
+            'logo' => 'image'
         ]);
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $name = $logo->getClientOriginalName();
+            $logo_name = date('mdYHis') . '-' . $name;
+            $logo = $logo->storeAs('logo', $logo_name, 'public_uploads');
+
+            TemporaryFile::create([
+                'filename' => $logo
+            ]);
+            return $logo;
+        };
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = $image->getClientOriginalName();

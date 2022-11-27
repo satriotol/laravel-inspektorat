@@ -48,12 +48,19 @@ class BeritaCategoryController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable',
         ]);
 
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
+        };
+        $temporaryLogo = TemporaryFile::where('filename', $request->logo)->first();
+        if ($temporaryFile) {
+            $data['logo'] = $temporaryLogo->filename;
+            $temporaryLogo->delete();
         };
         BeritaCategory::create($data);
         session()->flash('success');
@@ -95,15 +102,22 @@ class BeritaCategoryController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable',
         ]);
         $data['is_kegiatan'] = $request->is_kegiatan;
-        // var_dump($data['is_kegiatan']);
-        // die();
 
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $beritaCategory->deleteFile();
+            $temporaryFile->delete();
+        };
+
+        $temporaryLogo = TemporaryFile::where('filename', $request->logo)->first();
+        if ($temporaryLogo) {
+            $data['logo'] = $temporaryLogo->filename;
+            $beritaCategory->deleteLogo();
             $temporaryFile->delete();
         };
         $beritaCategory->update($data);

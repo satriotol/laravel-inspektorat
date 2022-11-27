@@ -16,7 +16,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-public/uploads/image/
-public/uploads/file/
+public/uploads/
 vendor.zip
 node_modules.zip
