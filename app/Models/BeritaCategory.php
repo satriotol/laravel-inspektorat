@@ -19,6 +19,10 @@ class BeritaCategory extends Model
     {
         return $this->hasMany(Berita::class, 'berita_category_id', 'id');
     }
+    public function berita_category_galleries()
+    {
+        return $this->hasMany(BeritaCategoryGallery::class, 'berita_category_id', 'id');
+    }
     public static function getBeritaCategories()
     {
         return BeritaCategory::where('is_kegiatan', null)->get();

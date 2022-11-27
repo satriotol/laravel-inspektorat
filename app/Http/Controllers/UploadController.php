@@ -25,6 +25,7 @@ class UploadController extends Controller
             ]);
             return $logo;
         };
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = $image->getClientOriginalName();
@@ -36,24 +37,18 @@ class UploadController extends Controller
             ]);
             return $image;
         };
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $name = $file->getClientOriginalName();
-            $file_name = date('mdYHis') . '-' . $name;
-            $file = $file->storeAs('file', $file_name, 'public_uploads');
+        if ($request->hasFile('images')) {
+            foreach ($request->images as $image) {
+                $name = $image->getClientOriginalName();
+                $image_name = date('mdYHis') . '-' . $name;
+                $image = $image->storeAs('image', $image_name, 'public_uploads');
 
-            TemporaryFile::create([
-                'filename' => $file
-            ]);
-            return $file;
+                TemporaryFile::create([
+                    'filename' => $image
+                ]);
+                return $image;
+            }
         };
-        return '';
-    }
-    public function storeFile(Request $request)
-    {
-        $request->validate([
-            'file' => 'file'
-        ]);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $name = $file->getClientOriginalName();

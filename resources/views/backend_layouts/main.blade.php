@@ -145,12 +145,15 @@
         const inputElement = document.querySelector('input[name="image"]');
         const inputElementFile = document.querySelector('.upload-file');
         const inputElementLogo = document.querySelector('.upload-logo');
+        const inputElementImages = document.querySelector('.upload-images');
+        
         FilePond.registerPlugin(
             FilePondPluginFileValidateType,
         );
         const pond = FilePond.create(inputElement);
         const pond2 = FilePond.create(inputElementFile);
         const pond3 = FilePond.create(inputElementLogo);
+        const pond4 = FilePond.create(inputElementImages);
         FilePond.setOptions({
             server: {
                 process: '{{ route('upload.storeImage') }}',
