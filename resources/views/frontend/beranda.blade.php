@@ -1,66 +1,5 @@
 @extends('frontend_layouts.main')
-@push('css')
-    <style>
-        .ct-socials {
-            position: fixed;
-            top: 25%;
-            right: 0;
-            list-style: none;
-            padding-left: 0;
-            z-index: 10;
-            margin: 0;
-            -webkit-transition: right 0.25s ease-in-out;
-            transition: right 0.25s ease-in-out;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-        }
-
-        .ct-socials li {
-            padding: 0px 0;
-        }
-
-        .ct-socials li a {
-            background: #3f4653;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            color: #fff;
-            width: 100px;
-            height: 54px;
-            -webkit-transition: all 0.15s ease-in-out;
-            transition: all 0.15s ease-in-out;
-            float: right;
-            padding-left: 5px;
-        }
-
-        .ct-socials li a:hover {
-            width: 150px;
-            padding-left: 0;
-            text-decoration: none;
-            background: #f60035;
-        }
-    </style>
-@endpush
 @section('content')
-    <ul class="ct-socials">
-        @foreach ($layananLinks as $layananLink)
-            <li>
-                <a href="{{ $layananLink->whatsapp_url }}" target="_blank"> <img
-                        src="{{ asset('uploads/' . $layananLink->image) }}"></a>
-            </li>
-        @endforeach
-    </ul>
     <section class="rev_slider_wrapper">
         <div id="slider1" class="rev_slider" data-version="5.0">
             <ul>
@@ -101,8 +40,8 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-item hvr-shadow text-center">
                             <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $layananLink->image) }}" style="background-color: black"
-                                    alt="Awesome Image">
+                                <img src="{{ asset('uploads/' . $layananLink->image) }}"
+                                    style="background-color: black; height:100px;object-fit:contain" alt="Awesome Image">
                                 <div class="overlay-style-one">
                                     <div class="box">
                                         <div class="content">
