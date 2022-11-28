@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
 use App\Models\KebijakanTema;
+use App\Models\KebijakanStatus;
 use App\Models\Tema;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
@@ -39,7 +40,8 @@ class KebijakanController extends Controller
     {
         $kebijakan_categories = KebijakanCategory::all();
         $temas = Tema::all();
-        return view('backend.kebijakan.create', compact('kebijakan_categories', 'temas'));
+        $kebijakanStatuses = KebijakanStatus::all();
+        return view('backend.kebijakan.create', compact('kebijakan_categories', 'temas', 'kebijakanStatuses'));
     }
 
     /**
@@ -55,6 +57,7 @@ class KebijakanController extends Controller
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
             'tema_id'               => 'nullable',
+            'kebijakan_status_id'   => 'nullable',
             'entitas' => 'nullable',
             'nomor' => 'nullable',
             'tahun' => 'nullable',
@@ -107,7 +110,8 @@ class KebijakanController extends Controller
     {
         $kebijakan_categories = KebijakanCategory::all();
         $temas = Tema::all();
-        return view('backend.kebijakan.create', compact('kebijakan', 'kebijakan_categories', 'temas'));
+        $kebijakanStatuses = KebijakanStatus::all();
+        return view('backend.kebijakan.create', compact('kebijakan', 'kebijakan_categories', 'temas', 'kebijakanStatuses'));
     }
 
     /**
@@ -124,6 +128,7 @@ class KebijakanController extends Controller
             'kebijakan_category_id' => 'required',
             'file'                  => 'nullable',
             'tema_id'               => 'nullable',
+            'kebijakan_status_id'   => 'nullable',
             'entitas' => 'nullable',
             'nomor' => 'nullable',
             'tahun' => 'nullable',
