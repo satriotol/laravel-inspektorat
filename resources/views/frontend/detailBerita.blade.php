@@ -54,6 +54,20 @@
                         </div>
                         <div class="single-sidebar">
                             <div class="sec-title">
+                                <h3>Materi</h3>
+                                <span class="border"></span>
+                            </div>
+                            <ul class="categories clearfix">
+                                @foreach ($berita->berita_files as $berita_file)
+                                    <li>
+                                        <a href="{{ asset('uploads/' . $berita_file->file) }}"
+                                            target="_blank">{{ $berita_file->name ?? 'Buka Link' }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="single-sidebar">
+                            <div class="sec-title">
                                 <h3>Berita Terbaru</h3>
                                 <span class="border"></span>
                             </div>
@@ -109,32 +123,38 @@
             </div>
         </div>
     </section>
-    @if ($berita->berita_galleries)
+    @isset($berita)
         <section id="project-area" class="project-grid-area" style="padding-top: 0">
             <div class="container">
+                <div class="sec-title">
+                    <h3>Galeri</h3>
+                    <span class="border"></span>
+                </div>
                 <div class="row project-content">
-                    @foreach ($berita->berita_galleries as $berita_gallery)
-                        <div class="col-md-4 single-project-item filter-item {{ $berita_gallery->id }}">
-                            <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $berita_gallery->image) }}" alt="Awesome Image">
-                                <div class="overlay">
-                                    <div class="box">
-                                        <div class="content">
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ asset('uploads/' . $berita_gallery->image) }}"
-                                                        data-rel="prettyPhoto"><i class="fa fa-search-plus"></i></a>
-                                                </li>
-                                            </ul>
+                    <div class="row">
+                        @foreach ($berita->berita_galleries as $berita_gallery)
+                            <div class="col-md-4 single-project-item filter-item {{ $berita_gallery->id }}">
+                                <div class="img-holder">
+                                    <img src="{{ asset('uploads/' . $berita_gallery->image) }}" alt="Awesome Image">
+                                    <div class="overlay">
+                                        <div class="box">
+                                            <div class="content">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ asset('uploads/' . $berita_gallery->image) }}"
+                                                            data-rel="prettyPhoto"><i class="fa fa-search-plus"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </section>
-    @endif
+    @endisset
     <!--End blog area-->
 @endsection
