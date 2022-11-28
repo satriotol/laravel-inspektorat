@@ -96,6 +96,20 @@
                                 value="{{ isset($kebijakan) ? $kebijakan->berlaku_tanggal : @old('berlaku_tanggal') }}"
                                 name="berlaku_tanggal">
                         </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <select name="kebijakan_status_id" required class="form-control select2-show-search">
+                                    <option value="">Pilih Kategori</option>
+                                    @foreach ($kebijakanStatuses as $kebijakanStatus)
+                                        <option
+                                            @isset($kebijakan) @selected($kebijakanStatus->id == $kebijakan->kebijakan_status_id) @endisset
+                                            value="{{ $kebijakanStatus->id }}">
+                                            {{ $kebijakanStatus->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>File</label>
                             <input type="file" accept="application/pdf" class="form-control upload-file"
