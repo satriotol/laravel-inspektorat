@@ -1,15 +1,13 @@
 @extends('frontend_layouts.main')
 @push('head')
-    <meta name="keywords" content="Bapak Walikota Semarang Meninjau Pembangunan Lap Futsal Miroto">
-    <meta name="description"
-        content="Kamis, 02 Januari 2020 memasuki tahun baru , Bapak Walikota Semarang H. Hendrar Prihadi, SE, MM meninjau pelaksanaan proyek pembngunan Lapangan Olah raga yang berada di Lapangan Miroto tepat didepan Kantor Kecamatan Semarang Tengah.">
-    <meta property="og:title" content="Bapak Walikota Semarang Meninjau Pembangunan Lap Futsal Miroto">
+    <meta name="keywords" content="{{ $berita->title }}">
+    <meta name="description" content="{{ $berita->description }}">
+    <meta property="og:title" content="{{ $berita->title }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://distaru.semarangkota.go.id/v2/berita/view/56">
-    <meta property="og:description"
-        content="Kamis, 02 Januari 2020 memasuki tahun baru , Bapak Walikota Semarang H. Hendrar Prihadi, SE, MM meninjau pelaksanaan proyek pembngunan Lapangan Olah raga yang berada di Lapangan Miroto tepat didepan Kantor Kecamatan Semarang Tengah.">
-    <meta property="og:image" content="https://distaru.semarangkota.go.id/v2/public/uploads/news-56.jpeg">
-    <meta name="author" content="Distaru Kota Semarang">
+    <meta property="og:url" content="{{ route('detailBerita', $berita->id) }}">
+    <meta property="og:description" content="{{ $berita->description }}">
+    <meta property="og:image" content="{{ asset('uploads/' . $berita->image) }}">
+    <meta name="author" content="INSPEKTORAT KOTA SEMRANG">
 @endpush
 @section('content')
     <!--Start blog area-->
