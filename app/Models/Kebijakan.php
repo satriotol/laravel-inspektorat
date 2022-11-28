@@ -27,6 +27,10 @@ class Kebijakan extends Model
     {
         return $this->hasMany(KebijakanTema::class, 'kebijakan_id', 'id');
     }
+    public function kebijakan_statuses()
+    {
+        return $this->belongsTo(KebijakanStatus::class, 'kebijakan_id', 'id');
+    }
     public static function getFrontenddata($kebijakancategory, $paramaters = Null)
     {
         if ($paramaters != '') {

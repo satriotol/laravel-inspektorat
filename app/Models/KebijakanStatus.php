@@ -10,7 +10,7 @@ class KebijakanStatus extends Model
     use HasFactory;
     protected $fillable = ['name','color'];
 
-    public function kebijakans()
+    public function kebijakan()
     {
         return $this->hasMany(Kebijakan::class, 'kebijakan__status_id', 'id');
     }
