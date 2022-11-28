@@ -60,6 +60,17 @@ class UploadController extends Controller
             ]);
             return $file;
         };
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $name = $icon->getClientOriginalName();
+            $icon_name = date('mdYHis') . '-' . $name;
+            $icon = $icon->storeAs('icon', $icon_name, 'public_uploads');
+
+            TemporaryFile::create([
+                'filename' => $icon
+            ]);
+            return $icon;
+        };
         return '';
     }
     public function revert(Request $request)
