@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class BeritaCategory extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'image', 'is_kegiatan'];
+    protected $fillable = ['name', 'image', 'is_kegiatan', 'description', 'logo'];
 
     public function beritas()
     {
@@ -18,6 +18,10 @@ class BeritaCategory extends Model
     public function berita_subcategories()
     {
         return $this->hasMany(Berita::class, 'berita_category_id', 'id');
+    }
+    public function berita_category_galleries()
+    {
+        return $this->hasMany(BeritaCategoryGallery::class, 'berita_category_id', 'id');
     }
     public static function getBeritaCategories()
     {
@@ -31,6 +35,12 @@ class BeritaCategory extends Model
     {
         if ($this->attributes['image'] != null) {
             Storage::disk('public_uploads')->delete($this->attributes['image']);
+        }
+    }
+    public function deleteLogo()
+    {
+        if ($this->attributes['logo'] != null) {
+            Storage::disk('public_uploads')->delete($this->attributes['logo']);
         }
     }
 }

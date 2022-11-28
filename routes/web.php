@@ -12,6 +12,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BeritaCategoryGalleryController;
+use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\TemaController;
@@ -60,9 +62,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('berita', BeritaController::class);
     Route::get('berita/verifikasi/{berita}', [BeritaController::class, 'verification'])->name('berita.verification');
     Route::resource('beritaCategory', BeritaCategoryController::class);
+    Route::resource('beritaFile', BeritaFileController::class)->except([
+        'destroy'
+    ]);
+    Route::get('beritaFile/destroy/{beritaFile}', [BeritaFileController::class, 'destroy'])->name('beritaFile.destroy');
     Route::resource('beritaGallery', BeritaGalleryController::class)->except([
         'destroy'
     ]);
+    Route::resource('beritaCategoryGallery', BeritaCategoryGalleryController::class)->except([
+        'destroy'
+    ]);
+    Route::get('beritaCategoryGallery/destroy/{beritaCategoryGallery}', [BeritaCategoryGalleryController::class, 'destroy'])->name('beritaCategoryGallery.destroy');
     Route::get('beritaGallery/destroy/{beritaGallery}', [BeritaGalleryController::class, 'destroy'])->name('beritaGallery.destroy');
     Route::resource('beritaSubcategory', BeritaSubcategoryController::class);
 

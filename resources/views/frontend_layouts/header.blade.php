@@ -1,14 +1,14 @@
 <header class="header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="logo">
                     <a href="{{ route('beranda') }}">
                         <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Logo">
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="header-contact-info">
                     <ul>
                         <li>
@@ -56,8 +56,14 @@
                             <ul class="navigation clearfix">
                                 <li class="home {{ current_class(['beranda']) }}"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
-                                <li class="">
+                                <li class="dropdown {{ current_class(['']) }}">
                                     <a href="#"><i class="fa-solid fa-circle-question"></i> PPID</a>
+                                    <ul>
+                                        <li><a href="">Profil PPID</a></li>
+                                        <li><a href="">Dasar Hukum</a></li>
+                                        <li><a href="">Layanan Informasi</a></li>
+                                        <li><a href="">Informasi Publik</a></li>
+                                    </ul>
                                 </li>
                                 <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">
                                     <a href="{{ route('berita') }}"><i class="far fa-newspaper"></i> Berita</a>

@@ -33,6 +33,74 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
+
+        .row-flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .text-red {
+            color: #f60035;
+            font-weight: bold;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .h-100 {
+            height: 100%;
+        }
+
+        .ct-socials {
+            position: fixed;
+            top: 25%;
+            right: 0;
+            list-style: none;
+            padding-left: 0;
+            z-index: 1000;
+            margin: 0;
+            -webkit-transition: right 0.25s ease-in-out;
+            transition: right 0.25s ease-in-out;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+        .ct-socials li {
+            padding: 0px 0;
+        }
+
+        .ct-socials li a {
+            background: #3f4653;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: #fff;
+            width: 100px;
+            height: 54px;
+            -webkit-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            float: right;
+            padding-left: 5px;
+        }
+
+        .ct-socials li a:hover {
+            width: 150px;
+            padding-left: 0;
+            text-decoration: none;
+            background: #f60035;
+        }
     </style>
 
 </head>
@@ -43,6 +111,15 @@
         {{-- <div class="preloader"></div> --}}
         <!--End Preloader -->
         @include('frontend_layouts.header')
+        <ul class="ct-socials">
+            @foreach ($layananLinks as $layananLink)
+                <li>
+                    <a href="{{ $layananLink->whatsapp_url }}" target="_blank"> <img
+                            style="height: 100%; object-fit: contain;"
+                            src="{{ asset('uploads/' . $layananLink->image) }}"></a>
+                </li>
+            @endforeach
+        </ul>
         @yield('content')
 
         <!--Start footer area-->
@@ -65,7 +142,6 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <!--Start single footer widget-->
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget pd-bottom">
                             <div class="footer-logo">
@@ -73,15 +149,8 @@
                                     <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Footer Logo">
                                 </a>
                             </div>
-                            {{-- <div class="our-info">
-                                <p>Our team offers the most up-to-date, sustainable manufacturing solutions. teachings
-                                    of the great explorer of the truth We only source materials from tried and trusted
-                                    suppliers.</p>
-                            </div> --}}
                         </div>
                     </div>
-                    <!--End single footer widget-->
-                    <!--Start single footer widget-->
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget wedo pd-left pd-bottom">
                             <div class="title">
@@ -95,8 +164,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!--Start single footer widget-->
-                    <!--Start single footer widget-->
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget">
                             <div class="title">
@@ -114,8 +181,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!--End single footer widget-->
-                    <!--Start single footer widget-->
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="single-footer-widget pd-top pd-left">
                             <div class="title">
@@ -141,13 +206,9 @@
                             </ul>
                         </div>
                     </div>
-                    <!--End single footer widget-->
                 </div>
             </div>
         </footer>
-        <!--End footer area-->
-
-        <!--Start footer bottom area-->
         <section class="footer-bottom-area">
             <div class="container">
                 <div class="row">

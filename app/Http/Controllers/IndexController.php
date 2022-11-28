@@ -20,19 +20,19 @@ class IndexController extends Controller
     {
         $kegiatans = BeritaCategory::where('is_kegiatan', 1)->get();
         $masterBeritaCategories = BeritaCategory::where('is_kegiatan', null)->get();
+        $layananLinks = Link::where('image', '!=', 2)->get();
         $kebijakanCategories = KebijakanCategory::all();
         $terkaitLinks = Link::getOnlyLink();
         $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
-        View::share(compact('kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'terkaitLinks', 'latestBeritas', 'master'));
+        View::share(compact('kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
     }
     public function beranda()
     {
         $sliders = Slider::all();
         $beranda = Beranda::first();
-        $layananLinks = Link::where('image', '!=', 2)->get();
-        $beritas = Berita::getLatestBeritas(3, 2, '');
-        return view('frontend.beranda', compact('sliders', 'layananLinks', 'beritas', 'beranda'));
+        $beritas = Berita::getLatestBeritas(6, 2, '');
+        return view('frontend.beranda', compact('sliders', 'beritas', 'beranda'));
     }
     public function berita(Request $request)
     {

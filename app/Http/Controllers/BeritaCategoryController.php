@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaCategory;
+use App\Models\BeritaCategoryGallery;
+use App\Models\BeritaGallery;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
@@ -48,6 +50,9 @@ class BeritaCategoryController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable',
+            'images' => 'nullable',
         ]);
 
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
@@ -55,7 +60,24 @@ class BeritaCategoryController extends Controller
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
         };
-        BeritaCategory::create($data);
+        $temporaryLogo = TemporaryFile::where('filename', $request->logo)->first();
+        if ($temporaryFile) {
+            $data['logo'] = $temporaryLogo->filename;
+            $temporaryLogo->delete();
+        };
+        $beritaCategory = BeritaCategory::create($data);
+        if ($request->images) {
+            foreach ($request->images as $image) {
+                $temporaryImage = TemporaryFile::where('filename', $image)->first();
+                if ($temporaryImage) {
+                    BeritaCategoryGallery::create([
+                        'image' => $temporaryImage->filename,
+                        'berita_category_id' => $beritaCategory->id,
+                    ]);
+                    $temporaryImage->delete();
+                };
+            }
+        }
         session()->flash('success');
         return redirect(route('beritaCategory.index'));
     }
@@ -95,10 +117,11 @@ class BeritaCategoryController extends Controller
             'name' => 'required',
             'image' => 'nullable',
             'is_kegiatan' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable',
+            'images' => 'nullable',
         ]);
         $data['is_kegiatan'] = $request->is_kegiatan;
-        // var_dump($data['is_kegiatan']);
-        // die();
 
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -106,6 +129,25 @@ class BeritaCategoryController extends Controller
             $beritaCategory->deleteFile();
             $temporaryFile->delete();
         };
+
+        $temporaryLogo = TemporaryFile::where('filename', $request->logo)->first();
+        if ($temporaryLogo) {
+            $data['logo'] = $temporaryLogo->filename;
+            $beritaCategory->deleteLogo();
+            $temporaryFile->delete();
+        };
+        if ($request->images) {
+            foreach ($request->images as $image) {
+                $temporaryImage = TemporaryFile::where('filename', $image)->first();
+                if ($temporaryImage) {
+                    BeritaCategoryGallery::create([
+                        'image' => $temporaryImage->filename,
+                        'berita_category_id' => $beritaCategory->id,
+                    ]);
+                    $temporaryImage->delete();
+                };
+            }
+        }
         $beritaCategory->update($data);
         session()->flash('success');
         return redirect(route('beritaCategory.index'));

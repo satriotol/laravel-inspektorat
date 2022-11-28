@@ -31,6 +31,10 @@ class Berita extends Model
     {
         return $this->hasMany(BeritaGallery::class, 'berita_id', 'id');
     }
+    public function berita_files()
+    {
+        return $this->hasMany(BeritaFile::class, 'berita_id', 'id');
+    }
     public function deleteFile()
     {
         Storage::disk('public_uploads')->delete($this->attributes['image']);
