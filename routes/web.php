@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaSubcategoryController;
 use App\Http\Controllers\BeritaGalleryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\KebijakanCategoryController;
+use App\Http\Controllers\KebijakanStatusController;
 use App\Http\Controllers\KebijakanController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PermissionController;
@@ -50,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('tema', TemaController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
+    Route::resource('kebijakanStatus', KebijakanStatusController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('beranda', BerandaController::class);
     Route::resource('master', MasterController::class);

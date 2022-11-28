@@ -71,6 +71,13 @@
                                 Kebijakan</span></a>
                     </li>
                 @endcan
+                @can('kebijakanStatus-index')
+                <li>
+                    <a class="side-menu__item {{ active_class(['kebijakanStatus.*']) }}"
+                        href="{{ route('kebijakanStatus.index') }}"><i
+                            class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Status Kebijakan</span></a>
+                </li>
+            @endcan
                 @can('tema-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['tema.*']) }}" href="{{ route('tema.index') }}"><i
