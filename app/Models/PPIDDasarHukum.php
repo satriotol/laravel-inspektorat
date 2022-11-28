@@ -11,9 +11,10 @@ class PPIDDasarHukum extends Model
     use HasFactory;
     protected $fillable = ['image','description'];
 
-    public function kebijakans()
+    public function PPIDDasarHukum()
     {
-        return $this->hasMany(PPIDDasarHukumFIle::class, 'ppid_layanan_informasi_id', 'id');
+        return $this->hasMany(PpidDasarHukumFile::class, 'ppid_dasar_hukum_id', 'id');
+       // return $this->belongsTo(PpidDasarHukumFile::class, 'ppid_dasar_hukum_id', 'id');
     }
     public function deleteFile()
     {

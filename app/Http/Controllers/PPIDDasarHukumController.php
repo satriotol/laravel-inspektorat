@@ -109,6 +109,7 @@ class PPIDDasarHukumController extends Controller
     public function destroy(PPIDDasarHukum $ppidDasarHukum)
     {
         $ppidDasarHukum->delete();
+        $ppidDasarHukum->deleteFile();
         session()->flash('success');
         return redirect(route('ppidDasarHukum.index'));
     }

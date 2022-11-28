@@ -98,6 +98,13 @@
                                 class="side-menu__label">Dasar Hukum PPID</span></a>
                     </li>
                 @endcan
+                @can('ppidDasarHukumFile-index')
+                <li>
+                    <a class="side-menu__item {{ active_class(['ppidDasarHukumFile.*']) }}"
+                        href="{{ route('ppidDasarHukumFile.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            class="side-menu__label">File Dasar Hukum PPID</span></a>
+                </li>
+            @endcan
 
             @canany(['slider-index', 'link-index', 'beranda-index', 'master-index'])
                 <li class="sub-category">
