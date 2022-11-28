@@ -101,21 +101,15 @@
                 @foreach ($beritas as $berita)
                     <div class="col-md-4">
                         <div class="single-blog-post">
-                            <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $berita->image) }}"
-                                    style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
-                                <div class="published-date">
-                                    <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
-                                </div>
-                                <div class="overlay-style-one">
-                                    <div class="box">
-                                        <div class="content">
-                                            <a href="{{ route('detailBerita', $berita->id) }}"><i class="fa fa-link"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
+                            <a href="{{ route('detailBerita', $berita->id) }}">
+                                <div class="img-holder">
+                                    <img src="{{ asset('uploads/' . $berita->image) }}"
+                                        style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
+                                    <div class="published-date">
+                                        <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <div class="text-holder">
                                 <a href="{{ route('detailBerita', $berita->id) }}">
                                     <h3 class="blog-title">{{ Str::limit($berita->title, 100, '...') }}</h3>

@@ -24,23 +24,15 @@
                         @foreach ($beritas as $berita)
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="single-blog-post">
-                                    <div class="img-holder">
-                                        <img src="{{ asset('uploads/' . $berita->image) }}"
-                                            style="height: 300px; object-fit:cover">
-                                        <div class="overlay-style-one">
-                                            <div class="box">
-                                                <div class="content">
-                                                    @if (Route::is('berita', 'beritaCategory'))
-                                                        <a href="{{ route('detailBerita', $berita->id) }}"><i
-                                                                class="fa fa-link" aria-hidden="true"></i></a>
-                                                    @else
-                                                        <a href="{{ route('detailKegiatan', $berita->id) }}"><i
-                                                                class="fa fa-link" aria-hidden="true"></i></a>
-                                                    @endif
-                                                </div>
+                                    <a href="{{ route('detailBerita', $berita->id) }}">
+                                        <div class="img-holder">
+                                            <img src="{{ asset('uploads/' . $berita->image) }}"
+                                                style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
+                                            <div class="published-date">
+                                                <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="text-holder">
                                         @if (Route::is('berita', 'beritaCategory'))
                                             <a href="{{ route('detailBerita', $berita->id) }}">
