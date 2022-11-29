@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label>Deskripsi</label>
-                            <textarea class="content" name="description">{{ isset($ppidDasarHukums) ? $ppidDasarHukums->description : @old('description') }}</textarea>
+                            <textarea id="summernote" name="description">{{ isset($ppidDasarHukums) ? $ppidDasarHukums->description : @old('description') }}</textarea>
                         </div>
                     </div>
                 </div>
