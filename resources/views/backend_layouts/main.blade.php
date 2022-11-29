@@ -111,6 +111,10 @@
     <!-- Sticky js -->
     <script src="{{ asset('backend_assets/js/sticky.js') }}"></script>
 
+    <!-- INTERNAL SUMMERNOTE Editor JS -->
+    <script src="{{ asset('backend_assets/plugins/summernote/summernote1.js') }}"></script>
+    <script src="{{ asset('backend_assets/js/summernote.js') }}"></script>
+
     <!-- CUSTOM JS -->
     <script src="{{ asset('backend_assets/plugins/notify/js/rainbow.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/notify/js/sample.js') }}"></script>
@@ -147,7 +151,7 @@
         const inputElementLogo = document.querySelector('.upload-logo');
         const inputElementIcon = document.querySelector('.upload-icon');
         const inputElementImages = document.querySelector('.upload-images');
-        
+
         FilePond.registerPlugin(
             FilePondPluginFileValidateType,
         );
