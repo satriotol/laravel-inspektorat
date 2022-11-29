@@ -57,6 +57,13 @@
                                     <td>{{ $kebijakan->sumber }}</td>
                                 </tr>
                                 <tr>
+
+                                    <th>Sumber</th>
+                                    <td>      <div class="badge"  style="background-color:{{ $kebijakan->kebijakan_statuses->color }}">{{ $kebijakan->kebijakan_statuses->name }}</div>
+                                    <td>
+                                        {{-- {{ $kebijakan->sumber }}</td> --}}
+                                </tr>
+                                <tr>
                                     <th>Tema</th>
                                     <td>
                                         @foreach ($kebijakan->temas as $tema)
