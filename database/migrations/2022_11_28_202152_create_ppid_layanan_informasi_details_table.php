@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('ppid_layanan_informasi_id');
             $table->string('name');
-            $table->string('image')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
         });

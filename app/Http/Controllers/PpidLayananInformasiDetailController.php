@@ -80,6 +80,8 @@ class PpidLayananInformasiDetailController extends Controller
      */
     public function destroy(PpidLayananInformasiDetail $ppidLayananInformasiDetail)
     {
-        //
+        $ppidLayananInformasiDetail->delete();
+        session()->flash('success');
+        return back();
     }
 }

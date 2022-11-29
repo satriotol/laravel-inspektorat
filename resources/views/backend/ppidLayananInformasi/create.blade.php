@@ -79,27 +79,31 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Galleri</h3>
+                        <h3 class="card-title">Detail</h3>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Galeri</label>
-                            <input type="file" accept="image/*" class="form-control upload-images" name="images[]"
-                                multiple>
+                            <label>Name</label>
+                            <input type="text" name="nameDetail" class="form-control">
                         </div>
-                        {{-- @isset($ppidLayananInformasi)
+                        <div class="form-group">
+                            <label>File</label>
+                            <input type="file" class="form-control upload-file" name="file">
+                        </div>
+                        @isset($ppidLayananInformasi)
                             <table id="example2" class="table table-bordered text-nowrap border-bottom">
                                 <thead>
                                     <th>Gambar</th>
                                     <th>Aksi</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ppidLayananInformasi->berita_category_galleries as $berita_category_gallery)
+                                    @foreach ($ppidLayananInformasi->ppid_layanan_informasi_details as $ppid_layanan_informasi_detail)
                                         <tr>
-                                            <td><img src="{{ asset('uploads/' . $berita_category_gallery->image) }}"
-                                                    style="height: 100px" alt=""></td>
+                                            <td><a href="{{ asset('uploads/' . $ppid_layanan_informasi_detail->file) }}"
+                                                    target="_blank">{{ $ppid_layanan_informasi_detail->name }}</a>
+                                            </td>
                                             <td>
-                                                <a href="{{ route('ppidLayananInformasiGallery.destroy', $berita_category_gallery->id) }}"
+                                                <a href="{{ route('ppidLayananInformasiDetail.destroy', $ppid_layanan_informasi_detail->id) }}"
                                                     class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Are you sure?')">Hapus</a>
                                             </td>
@@ -107,7 +111,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        @endisset --}}
+                        @endisset
                     </div>
                 </div>
                 <div class="text-end">
