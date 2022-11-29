@@ -40,8 +40,17 @@
                                 value="{{ isset($link) ? $link->whatsapp_url : @old('whatsapp_url') }}" name="whatsapp_url">
                         </div>
                         <div class="form-group">
+                            <label>Google Form Url</label>
+                            <input type="text" class="form-control"
+                                value="{{ isset($link) ? $link->google_form_url : @old('google_form_url') }}" name="google_form_url">
+                        </div>
+                        <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea name="description" class="form-control" id="" cols="30" rows="10">{{ isset($link) ? $link->description : @old('description') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi Pendek</label>
+                            <textarea name="short_description" class="form-control" id="" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>

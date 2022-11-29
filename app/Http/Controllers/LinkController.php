@@ -51,6 +51,8 @@ class LinkController extends Controller
             'image' => 'nullable',
             'description' => 'nullable',
             'whatsapp_url' => 'nullable',
+            'short_description' => 'nullable',
+            'google_form_url' => 'nullable'
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -99,6 +101,8 @@ class LinkController extends Controller
             'image' => 'nullable',
             'description' => 'nullable',
             'whatsapp_url' => 'nullable',
+            'short_description' => 'nullable',
+            'google_form_url' => 'nullable'
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
