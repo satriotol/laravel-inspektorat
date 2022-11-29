@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PPIDDasarHukum;
+use App\Models\PpidDasarHukumFile;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,8 @@ class PPIDDasarHukumController extends Controller
 
     public function index()
     {
-        $ppidDasarHukums = PPIDDasarHukum::all();
-        return view('backend.ppidDasarHukum.index', compact('ppidDasarHukums'));
+        $ppidDasarHukums = PPIDDasarHukum::first();
+        return view('backend.ppidDasarHukum.create',compact('ppidDasarHukums'));
     }
 
     public function create()
@@ -42,14 +43,27 @@ class PPIDDasarHukumController extends Controller
     {
         $data = $request->validate([
             'image'       => 'nullable',
-            'description' => 'required'
+            'description' => 'required',
+            'file'        => 'required',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
         };
-        PPIDDasarHukum::create($data);
+        $PPIDDasarHukum = PPIDDasarHukum::create($data);
+        @dd($request->file);
+        @dd($PPIDDasarHukum->id);
+        if ($request->file) {
+                $temporaryImage = TemporaryFile::where('filename', $request->file)->first();
+                if ($temporaryImage) {
+                    PpidDasarHukumFile::create([
+                        'file' => $temporaryImage->filename,
+                        'ppid_dasar_hukum_id' => $PPIDDasarHukum->id,
+                    ]);
+                    $temporaryImage->delete();
+                };
+        }
         session()->flash('success');
         return redirect(route('ppidDasarHukum.index'));
     }
@@ -87,7 +101,9 @@ class PPIDDasarHukumController extends Controller
     {
         $data = $request->validate([
             'image'       => 'nullable',
-            'description' => 'required'
+            'description' => 'required',
+            'name' => 'required',
+            'file' => 'required'
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -95,6 +111,18 @@ class PPIDDasarHukumController extends Controller
             $ppidDasarHukum->deleteFile();
             $temporaryFile->delete();
         };
+
+        if ($request->file) {
+                $temporaryImage = TemporaryFile::where('filename', $request->file)->first();
+                if ($temporaryImage) {
+                    PpidDasarHukumFile::create([
+                        'file' => $temporaryImage->filename,
+                        'name' =>  $request->name,
+                        'ppid_dasar_hukum_id' => $ppidDasarHukum->id,
+                    ]);
+                    $temporaryImage->delete();
+                };
+        }
         $ppidDasarHukum->update($data);
         session()->flash('success');
         return redirect(route('ppidDasarHukum.index'));

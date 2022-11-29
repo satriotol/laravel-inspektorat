@@ -33,7 +33,7 @@
                                 @foreach ($ppidDasarHukumFiles as $ppidDasarHukumFile)
                                     <tr>
                                         <td>{{ $ppidDasarHukumFile->name }}</td>
-                                        <td>{{ $ppidDasarHukumFile->PPIDDasarHukums->description }}</td>
+                                        {{-- <td>{{ $ppidDasarHukumFile->PPIDDasarHukums->description }}</td> --}}
                                         <td>
                                             <a href="#"
                                                 onclick="window.open('{{ asset('uploads/' . $ppidDasarHukumFile->file) }}','_blank')"

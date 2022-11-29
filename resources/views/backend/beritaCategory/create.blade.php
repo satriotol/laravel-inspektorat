@@ -84,7 +84,7 @@
                                 <tbody>
                                     @foreach ($beritaCategory->berita_category_galleries as $berita_category_gallery)
                                         <tr>
-                                            <td><img src="{{ asset('uploads/' . $berita_category_gallery->image) }}"
+                                            <td><img src="{{ asset('uploads/' . $berita_category_gallery->image->first()) }}"
                                                     style="height: 100px" alt=""></td>
                                             <td>
                                                 <a href="{{ route('beritaCategoryGallery.destroy', $berita_category_gallery->id) }}"

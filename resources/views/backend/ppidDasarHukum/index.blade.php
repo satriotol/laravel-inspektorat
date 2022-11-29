@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Deskripsi</th>
+                                    <th>File</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,13 @@
                                                 class="img-thumbnail" alt="">
                                         </td>
                                         <td>{{ $ppidDasarHukum->description }}</td>
+                                        <td>
+                                            @foreach($ppidDasarHukum->PPIDDasarHukumFile as $filepdf)
+                                            <a href="#"
+                                                onclick="window.open('{{ asset('uploads/' . $filepdf->file) }}','_blank')"
+                                                class="btn btn-sm btn-info">{{ $filepdf->name }}</a>
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <form action="{{ route('ppidDasarHukum.destroy', $ppidDasarHukum->id) }}" method="post">
                                                 @csrf

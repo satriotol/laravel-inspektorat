@@ -11,7 +11,7 @@ class PPIDDasarHukum extends Model
     use HasFactory;
     protected $fillable = ['image','description'];
 
-    public function PPIDDasarHukum()
+    public function PPIDDasarHukumFile()
     {
         return $this->hasMany(PpidDasarHukumFile::class, 'ppid_dasar_hukum_id', 'id');
        // return $this->belongsTo(PpidDasarHukumFile::class, 'ppid_dasar_hukum_id', 'id');

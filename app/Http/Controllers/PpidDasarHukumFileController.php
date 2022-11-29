@@ -16,10 +16,10 @@ class PpidDasarHukumFileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('permission:ppidDasarHukumFile-index|ppidDasarHukumFile-create|ppidDasarHukumFile-edit|ppidDasarHukumFile-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:ppidDasarHukumFile-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:ppidDasarHukumFile-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:ppidDasarHukumFile-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:ppidDasarHukumFile-index|ppidDasarHukumFile-create|ppidDasarHukumFile-edit|ppidDasarHukumFile-delete', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:ppidDasarHukumFile-create', ['only' => ['create', 'store']]);
+        // $this->middleware('permission:ppidDasarHukumFile-edit', ['only' => ['edit', 'update']]);
+        // $this->middleware('permission:ppidDasarHukumFile-delete', ['only' => ['destroy']]);
     }
     public function index()
     {
@@ -115,6 +115,7 @@ class PpidDasarHukumFileController extends Controller
         $ppidDasarHukumFile->delete();
         $ppidDasarHukumFile->deleteFile();
         session()->flash('success');
-        return redirect(route('ppidDasarHukumFile.index'));
+        return back();
+        // return redirect(route('ppidDasarHukum.index'));
     }
 }
