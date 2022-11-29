@@ -20,6 +20,7 @@ use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PpidLayananInformasiController;
+use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('ppidDasarHukumFile', PpidDasarHukumFileController::class);
     Route::get('ppidDasarHukumFile/destroy/{ppidDasarHukumFile}', [PpidDasarHukumFileController::class, 'destroy'])->name('ppidDasarHukumFile.destroy');
     Route::resource('ppidLayananInformasi', PpidLayananInformasiController::class);
+    Route::get('ppidLayananInformasiDetail/destroy/{ppidLayananInformasiDetail}', [PpidLayananInformasiDetailController::class, 'destroy'])->name('ppidLayananInformasiDetail.destroy');
     Route::resource('slider', SliderController::class);
     Route::resource('beranda', BerandaController::class);
     Route::resource('master', MasterController::class);

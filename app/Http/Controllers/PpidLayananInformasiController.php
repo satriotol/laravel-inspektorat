@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PpidLayananInformasi;
+use App\Models\PpidLayananInformasiDetail;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PpidLayananInformasiController extends Controller
 {
@@ -52,18 +54,37 @@ class PpidLayananInformasiController extends Controller
             'description' => 'required_if:type,Detail',
             'icon' => 'nullable',
             'image' => 'nullable',
+            'nameDetail' => 'nullable',
+            'file' => 'nullable',
         ]);
-        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
-        if ($temporaryFile) {
-            $data['image'] = $temporaryFile->filename;
-            $temporaryFile->delete();
-        };
-        $temporaryIcon = TemporaryFile::where('filename', $request->logo)->first();
-        if ($temporaryIcon) {
-            $data['logo'] = $temporaryIcon->filename;
-            $temporaryIcon->delete();
-        };
-        PpidLayananInformasi::create($data);
+        DB::beginTransaction();
+        try {
+            $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+            if ($temporaryFile) {
+                $data['image'] = $temporaryFile->filename;
+                $temporaryFile->delete();
+            };
+            $temporaryIcon = TemporaryFile::where('filename', $request->logo)->first();
+            if ($temporaryIcon) {
+                $data['logo'] = $temporaryIcon->filename;
+                $temporaryIcon->delete();
+            };
+            $temporaryFileDetail = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFileDetail) {
+                $data['file'] = $temporaryFileDetail->filename;
+                $temporaryFileDetail->delete();
+            };
+            $ppidLayananInformasi = PpidLayananInformasi::create($data);
+            PpidLayananInformasiDetail::create([
+                'ppid_layanan_informasi_id' => $ppidLayananInformasi->id,
+                'name' => $data['nameDetail'],
+                'file' => $data['file'],
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
+
         session()->flash('success');
         return redirect()->route('ppidLayananInformasi.index');
     }
@@ -118,9 +139,19 @@ class PpidLayananInformasiController extends Controller
             $data['logo'] = $temporaryIcon->filename;
             $temporaryIcon->delete();
         };
+        $temporaryFileDetail = TemporaryFile::where('filename', $request->file)->first();
+        if ($temporaryFileDetail) {
+            $data['file'] = $temporaryFileDetail->filename;
+            $temporaryFileDetail->delete();
+        };
         $ppidLayananInformasi->update($data);
+        PpidLayananInformasiDetail::create([
+            'ppid_layanan_informasi_id' => $ppidLayananInformasi->id,
+            'name' => $data['nameDetail'],
+            'file' => $data['file'],
+        ]);
         session()->flash('success');
-        return redirect()->route('ppidLayananInformasi.index');
+        return back();
     }
 
     /**
