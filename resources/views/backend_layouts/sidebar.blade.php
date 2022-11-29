@@ -107,7 +107,7 @@
                     </li>
                 @endcan
 
-                @canany(['slider-index', 'link-index', 'beranda-index', 'master-index'])
+                @canany(['slider-index', 'link-index', 'beranda-index', 'master-index', 'profile-index'])
                     <li class="sub-category">
                         <h3>Website</h3>
                     </li>
@@ -116,6 +116,13 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
                                 class="side-menu__icon fe fe-image"></i><span class="side-menu__label">Slider</span></a>
+                    </li>
+                @endcan
+                @can('profile-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['profile.*']) }}"
+                            href="{{ route('profile.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Profile</span></a>
                     </li>
                 @endcan
                 @can('link-index')
