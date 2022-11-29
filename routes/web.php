@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('ppidDasarHukum', PPIDDasarHukumController::class);
     Route::resource('ppidDasarHukumFile', PpidDasarHukumFileController::class);
     Route::get('ppidDasarHukumFile/destroy/{ppidDasarHukumFile}', [PpidDasarHukumFileController::class, 'destroy'])->name('ppidDasarHukumFile.destroy');
+    Route::resource('ppidLayananInformasi', PpidLayananInformasiController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('beranda', BerandaController::class);
     Route::resource('master', MasterController::class);
