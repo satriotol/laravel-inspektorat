@@ -1,4 +1,12 @@
 @extends('frontend_layouts.main')
+@push('css')
+    <style>
+        .brand-area .brand .single-item {
+            border: 0 !important;
+
+        }
+    </style>
+@endpush
 @section('content')
     <!--Start breadcrumb area-->
     <section class="breadcrumb-area" style="">
@@ -18,8 +26,32 @@
     <!--End breadcrumb area-->
     <section class="blog-grid-area">
         <div class="container">
+            @isset($beritaCategory)
+                <div class="sec-title" style="padding-bottom: 0">
+                    <h1>{{ $beritaCategory->name }}</h1>
+                    <span class="border"></span>
+                    <div>
+                        {!! $beritaCategory->description !!}
+                    </div>
+                </div>
+            @endisset
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    @isset($beritaCategory)
+                        <section class="brand-area">
+                            <div class="brand">
+                                @foreach ($beritaCategory->berita_category_galleries as $berita_category_gallery)
+                                    <div class="single-item">
+                                        <a href="{{ asset('uploads/' . $berita_category_gallery->image) }}"
+                                            data-rel="prettyPhoto{{ $berita_category_gallery->id }}">
+                                            <img src="{{ asset('uploads/' . $berita_category_gallery->image) }}"
+                                                style="height:100%!important; object-fit:contain" class="img-thumbnail">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endisset
                     <div class="row row-flex">
                         @foreach ($beritas as $berita)
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
