@@ -102,8 +102,8 @@ class PPIDDasarHukumController extends Controller
         $data = $request->validate([
             'image'       => 'nullable',
             'description' => 'required',
-            'name' => 'required',
-            'file' => 'required'
+            'name' => 'nullable',
+            'file' => 'nullable'
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {

@@ -50,14 +50,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" required value="" name="name">
+                            <input type="text" class="form-control" value="" name="name">
                         </div>
                         <div class="form-group">
                             <label>File</label>
                             <input type="file" accept="application/pdf" class="form-control upload-file"
-                                @empty($ppidDasarHukumFile)
-                            required
-                            @endempty
+
                                 value="{{ isset($ppidDasarHukumFile) ? $ppidDasarHukumFile->file : @old('file') }}"
                                 name="file">
                        </div>
