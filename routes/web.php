@@ -19,6 +19,7 @@ use App\Http\Controllers\BeritaCategoryGalleryController;
 use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\PpidProfileController;
@@ -62,6 +63,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('tema', TemaController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
+    Route::resource('mediaLibrary', MediaLibraryController::class);
     Route::resource('kebijakanStatus', KebijakanStatusController::class);
     Route::resource('ppidDasarHukum', PPIDDasarHukumController::class);
     Route::resource('ppidDasarHukumFile', PpidDasarHukumFileController::class);

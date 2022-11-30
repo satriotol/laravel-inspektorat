@@ -45,12 +45,6 @@
                                 class="side-menu__label">Kategori Berita</span></a>
                     </li>
                 @endcan
-                {{-- <li>
-                    <a class="side-menu__item {{ active_class(['beritaSubcategory.*']) }}"
-                        href="{{ route('beritaSubcategory.index') }}"><i
-                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">SubKategori
-                            Berita</span></a>
-                </li> --}}
                 @canany(['kebijakan-index', 'kebijakanCategory-index'])
                     <li class="sub-category">
                         <h3>Kebijakan</h3>
@@ -137,6 +131,13 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['link.*']) }}" href="{{ route('link.index') }}"><i
                                 class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Link</span></a>
+                    </li>
+                @endcan
+                @can('mediaLibrary-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['mediaLibrary.*']) }}"
+                            href="{{ route('mediaLibrary.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                                class="side-menu__label">Media Library</span></a>
                     </li>
                 @endcan
                 @can('beranda-index')
