@@ -20,11 +20,55 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right">
-                    <div class="row overview-content-pdbottom">
+                    <div class="content-box">
+                        <div class="accordion-box">
+                            @foreach ($Profile as $Profil)
+                                @if ($Profil->type == 'Halaman')
+                                    <!--Start single accordion box-->
+                                    <div class="accordion accordion-block">
+                                        <div class="accord-btn">
+                                            <h4>{{ $Profil->name }}</h4>
+                                        </div>
+                                        <div class="accord-content">
+                                            {!! $Profil->description !!} </div>
+                                    </div>
+                                    <!--End single accordion box-->
+                                @else
+                                    <div class="col-md-12">
+                                        <a class="thm-btn bg-clr1" href="{{ $Profil->link }}" target="_blank"><h4>{{ $Profil->name }}</h4></a>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- <div class="row overview-content-pdbottom">
                         @foreach ($Profile as $Profil)
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="overview-content">
+                            <div class="col-md-10"> --}}
+                                {{-- <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading{{ $Profil->id }}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{ $Profil->id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ $Profil->id }}">
+                                                {{ $Profil->name }}
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ $Profil->id }}" class="accordion-collapse collapse show"
+                                            aria-labelledby="heading{{ $Profil->id }}" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>This is the first item's accordion body.</strong> It is shown by
+                                                default, until the collapse plugin adds the appropriate classes that we use
+                                                to style each element. These classes control the overall appearance, as well
+                                                as the showing and hiding via CSS transitions. You can modify any of this
+                                                with custom CSS or overriding our default variables. It's also worth noting
+                                                that just about any HTML can go within the <code>.accordion-body</code>,
+                                                though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+                                {{-- <div class="overview-content">
                                     <div class="sec-title">
                                         <h1>{{ $Profil->name }}</h1>
                                         <span class="border"></span>
@@ -38,13 +82,12 @@
                                             {{ $Profil->link }}
                                         </div>
                                     @endif
-                                </div>
-                            </div>
-                        </div>
+                                </div> --}}
+                            {{-- </div>
                         @endforeach
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12 pull-left">
+                {{-- <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12 pull-left">
                     <div class="left-sidebar">
                         <!--Start single sidebar-->
                         <div class="single-sidebar">
@@ -61,7 +104,7 @@
                         </div>
                         <!--End single sidebar-->
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
