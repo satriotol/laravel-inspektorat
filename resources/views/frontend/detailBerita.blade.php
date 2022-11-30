@@ -30,6 +30,24 @@
                                         <ul class="post-info">
                                             <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
                                             <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                            <li>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('detailBerita', $berita->id) }}"
+                                                    target="_blank">
+                                                    <i class="fa-brands fa-facebook-f" style="color: #3b5998"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://twitter.com/share?text={{ $berita->title }}&url={{ route('detailBerita', $berita->id) }}"
+                                                    target="_blank">
+                                                    <i class="fa-brands fa-twitter" style="color: #00acee"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="whatsapp://send?text={{ route('detailBerita', $berita->id) }}"
+                                                    target="_blank">
+                                                    <i class="fa-brands fa-whatsapp" style="color: #075e54"></i>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
