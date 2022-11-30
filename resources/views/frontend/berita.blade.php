@@ -8,7 +8,6 @@
     </style>
 @endpush
 @section('content')
-    <!--Start breadcrumb area-->
     <section class="breadcrumb-area" style="">
         <div class="container text-center">
             <h1>
@@ -23,16 +22,20 @@
             </h1>
         </div>
     </section>
-    <!--End breadcrumb area-->
     <section class="blog-grid-area">
         <div class="container">
             @isset($beritaCategory)
-                <div class="sec-title" style="padding-bottom: 0">
-                    <h1>{{ $beritaCategory->name }}</h1>
-                    <span class="border"></span>
-                    <div>
-                        {!! $beritaCategory->description !!}
+                <div class="col-md-8">
+                    <div class="sec-title" style="padding-bottom: 0">
+                        <h1>{{ $beritaCategory->name }}</h1>
+                        <span class="border"></span>
+                        <div>
+                            {!! $beritaCategory->description !!}
+                        </div>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('uploads/' . $beritaCategory->image) }}" class="img-thumbnail" alt="">
                 </div>
             @endisset
             <div class="row">
@@ -119,6 +122,15 @@
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
+                        @isset($beritaCategory->logo)
+                            <div class="single-sidebar">
+                                <div class="sec-title">
+                                    <h3>Logo</h3>
+                                    <span class="border"></span>
+                                </div>
+                                <img src="{{ asset('uploads/' . $beritaCategory->logo) }}" style="width: 100%" alt="">
+                            </div>
+                        @endisset
                         <div class="single-sidebar">
                             <div class="sec-title">
                                 <h3>Kategori</h3>
