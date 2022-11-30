@@ -126,14 +126,12 @@ class BeritaCategoryController extends Controller
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
-            $beritaCategory->deleteFile();
             $temporaryFile->delete();
         };
 
         $temporaryLogo = TemporaryFile::where('filename', $request->logo)->first();
         if ($temporaryLogo) {
             $data['logo'] = $temporaryLogo->filename;
-            $beritaCategory->deleteLogo();
             $temporaryLogo->delete();
         };
         if ($request->images) {
