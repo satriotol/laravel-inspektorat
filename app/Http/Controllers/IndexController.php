@@ -94,7 +94,7 @@ class IndexController extends Controller
     }
     public function profil()
     {
-        $Profile = Profile::all();
-        return view('frontend.profil', compact('Profile'));
+        $profiles = Profile::all();
+        return view('frontend.profil', compact('profiles'));
     }
 }
