@@ -37,6 +37,11 @@
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
 
     @stack('style')
+    <style>
+        .note-group-select-from-files {
+            display: none;
+        }
+    </style>
 
 </head>
 

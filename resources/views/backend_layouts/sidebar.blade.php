@@ -86,11 +86,18 @@
                                 Kategori</span></a>
                     </li>
                 @endcan
-                {{-- @canany(['kebijakan-index', 'kebijakanCategory-index']) --}}
-                <li class="sub-category">
-                    <h3>PPID</h3>
-                </li>
-                {{-- @endcanany --}}
+                @canany(['ppidDasarHukum-index', 'ppidLayananInformasi-index', 'ppidProfile-index'])
+                    <li class="sub-category">
+                        <h3>PPID</h3>
+                    </li>
+                @endcanany
+                @can('ppidProfile-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['ppidProfile.*']) }}"
+                            href="{{ route('ppidProfile.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                                class="side-menu__label">Profil</span></a>
+                    </li>
+                @endcan
                 @can('ppidDasarHukum-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['ppidDasarHukum.*']) }}"
@@ -98,6 +105,7 @@
                                 class="side-menu__label">Dasar Hukum PPID</span></a>
                     </li>
                 @endcan
+
                 @can('ppidLayananInformasi-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['ppidLayananInformasi.*']) }}"

@@ -25,7 +25,6 @@
                         <div class="accordion-box">
                             @foreach ($profiles as $profile)
                                 @if ($profile->type == 'Halaman')
-                                    <!--Start single accordion box-->
                                     <div class="accordion accordion-block">
                                         <div class="accord-btn">
                                             <h4>{{ $profile->name }}</h4>
@@ -33,14 +32,14 @@
                                         <div class="accord-content">
                                             {!! $profile->description !!} </div>
                                     </div>
-                                    <!--End single accordion box-->
                                 @else
                                     <div class="accordion accordion-block">
                                         <div class="accord-btn">
                                             <h4>{{ $profile->name }}</h4>
                                         </div>
                                         <div class="accord-content">
-                                            <iframe src="{{ $profile->link }}" frameborder="0" width="100%" height="500px"></iframe>
+                                            <iframe src="{{ $profile->link }}" frameborder="0" width="100%"
+                                                height="500px"></iframe>
                                         </div>
                                     </div>
                                 @endif

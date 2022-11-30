@@ -21,6 +21,7 @@ use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
+use App\Http\Controllers\PpidProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
@@ -60,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakanStatus', KebijakanStatusController::class);
     Route::resource('ppidDasarHukum', PPIDDasarHukumController::class);
     Route::resource('ppidDasarHukumFile', PpidDasarHukumFileController::class);
+    Route::resource('ppidProfile', PpidProfileController::class);
     Route::get('ppidDasarHukumFile/destroy/{ppidDasarHukumFile}', [PpidDasarHukumFileController::class, 'destroy'])->name('ppidDasarHukumFile.destroy');
     Route::resource('ppidLayananInformasi', PpidLayananInformasiController::class);
     Route::get('ppidLayananInformasiDetail/destroy/{ppidLayananInformasiDetail}', [PpidLayananInformasiDetailController::class, 'destroy'])->name('ppidLayananInformasiDetail.destroy');
