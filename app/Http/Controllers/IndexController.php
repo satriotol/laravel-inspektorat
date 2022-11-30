@@ -9,6 +9,7 @@ use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
 use App\Models\Link;
 use App\Models\Master;
+use App\Models\Profile;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -90,5 +91,10 @@ class IndexController extends Controller
     public function detailKebijakan(Request $request, Kebijakan $kebijakan)
     {
         return view('frontend.detailKebijakan', compact('kebijakan'));
+    }
+    public function profil()
+    {
+        $Profile = Profile::all();
+        return view('frontend.profil', compact('Profile'));
     }
 }

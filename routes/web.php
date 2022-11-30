@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
+Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
 Route::get('/berita/category/{beritaCategory}', [IndexController::class, 'beritaCategory'])->name('beritaCategory');

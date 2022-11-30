@@ -56,6 +56,8 @@
                             <ul class="navigation clearfix">
                                 <li class="home {{ current_class(['beranda']) }}"><a href="{{ route('beranda') }}"><span
                                             class="fa fa-home"></span></a></li>
+                                <li class="{{ current_class(['profil']) }}"><a href="{{ route('profil') }}">
+                                    <i class="fa-solid fa-address-card-o"></i> Profil</a></li>
                                 <li class="dropdown {{ current_class(['']) }}">
                                     <a href="#"><i class="fa-solid fa-circle-question"></i> PPID</a>
                                     <ul>
