@@ -134,7 +134,6 @@ class BeritaCategoryController extends Controller
             $data['logo'] = $temporaryLogo->filename;
             $temporaryLogo->delete();
         };
-        dd($temporaryLogo, $data['logo']);
         if ($request->images) {
             foreach ($request->images as $image) {
                 $temporaryImage = TemporaryFile::where('filename', $image)->first();
@@ -149,7 +148,7 @@ class BeritaCategoryController extends Controller
         }
         $beritaCategory->update($data);
         session()->flash('success');
-        return redirect(route('beritaCategory.index'));
+        return back();
     }
 
     /**
