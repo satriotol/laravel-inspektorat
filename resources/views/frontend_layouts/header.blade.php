@@ -58,10 +58,10 @@
                                             class="fa fa-home"></span></a></li>
                                 <li class="{{ current_class(['profil']) }}"><a href="{{ route('profil') }}"><i
                                             class="fa-solid fa-user"></i> Profil</a></li>
-                                <li class="dropdown {{ current_class(['']) }}">
+                                <li class="dropdown {{ current_class(['ppidProfile']) }}">
                                     <a href="#"><i class="fa-solid fa-circle-question"></i> PPID</a>
                                     <ul>
-                                        <li><a href="">Profil PPID</a></li>
+                                        <li><a href="{{ route('ppidProfile') }}">Profil PPID</a></li>
                                         <li><a href="">Dasar Hukum</a></li>
                                         <li><a href="">Layanan Informasi</a></li>
                                         <li><a href="">Informasi Publik</a></li>

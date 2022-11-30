@@ -43,6 +43,10 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
+
+//ppid
+Route::get('/ppidProfile', [IndexController::class, 'ppidProfile'])->name('ppidProfile');
+//end of ppid
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
 Route::get('/berita/category/{beritaCategory}', [IndexController::class, 'beritaCategory'])->name('beritaCategory');
