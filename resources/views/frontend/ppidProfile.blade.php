@@ -1,6 +1,4 @@
 @extends('frontend_layouts.main')
-@push('css')
-@endpush
 @section('content')
     <section class="breadcrumb-area" style="">
         <div class="container text-center">

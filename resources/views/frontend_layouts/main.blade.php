@@ -294,7 +294,6 @@
         </script>
         <script src="{{ asset('frontend_assets/assets/revolution/js/extensions/revolution.extension.video.min.js') }}">
         </script>
-
         <!-- thm custom script -->
         <script src="{{ asset('frontend_assets/js/custom.js') }}"></script>
         @stack('custom-scripts')
