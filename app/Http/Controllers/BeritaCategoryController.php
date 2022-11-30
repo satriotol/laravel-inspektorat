@@ -134,6 +134,7 @@ class BeritaCategoryController extends Controller
             $data['logo'] = $temporaryLogo->filename;
             $temporaryLogo->delete();
         };
+        dd($temporaryLogo, $data['logo']);
         if ($request->images) {
             foreach ($request->images as $image) {
                 $temporaryImage = TemporaryFile::where('filename', $image)->first();
