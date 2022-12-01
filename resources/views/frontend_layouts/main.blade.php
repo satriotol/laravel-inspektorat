@@ -149,7 +149,12 @@
                                 <a href="{{ route('beranda') }}">
                                     <img src="{{ asset('uploads/' . $master->logo) }}" alt="Awesome Footer Logo">
                                 </a>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.234506719898!2d110.41097291459317!3d-6.98163059495637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4eefbc58d1%3A0x75b749227ffa9965!2sInspektorat%20Daerah%20Kota%20Semarang!5e0!3m2!1sen!2sid!4v1669857177820!5m2!1sen!2sid"
+                                    width="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
