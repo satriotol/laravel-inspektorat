@@ -98,9 +98,9 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label>Kategori</label>
+                                <label>Status</label>
                                 <select name="kebijakan_status_id" required class="form-control select2-show-search">
-                                    <option value="">Pilih Kategori</option>
+                                    <option value="">Pilih Status</option>
                                     @foreach ($kebijakanStatuses as $kebijakanStatus)
                                         <option
                                             @isset($kebijakan) @selected($kebijakanStatus->id == $kebijakan->kebijakan_status_id) @endisset
