@@ -58,7 +58,7 @@
                                 </tr>
                                 <tr>
 
-                                    <th>Sumber</th>
+                                    <th>Status</th>
                                     <td>      <div class="badge"  style="background-color:{{ $kebijakan->kebijakan_statuses->color }}">{{ $kebijakan->kebijakan_statuses->name }}</div>
                                     <td>
                                         {{-- {{ $kebijakan->sumber }}</td> --}}
