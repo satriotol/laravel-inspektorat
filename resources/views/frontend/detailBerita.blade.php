@@ -9,6 +9,27 @@
     <meta property="og:image" content="{{ asset('uploads/' . $berita->image) }}">
     <meta name="author" content="INSPEKTORAT KOTA SEMRANG">
 @endpush
+@push('css')
+    <style>
+        .brand-area .brand .single-item {
+            border: 0 !important;
+
+        }
+
+        a {
+            color: #f60035;
+        }
+
+        a:hover {
+            color: #990021;
+
+        }
+
+        .owl-stage-outer {
+            padding: 0 !important;
+        }
+    </style>
+@endpush
 @section('content')
     <!--Start blog area-->
     <section id="blog-area" class="blog-single-area" style="padding-bottom: 0">
@@ -24,6 +45,22 @@
                                 <h3 class="blog-title">{{ $berita->title }}</h3>
                                 <div class="text">
                                     {!! $berita->description !!}
+                                    @isset($berita->berita_galleries)
+                                        <section class="brand-area" style="padding-top: 50px; padding-bottom:0;">
+                                            <div class="brand">
+                                                @foreach ($berita->berita_galleries as $berita_gallery)
+                                                    <div class="single-item">
+                                                        <a href="{{ asset('uploads/' . $berita_gallery->image) }}"
+                                                            data-rel="prettyPhoto{{ $berita_gallery->id }}">
+                                                            <img src="{{ asset('uploads/' . $berita_gallery->image) }}"
+                                                                style="height:100%!important; object-fit:contain"
+                                                                class="img-thumbnail">
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </section>
+                                    @endisset
                                 </div>
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
@@ -153,40 +190,5 @@
             </div>
         </div>
     </section>
-    @isset($berita)
-        @if ($berita->berita_galleries->count() > 0)
-            <section id="project-area" class="project-grid-area" style="padding-top: 0">
-                <div class="container">
-                    <div class="sec-title">
-                        <h3>Galeri</h3>
-                        <span class="border"></span>
-                    </div>
-                    <div class="row project-content">
-                        <div class="row">
-                            @foreach ($berita->berita_galleries as $berita_gallery)
-                                <div class="col-md-4 single-project-item filter-item {{ $berita_gallery->id }}">
-                                    <div class="img-holder">
-                                        <img src="{{ asset('uploads/' . $berita_gallery->image) }}" alt="Awesome Image">
-                                        <div class="overlay">
-                                            <div class="box">
-                                                <div class="content">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="{{ asset('uploads/' . $berita_gallery->image) }}"
-                                                                data-rel="prettyPhoto"><i class="fa fa-search-plus"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-    @endisset
     <!--End blog area-->
 @endsection
