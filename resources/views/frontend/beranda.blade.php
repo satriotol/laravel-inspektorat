@@ -64,25 +64,11 @@
     <section class="video-gallery-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="video-holder" style="width:100%;  margin-left: auto; margin-right: auto;">
-                        <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" alt="Awesome Video Gallery">
-                        <div class="overlay-gallery">
-                            <div class="icon-holder">
-                                <div class="icon">
-                                    <a class="html5lightbox" href="{{ $beranda->video_url }}"><img
-                                            src="{{ asset('frontend_assets/images/icon/play-btn.png') }}"
-                                            alt="Play Button"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="text-holder">
                         <h3>Sambutan Inspektorat</h3>
                         <div class="text">
-                            <p>{{ $beranda->sambutan }}</p>
+                            <p>{!! $beranda->sambutan !!}</p>
                         </div>
                     </div>
                 </div>
