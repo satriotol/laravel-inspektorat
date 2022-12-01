@@ -108,6 +108,26 @@
                                 Informasi</span></a>
                     </li>
                 @endcan
+                @canany(['wbsAbout-index', 'wbsStep-index'])
+                    <li class="sub-category">
+                        <h3>Whistleblower </h3>
+                    </li>
+                @endcan
+                @can('wbsAbout-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['wbsAbout.*']) }}"
+                            href="{{ route('wbsAbout.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Tentang Whistleblower</span></a>
+                    </li>
+                @endcan
+
+                @can('wbsStep-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['wbsStep.*']) }}"
+                            href="{{ route('wbsStep.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Tata Cara Pengaduan</span></a>
+                    </li>
+                @endcan
                 @canany(['documentCategory-index'])
                     <li class="sub-category">
                         <h3>Dokumen</h3>
@@ -160,8 +180,9 @@
                 @endcan
                 @can('master-index')
                     <li>
-                        <a class="side-menu__item {{ active_class(['master.*']) }}" href="{{ route('master.index') }}"><i
-                                class="side-menu__icon fe fe-link"></i><span class="side-menu__label">Master</span></a>
+                        <a class="side-menu__item {{ active_class(['master.*']) }}"
+                            href="{{ route('master.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                                class="side-menu__label">Master</span></a>
                     </li>
                 @endcan
                 @canany(['user-index', 'role-index', 'permission-index'])

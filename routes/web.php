@@ -26,6 +26,8 @@ use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\PpidProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WbsAboutController;
+use App\Http\Controllers\WbsStepController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -64,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     })->name('dashboard');
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('tema', TemaController::class);
+    Route::resource('wbsAbout', WbsAboutController::class);
+    Route::resource('wbsStep', WbsStepController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('mediaLibrary', MediaLibraryController::class);
     Route::resource('kebijakanStatus', KebijakanStatusController::class);
