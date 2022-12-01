@@ -19,6 +19,7 @@ use App\Http\Controllers\BeritaCategoryGalleryController;
 use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\DocumentCategoryController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
@@ -83,6 +84,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('link', LinkController::class);
 
     Route::resource('documentCategory', DocumentCategoryController::class);
+    Route::resource('document', DocumentController::class)->except([
+        'destroy'
+    ]);
+    Route::get('document/destroy/{document}', [DocumentController::class, 'destroy'])->name('document.destroy');
 
     Route::resource('berita', BeritaController::class);
     Route::get('berita/verifikasi/{berita}', [BeritaController::class, 'verification'])->name('berita.verification');

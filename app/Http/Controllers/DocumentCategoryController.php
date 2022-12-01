@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DocumentCategoryController extends Controller
 {
@@ -46,8 +49,25 @@ class DocumentCategoryController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
+            'file' => 'nullable',
         ]);
-        DocumentCategory::create($data);
+        DB::beginTransaction();
+        try {
+            $documentCategory = DocumentCategory::create($data);
+            $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFile) {
+                $data['file'] = $temporaryFile->filename;
+                $temporaryFile->delete();
+            };
+            Document::create([
+                'document_category_id' => $documentCategory->id,
+                'name' => $request->nameFile,
+                'file' => $data['file']
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
         session()->flash('success');
         return redirect(route('documentCategory.index'));
     }
@@ -87,9 +107,25 @@ class DocumentCategoryController extends Controller
             'name' => 'required',
             'description' => 'nullable',
         ]);
-        $documentCategory->update($data);
+        DB::beginTransaction();
+        try {
+            $documentCategory->update($data);
+            $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
+            if ($temporaryFile) {
+                $data['file'] = $temporaryFile->filename;
+                $temporaryFile->delete();
+            };
+            Document::create([
+                'document_category_id' => $documentCategory->id,
+                'name' => $request->nameFile,
+                'file' => $data['file']
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
         session()->flash('success');
-        return redirect(route('documentCategory.index'));
+        return back();
     }
 
     /**
