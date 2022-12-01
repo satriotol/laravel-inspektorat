@@ -26,7 +26,7 @@
                         @endisset
                         <div class="form-group">
                             <label>Teks Sambutan</label>
-                            <textarea name="sambutan" class="form-control" id="" required cols="30" rows="10">{{ isset($beranda) ? $beranda->sambutan : @old('sambutan') }}</textarea>
+                            <textarea name="sambutan" class="form-control summernote" id="" required cols="30" rows="10">{{ isset($beranda) ? $beranda->sambutan : @old('sambutan') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Link Video</label>
@@ -40,8 +40,7 @@
                             <small class="text-red">Ukuran Rekomendasi 570x314</small>
                         </div>
                         @isset($beranda)
-                            <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" class="img-thumbnail"
-                                alt="">
+                            <img src="{{ asset('uploads/' . $beranda->thumbnail_video) }}" class="img-thumbnail" alt="">
                         @endisset
                         <div class="text-end">
                             <button class="btn btn-primary" type="submit">Submit</button>
