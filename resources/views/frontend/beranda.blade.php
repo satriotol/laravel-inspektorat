@@ -53,7 +53,7 @@
                             </div>
                             <div class="text-holder">
                                 <h3>{{ $layananLink->name }}</h3>
-                                <p>{{ $layananLink->description }}</p>
+                                <p>{!! $layananLink->short_description !!}</p>
                             </div>
                         </div>
                     </div>
