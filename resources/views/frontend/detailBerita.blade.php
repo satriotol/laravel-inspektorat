@@ -11,6 +11,11 @@
 @endpush
 @push('css')
     <style>
+        .brand-area {
+            padding-bottom: 5rem !important;
+            padding-top: 1rem !important;
+        }
+
         .brand-area .brand .single-item {
             border: 0 !important;
 
@@ -42,9 +47,21 @@
                                 <img src="{{ asset('uploads/' . $berita->image) }}" alt="Awesome Image">
                             </div>
                             <div class="text-holder">
-                                <h3 class="blog-title">{{ $berita->title }}</h3>
+                                <h4>{{ $berita->title }}</h4>
                                 <div class="text">
                                     {!! $berita->description !!}
+                                    @isset($berita->berita_files)
+                                        <h4>Materi</h4>
+                                        <section class="brand-area">
+                                            <ul>
+                                                @foreach ($berita->berita_files as $berita_file)
+                                                    <li><a href="{{ asset('uploads/' . $berita_file->file) }}"
+                                                            target="_blank">{{ $berita_file->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </section>
+                                    @endisset
                                     @isset($berita->berita_galleries)
                                         <section class="brand-area" style="padding-top: 50px; padding-bottom:0;">
                                             <div class="brand">

@@ -108,7 +108,18 @@
                                 Informasi</span></a>
                     </li>
                 @endcan
-
+                @canany(['documentCategory-index'])
+                    <li class="sub-category">
+                        <h3>Dokumen</h3>
+                    </li>
+                @endcan
+                @can('documentCategory-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['documentCategory.*']) }}"
+                            href="{{ route('documentCategory.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Dokumen</span></a>
+                    </li>
+                @endcan
                 @canany(['slider-index', 'link-index', 'beranda-index', 'master-index', 'profile-index'])
                     <li class="sub-category">
                         <h3>Website</h3>

@@ -18,6 +18,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BeritaCategoryGalleryController;
 use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
+use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
@@ -80,6 +81,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
+
+    Route::resource('documentCategory', DocumentCategoryController::class);
 
     Route::resource('berita', BeritaController::class);
     Route::get('berita/verifikasi/{berita}', [BeritaController::class, 'verification'])->name('berita.verification');

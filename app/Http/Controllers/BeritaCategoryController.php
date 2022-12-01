@@ -163,4 +163,12 @@ class BeritaCategoryController extends Controller
         session()->flash('success');
         return redirect(route('beritaCategory.index'));
     }
+    public function destroyLogo(BeritaCategory $beritaCategory)
+    {
+        $beritaCategory->update([
+            'logo' => null
+        ]);
+        session()->flash('success');
+        return back();
+    }
 }
