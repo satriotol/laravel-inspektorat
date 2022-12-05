@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Beranda;
 use App\Models\Berita;
 use App\Models\BeritaCategory;
+use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
 use App\Models\Link;
@@ -29,7 +31,8 @@ class IndexController extends Controller
         $pengaduanLinks = Link::getPengaduanLink();
         $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
-        View::share(compact('pengaduanLinks', 'kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
+        $documentCategories = DocumentCategory::all();
+        View::share(compact('documentCategories', 'pengaduanLinks', 'kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
     }
     public function beranda()
     {
@@ -109,5 +112,9 @@ class IndexController extends Controller
     {
         $profiles = Profile::all();
         return view('frontend.profil', compact('profiles'));
+    }
+    public function documentCategory(DocumentCategory $documentCategory)
+    {
+        return view('frontend.detailDocument', compact('documentCategory'));
     }
 }

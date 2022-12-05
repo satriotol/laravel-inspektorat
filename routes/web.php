@@ -49,6 +49,9 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 
+
+Route::get('/documentCategory/{documentCategory}', [IndexController::class, 'documentCategory'])->name('documentCategory');
+
 //ppid
 Route::get('/ppidProfile', [IndexController::class, 'ppidProfile'])->name('ppidProfile');
 Route::get('/ppidProfileDasarHukum', [IndexController::class, 'ppidProfileDasarHukum'])->name('ppidProfileDasarHukum');
