@@ -13,6 +13,7 @@ use App\Models\Link;
 use App\Models\Master;
 use App\Models\PpidProfile;
 use App\Models\PPIDDasarHukum;
+use App\Models\PpidLayananInformasi;
 use App\Models\Profile;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -106,6 +107,11 @@ class IndexController extends Controller
     public function ppidProfileDasarHukum()
     {
         $ppidProfileDasarHukum = PPIDDasarHukum::first();
+        return view('frontend.ppidProfileDasarHukum', compact('ppidProfileDasarHukum'));
+    }
+    public function ppidLayananHukum()
+    {
+        $ppidLayananHukums = PpidLayananInformasi::all()->paginate(5);
         return view('frontend.ppidProfileDasarHukum', compact('ppidProfileDasarHukum'));
     }
     public function profil()

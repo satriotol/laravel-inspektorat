@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
-                            {{-- <small class="text-red">Ukuran Rekomendasi 270x170</small> --}}
+                            <small class="text-red">Ukuran Rekomendasi 1170x570</small>
                         </div>
                         @isset($ppidDasarHukums)
                             <img src="{{ asset('uploads/' . $ppidDasarHukums->image) }}" class="img-thumbnail" alt="">
