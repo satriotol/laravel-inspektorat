@@ -10,6 +10,7 @@ use App\Models\KebijakanCategory;
 use App\Models\Link;
 use App\Models\Master;
 use App\Models\PpidProfile;
+use App\Models\PPIDDasarHukum;
 use App\Models\Profile;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -98,6 +99,11 @@ class IndexController extends Controller
     {
         $ppidProfile = PpidProfile::first();
         return view('frontend.ppidProfile', compact('ppidProfile'));
+    }
+    public function ppidProfileDasarHukum()
+    {
+        $ppidProfileDasarHukum = PPIDDasarHukum::first();
+        return view('frontend.ppidProfileDasarHukum', compact('ppidProfileDasarHukum'));
     }
     public function profil()
     {

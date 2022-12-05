@@ -51,6 +51,7 @@ Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 
 //ppid
 Route::get('/ppidProfile', [IndexController::class, 'ppidProfile'])->name('ppidProfile');
+Route::get('/ppidProfileDasarHukum', [IndexController::class, 'ppidProfileDasarHukum'])->name('ppidProfileDasarHukum');
 //end of ppid
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
