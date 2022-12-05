@@ -29,7 +29,6 @@
                             <textarea id="summernote" cols="30" rows="10" name="description">{{ isset($wbsAbout) ? $wbsAbout->description : @old('description') }}</textarea>
                         </div>
                         <div class="text-end">
-                            <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>

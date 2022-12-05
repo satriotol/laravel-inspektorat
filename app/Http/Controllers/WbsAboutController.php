@@ -21,8 +21,11 @@ class WbsAboutController extends Controller
     }
     public function index()
     {
-        $wbsAbouts = WbsAbout::all();
-        return view('backend.wbsAbout.index', compact('wbsAbouts'));
+        $wbsAbout = WbsAbout::first();
+        if ($wbsAbout) {
+            return view('backend.wbsAbout.create', compact('wbsAbout'));
+        }
+        return view('backend.wbsAbout.create');
     }
 
     /**
