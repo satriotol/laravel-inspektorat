@@ -10,7 +10,7 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url'];
+    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url', 'is_pengaduan', 'pengaduan_link'];
 
     public function deleteFile()
     {
@@ -25,5 +25,10 @@ class Link extends Model
     public static function getLayananLinks()
     {
         return Link::where('image', '!=', 2)->get();
+    }
+
+    public static function getPengaduanLink()
+    {
+        return Link::where('is_pengaduan', 1)->get();
     }
 }

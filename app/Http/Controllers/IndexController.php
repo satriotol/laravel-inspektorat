@@ -25,9 +25,10 @@ class IndexController extends Controller
         $layananLinks = Link::where('image', '!=', 2)->get();
         $kebijakanCategories = KebijakanCategory::all();
         $terkaitLinks = Link::getOnlyLink();
+        $pengaduanLinks = Link::getPengaduanLink();
         $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
-        View::share(compact('kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
+        View::share(compact('pengaduanLinks', 'kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
     }
     public function beranda()
     {

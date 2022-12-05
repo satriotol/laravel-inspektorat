@@ -29,21 +29,48 @@
                             <input type="text" class="form-control" required
                                 value="{{ isset($link) ? $link->name : @old('name') }}" name="name">
                         </div>
-                        <div class="form-group">
-                            <label>Url</label>
-                            <input type="text" class="form-control" required
-                                value="{{ isset($link) ? $link->url : @old('url') }}" name="url">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Url</label>
+                                    <input type="text" class="form-control" required
+                                        value="{{ isset($link) ? $link->url : @old('url') }}" name="url">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Whatsapp Url</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ isset($link) ? $link->whatsapp_url : @old('whatsapp_url') }}"
+                                        name="whatsapp_url">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Google Form Url</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ isset($link) ? $link->google_form_url : @old('google_form_url') }}"
+                                        name="google_form_url">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Whatsapp Url</label>
-                            <input type="text" class="form-control"
-                                value="{{ isset($link) ? $link->whatsapp_url : @old('whatsapp_url') }}" name="whatsapp_url">
+                            <li class="list-group-item">
+                                Pengaduan
+                                <div class="material-switch pull-right">
+                                    <input id="someSwitchOptionPrimary" name="is_pengaduan" value="1"
+                                        @isset($link) {{ $link->is_pengaduan == 1 ? ' checked' : '' }} @endisset
+                                        type="checkbox" />
+                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                </div>
+                            </li>
                         </div>
+
                         <div class="form-group">
-                            <label>Google Form Url</label>
+                            <label>Pengaduan Url</label>
                             <input type="text" class="form-control"
-                                value="{{ isset($link) ? $link->google_form_url : @old('google_form_url') }}"
-                                name="google_form_url">
+                                value="{{ isset($link) ? $link->pengaduan_link : @old('pengaduan_link') }}"
+                                name="pengaduan_link">
                         </div>
                         <div class="form-group">
                             <label>Deskripsi</label>

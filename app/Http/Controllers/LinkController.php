@@ -47,12 +47,14 @@ class LinkController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'url' => 'required',
+            'url' => 'required|url',
             'image' => 'nullable',
             'description' => 'nullable',
-            'whatsapp_url' => 'nullable',
-            'short_description' => 'nullable',
-            'google_form_url' => 'nullable'
+            'whatsapp_url' => 'nullable|url',
+            'short_description' => 'nullable|url',
+            'google_form_url' => 'nullable|url',
+            'is_pengaduan' => 'nullable',
+            'pengaduan_link' => 'required_if:is_pengaduan,1',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -102,7 +104,9 @@ class LinkController extends Controller
             'description' => 'nullable',
             'whatsapp_url' => 'nullable',
             'short_description' => 'nullable',
-            'google_form_url' => 'nullable'
+            'google_form_url' => 'nullable',
+            'is_pengaduan' => 'nullable',
+            'pengaduan_link' => 'required_if:is_pengaduan,1',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
@@ -124,7 +128,6 @@ class LinkController extends Controller
     public function destroy(Link $link)
     {
         $link->delete();
-        $link->deleteFile();
         session()->flash('success');
         return redirect(route('link.index'));
     }

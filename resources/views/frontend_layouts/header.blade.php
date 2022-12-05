@@ -99,6 +99,16 @@
                                         @endforeach
                                     </ul>
                                 </li>
+                                <li class="dropdown {{ current_class(['pengaduan']) }}">
+                                    <a href="#"><i class="fa-solid fa-flag"></i> Pengaduan</a>
+                                    <ul>
+                                        @foreach ($pengaduanLinks as $pengaduanLink)
+                                            <li><a target="_blank"
+                                                    href="{{ $pengaduanLink->pengaduan_link }}">{{ $pengaduanLink->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </nav>
