@@ -58,8 +58,8 @@
                                             class="fa fa-home"></span></a></li>
                                 <li class="{{ current_class(['profil']) }}"><a href="{{ route('profil') }}"><i
                                             class="fa-solid fa-user"></i> Profil</a></li>
-                                <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">
-                                    <a href="{{ route('berita') }}"><i class="far fa-newspaper"></i> Dokumen</a>
+                                <li class="dropdown {{ current_class(['documentCategory']) }}">
+                                    <a href="#"><i class="far fa-file"></i> Dokumen</a>
                                     <ul>
                                         @foreach ($documentCategories as $documentCategory)
                                             <li><a href="{{ route('documentCategory', $documentCategory->id) }}">
