@@ -206,7 +206,7 @@
                                         <span class="icon-letter-1 bottom-envelop"></span>
                                     </div>
                                     <div class="text-holder">
-                                        <p>{{ $master->email }}</p>
+                                        <p><a href="mailto:{{ $master->email }}" style="color: #c0c1c8;">{{ $master->email }}</a></p>
                                     </div>
                                 </li>
                             </ul>
