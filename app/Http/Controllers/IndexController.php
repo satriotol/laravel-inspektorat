@@ -114,6 +114,13 @@ class IndexController extends Controller
         $ppidLayananHukums = PpidLayananInformasi::all()->paginate(5);
         return view('frontend.ppidProfileDasarHukum', compact('ppidProfileDasarHukum'));
     }
+    public function ppidLayananInformasi(Request $request)
+    {
+        $parameters = $request->search;
+        $ppidLayananInformasis = PpidLayananInformasi::getFrontenddata($parameters)->withQueryString();
+        $request->flash();
+        return view('frontend.ppidLayananInformasi', compact('ppidLayananInformasis'));
+    }
     public function profil()
     {
         $profiles = Profile::all();

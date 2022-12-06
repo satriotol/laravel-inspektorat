@@ -74,7 +74,7 @@
                                     <ul>
                                         <li><a href="{{ route('ppidProfile') }}">Profil PPID</a></li>
                                         <li><a href="{{ route('ppidProfileDasarHukum') }}">Dasar Hukum</a></li>
-                                        <li><a href="">Layanan Informasi</a></li>
+                                        <li><a href="{{ route('ppidLayananInformasi') }}">Layanan Informasi</a></li>
                                         <li><a href="">Informasi Publik</a></li>
                                     </ul>
                                 </li>

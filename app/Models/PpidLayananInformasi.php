@@ -22,4 +22,13 @@ class PpidLayananInformasi extends Model
     {
         return $this->hasMany(PpidLayananInformasiDetail::class, 'ppid_layanan_informasi_id', 'id');
     }
+    public static function getFrontenddata($paramaters = Null)
+    {
+        if ($paramaters != '') {
+            $ppidLayananInformasis = PpidLayananInformasi::where('name', 'LIKE', "%{$paramaters}%")->paginate(5);
+        } else {
+            $ppidLayananInformasis = PpidLayananInformasi::paginate(5);
+        }
+        return $ppidLayananInformasis;
+    }
 }
