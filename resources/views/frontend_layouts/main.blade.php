@@ -206,7 +206,8 @@
                                         <span class="icon-letter-1 bottom-envelop"></span>
                                     </div>
                                     <div class="text-holder">
-                                        <p><a href="mailto:{{ $master->email }}" style="color: #c0c1c8;">{{ $master->email }}</a></p>
+                                        <p><a href="mailto:{{ $master->email }}"
+                                                style="color: #c0c1c8;">{{ $master->email }}</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -301,6 +302,16 @@
         </script>
         <!-- thm custom script -->
         <script src="{{ asset('frontend_assets/js/custom.js') }}"></script>
+        <script>
+            $(function() {
+                $('.form-group:has(input[required]) > label')
+                    .after('<span class="text-red">*</span>')
+                $('.form-group:has(select[required]) > label')
+                    .after('<span class="text-red">*</span>')
+                $('.form-group:has(textarea[required]) > label')
+                    .after('<span class="text-red">*</span>')
+            })
+        </script>
         @stack('custom-scripts')
 
 

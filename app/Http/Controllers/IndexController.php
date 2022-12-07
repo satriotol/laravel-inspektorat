@@ -17,6 +17,7 @@ use App\Models\PpidLayananInformasi;
 use App\Models\Profile;
 use App\Models\Slider;
 use App\Models\WbsAbout;
+use App\Models\WbsCategory;
 use App\Models\WbsStep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -136,6 +137,10 @@ class IndexController extends Controller
     {
         $wbsAbout = WbsAbout::first();
         $wbsSteps = WbsStep::orderBy('number', 'asc')->get();
-        return view('frontend.wbs', compact('wbsAbout', 'wbsSteps'));
+        $wbsCategories = WbsCategory::all();
+        return view('frontend.wbs', compact('wbsAbout', 'wbsSteps', 'wbsCategories'));
+    }
+    public function wbsStore()
+    {
     }
 }

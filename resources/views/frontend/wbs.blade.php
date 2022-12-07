@@ -40,11 +40,16 @@
                                 </div>
                             </div>
                             <div class="row" v-if="routeName == 'FORM'">
-                                <div class="col-md-12">
+                                <div class="col-md-12 contact-form">
                                     <form action="">
                                         <div class="form-group">
                                             <label>Jenis Pelanggaran</label>
-                                            <input type="text" class="form-control" name="" id="">
+                                            <select name="" class="form-control" id="" required>
+                                                <option value="">Pilih Jenis Pelanggaran</option>
+                                                @foreach ($wbsCategories as $wbsCategory)
+                                                    <option value="{{ $wbsCategory->id }}">{{ $wbsCategory->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Pelapor</label>
@@ -58,7 +63,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal & Waktu Kejadian</label>
-                                            <input type="datetime" class="form-control" name="" id="">
+                                            <input type="datetime-local" class="form-control" required name=""
+                                                id="">
                                         </div>
                                         <div class="form-group">
                                             <label>Uraian Pengaduan</label>
@@ -78,13 +84,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
-                                            <input id="captcha" type="text" class="form-control"
-                                                placeholder="Enter Captcha" v-on:keyup.enter="login" v-model="form.captcha"
-                                                name="captcha">
+                                            <input id="captcha" required type="text" class="form-control"
+                                                placeholder="Enter Captcha" v-model="form.captcha" name="captcha">
                                         </div>
-                                        <div class="container-login100-form-btn">
-                                            {{-- <button type="submit" class="login100-form-btn btn-primary"
-                                                @click="login">Masuk</button> --}}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input id="form_botcheck" name="form_botcheck" class="form-control"
+                                                    type="hidden" value="">
+                                                <button class="thm-btn bg-clr1" type="submit"
+                                                    style="width: 100%;height: 5rem;"
+                                                    data-loading-text="Please wait...">Kirim Aduan</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -139,7 +149,7 @@
                     routeName: "TENTANG",
                     captchaImage: '',
                     form: {
-                        
+
                     }
                 }
             },
