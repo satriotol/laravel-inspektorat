@@ -41,10 +41,11 @@
                             </div>
                             <div class="row" v-if="routeName == 'FORM'">
                                 <div class="col-md-12 contact-form">
-                                    <form action="">
+                                    <form action="{{ route('wbsStore') }}" enctype="multipart/form-data" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label>Jenis Pelanggaran</label>
-                                            <select name="" class="form-control" id="" required>
+                                            <select name="wbs_category_id" class="form-control" id="" required>
                                                 <option value="">Pilih Jenis Pelanggaran</option>
                                                 @foreach ($wbsCategories as $wbsCategory)
                                                     <option value="{{ $wbsCategory->id }}">{{ $wbsCategory->name }}</option>
@@ -54,25 +55,25 @@
                                         <div class="form-group">
                                             <label>Nama Pelapor</label>
                                             <input type="text" required placeholder="Masukkan Nama Pelapor"
-                                                class="form-control" name="" id="">
+                                                class="form-control" name="name" id="">
                                         </div>
                                         <div class="form-group">
                                             <label>Lokasi</label>
                                             <input type="text" required placeholder="Alamat / Lokasi Kejadian"
-                                                class="form-control" name="" id="">
+                                                class="form-control" name="location" id="">
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal & Waktu Kejadian</label>
-                                            <input type="datetime-local" class="form-control" required name=""
+                                            <input type="datetime-local" class="form-control" required name="datetime"
                                                 id="">
                                         </div>
                                         <div class="form-group">
                                             <label>Uraian Pengaduan</label>
-                                            <textarea name="" id="" cols="20" rows="5" class="form-control"></textarea>
+                                            <textarea name="description" id="" cols="20" rows="5" class="form-control"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>File Lampiran</label>
-                                            <input type="file" name="" class="form-control" id="">
+                                            <input type="file" name="file" class="form-control" id="">
                                         </div>
                                         <div class="form-group mt-4 mb-4">
                                             <div class="captcha">
@@ -149,7 +150,7 @@
                     routeName: "TENTANG",
                     captchaImage: '',
                     form: {
-
+                        
                     }
                 }
             },

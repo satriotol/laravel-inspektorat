@@ -18,6 +18,7 @@ use App\Models\Profile;
 use App\Models\Slider;
 use App\Models\WbsAbout;
 use App\Models\WbsCategory;
+use App\Models\WbsReport;
 use App\Models\WbsStep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -140,7 +141,25 @@ class IndexController extends Controller
         $wbsCategories = WbsCategory::all();
         return view('frontend.wbs', compact('wbsAbout', 'wbsSteps', 'wbsCategories'));
     }
-    public function wbsStore()
+    public function wbsStore(Request $request)
     {
+        $data = $request->validate([
+            'wbs_category_id' => 'required',
+            'name' => 'required|max:30',
+            'location' => 'required|max:50',
+            'datetime' => 'required|date',
+            'description' => 'required|max:100',
+            'file' => 'required|mimes:pdf,jpg,png,jpeg'
+        ]);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $file_name = date('mdYHis') . '-' . $name;
+            $file = $file->storeAs('file', $file_name, 'public_uploads');
+            $data['file'] = $file;
+        };
+        WbsReport::create($data);
+        session()->flash('success');
+        return back();
     }
 }

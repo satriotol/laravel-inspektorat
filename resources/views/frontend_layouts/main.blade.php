@@ -302,6 +302,18 @@
         </script>
         <!-- thm custom script -->
         <script src="{{ asset('frontend_assets/js/custom.js') }}"></script>
+        <script src="{{ asset('backend_assets/plugins/notify/js/rainbow.js') }}"></script>
+        <script src="{{ asset('backend_assets/plugins/notify/js/sample.js') }}"></script>
+        <script src="{{ asset('backend_assets/plugins/notify/js/jquery.growl.js') }}"></script>
+        <script src="{{ asset('backend_assets/plugins/notify/js/notifIt.js') }}"></script>
+        @if (session()->has('success'))
+            <script>
+                notif({
+                    msg: "<b>Sukses:</b> Proses Anda Berhasil",
+                    type: "success"
+                });
+            </script>
+        @endif
         <script>
             $(function() {
                 $('.form-group:has(input[required]) > label')

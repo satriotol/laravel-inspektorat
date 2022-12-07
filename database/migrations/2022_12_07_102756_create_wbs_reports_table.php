@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('wbs_reports', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('wbs_category_id');
+            $table->string('name');
+            $table->string('location');
+            $table->dateTime('datetime');
+            $table->longText('description');
+            $table->string('file');
             $table->timestamps();
         });
     }
