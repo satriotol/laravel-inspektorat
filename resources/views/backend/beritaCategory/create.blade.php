@@ -52,6 +52,7 @@
                         @isset($beritaCategory)
                             <img src="{{ asset('uploads/' . $beritaCategory->logo) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
+                            <a href="{{ route('beritaCategory.destroyLogo', $beritaCategory->id) }}">Delete Foto</a>
                         @endisset
                         <div class="form-group">
                             <label>Gambar</label>
