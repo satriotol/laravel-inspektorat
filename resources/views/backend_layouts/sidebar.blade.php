@@ -108,7 +108,7 @@
                                 Informasi</span></a>
                     </li>
                 @endcan
-                @canany(['wbsAbout-index', 'wbsStep-index'])
+                @canany(['wbsAbout-index', 'wbsStep-index', 'wbsCategory-index'])
                     <li class="sub-category">
                         <h3>Whistleblower </h3>
                     </li>
@@ -126,6 +126,13 @@
                         <a class="side-menu__item {{ active_class(['wbsStep.*']) }}"
                             href="{{ route('wbsStep.index') }}"><i class="side-menu__icon fe fe-image"></i><span
                                 class="side-menu__label">Tata Cara Pengaduan</span></a>
+                    </li>
+                @endcan
+                @can('wbsCategory-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['wbsCategory.*']) }}"
+                            href="{{ route('wbsCategory.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Kategori WBS</span></a>
                     </li>
                 @endcan
                 @canany(['documentCategory-index'])

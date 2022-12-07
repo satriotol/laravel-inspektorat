@@ -31,6 +31,7 @@ use App\Http\Controllers\WbsStepController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WbsCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('profile', ProfileController::class);
     Route::resource('beranda', BerandaController::class);
     Route::resource('master', MasterController::class);
+    Route::resource('wbsCategory', WbsCategoryController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
