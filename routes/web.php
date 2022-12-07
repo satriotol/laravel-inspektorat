@@ -48,6 +48,7 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
+Route::get('/wbs', [IndexController::class, 'wbs'])->name('wbs');
 
 
 Route::get('/documentCategory/{documentCategory}', [IndexController::class, 'documentCategory'])->name('documentCategory');
