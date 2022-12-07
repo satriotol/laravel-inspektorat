@@ -11,7 +11,7 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="header-contact-info">
                     <ul>
-                        <li>
+                        {{-- <li>
                             <div class="iocn-holder">
                                 <span class="icon-technology"></span>
                             </div>
@@ -19,8 +19,8 @@
                                 <h6>Telepon</h6>
                                 <p>{{ $master->phone }}</p>
                             </div>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <div class="iocn-holder">
                                 <span class="icon-letter top-envelop"></span>
                             </div>
@@ -28,7 +28,7 @@
                                 <h6>Email</h6>
                                 <p>{{ $master->email }}</p>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                                     <ul>
                                         <li><a href="{{ route('ppidProfile') }}">Profil PPID</a></li>
                                         <li><a href="{{ route('ppidProfileDasarHukum') }}">Dasar Hukum</a></li>
-                                        <li><a href="">Layanan Informasi</a></li>
+                                        <li><a href="{{ route('ppidLayananInformasi') }}">Layanan Informasi</a></li>
                                         <li><a href="">Informasi Publik</a></li>
                                     </ul>
                                 </li>

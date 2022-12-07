@@ -127,6 +127,7 @@ class PpidLayananInformasiController extends Controller
             'link' => 'required_if:type,Link',
             'description' => 'required_if:type,Detail',
             'icon' => 'nullable',
+            'nameDetail' => 'nullable',
             'image' => 'required_if:type,Gambar',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();

@@ -55,6 +55,7 @@ Route::get('/documentCategory/{documentCategory}', [IndexController::class, 'doc
 //ppid
 Route::get('/ppidProfile', [IndexController::class, 'ppidProfile'])->name('ppidProfile');
 Route::get('/ppidProfileDasarHukum', [IndexController::class, 'ppidProfileDasarHukum'])->name('ppidProfileDasarHukum');
+Route::get('/ppidLayananInformasi', [IndexController::class, 'ppidLayananInformasi'])->name('ppidLayananInformasi');
 //end of ppid
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
