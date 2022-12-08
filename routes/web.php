@@ -27,6 +27,7 @@ use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\PpidProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WbsAboutController;
+use App\Http\Controllers\WbsBerandaController;
 use App\Http\Controllers\WbsStepController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
@@ -78,6 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('wbsAbout', WbsAboutController::class);
     Route::resource('wbsReport', WbsReportController::class);
     Route::resource('wbsStep', WbsStepController::class);
+    Route::resource('wbsBeranda', WbsBerandaController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('mediaLibrary', MediaLibraryController::class);
     Route::resource('kebijakanStatus', KebijakanStatusController::class);
