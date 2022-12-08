@@ -146,11 +146,13 @@ class PpidLayananInformasiController extends Controller
             $temporaryFileDetail->delete();
         };
         $ppidLayananInformasi->update($data);
-        PpidLayananInformasiDetail::create([
-            'ppid_layanan_informasi_id' => $ppidLayananInformasi->id,
-            'name' => $data['nameDetail'],
-            'file' => $data['file'],
-        ]);
+        if ($data['nameDetail']) {
+            PpidLayananInformasiDetail::create([
+                'ppid_layanan_informasi_id' => $ppidLayananInformasi->id,
+                'name' => $data['nameDetail'],
+                'file' => $data['file'],
+            ]);
+        }
         session()->flash('success');
         return back();
     }
