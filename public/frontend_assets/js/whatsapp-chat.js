@@ -119,14 +119,7 @@ function isMobile() {
 }
 
 function sendWPMessage(phone, message = '') {
-    var isMobileTrue = isMobile();
-    var apiEndPoint = 'http://';
-    if (isMobileTrue) {
-        apiEndPoint = apiEndPoint + 'api';
-    } else {
-        apiEndPoint = apiEndPoint + 'web';
-    }
-    apiEndPoint = apiEndPoint + '.whatsapp.com/send?phone=' + phone + '&text=' + encodeURI(message);
+    apiEndPoint = phone;
 
     window.open(apiEndPoint);
 }

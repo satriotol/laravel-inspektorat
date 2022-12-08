@@ -282,6 +282,7 @@
                     @foreach ($whatsappLinks as $whatsappLink)
                         {
                             'name': '{{ $whatsappLink->name }}',
+                            'phone': '{{ $whatsappLink->whatsapp_url }}'
                         },
                     @endforeach
                 ],
