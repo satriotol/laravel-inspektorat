@@ -85,8 +85,11 @@
                             <input type="file" accept="image/*" class="form-control" name="image">
                             <small class="text-red">Ukuran Rekomendasi 270x170</small>
                         </div>
-                        @isset($link)
-                            <img src="{{ asset('uploads/' . $link->image) }}" class="img-thumbnail" alt="">
+                        @isset($link->image)
+                            <img src="{{ asset('uploads/' . $link->image) }}" style="height: 100px" class="img-thumbnail"
+                                alt="">
+                            <a href="{{ route('link.destroyImage', $link->id) }}"
+                                onclick="return confirm('Are you sure?')">Delete Foto</a>
                         @endisset
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>

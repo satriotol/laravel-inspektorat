@@ -131,4 +131,12 @@ class LinkController extends Controller
         session()->flash('success');
         return redirect(route('link.index'));
     }
+    public function destroyImage(Link $link)
+    {
+        $link->update([
+            'image' => null
+        ]);
+        session()->flash('success');
+        return back();
+    }
 }

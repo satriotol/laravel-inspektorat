@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
+    Route::get('link/destroyImage/{link}', [LinkController::class, 'destroyImage'])->name('link.destroyImage');
 
     Route::resource('documentCategory', DocumentCategoryController::class);
     Route::resource('document', DocumentController::class)->except([
