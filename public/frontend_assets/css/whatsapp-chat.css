@@ -276,6 +276,8 @@ body {
 .ayoan_whatsapp_chatbox_container .widget-close-btn {
     background: #3cb743;
     border: none;
+    margin-left: 12px;
+    color: black;
     padding: 20px 20px;
     border-radius: 100%;
     margin-top: 20px;

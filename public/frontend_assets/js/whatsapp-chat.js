@@ -3,7 +3,7 @@ var whatsappchat = {
         var defaultSettings = {
             users: [''],
             headerMessage: 'Feel free to ask any questions!',
-            chatBoxMessage: 'The team typically replies in a few minutes.',
+            chatBoxMessage: 'Sampaikan Saran Dan Kritik Anda Dikanal Ini',
             color: '#4ee676',
             selector: '',
         };
@@ -53,17 +53,18 @@ var whatsappchat = {
                 console.log('selector is not right format should be #example_id of .example_class');
             }
             if (element != null) {
+
                 var chatBox = '<div class="ayoan_whatsapp_chatbox_container">' +
                     '<div class="rs-openChat" style="display: none"> <div class="ayoan_whatsapp_chatbox">' +
                     '<div class="widget-wrapper"> <div class="widget-header"> <div class="col col-1">' +
-                    '</div><div class="col col-2">' +
-                    '<div class="header-title"></div><div class="header-content">' + settings.headerMessage +
-                    '</div></div></div><div class="widget-body"><div class="body-title">' +
+                    '<img class="header-icon" src="https://sandbox.inspektorat.semarangkota.go.id/public/frontend_assets/images/icon/whatsapp.svg"> </div><div class="col col-2">' +
+                    '<div class="header-title">Layanan Inspektorat</div><div class="header-content">' + settings.headerMessage +
+                    '</div></div></div><div class="widget-body"><div class="body-title">' + settings.chatBoxMessage +
                     '</div><div class="body-content ayoan_whatsapp_scroll1"><ul class="user-list">' + userList +
                     '</ul></div></div></div></div><div class="widget-close-btn-row" >' +
                     '<button type="button" class="rs-close widget-close-btn">' +
                     '<img class="icon" src="https://sandbox.inspektorat.semarangkota.go.id/public/frontend_assets/images/icon/close.svg"></button></div></div>' +
-                    '<div class="rs-openChatBtn widget-close-btn-row" >' +
+                    '<div class="rs-openChatBtn widget-close-btn-row" > Butuh Bantuan Tekan Disini' +
                     '<button type="button" class="rs-openChatBtn widget-close-btn">' +
                     '<img class="icon" src="https://sandbox.inspektorat.semarangkota.go.id/public/frontend_assets/images/icon/whatsapp.svg"></button></div></div>';
                 element.innerHTML = chatBox;

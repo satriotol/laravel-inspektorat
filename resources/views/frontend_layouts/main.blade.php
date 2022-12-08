@@ -66,7 +66,6 @@
         <!--End Preloader -->
         @include('frontend_layouts.header')
         <div id="example">
-            Test
         </div>
         @yield('content')
 
