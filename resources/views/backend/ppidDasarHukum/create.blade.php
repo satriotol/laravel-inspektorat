@@ -29,11 +29,14 @@
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
-                            <small class="text-red">Ukuran Rekomendasi 1170x570</small>
+                            <small class="text-red">Ukuran Rekomendasi 1170x570</small> <br>
+                            @isset($ppidDasarHukums->image)
+                                <img src="{{ asset('uploads/' . $ppidDasarHukums->image) }}" style="height: 100px"
+                                    class="img-thumbnail" alt="">
+                                <a href="{{ route('ppidDasarHukum.destroyImage', $ppidDasarHukums->id) }}"
+                                    onclick="return confirm('Are you sure?')">Delete Foto</a>
+                            @endisset
                         </div>
-                        @isset($ppidDasarHukums)
-                            <img src="{{ asset('uploads/' . $ppidDasarHukums->image) }}" class="img-thumbnail" alt="">
-                        @endisset
 
                         <div class="form-group">
                             <label>Deskripsi</label>
@@ -55,10 +58,9 @@
                         <div class="form-group">
                             <label>File</label>
                             <input type="file" accept="application/pdf" class="form-control upload-file"
-
                                 value="{{ isset($ppidDasarHukumFile) ? $ppidDasarHukumFile->file : @old('file') }}"
                                 name="file">
-                       </div>
+                        </div>
                         @isset($ppidDasarHukums)
                             <table id="example2" class="table table-bordered text-nowrap border-bottom">
                                 <thead>
@@ -71,8 +73,8 @@
                                         <tr>
                                             <td>{{ $ppidDasarHukum->name }}</td>
                                             <td> <a href="#"
-                                                onclick="window.open('{{ asset('uploads/' . $ppidDasarHukum->file) }}','_blank')"
-                                                class="btn btn-sm btn-info">view</a></td>
+                                                    onclick="window.open('{{ asset('uploads/' . $ppidDasarHukum->file) }}','_blank')"
+                                                    class="btn btn-sm btn-info">view</a></td>
                                             <td>
                                                 <a href="{{ route('ppidDasarHukumFile.destroy', $ppidDasarHukum->id) }}"
                                                     class="btn btn-sm btn-danger"
