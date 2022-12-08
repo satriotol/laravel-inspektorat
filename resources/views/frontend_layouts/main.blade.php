@@ -14,6 +14,9 @@
     <!-- Responsive stylesheet -->
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/responsive.css') }}">
 
+    <!-- Whatsapp  stylesheet -->
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/whatsapp-chat.css') }}">
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/' . $master->logo) }}">
     <link rel="icon" type="image/png" href="{{ asset('uploads/' . $master->logo) }}" sizes="32x32">
@@ -112,7 +115,7 @@
         {{-- <div class="preloader"></div> --}}
         <!--End Preloader -->
         @include('frontend_layouts.header')
-        <ul class="ct-socials">
+        {{-- <ul class="ct-socials">
             @foreach ($layananLinks as $layananLink)
                 <li>
                     <a href="{{ $layananLink->whatsapp_url }}" target="_blank"> <img
@@ -120,7 +123,8 @@
                             src="{{ asset('uploads/' . $layananLink->image) }}"></a>
                 </li>
             @endforeach
-        </ul>
+        </ul> --}}
+        <div id="example"></div>
         @yield('content')
 
         <!--Start footer area-->
@@ -239,7 +243,10 @@
         <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
         <!-- main jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('frontend_assets/js/jquery-1.11.1.min.js') }}"></script>
+        <!-- Whatsapp -->
+        <script src="{{ asset('frontend_assets/js/whatsapp-chat.js') }}"></script>
         <!-- bootstrap -->
         <script src="{{ asset('frontend_assets/js/bootstrap.min.js') }}"></script>
         <!-- bx slider -->
@@ -323,6 +330,31 @@
                 $('.form-group:has(textarea[required]) > label')
                     .after('<span class="text-red">*</span>')
             })
+        </script>
+        <script type="text/javascript">
+            whatsappchat.multipleUser({
+                selector: '#example',
+                users: [{
+                        name: 'jQueryScript',
+                        phone: '8801343434343',
+                        // designation: 'jQueryScript.Net',
+                        image: 'https://upload.wikimedia.org/wikipedia/en/d/da/Matt_LeBlanc_as_Joey_Tribbiani.jpg'
+                    },
+                    {
+                        name: 'CSSScript',
+                        phone: '8801343434343',
+                        image: 'https://upload.wikimedia.org/wikipedia/en/6/66/Matthew_Perry_as_Chandler_Bing.png'
+
+                    },
+                    {
+                        name: 'Vue.js',
+                        phone: '8801343434343',
+                        active: false
+                    },
+                ],
+                headerMessage: 'Ada Pertanyaan? Silahkan hubungi <strong>WhatsApp</strong> Dibawah ini',
+                color: '#25D366',
+            });
         </script>
         @stack('custom-scripts')
 
