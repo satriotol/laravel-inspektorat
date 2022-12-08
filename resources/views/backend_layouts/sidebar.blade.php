@@ -113,6 +113,13 @@
                         <h3>Whistleblower </h3>
                     </li>
                 @endcan
+                @can('wbsBeranda-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['wbsAbout.*']) }}"
+                            href="{{ route('wbsBeranda.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Whistleblower</span></a>
+                    </li>
+                @endcan
                 @can('wbsAbout-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsAbout.*']) }}"
