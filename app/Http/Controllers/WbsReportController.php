@@ -12,9 +12,17 @@ class WbsReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:wbsReport-index|wbsReport-create|wbsReport-edit|wbsReport-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:wbsReport-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:wbsReport-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:wbsReport-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
-        //
+        $wbsReports = WbsReport::paginate();
+        return view('backend.wbsReport.index', compact('wbsReports'));
     }
 
     /**
@@ -57,7 +65,7 @@ class WbsReportController extends Controller
      */
     public function edit(WbsReport $wbsReport)
     {
-        //
+        return view('backend.wbsReport.create', compact('wbsReport'));
     }
 
     /**
@@ -80,6 +88,8 @@ class WbsReportController extends Controller
      */
     public function destroy(WbsReport $wbsReport)
     {
-        //
+        $wbsReport->delete();
+        session()->flash('success');
+        return back();
     }
 }

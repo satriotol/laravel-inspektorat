@@ -135,6 +135,13 @@
                                 class="side-menu__label">Kategori WBS</span></a>
                     </li>
                 @endcan
+                @can('wbsReport-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['wbsReport.*']) }}"
+                            href="{{ route('wbsReport.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Laporan WBS</span></a>
+                    </li>
+                @endcan
                 @canany(['documentCategory-index'])
                     <li class="sub-category">
                         <h3>Dokumen</h3>

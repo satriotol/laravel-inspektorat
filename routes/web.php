@@ -32,6 +32,7 @@ use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WbsCategoryController;
+use App\Http\Controllers\WbsReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,6 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('tema', TemaController::class);
     Route::resource('wbsAbout', WbsAboutController::class);
+    Route::resource('wbsReport', WbsReportController::class);
     Route::resource('wbsStep', WbsStepController::class);
     Route::resource('kebijakanCategory', KebijakanCategoryController::class);
     Route::resource('mediaLibrary', MediaLibraryController::class);
