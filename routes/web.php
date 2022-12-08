@@ -110,6 +110,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('berita/verifikasi/{berita}', [BeritaController::class, 'verification'])->name('berita.verification');
     Route::resource('beritaCategory', BeritaCategoryController::class);
     Route::get('beritaCategory/destroyLogo/{beritaCategory}', [BeritaCategoryController::class, 'destroyLogo'])->name('beritaCategory.destroyLogo');
+    Route::get('beritaCategory/destroyImage/{beritaCategory}', [BeritaCategoryController::class, 'destroyImage'])->name('beritaCategory.destroyImage');
     Route::resource('beritaFile', BeritaFileController::class)->except([
         'destroy'
     ]);

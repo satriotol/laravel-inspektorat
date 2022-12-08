@@ -171,4 +171,12 @@ class BeritaCategoryController extends Controller
         session()->flash('success');
         return back();
     }
+    public function destroyImage(BeritaCategory $beritaCategory)
+    {
+        $beritaCategory->update([
+            'image' => null
+        ]);
+        session()->flash('success');
+        return back();
+    }
 }

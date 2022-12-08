@@ -49,18 +49,21 @@
                             <label>Logo</label>
                             <input type="file" accept="image/*" class="form-control upload-logo" name="logo">
                         </div>
-                        @isset($beritaCategory)
+                        @isset($beritaCategory->logo)
                             <img src="{{ asset('uploads/' . $beritaCategory->logo) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
-                            <a href="{{ route('beritaCategory.destroyLogo', $beritaCategory->id) }}">Delete Foto</a>
+                            <a href="{{ route('beritaCategory.destroyLogo', $beritaCategory->id) }}"
+                                onclick="return confirm('Are you sure?')">Delete Foto</a>
                         @endisset
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
-                        @isset($beritaCategory)
+                        @isset($beritaCategory->image)
                             <img src="{{ asset('uploads/' . $beritaCategory->image) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
+                            <a href="{{ route('beritaCategory.destroyImage', $beritaCategory->id) }}"
+                                onclick="return confirm('Are you sure?')">Delete Foto</a>
                         @endisset
                     </div>
                 </div>
