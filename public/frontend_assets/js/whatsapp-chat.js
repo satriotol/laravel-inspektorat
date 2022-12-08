@@ -65,7 +65,7 @@ var whatsappchat = {
                     '<img class="icon" src="frontend_assets/images/icon/close.svg"></button></div></div>' +
                     '<div class="rs-openChatBtn widget-close-btn-row" >' +
                     '<button type="button" class="rs-openChatBtn widget-close-btn">' +
-                    '<img class="icon" src="/frontend_assets/images/icon/whatsapp.svg"></button></div></div>';
+                    '<img class="icon" src="{{asset(`frontend_assets/images/icon/whatsapp.svg`)}}"></button></div></div>';
                 element.innerHTML = chatBox;
                 changeColor(settings.color);
                 var goToWhatsapp = document.getElementsByClassName('rs-go-to-whatsapp');
