@@ -62,10 +62,10 @@ var whatsappchat = {
                     '</div><div class="body-content ayoan_whatsapp_scroll1"><ul class="user-list">' + userList +
                     '</ul></div></div></div></div><div class="widget-close-btn-row" >' +
                     '<button type="button" class="rs-close widget-close-btn">' +
-                    '<img class="icon" src="public/frontend_assets/images/icon/close.svg"></button></div></div>' +
+                    '<img class="icon" src="https://sandbox.inspektorat.semarangkota.go.id/public/frontend_assets/images/icon/close.svg"></button></div></div>' +
                     '<div class="rs-openChatBtn widget-close-btn-row" >' +
                     '<button type="button" class="rs-openChatBtn widget-close-btn">' +
-                    '<img class="icon" src="/public/frontend_assets/images/icon/whatsapp.svg"></button></div></div>';
+                    '<img class="icon" src="https://sandbox.inspektorat.semarangkota.go.id/public/frontend_assets/images/icon/whatsapp.svg"></button></div></div>';
                 element.innerHTML = chatBox;
                 changeColor(settings.color);
                 var goToWhatsapp = document.getElementsByClassName('rs-go-to-whatsapp');
