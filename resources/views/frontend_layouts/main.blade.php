@@ -65,7 +65,9 @@
         {{-- <div class="preloader"></div> --}}
         <!--End Preloader -->
         @include('frontend_layouts.header')
-        <div id="example"></div>
+        <div id="example">
+            Test
+        </div>
         @yield('content')
 
         <!--Start footer area-->
