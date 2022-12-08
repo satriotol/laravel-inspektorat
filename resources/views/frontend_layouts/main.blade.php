@@ -55,56 +55,6 @@
         .h-100 {
             height: 100%;
         }
-
-        .ct-socials {
-            position: fixed;
-            top: 25%;
-            right: 0;
-            list-style: none;
-            padding-left: 0;
-            z-index: 1000;
-            margin: 0;
-            -webkit-transition: right 0.25s ease-in-out;
-            transition: right 0.25s ease-in-out;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-        }
-
-        .ct-socials li {
-            padding: 0px 0;
-        }
-
-        .ct-socials li a {
-            background: #3f4653;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            color: #fff;
-            width: 100px;
-            height: 54px;
-            -webkit-transition: all 0.15s ease-in-out;
-            transition: all 0.15s ease-in-out;
-            float: right;
-            padding-left: 5px;
-        }
-
-        .ct-socials li a:hover {
-            width: 150px;
-            padding-left: 0;
-            text-decoration: none;
-            background: #f60035;
-        }
     </style>
 
 </head>
@@ -115,15 +65,6 @@
         {{-- <div class="preloader"></div> --}}
         <!--End Preloader -->
         @include('frontend_layouts.header')
-        {{-- <ul class="ct-socials">
-            @foreach ($layananLinks as $layananLink)
-                <li>
-                    <a href="{{ $layananLink->whatsapp_url }}" target="_blank"> <img
-                            style="height: 100%; object-fit: contain;"
-                            src="{{ asset('uploads/' . $layananLink->image) }}"></a>
-                </li>
-            @endforeach
-        </ul> --}}
         <div id="example"></div>
         @yield('content')
 
@@ -332,25 +273,17 @@
             })
         </script>
         <script type="text/javascript">
+            @foreach ($whatsappLinks as $whatsappLink)
+                console.log(['name: {{ $whatsappLink->name }}']);
+            @endforeach
             whatsappchat.multipleUser({
                 selector: '#example',
-                users: [{
-                        name: 'jQueryScript',
-                        phone: '8801343434343',
-                        // designation: 'jQueryScript.Net',
-                        image: 'https://upload.wikimedia.org/wikipedia/en/d/da/Matt_LeBlanc_as_Joey_Tribbiani.jpg'
-                    },
-                    {
-                        name: 'CSSScript',
-                        phone: '8801343434343',
-                        image: 'https://upload.wikimedia.org/wikipedia/en/6/66/Matthew_Perry_as_Chandler_Bing.png'
-
-                    },
-                    {
-                        name: 'Vue.js',
-                        phone: '8801343434343',
-                        active: false
-                    },
+                users: [
+                    @foreach ($whatsappLinks as $whatsappLink)
+                        {
+                            'name': '{{ $whatsappLink->name }}',
+                        },
+                    @endforeach
                 ],
                 headerMessage: 'Ada Pertanyaan? Silahkan hubungi <strong>WhatsApp</strong> Dibawah ini',
                 color: '#25D366',

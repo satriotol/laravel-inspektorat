@@ -31,4 +31,8 @@ class Link extends Model
     {
         return Link::where('is_pengaduan', 1)->get();
     }
+    public static function getWhatsappLink()
+    {
+        return Link::whereNotNull('whatsapp_url')->get();
+    }
 }

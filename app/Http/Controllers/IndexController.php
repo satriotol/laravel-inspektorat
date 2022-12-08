@@ -37,7 +37,8 @@ class IndexController extends Controller
         $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
         $documentCategories = DocumentCategory::all();
-        View::share(compact('documentCategories', 'pengaduanLinks', 'kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
+        $whatsappLinks = Link::getWhatsappLink();
+        View::share(compact('whatsappLinks', 'documentCategories', 'pengaduanLinks', 'kegiatans', 'masterBeritaCategories', 'kebijakanCategories', 'layananLinks', 'terkaitLinks', 'latestBeritas', 'master'));
     }
     public function beranda()
     {
