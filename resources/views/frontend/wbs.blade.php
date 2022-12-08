@@ -8,7 +8,20 @@
                 </h1>
             </div>
         </section>
-        <section id="single-service-area" class="business-planning-area">
+        <section class="company-overview-area" style="padding-bottom: 20px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content-box">
+                            {!! $wbsBeranda->description !!}
+                        </div>
+                        <button class="thm-btn bg-clr1" @click="routeName = 'FORM'" style="width: 100%;height: 5rem;">Buat
+                            Pengaduan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="single-service-area" class="business-planning-area" style="padding-top: 0px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right">
