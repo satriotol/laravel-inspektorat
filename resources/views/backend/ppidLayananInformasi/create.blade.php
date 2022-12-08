@@ -60,18 +60,22 @@
                             <input type="file" accept="image/*" class="form-control upload-icon" name="icon">
                         </div>
                         <small class="text-red">Ukuran Rekomendasi 500x500</small>
-                        @isset($ppidLayananInformasi)
+                        @isset($ppidLayananInformasi->icon)
                             <br>
                             <img src="{{ asset('uploads/' . $ppidLayananInformasi->icon) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
+                            <a href="{{ route('ppidLayananInformasi.destroyIcon', $ppidLayananInformasi->id) }}"
+                                onclick="return confirm('Are you sure?')">Delete</a>
                         @endisset
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
-                        @isset($ppidLayananInformasi)
+                        @isset($ppidLayananInformasi->image)
                             <img src="{{ asset('uploads/' . $ppidLayananInformasi->image) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
+                            <a href="{{ route('ppidLayananInformasi.destroyImage', $ppidLayananInformasi->id) }}"
+                                onclick="return confirm('Are you sure?')">Delete</a>
                         @endisset
                     </div>
                 </div>

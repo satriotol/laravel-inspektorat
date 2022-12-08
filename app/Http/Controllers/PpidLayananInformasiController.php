@@ -169,4 +169,20 @@ class PpidLayananInformasiController extends Controller
         session()->flash('success');
         return redirect()->route('ppidLayananInformasi.index');
     }
+    public function destroyImage(PpidLayananInformasi $ppidLayananInformasi)
+    {
+        $ppidLayananInformasi->update([
+            'image' => null
+        ]);
+        session()->flash('success');
+        return back();
+    }
+    public function destroyIcon(PpidLayananInformasi $ppidLayananInformasi)
+    {
+        $ppidLayananInformasi->update([
+            'icon' => null
+        ]);
+        session()->flash('success');
+        return back();
+    }
 }
