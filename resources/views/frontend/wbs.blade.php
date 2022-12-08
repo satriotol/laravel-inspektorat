@@ -173,7 +173,6 @@
                     axios.get('/reload-captcha')
                         .then((res) => {
                             this.captchaImage = res.data.captcha;
-                            console.log(this.captchaImage);
                         });
                 },
                 onFileSelected(event) {
@@ -195,19 +194,15 @@
                                 title: 'Laporan Anda Berhasil Terkirim',
                                 icon: 'success',
                                 confirmButtonText: 'Lanjut',
-                            }).then((result) => {
-                                /* Read more about isConfirmed, isDenied below */
-                                if (result.isConfirmed) {
-                                    this.reloadCaptcha();
-                                    this.form.name = "";
-                                    this.form.wbs_category_id = "";
-                                    this.form.location = "";
-                                    this.form.datetime = "";
-                                    this.form.description = "";
-                                    this.form.file = "";
-                                    this.form.captcha = "";
-                                }
-                            })
+                            });
+                            this.reloadCaptcha();
+                            this.form.name = "";
+                            this.form.wbs_category_id = "";
+                            this.form.location = "";
+                            this.form.datetime = "";
+                            this.form.description = "";
+                            this.form.file = "";
+                            this.form.captcha = "";
                         })
                         .catch((error) => {
                             Swal.fire({
