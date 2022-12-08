@@ -135,9 +135,9 @@ class PpidLayananInformasiController extends Controller
             $data['image'] = $temporaryFile->filename;
             $temporaryFile->delete();
         };
-        $temporaryIcon = TemporaryFile::where('filename', $request->logo)->first();
+        $temporaryIcon = TemporaryFile::where('filename', $request->icon)->first();
         if ($temporaryIcon) {
-            $data['logo'] = $temporaryIcon->filename;
+            $data['icon'] = $temporaryIcon->filename;
             $temporaryIcon->delete();
         };
         $temporaryFileDetail = TemporaryFile::where('filename', $request->file)->first();
