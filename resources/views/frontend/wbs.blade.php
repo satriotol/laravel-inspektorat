@@ -72,6 +72,16 @@
                                                 class="form-control" v-model="form.name" name="name" id="">
                                         </div>
                                         <div class="form-group">
+                                            <label>Nomor HP</label>
+                                            <input type="number" required placeholder="08xxxxxxxx" class="form-control"
+                                                v-model="form.phone" name="phone" id="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" placeholder="Masukkan Email Anda" class="form-control"
+                                                v-model="form.email" name="email" id="">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Lokasi</label>
                                             <input type="text" required placeholder="Alamat / Lokasi Kejadian"
                                                 class="form-control" v-model="form.location" name="location" id="">
@@ -175,6 +185,8 @@
                         description: "",
                         file: "",
                         captcha: "",
+                        phone: "",
+                        email: "",
                     }
                 }
             },
@@ -200,6 +212,8 @@
                     formData.set("description", this.form.description);
                     formData.set("file", this.form.file);
                     formData.set("captcha", this.form.captcha);
+                    formData.set("phone", this.form.phone);
+                    formData.set("email", this.form.email);
                     axios
                         .post('{{ route('wbsStore') }}', formData)
                         .then(() => {
@@ -216,6 +230,8 @@
                             this.form.description = "";
                             this.form.file = "";
                             this.form.captcha = "";
+                            this.form.phone = "";
+                            this.form.email = "";
                         })
                         .catch((error) => {
                             Swal.fire({

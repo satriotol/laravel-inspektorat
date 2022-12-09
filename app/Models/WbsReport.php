@@ -9,7 +9,7 @@ class WbsReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['wbs_category_id', 'name', 'location', 'datetime', 'description', 'file'];
+    protected $fillable = ['wbs_category_id', 'name', 'location', 'datetime', 'description', 'file', 'phone', 'email'];
 
     public function wbs_category()
     {

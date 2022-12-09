@@ -30,6 +30,14 @@
                                 <td>{{ $wbsReport->name }}</td>
                             </tr>
                             <tr>
+                                <th>Nomor HP</th>
+                                <td>{{ $wbsReport->phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ $wbsReport->email ?? '-' }}</td>
+                            </tr>
+                            <tr>
                                 <th>Jenis Pelanggaran</th>
                                 <td>{{ $wbsReport->wbs_category->name }}</td>
                             </tr>

@@ -153,7 +153,9 @@ class IndexController extends Controller
             'datetime' => 'required|date',
             'description' => 'required|max:100',
             'file' => 'required|mimes:pdf,jpg,png,jpeg',
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha',
+            'phone' => 'required',
+            'email' => 'nullable|email'
         ]);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
