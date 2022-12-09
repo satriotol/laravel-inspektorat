@@ -1,22 +1,22 @@
 @extends('frontend_layouts.main')
 @push('css')
     <style>
-     ul li.listing {
-  padding: 2px !important;
-  margin-left: 35px !important;
-}
+        ul li.listing {
+            padding: 2px !important;
+            margin-left: 35px !important;
+        }
 
-    .textcolor{
-        color: black !important;;
-    }
-    .listicon{
-        list-style-type: circle
-    }
+        .textcolor {
+            color: black !important;
+            ;
+        }
 
+        .listicon {
+            list-style-type: circle
+        }
     </style>
 @endpush
 @section('content')
-
     <!--Start breadcrumb area-->
     <section class="breadcrumb-area">
         <div class="container text-center">
@@ -38,29 +38,32 @@
                         </div>
 
                         <ul class="listing">
-
                             @foreach ($ppidLayananInformasis as $ppidLayananInformasi)
                                 @if ($ppidLayananInformasi->type == 'Link')
-                                    <li class="listing"><h4>
-                                         <a class="textcolor" href="{{ $ppidLayananInformasi->link }}" target="_blank">
-                                        {{ $ppidLayananInformasi->name }}
-                                    </a>
-                                </h4></li>
+                                    <li class="listing">
+                                        <h4>
+                                            <a class="textcolor" href="{{ $ppidLayananInformasi->link }}" target="_blank">
+                                                {{ $ppidLayananInformasi->name }}
+                                            </a>
+                                        </h4>
+                                    </li>
                                 @elseif ($ppidLayananInformasi->type == 'Gambar')
                                     <li class="listing"><img src="{{ asset('uploads/' . $ppidLayananInformasi->image) }}"
                                             style="height: 100px" class="img-thumbnail" alt=""></li>
                                 @else
-                                    <li class="listing textcolor"><H4>{{ $ppidLayananInformasi->name }}</h3>
+                                    <li class="listing textcolor">
+                                        <H4>{{ $ppidLayananInformasi->name }}</h3>
 
                                             @foreach ($ppidLayananInformasi->ppid_layanan_informasi_details as $ppid_layanan_informasi_detail)
-                                            <ul>
-                                                 <li class="listing listicon">
-                                                    <a class="textcolor" href="{{ asset('uploads/' . $ppid_layanan_informasi_detail->file) }}"
-                                                    target="_blank">
-                                                    {{ $ppid_layanan_informasi_detail->name }}
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                <ul>
+                                                    <li class="listing listicon">
+                                                        <a class="textcolor"
+                                                            href="{{ asset('uploads/' . $ppid_layanan_informasi_detail->file) }}"
+                                                            target="_blank">
+                                                            {{ $ppid_layanan_informasi_detail->name }}
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             @endforeach
                                     </li>
                                 @endif

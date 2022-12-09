@@ -50,7 +50,7 @@
                                 <h4>{{ $berita->title }}</h4>
                                 <div class="text">
                                     {!! $berita->description !!}
-                                    @isset($berita->berita_files)
+                                    @if ($berita->berita_files->count() > 0)
                                         <h4>Materi</h4>
                                         <section class="brand-area">
                                             <ul>
@@ -61,8 +61,8 @@
                                                 @endforeach
                                             </ul>
                                         </section>
-                                    @endisset
-                                    @isset($berita->berita_galleries)
+                                    @endif
+                                    @if ($berita->berita_galleries->count() > 0)
                                         <section class="brand-area" style="padding-top: 50px; padding-bottom:0;">
                                             <div class="brand">
                                                 @foreach ($berita->berita_galleries as $berita_gallery)
@@ -77,13 +77,15 @@
                                                 @endforeach
                                             </div>
                                         </section>
-                                    @endisset
+                                    @endif
                                 </div>
                                 <div class="meta-info clearfix">
                                     <div class="left pull-left">
                                         <ul class="post-info">
                                             <li>Di Upload <a href="#">{{ $berita->user?->name }}</a></li>
-                                            <li><a href="#">{{ $berita->berita_category->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
+                                            </li>
                                             <li>
                                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('detailBerita', $berita->id) }}"
                                                     target="_blank">

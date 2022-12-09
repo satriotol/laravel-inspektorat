@@ -69,7 +69,8 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown {{ current_class(['ppidProfile']) }}">
+                                <li
+                                    class="dropdown {{ current_class(['ppidProfile', 'ppidProfileDasarHukum', 'ppidLayananInformasi']) }}">
                                     <a href="#"><i class="fa-solid fa-circle-question"></i> PPID</a>
                                     <ul>
                                         <li><a href="{{ route('ppidProfile') }}">Profil PPID</a></li>
