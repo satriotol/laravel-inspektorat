@@ -123,7 +123,7 @@ class IndexController extends Controller
     public function ppidLayananInformasi(Request $request)
     {
         $parameters = $request->search;
-        $ppidLayananInformasis = PpidLayananInformasi::getFrontenddata($parameters)->withQueryString();
+        $ppidLayananInformasis = PpidLayananInformasi::getFrontenddata($parameters);
         $request->flash();
         return view('frontend.ppidLayananInformasi', compact('ppidLayananInformasis'));
     }

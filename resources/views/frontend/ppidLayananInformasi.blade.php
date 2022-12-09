@@ -41,16 +41,16 @@
 
                             @foreach ($ppidLayananInformasis as $ppidLayananInformasi)
                                 @if ($ppidLayananInformasi->type == 'Link')
-                                    <li class="listing"><h3>
+                                    <li class="listing"><h4>
                                          <a class="textcolor" href="{{ $ppidLayananInformasi->link }}" target="_blank">
                                         {{ $ppidLayananInformasi->name }}
                                     </a>
-                                </h3></li>
+                                </h4></li>
                                 @elseif ($ppidLayananInformasi->type == 'Gambar')
                                     <li class="listing"><img src="{{ asset('uploads/' . $ppidLayananInformasi->image) }}"
                                             style="height: 100px" class="img-thumbnail" alt=""></li>
                                 @else
-                                    <li class="listing textcolor"><H3>{{ $ppidLayananInformasi->name }}</h3>
+                                    <li class="listing textcolor"><H4>{{ $ppidLayananInformasi->name }}</h3>
 
                                             @foreach ($ppidLayananInformasi->ppid_layanan_informasi_details as $ppid_layanan_informasi_detail)
                                             <ul>
