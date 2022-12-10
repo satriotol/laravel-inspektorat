@@ -100,7 +100,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">
-                            {{ $beritas->links() }}
+                            {{ $beritas->appends($_GET)->links() }}
                         </div>
                     </div>
                 </div>
