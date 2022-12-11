@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Pendek</label>
-                            <textarea name="short_description" class="form-control summernote" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
+                            <textarea name="short_description" class="form-control" maxlength="100" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
