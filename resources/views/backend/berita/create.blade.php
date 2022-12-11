@@ -48,7 +48,8 @@
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Singkat</label>
-                            <textarea cols="30" rows="10" maxlength="50" class="form-control" name="short_description">{{ isset($beritum) ? $beritum->short_description : @old('short_description') }}</textarea>
+                            <textarea cols="30" rows="10" maxlength="100" class="form-control" id="myTextArea" name="short_description">{{ isset($beritum) ? $beritum->short_description : @old('short_description') }}</textarea>
+                            <p>Total Karakter: <span id="charCount">0/100</span></p>
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
@@ -150,4 +151,17 @@
 @push('custom-scripts')
     <script src="{{ asset('backend_assets/plugins/wysiwyag/jquery.richtext.js') }}"></script>
     <script src="{{ asset('backend_assets/plugins/wysiwyag/wysiwyag.js') }}"></script>
+    <script>
+        // Get a reference to the textarea and span elements
+        var textarea = document.getElementById("myTextArea");
+        var charCount = document.getElementById("charCount");
+
+        // Set the initial character count
+        charCount.textContent = textarea.value.length;
+
+        // Update the character count when the value of the textarea changes
+        textarea.addEventListener("input", function() {
+            charCount.textContent = this.value.length;
+        });
+    </script>
 @endpush

@@ -78,7 +78,8 @@
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Pendek</label>
-                            <textarea name="short_description" class="form-control" maxlength="100" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
+                            <textarea name="short_description" class="form-control" id="myTextArea" maxlength="100" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
+                            <p>Total Karakter: <span id="charCount">0/100</span></p>
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
@@ -103,4 +104,17 @@
 @endsection
 
 @push('custom-scripts')
+    <script>
+        // Get a reference to the textarea and span elements
+        var textarea = document.getElementById("myTextArea");
+        var charCount = document.getElementById("charCount");
+
+        // Set the initial character count
+        charCount.textContent = textarea.value.length;
+
+        // Update the character count when the value of the textarea changes
+        textarea.addEventListener("input", function() {
+            charCount.textContent = this.value.length;
+        });
+    </script>
 @endpush
