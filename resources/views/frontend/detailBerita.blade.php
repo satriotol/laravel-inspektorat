@@ -136,22 +136,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        @if ($berita->berita_files->count() > 0)
-                            <div class="single-sidebar">
-                                <div class="sec-title">
-                                    <h3>Materi</h3>
-                                    <span class="border"></span>
-                                </div>
-                                <ul class="categories clearfix">
-                                    @foreach ($berita->berita_files as $berita_file)
-                                        <li>
-                                            <a href="{{ asset('uploads/' . $berita_file->file) }}"
-                                                target="_blank">{{ $berita_file->name ?? 'Buka Link' }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <div class="single-sidebar">
                             <div class="sec-title">
                                 <h3>Berita Terbaru</h3>

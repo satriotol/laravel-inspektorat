@@ -106,7 +106,7 @@
                                         {{ $berita->short_description }} ...
                                     </div>
                                 @endisset
-                                <div class="meta-info clearfix">
+                                <div class="meta-info clearfix" style="margin-top: 2rem">
                                     <a href="{{ route('detailBerita', $berita->id) }}" class="btn btn-danger w-100">Baca
                                         Selengkapnya</a>
                                 </div>

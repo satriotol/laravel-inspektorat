@@ -63,43 +63,25 @@
                                         <div class="img-holder">
                                             <img src="{{ asset('uploads/' . $berita->image) }}"
                                                 style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
-                                            <div class="published-date">
-                                                <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
-                                            </div>
                                         </div>
                                     </a>
                                     <div class="text-holder">
-                                        @if (Route::is('berita', 'beritaCategory'))
-                                            <a href="{{ route('detailBerita', $berita->id) }}">
-                                                <h3 class="blog-title">{{ $berita->title }}</h3>
-                                            </a>
-                                        @else
-                                            <a href="{{ route('detailKegiatan', $berita->id) }}">
-                                                <h3 class="blog-title">{{ $berita->title }}</h3>
-                                            </a>
-                                        @endif
-                                        <div class="text">
-                                            <small>{{ date('d/m/Y', strtotime($berita->created_at)) }}</small>
-                                        </div>
-                                        <div class="meta-info clearfix">
-                                            <div class="left pull-left">
-                                                <ul class="post-info">
-                                                    <li><a href="#">{{ $berita->user?->name }}</a></li>
-                                                    <li>
-                                                        @if (Route::is('berita', 'beritaCategory'))
-                                                            <a
-                                                                href="{{ route('beritaCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
-                                                        @else
-                                                            <a
-                                                                href="{{ route('kegiatanCategory', $berita->berita_category_id) }}">{{ $berita->berita_category->name }}</a>
-                                                        @endif
-
-
-                                                    </li>
-                                                </ul>
+                                        <a href="{{ route('detailBerita', $berita->id) }}">
+                                            <h3 class="blog-title">{{ Str::limit($berita->title, 100, '...') }}</h3>
+                                        </a>
+                                        <small class="text-red-thin">{{ $berita->berita_category->name }} | <i
+                                                class="fa fa-calendar mr-5 text-theme-colored"></i>
+                                            {{ date('d/m/Y', strtotime($berita->created_at)) }}
+                                        </small>
+                                        @isset($berita->short_description)
+                                            <div class="text">
+                                                {{ $berita->short_description }} ...
                                             </div>
-                                            <div class="right pull-right">
-                                            </div>
+                                        @endisset
+                                        <div class="meta-info clearfix" style="margin-top: 2rem">
+                                            <a href="{{ route('detailBerita', $berita->id) }}"
+                                                class="btn btn-danger w-100">Baca
+                                                Selengkapnya</a>
                                         </div>
                                     </div>
                                 </div>
