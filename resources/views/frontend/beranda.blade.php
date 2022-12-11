@@ -91,22 +91,24 @@
                                 <div class="img-holder">
                                     <img src="{{ asset('uploads/' . $berita->image) }}"
                                         style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
-                                    <div class="published-date">
-                                        <h3>{{ date('d/m/Y', strtotime($berita->created_at)) }}</h3>
-                                    </div>
                                 </div>
                             </a>
                             <div class="text-holder">
                                 <a href="{{ route('detailBerita', $berita->id) }}">
                                     <h3 class="blog-title">{{ Str::limit($berita->title, 100, '...') }}</h3>
                                 </a>
-                                <div class="meta-info clearfix">
-                                    <div class="left pull-left">
-                                        <ul class="post-info">
-                                            <li>{{ $berita->user?->name }}</li>
-                                            <li><a href="#">{{ $berita->berita_category->name }}</a></li>
-                                        </ul>
+                                <small class="text-red-thin">{{ $berita->berita_category->name }} | <i
+                                        class="fa fa-calendar mr-5 text-theme-colored"></i>
+                                    {{ date('d/m/Y', strtotime($berita->created_at)) }}
+                                </small>
+                                @isset($berita->short_description)
+                                    <div class="text">
+                                        {{ $berita->short_description }} ...
                                     </div>
+                                @endisset
+                                <div class="meta-info clearfix">
+                                    <a href="{{ route('detailBerita', $berita->id) }}" class="btn btn-danger w-100">Baca
+                                        Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

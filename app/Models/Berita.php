@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class Berita extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'verified_by', 'berita_category_id', 'berita_subcategory_id', 'title', 'description', 'image', 'is_verified'];
+    protected $fillable = ['user_id', 'verified_by', 'short_description', 'berita_category_id', 'berita_subcategory_id', 'title', 'description', 'image', 'is_verified'];
 
     public function user()
     {

@@ -48,6 +48,10 @@
             font-weight: bold;
         }
 
+        .text-red-thin {
+            color: #f60035;
+        }
+
         .w-100 {
             width: 100%;
         }

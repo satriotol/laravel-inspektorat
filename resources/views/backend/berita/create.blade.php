@@ -47,6 +47,10 @@
                             <textarea id="summernote" cols="30" rows="10" name="description">{{ isset($beritum) ? $beritum->description : @old('description') }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label>Deskripsi Singkat</label>
+                            <textarea cols="30" rows="10" maxlength="50" class="form-control" name="short_description">{{ isset($beritum) ? $beritum->short_description : @old('short_description') }}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control upload-image"
                                 @empty($beritum)

@@ -58,6 +58,7 @@ class BeritaController extends Controller
             'description' => 'required',
             'image' => 'nullable',
             'berita_category_id' => 'required',
+            'short_description' => 'nullable',
         ]);
         $data['user_id'] = Auth::user()->id;
         if (User::getUserRole(Auth::user()) != 'OPERATOR') {
@@ -148,6 +149,7 @@ class BeritaController extends Controller
             'description' => 'required',
             'image' => 'nullable',
             'berita_category_id' => 'required',
+            'short_description' => 'nullable',
         ]);
         DB::beginTransaction();
         try {
