@@ -10,21 +10,21 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url', 'is_pengaduan', 'is_layanan_utama', 'is_terkait','pengaduan_link'];
+    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url', 'is_pengaduan', 'is_layanan_utama', 'is_terkait', 'pengaduan_link'];
 
     public function deleteFile()
     {
         Storage::disk('public_uploads')->delete($this->attributes['image']);
     }
 
-    public static function getOnlyLink()
+    public static function getTerkaitLink()
     {
-        return Link::where('image', null)->get();
+        return Link::where('is_terkait', 1)->get();
     }
 
-    public static function getLayananLinks()
+    public static function getLayananUtamaLink()
     {
-        return Link::where('image', '!=', 2)->get();
+        return Link::where('is_layanan_utama', 1)->get();
     }
 
     public static function getPengaduanLink()

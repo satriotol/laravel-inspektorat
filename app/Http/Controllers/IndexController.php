@@ -31,9 +31,9 @@ class IndexController extends Controller
     {
         $kegiatans = BeritaCategory::where('is_kegiatan', 1)->get();
         $masterBeritaCategories = BeritaCategory::where('is_kegiatan', null)->get();
-        $layananLinks = Link::where('image', '!=', 2)->get();
+        $layananLinks = Link::getLayananUtamaLink();
         $kebijakanCategories = KebijakanCategory::all();
-        $terkaitLinks = Link::getOnlyLink();
+        $terkaitLinks = Link::getTerkaitLink();
         $pengaduanLinks = Link::getPengaduanLink();
         $latestBeritas = Berita::getLatestBeritas(2, 2, '');
         $master = Master::first();
