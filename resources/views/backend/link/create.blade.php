@@ -76,10 +76,10 @@
                             <li class="list-group-item">
                                 Layanan Utama
                                 <div class="material-switch pull-right">
-                                    <input id="someSwitchOptionPrimary" name="is_layanan_utama" value="1"
+                                    <input id="someSwitchOptionPrimary1" name="is_layanan_utama" value="1"
                                         @isset($link) {{ $link->is_layanan_utama == 1 ? ' checked' : '' }} @endisset
                                         type="checkbox" />
-                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                    <label for="someSwitchOptionPrimary1" class="label-primary"></label>
                                 </div>
                             </li>
                         </div>
@@ -87,10 +87,10 @@
                             <li class="list-group-item">
                             Link Terkait
                                 <div class="material-switch pull-right">
-                                    <input id="someSwitchOptionPrimary" name="is_terkait" value="1"
+                                    <input id="someSwitchOptionPrimary2" name="is_terkait" value="1"
                                         @isset($link) {{ $link->is_terkait == 1 ? ' checked' : '' }} @endisset
                                         type="checkbox" />
-                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                    <label for="someSwitchOptionPrimary2" class="label-primary"></label>
                                 </div>
                             </li>
                         </div>
