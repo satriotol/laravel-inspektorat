@@ -73,6 +73,28 @@
                                 name="pengaduan_link">
                         </div>
                         <div class="form-group">
+                            <li class="list-group-item">
+                                Layanan Utama
+                                <div class="material-switch pull-right">
+                                    <input id="someSwitchOptionPrimary" name="is_layanan_utama" value="1"
+                                        @isset($link) {{ $link->is_layanan_utama == 1 ? ' checked' : '' }} @endisset
+                                        type="checkbox" />
+                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="form-group">
+                            <li class="list-group-item">
+                            Link Terkait
+                                <div class="material-switch pull-right">
+                                    <input id="someSwitchOptionPrimary" name="is_terkait" value="1"
+                                        @isset($link) {{ $link->is_terkait == 1 ? ' checked' : '' }} @endisset
+                                        type="checkbox" />
+                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea name="description" class="form-control summernote" cols="30" rows="10">{{ isset($link) ? $link->description : @old('description') }}</textarea>
                         </div>

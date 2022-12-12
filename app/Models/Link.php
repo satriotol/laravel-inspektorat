@@ -10,7 +10,7 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url', 'is_pengaduan', 'pengaduan_link'];
+    protected $fillable = ['name', 'url', 'image', 'description', 'whatsapp_url', 'short_description', 'google_form_url', 'is_pengaduan', 'is_layanan_utama', 'is_terkait','pengaduan_link'];
 
     public function deleteFile()
     {

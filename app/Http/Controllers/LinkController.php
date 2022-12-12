@@ -54,6 +54,8 @@ class LinkController extends Controller
             'short_description' => 'nullable|url',
             'google_form_url' => 'nullable|url',
             'is_pengaduan' => 'nullable',
+            'is_layanan_utama' => 'nullable',
+            'is_terkait' => 'nullable',
             'pengaduan_link' => 'required_if:is_pengaduan,1',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
@@ -106,6 +108,8 @@ class LinkController extends Controller
             'short_description' => 'nullable',
             'google_form_url' => 'nullable',
             'is_pengaduan' => 'nullable',
+            'is_layanan_utama' => 'nullable',
+            'is_terkait' => 'nullable',
             'pengaduan_link' => 'required_if:is_pengaduan,1',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
