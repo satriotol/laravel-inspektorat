@@ -6,6 +6,7 @@ use App\Models\Link;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+use Termwind\Components\Dd;
 
 class LinkController extends Controller
 {
@@ -118,6 +119,9 @@ class LinkController extends Controller
             $link->deleteFile();
             $temporaryFile->delete();
         };
+        $data['is_pengaduan'] = $request->is_pengaduan ;
+        $data['is_layanan_utama'] = $request->is_layanan_utama ;
+        $data['is_terkait'] = $request->is_terkait ;
         $link->update($data);
         session()->flash('success');
         return redirect(route('link.index'));
