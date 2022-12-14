@@ -41,7 +41,7 @@
                 @can('beritaCategory-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['beritaCategory.*']) }}"
-                            href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            href="{{ route('beritaCategory.index') }}"><i class="side-menu__icon fe fe-flag"></i><span
                                 class="side-menu__label">Kategori Berita</span></a>
                     </li>
                 @endcan
@@ -61,7 +61,7 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['kebijakanCategory.*']) }}"
                             href="{{ route('kebijakanCategory.index') }}"><i
-                                class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Kategori
+                                class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Kategori
                                 Kebijakan</span></a>
                     </li>
                 @endcan
@@ -69,14 +69,14 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['kebijakanStatus.*']) }}"
                             href="{{ route('kebijakanStatus.index') }}"><i
-                                class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Status
+                                class="side-menu__icon fe fe-info"></i><span class="side-menu__label">Status
                                 Kebijakan</span></a>
                     </li>
                 @endcan
                 @can('tema-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['tema.*']) }}" href="{{ route('tema.index') }}"><i
-                                class="side-menu__icon fe fe-briefcase"></i><span class="side-menu__label">Tema
+                                class="side-menu__icon fe fe-tag"></i><span class="side-menu__label">Tema
                                 Kategori</span></a>
                     </li>
                 @endcan
@@ -88,7 +88,7 @@
                 @can('ppidProfile-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['ppidProfile.*']) }}"
-                            href="{{ route('ppidProfile.index') }}"><i class="side-menu__icon fe fe-file-text"></i><span
+                            href="{{ route('ppidProfile.index') }}"><i class="side-menu__icon fe fe-user"></i><span
                                 class="side-menu__label">Profil</span></a>
                     </li>
                 @endcan
@@ -116,14 +116,14 @@
                 @can('wbsBeranda-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsAbout.*']) }}"
-                            href="{{ route('wbsBeranda.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('wbsBeranda.index') }}"><i class="side-menu__icon fe fe-bookmark"></i><span
                                 class="side-menu__label">Whistleblower</span></a>
                     </li>
                 @endcan
                 @can('wbsAbout-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsAbout.*']) }}"
-                            href="{{ route('wbsAbout.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('wbsAbout.index') }}"><i class="side-menu__icon fe fe-user"></i><span
                                 class="side-menu__label">Tentang Whistleblower</span></a>
                     </li>
                 @endcan
@@ -131,21 +131,21 @@
                 @can('wbsStep-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsStep.*']) }}"
-                            href="{{ route('wbsStep.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('wbsStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
                                 class="side-menu__label">Tata Cara Pengaduan</span></a>
                     </li>
                 @endcan
                 @can('wbsCategory-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsCategory.*']) }}"
-                            href="{{ route('wbsCategory.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('wbsCategory.index') }}"><i class="side-menu__icon fe fe-folder-plus"></i><span
                                 class="side-menu__label">Kategori WBS</span></a>
                     </li>
                 @endcan
                 @can('wbsReport-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsReport.*']) }}"
-                            href="{{ route('wbsReport.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('wbsReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
                                 class="side-menu__label">Laporan WBS</span></a>
                     </li>
                 @endcan
@@ -157,7 +157,7 @@
                 @can('documentCategory-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['documentCategory.*']) }}"
-                            href="{{ route('documentCategory.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('documentCategory.index') }}"><i class="side-menu__icon fe fe-book"></i><span
                                 class="side-menu__label">Dokumen</span></a>
                     </li>
                 @endcan
@@ -175,7 +175,7 @@
                 @can('profile-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['profile.*']) }}"
-                            href="{{ route('profile.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                            href="{{ route('profile.index') }}"><i class="side-menu__icon fe fe-user"></i><span
                                 class="side-menu__label">Profile</span></a>
                     </li>
                 @endcan
@@ -188,21 +188,21 @@
                 @can('mediaLibrary-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['mediaLibrary.*']) }}"
-                            href="{{ route('mediaLibrary.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                            href="{{ route('mediaLibrary.index') }}"><i class="side-menu__icon fe fe-camera"></i><span
                                 class="side-menu__label">Media Library</span></a>
                     </li>
                 @endcan
                 @can('beranda-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['beranda.*']) }}"
-                            href="{{ route('beranda.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                            href="{{ route('beranda.index') }}"><i class="side-menu__icon fe fe-monitor"></i><span
                                 class="side-menu__label">Beranda</span></a>
                     </li>
                 @endcan
                 @can('master-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['master.*']) }}"
-                            href="{{ route('master.index') }}"><i class="side-menu__icon fe fe-link"></i><span
+                            href="{{ route('master.index') }}"><i class="side-menu__icon fe fe-info"></i><span
                                 class="side-menu__label">Master</span></a>
                     </li>
                 @endcan
