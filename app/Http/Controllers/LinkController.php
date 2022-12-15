@@ -116,7 +116,7 @@ class LinkController extends Controller
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {
             $data['image'] = $temporaryFile->filename;
-            $link->deleteFile();
+            // $link->deleteFile();
             $temporaryFile->delete();
         };
         $data['is_pengaduan'] = $request->is_pengaduan ;
