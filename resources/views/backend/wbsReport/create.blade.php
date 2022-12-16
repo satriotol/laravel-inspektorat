@@ -25,11 +25,6 @@
                             @method('PUT')
                         @endisset
                         <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" class="form-control" required
-                                value="{{ isset($wbsReport) ? $wbsReport->name : @old('name') }}" name="name">
-                        </div>
-                        <div class="form-group">
                             <label>Kategori</label>
                             <select name="wbs_category_id" class="form-control select2-show-search form-select" required>
                                 <option value="">Pilih Kategori</option>
@@ -53,12 +48,6 @@
                             <input type="datetime-local" class="form-control"
                                 {{ isset($wbsReport) ? $wbsReport->datetime : @old('datetime') }} required name="datetime"
                                 id="">
-                        </div>
-                        <div class="form-group">
-                            <label>Nomor HP</label>
-                            <input type="number" required placeholder="08xxxxxxxx"
-                                {{ isset($wbsReport) ? $wbsReport->phone : @old('phone') }} class="form-control"
-                                name="phone" id="">
                         </div>
                         <div class="form-group">
                             <label>Uraian Pengaduan</label>

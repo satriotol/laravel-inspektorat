@@ -6,6 +6,7 @@ use App\Models\TemporaryFile;
 use App\Models\WbsCategory;
 use App\Models\WbsReport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WbsReportController extends Controller
 {
@@ -23,7 +24,7 @@ class WbsReportController extends Controller
     }
     public function index()
     {
-        $wbsReports = WbsReport::paginate();
+        $wbsReports = WbsReport::getData()->paginate();
         return view('backend.wbsReport.index', compact('wbsReports'));
     }
 
@@ -48,22 +49,21 @@ class WbsReportController extends Controller
     {
         $data = $request->validate([
             'wbs_category_id' => 'required',
-            'name' => 'required|max:30',
             'location' => 'required|max:50',
             'datetime' => 'required|date',
             'description' => 'required|max:100',
             'file' => 'nullable',
-            'phone' => 'required',
-            'email' => 'nullable|email'
+            'user_id' => 'nullable',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
         if ($temporaryFile) {
             $data['file'] = $temporaryFile->filename;
             $temporaryFile->delete();
         };
+        $data['user_id'] = Auth::user()->id;
         WbsReport::create($data);
         session()->flash('success');
-        return back();
+        return redirect(route('wbsReport.index'));
     }
 
     /**
@@ -74,6 +74,11 @@ class WbsReportController extends Controller
      */
     public function show(WbsReport $wbsReport)
     {
+        if (Auth::user()->user_detail) {
+            if ($wbsReport->user_id != Auth::user()->id) {
+                return redirect(route('wbsReport.index'));
+            }
+        }
         return view('backend.wbsReport.show', compact('wbsReport'));
     }
 

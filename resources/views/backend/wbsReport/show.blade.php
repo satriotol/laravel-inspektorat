@@ -26,16 +26,26 @@
                         @endisset
                         <table class="table">
                             <tr>
+                                <th colspan="2" class="text-center">Detail Pelapor</th>
+                            </tr>
+                            <tr>
                                 <th>Nama</th>
-                                <td>{{ $wbsReport->name }}</td>
+                                <td>{{ $wbsReport->user->name }}</td>
                             </tr>
                             <tr>
                                 <th>Nomor HP</th>
-                                <td>{{ $wbsReport->phone }}</td>
+                                <td>{{ $wbsReport->user->user_detail->phone ?? '-' }}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>{{ $wbsReport->email ?? '-' }}</td>
+                                <td>{{ $wbsReport->user->email ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Alamat</th>
+                                <td>{{ $wbsReport->user->user_detail->address ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" class="text-center">Detail Laporan</th>
                             </tr>
                             <tr>
                                 <th>Jenis Pelanggaran</th>

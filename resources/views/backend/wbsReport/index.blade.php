@@ -33,7 +33,7 @@
                                 @foreach ($wbsReports as $wbsReport)
                                     <tr>
                                         <td>{{ $wbsReport->created_at }}</td>
-                                        <td>{{ $wbsReport->name }}</td>
+                                        <td>{{ $wbsReport->user->name }}</td>
                                         <td><a href="{{ route('wbsCategory.index') }}"
                                                 target="_blank">{{ $wbsReport->wbs_category->name }}</a>
                                         </td>
