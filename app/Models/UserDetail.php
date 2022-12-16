@@ -11,6 +11,9 @@ class UserDetail extends Model
 
     protected $fillable = ['user_id', 'phone', 'address', 'gender', 'jabatan', 'instansi'];
 
+    const GENDER1 = 'Pria';
+    const GENDER2 = 'Wanita';
+    public const GENDERS = [self::GENDER1, self::GENDER2];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

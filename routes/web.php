@@ -18,6 +18,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BeritaCategoryGalleryController;
 use App\Http\Controllers\BeritaFileController;
 use App\Http\Controllers\CaptchaServiceController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MasterController;
@@ -71,9 +72,11 @@ Route::get('/kegiatan/category/{beritaCategory}', [IndexController::class, 'kegi
 Route::get('/kebijakan/{kebijakan}', [IndexController::class, 'kebijakan'])->name('kebijakan');
 Route::get('/kebijakan/detailKebijakan/{kebijakan}', [IndexController::class, 'detailKebijakan'])->name('detailKebijakan');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('/', function () {
-        return view('backend_layouts.main');
-    })->name('dashboard');
+    // Route::get('/', function () {
+    //     return view('backend_layouts.main');
+    // })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/storeUserDetail', [DashboardController::class, 'storeUserDetail'])->name('storeUserDetail');
     Route::resource('kebijakan', KebijakanController::class);
     Route::resource('tema', TemaController::class);
     Route::resource('wbsAbout', WbsAboutController::class);
