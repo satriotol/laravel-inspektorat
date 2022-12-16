@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TemporaryFile;
+use App\Models\WbsCategory;
 use App\Models\WbsReport;
 use Illuminate\Http\Request;
 
@@ -32,7 +34,8 @@ class WbsReportController extends Controller
      */
     public function create()
     {
-        //
+        $wbsCategories = WbsCategory::all();
+        return view('backend.wbsReport.create', compact('wbsCategories'));
     }
 
     /**
@@ -43,7 +46,24 @@ class WbsReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'wbs_category_id' => 'required',
+            'name' => 'required|max:30',
+            'location' => 'required|max:50',
+            'datetime' => 'required|date',
+            'description' => 'required|max:100',
+            'file' => 'nullable',
+            'phone' => 'required',
+            'email' => 'nullable|email'
+        ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
+        if ($temporaryFile) {
+            $data['file'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
+        WbsReport::create($data);
+        session()->flash('success');
+        return back();
     }
 
     /**
@@ -54,7 +74,7 @@ class WbsReportController extends Controller
      */
     public function show(WbsReport $wbsReport)
     {
-        //
+        return view('backend.wbsReport.show', compact('wbsReport'));
     }
 
     /**
@@ -65,7 +85,6 @@ class WbsReportController extends Controller
      */
     public function edit(WbsReport $wbsReport)
     {
-        return view('backend.wbsReport.create', compact('wbsReport'));
     }
 
     /**

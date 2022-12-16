@@ -80,7 +80,7 @@ class BeritaController extends Controller
                     'name' => 'test',
                     'file' => $data['file'],
                 ]);
-                $temporaryFile->delete();
+                $temporaryFilePendukung->delete();
             };
             if ($request->file('images')) {
                 foreach ($request->file('images') as $imageFile) {

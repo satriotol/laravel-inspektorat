@@ -166,6 +166,6 @@ class IndexController extends Controller
         };
         WbsReport::create($data);
         session()->flash('success');
-        return back();
+        return redirect(route('wbsReport.index'));
     }
 }

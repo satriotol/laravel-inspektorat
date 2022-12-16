@@ -5,7 +5,7 @@
         <div>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('wbsReport.index') }}">Laporan WBS</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Laporan WBS Form</li>
+                <li class="breadcrumb-item active" aria-current="page">Laporan WBS Tabel</li>
             </ol>
         </div>
     </div>
@@ -24,44 +24,54 @@
                         @isset($wbsReport)
                             @method('PUT')
                         @endisset
-                        <table class="table">
-                            <tr>
-                                <th>Nama</th>
-                                <td>{{ $wbsReport->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nomor HP</th>
-                                <td>{{ $wbsReport->phone }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>{{ $wbsReport->email ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jenis Pelanggaran</th>
-                                <td>{{ $wbsReport->wbs_category->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Lokasi</th>
-                                <td>{{ $wbsReport->location }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Kejadian</th>
-                                <td>{{ $wbsReport->datetime }}</td>
-                            </tr>
-                            <tr>
-                                <th>Uraian Kejadian</th>
-                                <td>{{ $wbsReport->description }}</td>
-                            </tr>
-                            <tr>
-                                <th>File</th>
-                                <td><a href="{{ asset('uploads/' . $wbsReport->file) }}" target="_blank"
-                                        class="btn btn-primary">Buka Lampiran</a></td>
-                            </tr>
-                        </table>
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" required
+                                value="{{ isset($wbsReport) ? $wbsReport->name : @old('name') }}" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <select name="wbs_category_id" class="form-control select2-show-search form-select" required>
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($wbsCategories as $wbsCategory)
+                                    <option value="{{ $wbsCategory->id }}"
+                                        @isset($wbsReport)
+                                        @selected($wbsCategory->id == $wbsReport->wbs_category_id)
+                                        @endisset>
+                                        {{ $wbsCategory->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Lokasi</label>
+                            <input type="text" required placeholder="Alamat / Lokasi Kejadian"
+                                class="form-control"name="location"
+                                {{ isset($wbsReport) ? $wbsReport->location : @old('location') }} id="">
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal & Waktu Kejadian</label>
+                            <input type="datetime-local" class="form-control"
+                                {{ isset($wbsReport) ? $wbsReport->datetime : @old('datetime') }} required name="datetime"
+                                id="">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor HP</label>
+                            <input type="number" required placeholder="08xxxxxxxx"
+                                {{ isset($wbsReport) ? $wbsReport->phone : @old('phone') }} class="form-control"
+                                name="phone" id="">
+                        </div>
+                        <div class="form-group">
+                            <label>Uraian Pengaduan</label>
+                            <textarea name="description" {{ isset($wbsReport) ? $wbsReport->description : @old('description') }} id=""
+                                cols="20" rows="5" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>File Lampiran</label>
+                            <input type="file" name="file" class="form-control upload-file" id="">
+                        </div>
                         <div class="text-end">
-                            <a class="btn btn-warning" href="{{ route('wbsReport.index') }}">Kembali</a>
-                            {{-- <button class="btn btn-primary" type="submit">Submit</button> --}}
+                            <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

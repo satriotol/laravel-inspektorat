@@ -16,6 +16,9 @@
                     <h3 class="card-title">Laporan WBS</h3>
                 </div>
                 <div class="card-body">
+                    <div class="text-end mb-2">
+                        <a href="{{ route('wbsReport.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                    </div>
                     <div class="table-responsive">
                         <table id="example2" class="table table-bordered text-nowrap border-bottom">
                             <thead>
@@ -38,7 +41,7 @@
                                             <form action="{{ route('wbsReport.destroy', $wbsReport->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('wbsReport.edit', $wbsReport->id) }}"
+                                                <a href="{{ route('wbsReport.show', $wbsReport->id) }}"
                                                     class="btn btn-sm btn-primary">Detail</a>
                                                 <input type="submit" class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Are you sure?')" value="Delete" id="">
