@@ -41,7 +41,7 @@
                         <div class="single-item hvr-shadow text-center">
                             <div class="img-holder">
                                 <img src="{{ asset('uploads/' . $layananLink->image) }}"
-                                    style="height:100px;object-fit:contain" alt="Awesome Image">
+                                    style="height:100px;object-fit:contain" alt="{{ $layananLink->name }}">
                                 <div class="overlay-style-one">
                                     <div class="box">
                                         <div class="content">
