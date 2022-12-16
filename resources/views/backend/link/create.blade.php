@@ -94,10 +94,10 @@
                                 </div>
                             </li>
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group d-none">
                             <label>Deskripsi</label>
                             <textarea name="description" class="form-control summernote" cols="30" rows="10">{{ isset($link) ? $link->description : @old('description') }}</textarea>
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label>Deskripsi Pendek</label>
                             <textarea name="short_description" class="form-control" id="myTextArea" maxlength="100" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
