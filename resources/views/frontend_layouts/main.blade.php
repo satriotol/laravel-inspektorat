@@ -33,9 +33,9 @@
     @stack('css')
     <style>
         .breadcrumb-area {
-            background: linear-gradient(0deg, rgba(185, 185, 185, 0.3), rgba(255, 255, 255, 0.3)), url('{{ asset('uploads/' . $master->banner) }}');
+            background: url('{{ asset('uploads/' . $master->banner) }}');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-size: cover;
         }
 
         .row-flex {

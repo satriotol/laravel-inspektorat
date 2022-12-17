@@ -1991,7 +1991,7 @@ select:focus {
     position: relative;
 }
 .breadcrumb-area h1 {
-    color: #222222;
+    color: white;
     font-size: 48px;
     font-weight: 600;
     line-height: 40px;
