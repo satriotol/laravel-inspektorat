@@ -15,8 +15,8 @@
                         <div class="content-box">
                             {!! $wbsBeranda->description !!}
                         </div>
-                        <button class="thm-btn bg-clr1" @click="routeName = 'FORM'" style="width: 100%;height: 5rem;">Buat
-                            Pengaduan</button>
+                        <a class="thm-btn bg-clr1" href="{{ route('wbsReport.index') }}" target="_blank"
+                            style="width: 100%;padding:1rem">Buat Pengaduan</a>
                     </div>
                 </div>
             </div>
@@ -52,80 +52,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" v-if="routeName == 'FORM'">
-                                <div class="col-md-12 contact-form">
-                                    <form @submit.prevent="reportInsert" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label>Jenis Pelanggaran</label>
-                                            <select name="wbs_category_id" v-model="form.wbs_category_id"
-                                                class="form-control" id="" required>
-                                                <option value="">Pilih Jenis Pelanggaran</option>
-                                                @foreach ($wbsCategories as $wbsCategory)
-                                                    <option value="{{ $wbsCategory->id }}">{{ $wbsCategory->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nama Pelapor</label>
-                                            <input type="text" required placeholder="Masukkan Nama Pelapor"
-                                                class="form-control" v-model="form.name" name="name" id="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nomor HP</label>
-                                            <input type="number" required placeholder="08xxxxxxxx" class="form-control"
-                                                v-model="form.phone" name="phone" id="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" placeholder="Masukkan Email Anda" class="form-control"
-                                                v-model="form.email" name="email" id="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Lokasi</label>
-                                            <input type="text" required placeholder="Alamat / Lokasi Kejadian"
-                                                class="form-control" v-model="form.location" name="location" id="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tanggal & Waktu Kejadian</label>
-                                            <input type="datetime-local" v-model="form.datetime" class="form-control"
-                                                required name="datetime" id="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Uraian Pengaduan</label>
-                                            <textarea name="description" v-model="form.description" id="" cols="20" rows="5"
-                                                class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>File Lampiran</label>
-                                            <input type="file" @change="onFileSelected" name="file"
-                                                class="form-control" id="">
-                                        </div>
-                                        <div class="form-group mt-4 mb-4">
-                                            <div class="captcha">
-                                                <span v-html="captchaImage"></span>
-                                                <button type="button" class="btn btn-danger" class="reload" id="reload"
-                                                    @click="reloadCaptcha()">
-                                                    &#x21bb;
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input id="captcha" required type="text" class="form-control"
-                                                placeholder="Enter Captcha" v-model="form.captcha" name="captcha">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <input id="form_botcheck" name="form_botcheck" class="form-control"
-                                                    type="hidden" value="">
-                                                <button class="thm-btn bg-clr1" type="submit"
-                                                    style="width: 100%;height: 5rem;"
-                                                    data-loading-text="Please wait...">Kirim Aduan</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12 pull-left">
@@ -140,15 +66,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a :class="{ 'active': routeName == 'PENGADUAN' }"
-                                            @click="routeName = 'PENGADUAN'">
+                                        <a :class="{ 'active': routeName == 'PENGADUAN' }" @click="routeName = 'PENGADUAN'">
                                             Tata Cara Pengaduan
-                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a :class="{ 'active': routeName == 'FORM' }" @click="routeName = 'FORM'">
-                                            Form Pengaduan
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                         </a>
                                     </li>
@@ -177,72 +96,10 @@
                 return {
                     routeName: "TENTANG",
                     captchaImage: '',
-                    form: {
-                        name: "",
-                        wbs_category_id: "",
-                        location: "",
-                        datetime: "",
-                        description: "",
-                        file: "",
-                        captcha: "",
-                        phone: "",
-                        email: "",
-                    }
                 }
             },
-            mounted() {
-                this.reloadCaptcha();
-            },
-            methods: {
-                reloadCaptcha() {
-                    axios.get('/reload-captcha')
-                        .then((res) => {
-                            this.captchaImage = res.data.captcha;
-                        });
-                },
-                onFileSelected(event) {
-                    this.form.file = event.target.files[0];
-                },
-                reportInsert() {
-                    let formData = new FormData();
-                    formData.set("name", this.form.name);
-                    formData.set("wbs_category_id", this.form.wbs_category_id);
-                    formData.set("location", this.form.location);
-                    formData.set("datetime", this.form.datetime);
-                    formData.set("description", this.form.description);
-                    formData.set("file", this.form.file);
-                    formData.set("captcha", this.form.captcha);
-                    formData.set("phone", this.form.phone);
-                    formData.set("email", this.form.email);
-                    axios
-                        .post('{{ route('wbsStore') }}', formData)
-                        .then(() => {
-                            Swal.fire({
-                                title: 'Laporan Anda Berhasil Terkirim',
-                                icon: 'success',
-                                confirmButtonText: 'Lanjut',
-                            });
-                            this.reloadCaptcha();
-                            this.form.name = "";
-                            this.form.wbs_category_id = "";
-                            this.form.location = "";
-                            this.form.datetime = "";
-                            this.form.description = "";
-                            this.form.file = "";
-                            this.form.captcha = "";
-                            this.form.phone = "";
-                            this.form.email = "";
-                        })
-                        .catch((error) => {
-                            Swal.fire({
-                                title: 'Error',
-                                icon: 'error',
-                                text: error.response.data.message,
-                                confirmButtonText: 'Ok',
-                            })
-                        });
-                }
-            },
+            mounted() {},
+            methods: {},
         }).mount('#app')
     </script>
 @endpush
