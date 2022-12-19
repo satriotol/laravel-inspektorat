@@ -68,8 +68,8 @@
                 @can('kebijakanStatus-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['kebijakanStatus.*']) }}"
-                            href="{{ route('kebijakanStatus.index') }}"><i
-                                class="side-menu__icon fe fe-info"></i><span class="side-menu__label">Status
+                            href="{{ route('kebijakanStatus.index') }}"><i class="side-menu__icon fe fe-info"></i><span
+                                class="side-menu__label">Status
                                 Kebijakan</span></a>
                     </li>
                 @endcan
@@ -149,6 +149,18 @@
                                 class="side-menu__label">Laporan WBS</span></a>
                     </li>
                 @endcan
+                @canany(['upgCategory-index'])
+                    <li class="sub-category">
+                        <h3>Unit Pelayanan Gratifikasi</h3>
+                    </li>
+                @endcan
+                @can('upgCategory-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['upgCategory.*']) }}"
+                            href="{{ route('upgCategory.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Kategori</span></a>
+                    </li>
+                @endcan
                 @canany(['documentCategory-index'])
                     <li class="sub-category">
                         <h3>Dokumen</h3>
@@ -168,8 +180,9 @@
                 @endcan
                 @can('slider-index')
                     <li>
-                        <a class="side-menu__item {{ active_class(['slider.*']) }}" href="{{ route('slider.index') }}"><i
-                                class="side-menu__icon fe fe-image"></i><span class="side-menu__label">Slider</span></a>
+                        <a class="side-menu__item {{ active_class(['slider.*']) }}"
+                            href="{{ route('slider.index') }}"><i class="side-menu__icon fe fe-image"></i><span
+                                class="side-menu__label">Slider</span></a>
                     </li>
                 @endcan
                 @can('profile-index')
