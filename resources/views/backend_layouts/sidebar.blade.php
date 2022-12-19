@@ -127,7 +127,6 @@
                                 class="side-menu__label">Tentang Whistleblower</span></a>
                     </li>
                 @endcan
-
                 @can('wbsStep-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsStep.*']) }}"
@@ -166,6 +165,19 @@
                         <a class="side-menu__item {{ active_class(['upgReport.*']) }}"
                             href="{{ route('upgReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
                                 class="side-menu__label">Laporan</span></a>
+                    </li>
+                @endcan
+                @canany(['konsultasiAsistensiCategory-index'])
+                    <li class="sub-category">
+                        <h3>Konsultasi Asistensi</h3>
+                    </li>
+                @endcan
+                @can('konsultasiAsistensiCategory-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['konsultasiAsistensiCategory.*']) }}"
+                            href="{{ route('konsultasiAsistensiCategory.index') }}"><i
+                                class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Kategori</span></a>
                     </li>
                 @endcan
                 @canany(['documentCategory-index'])

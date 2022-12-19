@@ -21,6 +21,7 @@ use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\KonsultasiAsistensiCategoryController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
@@ -103,6 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('master', MasterController::class);
     Route::resource('wbsCategory', WbsCategoryController::class);
     Route::resource('upgCategory', UpgCategoryController::class);
+    Route::resource('konsultasiAsistensiCategory', KonsultasiAsistensiCategoryController::class);
     Route::resource('upgReport', UpgReportController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
