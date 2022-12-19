@@ -161,6 +161,13 @@
                                 class="side-menu__label">Kategori</span></a>
                     </li>
                 @endcan
+                @can('upgReport-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['upgReport.*']) }}"
+                            href="{{ route('upgReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Laporan</span></a>
+                    </li>
+                @endcan
                 @canany(['documentCategory-index'])
                     <li class="sub-category">
                         <h3>Dokumen</h3>

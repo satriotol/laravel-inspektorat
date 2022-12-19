@@ -32,6 +32,7 @@ use App\Http\Controllers\WbsBerandaController;
 use App\Http\Controllers\WbsStepController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UpgCategoryController;
+use App\Http\Controllers\UpgReportController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WbsCategoryController;
@@ -102,6 +103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('master', MasterController::class);
     Route::resource('wbsCategory', WbsCategoryController::class);
     Route::resource('upgCategory', UpgCategoryController::class);
+    Route::resource('upgReport', UpgReportController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
