@@ -49,10 +49,6 @@ class PpidLayananInformasiController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'type' => 'required',
-            'link' => 'required_if:type,Link',
-            'description' => 'required_if:type,Detail',
-            'icon' => 'nullable',
             'image' => 'nullable',
             'nameDetail' => 'nullable',
             'file' => 'nullable',
@@ -74,6 +70,7 @@ class PpidLayananInformasiController extends Controller
                 $data['file'] = $temporaryFileDetail->filename;
                 $temporaryFileDetail->delete();
             };
+            $data['type'] = "Detail";
             $ppidLayananInformasi = PpidLayananInformasi::create($data);
             PpidLayananInformasiDetail::create([
                 'ppid_layanan_informasi_id' => $ppidLayananInformasi->id,
@@ -123,12 +120,8 @@ class PpidLayananInformasiController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'type' => 'required',
             'link' => 'required_if:type,Link',
-            'description' => 'required_if:type,Detail',
-            'icon' => 'nullable',
             'nameDetail' => 'nullable',
-            'image' => 'required_if:type,Gambar',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
         if ($temporaryFile) {

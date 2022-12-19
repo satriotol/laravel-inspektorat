@@ -122,10 +122,12 @@ class IndexController extends Controller
     }
     public function ppidLayananInformasi(Request $request)
     {
+        $aturlayananinformasi =  PpidLayananInformasi::where('type', 'Gambar')->first();
+
         $parameters = $request->search;
         $ppidLayananInformasis = PpidLayananInformasi::getFrontenddata($parameters);
         $request->flash();
-        return view('frontend.ppidLayananInformasi', compact('ppidLayananInformasis'));
+        return view('frontend.ppidLayananInformasi', compact('ppidLayananInformasis', 'aturlayananinformasi'));
     }
     public function profil()
     {

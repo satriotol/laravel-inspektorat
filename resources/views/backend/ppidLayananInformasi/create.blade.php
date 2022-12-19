@@ -31,7 +31,7 @@
                                 value="{{ isset($ppidLayananInformasi) ? $ppidLayananInformasi->name : @old('name') }}"
                                 name="name">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Tipe</label>
                             <select name="type" class="form-control" required id="">
                                 <option value="">Pilih Tipe</option>
@@ -44,8 +44,8 @@
                                 @endforeach
                             </select>
                             <small class="text-red">Wajib Diisi Untuk Menentukan Tipe Konten</small>
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <label>Link</label>
                             <input type="text" class="form-control"
                                 value="{{ isset($ppidLayananInformasi) ? $ppidLayananInformasi->link : @old('link') }}"
@@ -54,28 +54,27 @@
                         <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea id="summernote" name="description">{{ isset($ppidLayananInformasi) ? $ppidLayananInformasi->description : @old('description') }}</textarea>
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <label>Icon</label>
                             <input type="file" accept="image/*" class="form-control upload-icon" name="icon">
-                        </div>
-                        <small class="text-red">Ukuran Rekomendasi 500x500</small>
+                        </div> --}}
+                        {{-- <small class="text-red">Ukuran Rekomendasi 500x500</small>
                         @isset($ppidLayananInformasi->icon)
                             <br>
                             <img src="{{ asset('uploads/' . $ppidLayananInformasi->icon) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
                             <a href="{{ route('ppidLayananInformasi.destroyIcon', $ppidLayananInformasi->id) }}"
                                 onclick="return confirm('Are you sure?')">Delete</a>
-                        @endisset
+                        @endisset --}}
+                        @isset($ppidLayananInformasi->image)
                         <div class="form-group">
                             <label>Gambar</label>
                             <input type="file" accept="image/*" class="form-control" name="image">
                         </div>
-                        @isset($ppidLayananInformasi->image)
+                        {{-- @isset($ppidLayananInformasi->image) --}}
                             <img src="{{ asset('uploads/' . $ppidLayananInformasi->image) }}" style="height: 100px"
                                 class="img-thumbnail" alt="">
-                            <a href="{{ route('ppidLayananInformasi.destroyImage', $ppidLayananInformasi->id) }}"
-                                onclick="return confirm('Are you sure?')">Delete</a>
                         @endisset
                     </div>
                 </div>
