@@ -27,7 +27,7 @@ class PpidLayananInformasi extends Model
         if ($paramaters != '') {
             $ppidLayananInformasis = PpidLayananInformasi::where('name', 'LIKE', "%{$paramaters}%")->paginate(5);
         } else {
-            $ppidLayananInformasis = PpidLayananInformasi::all();
+            $ppidLayananInformasis = PpidLayananInformasi::orderBy("id", "desc")->get();
         }
         return $ppidLayananInformasis;
     }
