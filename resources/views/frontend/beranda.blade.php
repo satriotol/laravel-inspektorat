@@ -38,7 +38,7 @@
             <div class="row">
                 @foreach ($layananLinks as $layananLink)
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="single-item hvr-shadow text-center">
+                        <div class="single-item hvr-shadow text-center" data-aos="fade-up">
                             <div class="img-holder">
                                 <img src="{{ asset('uploads/' . $layananLink->image) }}"
                                     style="height:100px;object-fit:contain" alt="{{ $layananLink->name }}">
@@ -67,7 +67,7 @@
                 <div class="col-md-12">
                     <div class="text-holder">
                         <h3>Sambutan Inspektorat</h3>
-                        <div class="text">
+                        <div class="text" data-aos="fade-left">
                             <p>{!! $beranda->sambutan !!}</p>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                     <div class="col-md-4">
                         <div class="single-blog-post">
                             <a href="{{ route('detailBerita', $berita->id) }}">
-                                <div class="img-holder">
+                                <div class="img-holder" data-aos="flip-up">
                                     <img src="{{ asset('uploads/' . $berita->image) }}"
                                         style="width:370px;height:220px; object-fit:cover" alt="Awesome Image">
                                 </div>
