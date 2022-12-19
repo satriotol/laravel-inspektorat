@@ -24,8 +24,48 @@
                         @isset($upgReport)
                             @method('PUT')
                         @endisset
+
                         <div class="panel-group1" id="accordion1">
                             <div class="panel panel-default mb-4">
+                                <div class="panel-heading1 ">
+                                    <h4 class="panel-title1">
+                                        <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion"
+                                            href="#collapseFour" aria-expanded="false">DETAIL PELAPOR</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse show" role="tabpanel"
+                                    aria-expanded="false">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Nama</th>
+                                                <td>{{ $upgReport->user->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nomor HP</th>
+                                                <td>{{ $upgReport->user->user_detail->phone ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+                                                <td>{{ $upgReport->user->email ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Alamat</th>
+                                                <td>{{ $upgReport->user->user_detail->address ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jabatan</th>
+                                                <td>{{ $upgReport->user->user_detail->jabatan ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Instansi</th>
+                                                <td>{{ $upgReport->user->user_detail->instansi ?? '-' }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
                                 <div class="panel-heading1 ">
                                     <h4 class="panel-title1">
                                         <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion"
@@ -39,32 +79,26 @@
                                         <table class="table">
                                             <tr>
                                                 <td>Nama Lengkap</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->name }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Alamat</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->address }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Jabatan</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->jabatan }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Instansi</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->instansi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Nomor Handphone</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->phone }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Hubungan Dengan Pemberi</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->hubungan_dengan_pemberi }}</td>
                                             </tr>
                                         </table>
@@ -85,42 +119,34 @@
                                         <table class="table">
                                             <tr>
                                                 <td>Tanggal & Waktu Pemberian</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->datetime_gratifikasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Tempat/Lokasi</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->address_gratifikasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Kategori</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->upg_category->name }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Uraian Jenis Gratifikasi</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->uraian_jenis_gratifikasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Nilai Gratifikasi</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->nilai_gratifikasi }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Alasan Pemberian</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->alasan_pemberian }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Kronologi Pemberian</td>
-                                                <td>:</td>
                                                 <td>{{ $upgReport->kronologi_pemberian }}</td>
                                             </tr>
                                             <tr>
                                                 <td>File Lampiran</td>
-                                                <td>:</td>
                                                 <td>
                                                     @isset($upgReport->file)
                                                         <a href="{{ asset('uploads/' . $upgReport->file) }}" target="_blank"

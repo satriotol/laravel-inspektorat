@@ -47,7 +47,7 @@
                                                     class="btn btn-sm btn-info"
                                                     onclick="return confirm('Are you sure?')">Reset
                                                     Password</a>
-                                                @if (Auth::user() != $user)
+                                                @if (Auth::user()->id != $user->id)
                                                     <input type="submit" class="btn btn-sm btn-danger"
                                                         onclick="return confirm('Are you sure?')" value="Delete"
                                                         id="">
