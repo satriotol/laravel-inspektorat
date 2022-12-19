@@ -24,7 +24,7 @@ class UpgReportController extends Controller
     }
     public function index()
     {
-        $upgReports = UpgReport::paginate();
+        $upgReports = UpgReport::getData()->paginate();
         return view('backend.upgReport.index', compact('upgReports'));
     }
 

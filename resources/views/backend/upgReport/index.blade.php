@@ -20,7 +20,7 @@
                         <a href="{{ route('upgReport.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
                     <div class="table-responsive">
-                        <table id="example2" class="table table-bordered text-nowrap border-bottom">
+                        <table class="table border text-nowrap text-md-nowrap table-hover mb-0">
                             <thead>
                                 <tr>
                                     <th>Laporan Masuk</th>
@@ -51,6 +51,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $upgReports->appends($_GET)->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

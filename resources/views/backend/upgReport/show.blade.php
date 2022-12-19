@@ -63,7 +63,7 @@
                                                 <td>{{ $upgReport->phone }}</td>
                                             </tr>
                                             <tr>
-                                                <td>>Hubungan Dengan Pemberi</td>
+                                                <td>Hubungan Dengan Pemberi</td>
                                                 <td>:</td>
                                                 <td>{{ $upgReport->hubungan_dengan_pemberi }}</td>
                                             </tr>

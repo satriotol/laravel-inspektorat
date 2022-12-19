@@ -108,7 +108,7 @@
                                 Informasi</span></a>
                     </li>
                 @endcan
-                @canany(['wbsAbout-index', 'wbsStep-index', 'wbsCategory-index'])
+                @canany(['wbsAbout-index', 'wbsStep-index', 'wbsReport-index', 'wbsCategory-index'])
                     <li class="sub-category">
                         <h3>Whistleblower </h3>
                     </li>
@@ -149,7 +149,7 @@
                                 class="side-menu__label">Laporan WBS</span></a>
                     </li>
                 @endcan
-                @canany(['upgCategory-index'])
+                @canany(['upgCategory-index', 'upgReport-index'])
                     <li class="sub-category">
                         <h3>Unit Pelayanan Gratifikasi</h3>
                     </li>
