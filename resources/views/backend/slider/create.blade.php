@@ -41,7 +41,7 @@
                             required
                             @endempty
                                 name="image">
-                                <small class="text-red">Ukuran Rekomendasi 1920x550</small>
+                                <small class="text-red">Ukuran Rekomendasi 1920x550 atau 1280x550</small>
                         </div>
                         @isset($slider)
                             <img src="{{ asset('uploads/' . $slider->image) }}" class="img-thumbnail" alt="">
