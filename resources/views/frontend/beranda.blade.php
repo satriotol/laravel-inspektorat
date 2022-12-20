@@ -10,46 +10,64 @@
             margin-right: 10px;
         }
 
-        @media (max-width: 575.98px) {
-   
-        }
-        @media (max-width: 767.98px) {
+        @media (max-width: 991.98px) {
             .berita-slider {
                 display: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .berita-list {
+                height: 383px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .berita-list {
+                height: 491px;
+            }
+        }
+
+        @media (min-width: 1920px) {
+            .berita-list {
+                height: 731px;
             }
         }
     </style>
 @endpush
 @section('content')
-    <div class="row row-flex">
-        <div class="col-md-8 px-0">
-            <div class="main-carousel">
-                @foreach ($sliders as $slider)
-                    <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt=""
-                            class="w-100">
-                    </div>
-                @endforeach
+    <section>
+        <div class="row">
+            <div class="col-md-8 px-0">
+                <div class="main-carousel">
+                    @foreach ($sliders as $slider)
+                        <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt=""
+                                class="w-100" style="height: 100%">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-md-4 berita-slider pl-0">
+                <ul class="list-group berita-list" style="overflow-y: scroll">
+                    @foreach ($beritas as $berita)
+                        <li class="list-group-item">
+                            <a href="" style="color: black">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <img src="{{ asset('uploads/' . $berita->image) }}"
+                                            style="height: 100px; width:100%;object-fit:cover" alt="">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <h4>{{ $berita->title }}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
-        <div class="col-md-4 berita-slider px-0">
-            <ul class="list-group berita-list" style="overflow-y: scroll;">
-                @foreach ($beritas as $berita)
-                    <li class="list-group-item">
-                        <a href="" style="color: black">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <img src="{{ asset('uploads/' . $berita->image) }}" alt="">
-                                </div>
-                                <div class="col-sm-9">
-                                    <h4>{{ $berita->title }}</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
+    </section>
     <section class="call-to-action-area">
         <div class="container">
             <div class="title text-center">

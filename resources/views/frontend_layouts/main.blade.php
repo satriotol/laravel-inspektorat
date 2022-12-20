@@ -45,6 +45,10 @@
             padding-left: 0;
         }
 
+        .pl-0 {
+            padding-left: 0;
+        }
+
         .row-flex {
             display: flex;
             flex-wrap: wrap;
