@@ -85,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <li class="list-group-item">
-                            Link Terkait
+                                Link Terkait
                                 <div class="material-switch pull-right">
                                     <input id="someSwitchOptionPrimary2" name="is_terkait" value="1"
                                         @isset($link) {{ $link->is_terkait == 1 ? ' checked' : '' }} @endisset
@@ -101,7 +101,7 @@
                         <div class="form-group">
                             <label>Deskripsi Pendek</label>
                             <textarea name="short_description" class="form-control" id="myTextArea" maxlength="100" cols="30" rows="10">{{ isset($link) ? $link->short_description : @old('short_description') }}</textarea>
-                            <p>Total Karakter: <span id="charCount">0/100</span></p>
+                            <p>Total Karakter: <span id="charCount">0</span>/150</p>
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
