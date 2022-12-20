@@ -5,7 +5,7 @@
         .carousel-cell {
             width: 100%;
             /* full width */
-            height: 800px;
+            /* max-height: 800px; */
             /* height of carousel */
             margin-right: 10px;
         }
@@ -112,17 +112,11 @@
 @push('custom-scripts')
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script>
-        var elem = document.querySelector('.main-carousel');
-        var flkty = new Flickity(elem, {
+        $('.main-carousel').flickity({
             // options
             cellAlign: 'left',
-            contain: true
-        });
-
-        // element argument can be a selector string
-        //   for an individual element
-        var flkty = new Flickity('.main-carousel', {
-            // options
+            contain: true,
+            autoPlay: 1500
         });
     </script>
 @endpush
