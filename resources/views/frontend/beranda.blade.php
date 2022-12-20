@@ -51,7 +51,7 @@
                 <ul class="list-group berita-list" style="overflow-y: scroll">
                     @foreach ($beritas as $berita)
                         <li class="list-group-item">
-                            <a href="" style="color: black">
+                            <a href="{{ route('detailBerita', $berita->id) }}" style="color: black">
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <img src="{{ asset('uploads/' . $berita->image) }}"
