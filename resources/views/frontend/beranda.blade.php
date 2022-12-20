@@ -1,34 +1,25 @@
 @extends('frontend_layouts.main')
+@push('css')
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+        .carousel-cell {
+            width: 100%;
+            /* full width */
+            height: 800px;
+            /* height of carousel */
+            margin-right: 10px;
+        }
+    </style>
+@endpush
 @section('content')
-    <section class="rev_slider_wrapper">
-        <div id="slider1" class="rev_slider" data-version="5.0">
-            <ul>
-                @foreach ($sliders as $slider)
-                    <li data-transition="slidingoverlayleft">
-                        <img src="{{ asset('uploads/' . $slider->image) }}" alt="" width="1920" height="550"
-                            data-bgposition="top center" data-bgfit="100% 100%" data-bgrepeat="no-repeat"
-                            data-bgparallax="1">
-
-                        <div class="tp-caption  tp-resizeme" data-x="left" data-hoffset="0" data-y="top"
-                            data-voffset="130" data-transform_idle="o:1;"
-                            data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                            data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                            data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" data-splitin="none" data-splitout="none"
-                            data-responsive_offset="on" data-start="700">
-                            <div class="slide-content-box">
-                                <h1>{{ $slider->title }}</h1>
-                                <p>{{ $slider->subtitle }}</p>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-
-            </ul>
+    <section>
+        <div class="main-carousel">
+            @foreach ($sliders as $slider)
+                <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt="" class="w-100">
+                </div>
+            @endforeach
         </div>
     </section>
-    <!--End rev slider wrapper-->
-
-    <!--Start call to action area-->
     <section class="call-to-action-area">
         <div class="container">
             <div class="title text-center">
@@ -118,3 +109,20 @@
         </div>
     </section>
 @endsection
+@push('custom-scripts')
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        var elem = document.querySelector('.main-carousel');
+        var flkty = new Flickity(elem, {
+            // options
+            cellAlign: 'left',
+            contain: true
+        });
+
+        // element argument can be a selector string
+        //   for an individual element
+        var flkty = new Flickity('.main-carousel', {
+            // options
+        });
+    </script>
+@endpush
