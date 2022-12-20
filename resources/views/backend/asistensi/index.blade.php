@@ -40,7 +40,7 @@
                                             </span>
                                         </td>
                                         <td>{{ $asistensi->user->name }}</td>
-                                        <td><a href="{{ route('wbsCategory.index') }}"
+                                        <td><a href="{{ route('konsultasiAsistensiCategory.index') }}"
                                                 target="_blank">{{ $asistensi->konsultasi_asistensi_category->name }}</a>
                                         </td>
                                         <td>
