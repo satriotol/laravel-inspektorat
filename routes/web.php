@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsistensiController;
 use App\Http\Controllers\BeritaCategoryController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaSubcategoryController;
@@ -106,6 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('upgCategory', UpgCategoryController::class);
     Route::resource('konsultasiAsistensiCategory', KonsultasiAsistensiCategoryController::class);
     Route::resource('upgReport', UpgReportController::class);
+    Route::resource('asistensi', AsistensiController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);

@@ -167,7 +167,7 @@
                                 class="side-menu__label">Laporan</span></a>
                     </li>
                 @endcan
-                @canany(['konsultasiAsistensiCategory-index'])
+                @canany(['konsultasiAsistensiCategory-index', 'asistensi-index'])
                     <li class="sub-category">
                         <h3>Konsultasi Asistensi</h3>
                     </li>
@@ -178,6 +178,13 @@
                             href="{{ route('konsultasiAsistensiCategory.index') }}"><i
                                 class="side-menu__icon fe fe-file-plus"></i><span
                                 class="side-menu__label">Kategori</span></a>
+                    </li>
+                @endcan
+                @can('asistensi-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['asistensi.*']) }}"
+                            href="{{ route('asistensi.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Asistensi</span></a>
                     </li>
                 @endcan
                 @canany(['documentCategory-index'])
