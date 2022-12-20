@@ -40,6 +40,11 @@
             background-size: cover;
         }
 
+        .px-0 {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
         .row-flex {
             display: flex;
             flex-wrap: wrap;

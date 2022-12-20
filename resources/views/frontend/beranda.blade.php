@@ -9,24 +9,54 @@
             /* height of carousel */
             margin-right: 10px;
         }
+
+        @media (max-width: 575.98px) {
+   
+        }
+        @media (max-width: 767.98px) {
+            .berita-slider {
+                display: none;
+            }
+        }
     </style>
 @endpush
 @section('content')
-    <section>
-        <div class="main-carousel">
-            @foreach ($sliders as $slider)
-                <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt="" class="w-100">
-                </div>
-            @endforeach
+    <div class="row row-flex">
+        <div class="col-md-8 px-0">
+            <div class="main-carousel">
+                @foreach ($sliders as $slider)
+                    <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt=""
+                            class="w-100">
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </section>
+        <div class="col-md-4 berita-slider px-0">
+            <ul class="list-group berita-list" style="overflow-y: scroll;">
+                @foreach ($beritas as $berita)
+                    <li class="list-group-item">
+                        <a href="" style="color: black">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img src="{{ asset('uploads/' . $berita->image) }}" alt="">
+                                </div>
+                                <div class="col-sm-9">
+                                    <h4>{{ $berita->title }}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
     <section class="call-to-action-area">
         <div class="container">
             <div class="title text-center">
                 <h3>Layanan Inspektorat Kota Semarang</h3>
                 <p>Detail Layanan</p>
             </div>
-            <div class="row">
+            <div class="row row-flex">
                 @foreach ($layananLinks as $layananLink)
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-item hvr-shadow text-center" data-aos="fade-up">
@@ -116,7 +146,8 @@
             // options
             cellAlign: 'left',
             contain: true,
-            autoPlay: 1500
+            autoPlay: 1500,
+            pageDots: false
         });
     </script>
 @endpush
