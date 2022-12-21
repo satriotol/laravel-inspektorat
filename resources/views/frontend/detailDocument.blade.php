@@ -33,6 +33,8 @@
                                             <button @click="link = '{{ asset('uploads/' . $document->file) }}'"
                                                 class="btn btn-info">Buka
                                                 File</button>
+                                            <a href="{{ asset('uploads/' . $document->file) }}" target="_blank"
+                                                class="btn btn-danger">Download</a>
                                         </td>
                                     </tr>
                                 @endforeach
