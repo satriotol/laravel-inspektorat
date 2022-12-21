@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Asistensi;
+use App\Models\Konsultasi;
+use App\Models\PermohonanInformasi;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,5 +32,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(125);
         Paginator::useBootstrap();
+        View::composer('*', function ($view) {
+            if (Auth::user()) {
+                $view->with('totalKonsultasi', Konsultasi::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalAsistensi', Asistensi::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalPermohonanInformasi', PermohonanInformasi::getData()->where('status', 'pending')->get()->count());
+            }
+        });
     }
 }
