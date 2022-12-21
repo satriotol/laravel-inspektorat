@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <iframe :src="this.link" width="100%" height="100%">
+                    <iframe :src="this.link" width="100%" height="600px">
                     </iframe>
                 </div>
             </div>
