@@ -27,6 +27,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
+use App\Http\Controllers\PpidInfopublicSubcategoryController;
 use App\Http\Controllers\PpidProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WbsAboutController;
@@ -99,6 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('ppidLayananInformasi/destroyImage/{ppidLayananInformasi}', [PpidLayananInformasiController::class, 'destroyImage'])->name('ppidLayananInformasi.destroyImage');
     Route::get('ppidLayananInformasi/destroyIcon/{ppidLayananInformasi}', [PpidLayananInformasiController::class, 'destroyIcon'])->name('ppidLayananInformasi.destroyIcon');
     Route::get('ppidLayananInformasiDetail/destroy/{ppidLayananInformasiDetail}', [PpidLayananInformasiDetailController::class, 'destroy'])->name('ppidLayananInformasiDetail.destroy');
+    Route::resource('ppidInfopublicSubcategory', PpidInfopublicSubcategoryController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('profile', ProfileController::class);
     Route::resource('beranda', BerandaController::class);
