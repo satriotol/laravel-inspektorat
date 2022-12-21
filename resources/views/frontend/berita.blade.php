@@ -29,9 +29,11 @@
                     <div class="sec-title" style="padding-bottom: 0">
                         <h1>{{ $beritaCategory->name }}</h1>
                         <span class="border"></span>
-                        <div>
-                            {!! $beritaCategory->description !!}
-                        </div>
+                        @isset($beritaCategory->description)
+                            <div>
+                                {!! $beritaCategory->description !!}
+                            </div>
+                        @endisset
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -41,20 +43,23 @@
             <div class="row">
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                     @isset($beritaCategory)
-                        <section class="brand-area">
-                            <div class="brand">
-                                @foreach ($beritaCategory->berita_category_galleries as $berita_category_gallery)
-                                    <div class="single-item">
-                                        <a href="{{ asset('uploads/' . $berita_category_gallery->image) }}"
-                                            data-rel="prettyPhoto{{ $berita_category_gallery->id }}">
-                                            <img src="{{ asset('uploads/' . $berita_category_gallery->image) }}"
-                                                style="height:100%!important; object-fit:contain" class="img-thumbnail">
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </section>
+                        @if ($beritaCategory->berita_category_galleries->count() > 0)
+                            <section class="brand-area">
+                                <div class="brand">
+                                    @foreach ($beritaCategory->berita_category_galleries as $berita_category_gallery)
+                                        <div class="single-item">
+                                            <a href="{{ asset('uploads/' . $berita_category_gallery->image) }}"
+                                                data-rel="prettyPhoto{{ $berita_category_gallery->id }}">
+                                                <img src="{{ asset('uploads/' . $berita_category_gallery->image) }}"
+                                                    style="height:100%!important; object-fit:contain" class="img-thumbnail">
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </section>
+                        @endif
                     @endisset
+
                     <div class="row row-flex">
                         @foreach ($beritas as $berita)
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
