@@ -112,7 +112,8 @@
                 <li>
                     <a class="side-menu__item {{ active_class(['ppidInfopublicSubcategory.*']) }}"
                         href="{{ route('ppidInfopublicSubcategory.index') }}"><i
-                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Informasi Publik Subkategori</span></a>
+                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Informasi Publik
+                            Subkategori</span></a>
                 </li>
                 {{-- @endcan --}}
                 @canany(['wbsAbout-index', 'wbsStep-index', 'wbsReport-index', 'wbsCategory-index'])
@@ -174,7 +175,7 @@
                                 class="side-menu__label">Laporan</span></a>
                     </li>
                 @endcan
-                @canany(['konsultasiAsistensiCategory-index', 'asistensi-index'])
+                @canany(['konsultasiAsistensiCategory-index', 'asistensi-index', 'konsultasi-index'])
                     <li class="sub-category">
                         <h3>Konsultasi Asistensi</h3>
                     </li>
@@ -192,6 +193,13 @@
                         <a class="side-menu__item {{ active_class(['asistensi.*']) }}"
                             href="{{ route('asistensi.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
                                 class="side-menu__label">Asistensi</span></a>
+                    </li>
+                @endcan
+                @can('konsultasi-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['konsultasi.*']) }}"
+                            href="{{ route('konsultasi.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Konsultasi</span></a>
                     </li>
                 @endcan
                 @canany(['documentCategory-index'])

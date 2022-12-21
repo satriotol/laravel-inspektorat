@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Asistensi;
+use App\Models\Konsultasi;
 use App\Models\KonsultasiAsistensiCategory;
 use App\Models\Opd;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AsistensiController extends Controller
+class KonsultasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +18,15 @@ class AsistensiController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('permission:asistensi-index|asistensi-create|asistensi-edit|asistensi-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:asistensi-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:asistensi-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:asistensi-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:konsultasi-index|konsultasi-create|konsultasi-edit|konsultasi-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:konsultasi-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:konsultasi-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:konsultasi-delete', ['only' => ['destroy']]);
     }
     public function index()
     {
-        $asistensis = Asistensi::getData()->paginate();
-        return view('backend.asistensi.index', compact('asistensis'));
+        $konsultasis = Konsultasi::getData()->paginate();
+        return view('backend.konsultasi.index', compact('konsultasis'));
     }
 
     /**
@@ -36,8 +36,9 @@ class AsistensiController extends Controller
      */
     public function create()
     {
+        $opds = Opd::all();
         $konsultasi_asistensi_categories = KonsultasiAsistensiCategory::getAsistensi();
-        return view('backend.asistensi.create', compact('konsultasi_asistensi_categories'));
+        return view('backend.konsultasi.create', compact('opds', 'konsultasi_asistensi_categories'));
     }
 
     /**
@@ -50,6 +51,7 @@ class AsistensiController extends Controller
     {
         $data = $request->validate([
             'konsultasi_asistensi_category_id' => 'required',
+            'opd_id' => 'required',
             'waktu_pertemuan' => 'required',
             'description_permasalahan' => 'required',
             'file' => 'nullable',
@@ -62,30 +64,30 @@ class AsistensiController extends Controller
             $temporaryFile->delete();
         };
         $data['user_id'] = Auth::user()->id;
-        Asistensi::create($data);
+        Konsultasi::create($data);
         session()->flash('success');
-        return redirect(route('asistensi.index'));
+        return redirect(route('konsultasi.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Asistensi  $asistensi
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function show(Asistensi $asistensi)
+    public function show(Konsultasi $konsultasi)
     {
-        $statuses = Asistensi::STATUSES;
-        return view('backend.asistensi.show', compact('asistensi', 'statuses'));
+        $statuses = Konsultasi::STATUSES;
+        return view('backend.konsultasi.show', compact('konsultasi', 'statuses'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Asistensi  $asistensi
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asistensi $asistensi)
+    public function edit(Konsultasi $konsultasi)
     {
         //
     }
@@ -94,16 +96,16 @@ class AsistensiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Asistensi  $asistensi
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asistensi $asistensi)
+    public function update(Request $request, Konsultasi $konsultasi)
     {
         $data = $request->validate([
             'status' => 'required',
             'response' => 'required',
         ]);
-        $asistensi->update($data);
+        $konsultasi->update($data);
         session()->flash('success');
         return back();
     }
@@ -111,13 +113,13 @@ class AsistensiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Asistensi  $asistensi
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asistensi $asistensi)
+    public function destroy(Konsultasi $konsultasi)
     {
-        $asistensi->delete();
+        $konsultasi->delete();
         session()->flash('success');
-        return redirect(route('asistensi.index'));
+        return back();
     }
 }

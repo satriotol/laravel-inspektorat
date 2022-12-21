@@ -23,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KonsultasiAsistensiCategoryController;
+use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PpidLayananInformasiController;
@@ -110,6 +111,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('konsultasiAsistensiCategory', KonsultasiAsistensiCategoryController::class);
     Route::resource('upgReport', UpgReportController::class);
     Route::resource('asistensi', AsistensiController::class);
+    Route::resource('konsultasi', KonsultasiController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
