@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>Laporan Masuk</th>
                                     <th>Nama</th>
+                                    <th>Status</th>
                                     <th>Kategori</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,6 +35,11 @@
                                     <tr>
                                         <td>{{ $upgReport->created_at }}</td>
                                         <td>{{ $upgReport->user->name }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ $upgReport->getStatus()['color'] }}">
+                                                {{ $upgReport->getStatus()['name'] }}
+                                            </span>
+                                        </td>
                                         <td><a href="{{ route('upgReport.index') }}"
                                                 target="_blank">{{ $upgReport->upg_category->name }}</a>
                                         </td>

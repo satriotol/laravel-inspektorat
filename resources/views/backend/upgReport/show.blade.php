@@ -154,6 +154,36 @@
                                                     @endisset
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <th>Status</th>
+                                                <td>
+
+                                                    @if (Auth::user()->user_detail)
+                                                        <span class="badge bg-{{ $upgReport->getStatus()['color'] }}">
+                                                            {{ $upgReport->getStatus()['name'] }}
+                                                        </span>
+                                                    @else
+                                                        <select name="status" class="form-control" required id="">
+                                                            @foreach ($statuses as $status)
+                                                                <option value="{{ $status }}"
+                                                                    @selected($status == $upgReport->status)>
+                                                                    {{ $status }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Response</td>
+                                                <td>
+                                                    @if (Auth::user()->user_detail)
+                                                        {{ $upgReport->getResponse() }}
+                                                    @else
+                                                        <textarea name="response" class="form-control" id="" cols="30" rows="10">{{ $upgReport->response }}</textarea>
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
@@ -162,6 +192,9 @@
 
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ route('upgReport.index') }}">Kembali</a>
+                            @unlessrole('USER')
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            @endunlessrole
                         </div>
                     </form>
                 </div>

@@ -83,7 +83,8 @@ class UpgReportController extends Controller
      */
     public function show(UpgReport $upgReport)
     {
-        return view('backend.upgReport.show', compact('upgReport'));
+        $statuses = UpgReport::STATUSES;
+        return view('backend.upgReport.show', compact('upgReport', 'statuses'));
     }
 
     /**
@@ -106,7 +107,13 @@ class UpgReportController extends Controller
      */
     public function update(Request $request, UpgReport $upgReport)
     {
-        //
+        $data = $request->validate([
+            'status' => 'required',
+            'response' => 'required',
+        ]);
+        $upgReport->update($data);
+        session()->flash('success');
+        return back();
     }
 
     /**
