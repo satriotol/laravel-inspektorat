@@ -92,7 +92,7 @@
                             href="{{ route('permohonanInformasi.index') }}">
                             <i class="side-menu__icon fe fe-file-plus"></i>
                             <span class="side-menu__label">Permohonan Informasi</span>
-                            <span class="badge bg-pink side-badge">{{ $totalPermohonanInformasi }}</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingPermohonanInformasi }}</span>
                         </a>
                     </li>
                 @endcan
@@ -206,7 +206,7 @@
                             <i class="side-menu__icon fe fe-file-plus">
                             </i>
                             <span class="side-menu__label">Asistensi</span>
-                            <span class="badge bg-pink side-badge">{{ $totalAsistensi }}</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingAsistensi }}</span>
                         </a>
                     </li>
                 @endcan
@@ -216,7 +216,7 @@
                             href="{{ route('konsultasi.index') }}">
                             <i class="side-menu__icon fe fe-file-plus"></i>
                             <span class="side-menu__label">Konsultasi</span>
-                            <span class="badge bg-pink side-badge">{{ $totalKonsultasi }}</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingKonsultasi }}</span>
                         </a>
                     </li>
                 @endcan

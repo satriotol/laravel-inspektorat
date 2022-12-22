@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asistensi;
+use App\Models\PermohonanInformasi;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,9 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $genders = UserDetail::GENDERS;
-        return view('backend.dashboard', compact('genders'));
+        $totalPermohonanInformasi = PermohonanInformasi::getStatusCount();
+        $totalAsistensi = Asistensi::getStatusCount();
+        return view('backend.dashboard', compact('genders', 'totalPermohonanInformasi', 'totalAsistensi'));
     }
     public function storeUserDetail(Request $request)
     {

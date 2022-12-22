@@ -132,7 +132,9 @@
 
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ route('permohonanInformasi.index') }}">Kembali</a>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            @unlessrole('USER')
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            @endunlessrole
                         </div>
                     </form>
                 </div>

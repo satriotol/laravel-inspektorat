@@ -28,6 +28,10 @@ class PermohonanInformasi extends Model
         }
         return $permohonanInformasis;
     }
+    public function getResponse()
+    {
+        return $this->response ?? 'Belum Ada Response';
+    }
     public function getStatus()
     {
         if ($this->status == self::STATUSPENDING) {
@@ -47,5 +51,18 @@ class PermohonanInformasi extends Model
             ];
         }
         return $data;
+    }
+
+    public static function getStatusCount()
+    {
+        $dataPending = PermohonanInformasi::getData()->where('status', self::STATUSPENDING)->get()->count();
+        $dataSelesai = PermohonanInformasi::getData()->where('status', self::STATUSSELESAI)->get()->count();
+        $dataDitolak = PermohonanInformasi::getData()->where('status', self::STATUSDITOLAK)->get()->count();
+
+        return [
+            self::STATUSPENDING => $dataPending,
+            self::STATUSSELESAI => $dataSelesai,
+            self::STATUSDITOLAK => $dataDitolak,
+        ];
     }
 }

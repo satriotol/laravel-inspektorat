@@ -74,12 +74,13 @@ class WbsReportController extends Controller
      */
     public function show(WbsReport $wbsReport)
     {
+        $statuses = WbsReport::STATUSES;
         if (Auth::user()->user_detail) {
             if ($wbsReport->user_id != Auth::user()->id) {
                 return redirect(route('wbsReport.index'));
             }
         }
-        return view('backend.wbsReport.show', compact('wbsReport'));
+        return view('backend.wbsReport.show', compact('wbsReport', 'statuses'));
     }
 
     /**

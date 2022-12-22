@@ -34,9 +34,9 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         View::composer('*', function ($view) {
             if (Auth::user()) {
-                $view->with('totalKonsultasi', Konsultasi::getData()->where('status', 'pending')->get()->count());
-                $view->with('totalAsistensi', Asistensi::getData()->where('status', 'pending')->get()->count());
-                $view->with('totalPermohonanInformasi', PermohonanInformasi::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalPendingKonsultasi', Konsultasi::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalPendingAsistensi', Asistensi::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalPendingPermohonanInformasi', PermohonanInformasi::getData()->where('status', 'pending')->get()->count());
             }
         });
     }
