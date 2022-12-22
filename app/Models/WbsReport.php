@@ -33,6 +33,11 @@ class WbsReport extends Model
         }
         return $wbsReports;
     }
+    public static function getTotal()
+    {
+        $data = WbsReport::getData()->get()->count();
+        return $data;
+    }
     public function getResponse()
     {
         return $this->response ?? 'Belum Ada Response';

@@ -8,33 +8,75 @@
             <h1 class="page-title">Selamat Datang Di Dashboard Pelayanan Dan Pelaporan Inspektorat</h1>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Konsultasi</h3>
-                    </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <div class="card overflow-hidden">
                     <div class="card-body">
-                        <div id="container3"></div>
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="">Permohonan Informasi</h6>
+                                <h2 class="mb-0 number-font">{{ $totalPermohonanInformasi }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <i class="side-menu__icon fe fe-info"
+                                        style="font-size: 4rem; color:var(--primary-bg-color)"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Asistensi</h3>
-                    </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <div class="card overflow-hidden">
                     <div class="card-body">
-                        <div id="container2"></div>
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="">Konsultasi & Asistensi</h6>
+                                <h2 class="mb-0 number-font">{{ $totalAsistensi + $totalKonsultasi }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <i class="side-menu__icon fe fe-users"
+                                        style="font-size: 4rem; color:var(--primary-bg-color)"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Permintaan Permohonan Informasi</h3>
-                    </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <div class="card overflow-hidden">
                     <div class="card-body">
-                        <div id="container"></div>
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="">WBS</h6>
+                                <h2 class="mb-0 number-font">{{ $totalWbsReport }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <i class="side-menu__icon fe fe-flag"
+                                        style="font-size: 4rem; color:var(--primary-bg-color)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="">UPG</h6>
+                                <h2 class="mb-0 number-font">{{ $totalUpgReport }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <i class="side-menu__icon fe fe-dollar-sign"
+                                        style="font-size: 4rem; color:var(--primary-bg-color)"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,121 +84,4 @@
     @endunlessrole
 @endsection
 @push('custom-scripts')
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script>
-        Highcharts.chart('container', {
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: 'Jumlah: <b>{point.y}</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}'
-                    }
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [
-                    @foreach ($totalPermohonanInformasi as $key => $total)
-                        {
-                            name: '{{ $key }}',
-                            y: {{ $total }}
-                        },
-                    @endforeach
-                ]
-            }]
-        });
-        Highcharts.chart('container2', {
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: 'Jumlah: <b>{point.y}</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}'
-                    }
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [
-                    @foreach ($totalAsistensi as $key => $total)
-                        {
-                            name: '{{ $key }}',
-                            y: {{ $total }}
-                        },
-                    @endforeach
-                ]
-            }]
-        });
-        Highcharts.chart('container3', {
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: 'Jumlah: <b>{point.y}</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}'
-                    }
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [
-                    @foreach ($totalKonsultasi as $key => $total)
-                        {
-                            name: '{{ $key }}',
-                            y: {{ $total }}
-                        },
-                    @endforeach
-                ]
-            }]
-        });
-    </script>
 @endpush

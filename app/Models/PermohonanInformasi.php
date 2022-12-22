@@ -53,6 +53,11 @@ class PermohonanInformasi extends Model
         return $data;
     }
 
+    public static function getTotal()
+    {
+        $data = PermohonanInformasi::getData()->get()->count();
+        return $data;
+    }
     public static function getStatusCount()
     {
         $dataPending = PermohonanInformasi::getData()->where('status', self::STATUSPENDING)->get()->count();

@@ -27,6 +27,11 @@ class Konsultasi extends Model
     {
         return $this->belongsTo(KonsultasiAsistensiCategory::class, 'konsultasi_asistensi_category_id', 'id');
     }
+    public static function getTotal()
+    {
+        $data = Konsultasi::getData()->get()->count();
+        return $data;
+    }
     public static function getData()
     {
         if (Auth::user()->user_detail) {

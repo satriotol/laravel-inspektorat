@@ -22,6 +22,11 @@ class UpgReport extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public static function getTotal()
+    {
+        $data = UpgReport::getData()->get()->count();
+        return $data;
+    }
     public static function getData()
     {
         if (Auth::user()->user_detail) {

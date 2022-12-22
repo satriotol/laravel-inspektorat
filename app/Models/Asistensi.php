@@ -67,6 +67,11 @@ class Asistensi extends Model
         }
         return $data;
     }
+    public static function getTotal()
+    {
+        $data = Asistensi::getData()->get()->count();
+        return $data;
+    }
     public static function getStatusCount()
     {
         $dataPending = Asistensi::getData()->where('status', self::STATUSPENDING)->get()->count();
