@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asistensi;
+use App\Models\Konsultasi;
 use App\Models\PermohonanInformasi;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class DashboardController extends Controller
         $genders = UserDetail::GENDERS;
         $totalPermohonanInformasi = PermohonanInformasi::getStatusCount();
         $totalAsistensi = Asistensi::getStatusCount();
-        return view('backend.dashboard', compact('genders', 'totalPermohonanInformasi', 'totalAsistensi'));
+        $totalKonsultasi = Konsultasi::getStatusCount();
+        return view('backend.dashboard', compact('genders', 'totalPermohonanInformasi', 'totalAsistensi', 'totalKonsultasi'));
     }
     public function storeUserDetail(Request $request)
     {

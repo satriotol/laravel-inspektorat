@@ -102,7 +102,13 @@ class WbsReportController extends Controller
      */
     public function update(Request $request, WbsReport $wbsReport)
     {
-        //
+        $data = $request->validate([
+            'status' => 'required',
+            'response' => 'required',
+        ]);
+        $wbsReport->update($data);
+        session()->flash('success');
+        return back();
     }
 
     /**

@@ -164,7 +164,10 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsReport.*']) }}"
                             href="{{ route('wbsReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
-                                class="side-menu__label">Laporan WBS</span></a>
+                                class="side-menu__label">Laporan WBS</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingWbsReport }}</span>
+
+                        </a>
                     </li>
                 @endcan
                 @canany(['upgCategory-index', 'upgReport-index'])

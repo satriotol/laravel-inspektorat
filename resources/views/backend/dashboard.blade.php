@@ -11,10 +11,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Permintaan Permohonan Informasi</h3>
+                        <h3 class="card-title">Konsultasi</h3>
                     </div>
                     <div class="card-body">
-                        <div id="container"></div>
+                        <div id="container3"></div>
                     </div>
                 </div>
             </div>
@@ -25,6 +25,16 @@
                     </div>
                     <div class="card-body">
                         <div id="container2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Permintaan Permohonan Informasi</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="container"></div>
                     </div>
                 </div>
             </div>
@@ -102,6 +112,44 @@
                 colorByPoint: true,
                 data: [
                     @foreach ($totalAsistensi as $key => $total)
+                        {
+                            name: '{{ $key }}',
+                            y: {{ $total }}
+                        },
+                    @endforeach
+                ]
+            }]
+        });
+        Highcharts.chart('container3', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                pointFormat: 'Jumlah: <b>{point.y}</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y}'
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [
+                    @foreach ($totalKonsultasi as $key => $total)
                         {
                             name: '{{ $key }}',
                             y: {{ $total }}

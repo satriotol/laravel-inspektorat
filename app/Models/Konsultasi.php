@@ -40,6 +40,18 @@ class Konsultasi extends Model
     {
         return $this->response ?? 'Belum Ada Response';
     }
+    public static function getStatusCount()
+    {
+        $dataPending = Konsultasi::getData()->where('status', self::STATUSPENDING)->get()->count();
+        $dataDijawab = Konsultasi::getData()->where('status', self::STATUSDIJAWAB)->get()->count();
+        $dataDitolak = Konsultasi::getData()->where('status', self::STATUSDITOLAK)->get()->count();
+
+        return [
+            self::STATUSPENDING => $dataPending,
+            self::STATUSDIJAWAB => $dataDijawab,
+            self::STATUSDITOLAK => $dataDitolak,
+        ];
+    }
     public function getStatus()
     {
         if ($this->status == self::STATUSPENDING) {
