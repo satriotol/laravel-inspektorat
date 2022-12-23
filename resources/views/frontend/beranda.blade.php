@@ -165,7 +165,8 @@
             cellAlign: 'left',
             contain: true,
             autoPlay: 1500,
-            pageDots: false
+            pageDots: false,
+            wrapAround: true
         });
     </script>
 @endpush
