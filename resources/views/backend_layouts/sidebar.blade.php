@@ -80,11 +80,22 @@
                                 Kategori</span></a>
                     </li>
                 @endcan
-                @canany(['ppidDasarHukum-index', 'ppidLayananInformasi-index', 'ppidProfile-index'])
+                @canany(['ppidDasarHukum-index', 'ppidLayananInformasi-index', 'ppidProfile-index',
+                    'permohonanInformasi-index'])
                     <li class="sub-category">
                         <h3>PPID</h3>
                     </li>
                 @endcanany
+                @can('permohonanInformasi-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['permohonanInformasi.*']) }}"
+                            href="{{ route('permohonanInformasi.index') }}">
+                            <i class="side-menu__icon fe fe-file-plus"></i>
+                            <span class="side-menu__label">Permohonan Informasi</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingPermohonanInformasi }}</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('ppidProfile-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['ppidProfile.*']) }}"
@@ -112,7 +123,8 @@
                 <li>
                     <a class="side-menu__item {{ active_class(['ppidInfopublicSubcategory.*']) }}"
                         href="{{ route('ppidInfopublicSubcategory.index') }}"><i
-                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Informasi Publik Subkategori</span></a>
+                            class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Informasi Publik
+                            Subkategori</span></a>
                 </li>
                 {{-- @endcan --}}
                 @canany(['wbsAbout-index', 'wbsStep-index', 'wbsReport-index', 'wbsCategory-index'])
@@ -152,7 +164,10 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['wbsReport.*']) }}"
                             href="{{ route('wbsReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
-                                class="side-menu__label">Laporan WBS</span></a>
+                                class="side-menu__label">Laporan WBS</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingWbsReport }}</span>
+
+                        </a>
                     </li>
                 @endcan
                 @canany(['upgCategory-index', 'upgReport-index'])
@@ -174,7 +189,7 @@
                                 class="side-menu__label">Laporan</span></a>
                     </li>
                 @endcan
-                @canany(['konsultasiAsistensiCategory-index', 'asistensi-index'])
+                @canany(['konsultasiAsistensiCategory-index', 'asistensi-index', 'konsultasi-index'])
                     <li class="sub-category">
                         <h3>Konsultasi Asistensi</h3>
                     </li>
@@ -183,15 +198,29 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['konsultasiAsistensiCategory.*']) }}"
                             href="{{ route('konsultasiAsistensiCategory.index') }}"><i
-                                class="side-menu__icon fe fe-file-plus"></i><span
-                                class="side-menu__label">Kategori</span></a>
+                                class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Kategori</span>
+                        </a>
                     </li>
                 @endcan
                 @can('asistensi-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['asistensi.*']) }}"
-                            href="{{ route('asistensi.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
-                                class="side-menu__label">Asistensi</span></a>
+                            href="{{ route('asistensi.index') }}">
+                            <i class="side-menu__icon fe fe-file-plus">
+                            </i>
+                            <span class="side-menu__label">Asistensi</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingAsistensi }}</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('konsultasi-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['konsultasi.*']) }}"
+                            href="{{ route('konsultasi.index') }}">
+                            <i class="side-menu__icon fe fe-file-plus"></i>
+                            <span class="side-menu__label">Konsultasi</span>
+                            <span class="badge bg-pink side-badge">{{ $totalPendingKonsultasi }}</span>
+                        </a>
                     </li>
                 @endcan
                 @canany(['documentCategory-index'])

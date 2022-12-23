@@ -9,10 +9,10 @@
         </div>
     </section>
     <!--End breadcrumb area-->
-    <section class="checkout-area" style="padding-top: 0">
+    <section class="checkout-area" style="padding-top: 0" id="app">
         <div class="container">
-            <div class="row bottom">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row bottom row-flex">
+                <div class="col-md-6">
                     <div class="table">
                         <div class="sec-title">
                             <h2>{{ $documentCategory->name }}</h2>
@@ -21,7 +21,7 @@
                         <table class="cart-table">
                             <thead class="cart-header">
                                 <tr>
-                                    <th>Nama Dokumen</th>
+                                    <th>Nama Dokumen @{{ message }}</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -30,9 +30,11 @@
                                     <tr>
                                         <td>{{ $document->name }}</td>
                                         <td>
-                                            <a href="{{ asset('uploads/' . $document->file) }}" target="_blank"
+                                            <button @click="link = '{{ asset('uploads/' . $document->file) }}'"
                                                 class="btn btn-info">Buka
-                                                File</a>
+                                                File</button>
+                                            <a href="{{ asset('uploads/' . $document->file) }}" target="_blank"
+                                                class="btn btn-danger">Download</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -40,7 +42,24 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <iframe :src="this.link" width="100%" height="600px">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
 @endsection
+@push('custom-scripts')
+    <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  
+    createApp({
+      data() {
+        return {
+          link: '{{ asset('uploads/' . $documentCategory->documents->first()->file) }}'
+        }
+      }
+    }).mount('#app')
+  </script>
+@endpush

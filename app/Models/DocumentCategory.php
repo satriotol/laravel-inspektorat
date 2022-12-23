@@ -13,6 +13,6 @@ class DocumentCategory extends Model
 
     public function documents()
     {
-        return $this->hasMany(Document::class, 'document_category_id', 'id');
+        return $this->hasMany(Document::class, 'document_category_id', 'id')->orderBy('name', 'desc');
     }
 }

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asistensi;
+use App\Models\Konsultasi;
+use App\Models\PermohonanInformasi;
+use App\Models\UpgReport;
 use App\Models\UserDetail;
+use App\Models\WbsReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +20,12 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $genders = UserDetail::GENDERS;
-        return view('backend.dashboard', compact('genders'));
+        $totalPermohonanInformasi = PermohonanInformasi::getTotal();
+        $totalAsistensi = Asistensi::getTotal();
+        $totalKonsultasi = Konsultasi::getTotal();
+        $totalWbsReport = WbsReport::getTotal();
+        $totalUpgReport = UpgReport::getTotal();
+        return view('backend.dashboard', compact('genders', 'totalUpgReport', 'totalPermohonanInformasi', 'totalWbsReport', 'totalAsistensi', 'totalKonsultasi'));
     }
     public function storeUserDetail(Request $request)
     {

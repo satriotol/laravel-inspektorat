@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>Laporan Masuk</th>
                                     <th>Nama</th>
+                                    <th>Status</th>
                                     <th>Kategori</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,6 +35,11 @@
                                     <tr>
                                         <td>{{ $wbsReport->created_at }}</td>
                                         <td>{{ $wbsReport->user->name }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ $wbsReport->getStatus()['color'] }}">
+                                                {{ $wbsReport->getStatus()['name'] }}
+                                            </span>
+                                        </td>
                                         <td><a href="{{ route('wbsCategory.index') }}"
                                                 target="_blank">{{ $wbsReport->wbs_category->name }}</a>
                                         </td>

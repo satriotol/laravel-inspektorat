@@ -1,11 +1,11 @@
 @extends('backend_layouts.main')
 @section('content')
     <div class="page-header">
-        <h1 class="page-title">Laporan Upg</h1>
+        <h1 class="page-title">Konsultasi</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('upgReport.index') }}">Upg</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Laporan Upg</li>
+                <li class="breadcrumb-item"><a href="{{ route('konsultasi.index') }}">Konsultasi</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Konsultasi</li>
             </ol>
         </div>
     </div>
@@ -13,41 +13,44 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Laporan Upg</h3>
+                    <h3 class="card-title">Konsultasi</h3>
                 </div>
                 <div class="card-body">
                     <div class="text-end mb-2">
-                        <a href="{{ route('upgReport.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        <a href="{{ route('konsultasi.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table border text-nowrap text-md-nowrap table-hover mb-0">
                             <thead>
                                 <tr>
                                     <th>Laporan Masuk</th>
-                                    <th>Nama</th>
+                                    <th>OPD</th>
                                     <th>Status</th>
+                                    <th>Nama</th>
                                     <th>Kategori</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($upgReports as $upgReport)
+                                @foreach ($konsultasis as $konsultasi)
                                     <tr>
-                                        <td>{{ $upgReport->created_at }}</td>
-                                        <td>{{ $upgReport->user->name }}</td>
+                                        <td>{{ $konsultasi->created_at }}</td>
+                                        <td>{{ $konsultasi->opd->nama_opd }}</td>
                                         <td>
-                                            <span class="badge bg-{{ $upgReport->getStatus()['color'] }}">
-                                                {{ $upgReport->getStatus()['name'] }}
+                                            <span class="badge bg-{{ $konsultasi->getStatus()['color'] }}">
+                                                {{ $konsultasi->getStatus()['name'] }}
                                             </span>
                                         </td>
-                                        <td><a href="{{ route('upgReport.index') }}"
-                                                target="_blank">{{ $upgReport->upg_category->name }}</a>
+                                        <td>{{ $konsultasi->user->name }}</td>
+                                        <td><a href="{{ route('konsultasiAsistensiCategory.index') }}"
+                                                target="_blank">{{ $konsultasi->konsultasi_asistensi_category->name }}</a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('upgReport.destroy', $upgReport->id) }}" method="post">
+                                            <form action="{{ route('konsultasi.destroy', $konsultasi->id) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('upgReport.show', $upgReport->id) }}"
+                                                <a href="{{ route('konsultasi.show', $konsultasi->id) }}"
                                                     class="btn btn-sm btn-primary">Detail</a>
                                                 <input type="submit" class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Are you sure?')" value="Delete" id="">
@@ -58,7 +61,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">
-                            {{ $upgReports->appends($_GET)->links() }}
+                            {{ $konsultasis->appends($_GET)->links() }}
                         </div>
                     </div>
                 </div>

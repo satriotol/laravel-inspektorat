@@ -27,6 +27,11 @@
                 height: 491px;
             }
         }
+        @media (min-width: 1440px) {
+            .berita-list {
+                height: 551px;
+            }
+        }
 
         @media (min-width: 1920px) {
             .berita-list {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asistensi;
 use App\Models\KonsultasiAsistensiCategory;
+use App\Models\Opd;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -6,20 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class WbsReport extends Model
+class PermohonanInformasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'wbs_category_id', 'location', 'datetime', 'description', 'file', 'status', 'response'];
+    protected $fillable = ['user_id', 'jenis_informasi', 'alasan_permohonan', 'response', 'status'];
     const STATUSPENDING = 'Pending';
     const STATUSSELESAI = 'Selesai';
     const STATUSDITOLAK = 'Ditolak';
     const STATUSES = [self::STATUSPENDING, self::STATUSSELESAI, self::STATUSDITOLAK];
-
-    public function wbs_category()
-    {
-        return $this->belongsTo(WbsCategory::class, 'wbs_category_id', 'id');
-    }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -27,16 +22,11 @@ class WbsReport extends Model
     public static function getData()
     {
         if (Auth::user()->user_detail) {
-            $wbsReports = WbsReport::where('user_id', Auth::user()->id);
+            $permohonanInformasis = PermohonanInformasi::where('user_id', Auth::user()->id);
         } else {
-            $wbsReports = WbsReport::query();
+            $permohonanInformasis = PermohonanInformasi::query();
         }
-        return $wbsReports;
-    }
-    public static function getTotal()
-    {
-        $data = WbsReport::getData()->get()->count();
-        return $data;
+        return $permohonanInformasis;
     }
     public function getResponse()
     {
@@ -62,11 +52,17 @@ class WbsReport extends Model
         }
         return $data;
     }
+
+    public static function getTotal()
+    {
+        $data = PermohonanInformasi::getData()->get()->count();
+        return $data;
+    }
     public static function getStatusCount()
     {
-        $dataPending = WbsReport::getData()->where('status', self::STATUSPENDING)->get()->count();
-        $dataSelesai = WbsReport::getData()->where('status', self::STATUSSELESAI)->get()->count();
-        $dataDitolak = WbsReport::getData()->where('status', self::STATUSDITOLAK)->get()->count();
+        $dataPending = PermohonanInformasi::getData()->where('status', self::STATUSPENDING)->get()->count();
+        $dataSelesai = PermohonanInformasi::getData()->where('status', self::STATUSSELESAI)->get()->count();
+        $dataDitolak = PermohonanInformasi::getData()->where('status', self::STATUSDITOLAK)->get()->count();
 
         return [
             self::STATUSPENDING => $dataPending,

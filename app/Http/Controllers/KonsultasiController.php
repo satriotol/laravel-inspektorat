@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Konsultasi;
+use App\Models\KonsultasiAsistensiCategory;
+use App\Models\Opd;
 use App\Models\TemporaryFile;
-use App\Models\WbsCategory;
-use App\Models\WbsReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class WbsReportController extends Controller
+class KonsultasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +18,15 @@ class WbsReportController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('permission:wbsReport-index|wbsReport-create|wbsReport-edit|wbsReport-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:wbsReport-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:wbsReport-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:wbsReport-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:konsultasi-index|konsultasi-create|konsultasi-edit|konsultasi-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:konsultasi-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:konsultasi-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:konsultasi-delete', ['only' => ['destroy']]);
     }
     public function index()
     {
-        $wbsReports = WbsReport::getData()->paginate();
-        return view('backend.wbsReport.index', compact('wbsReports'));
+        $konsultasis = Konsultasi::getData()->paginate();
+        return view('backend.konsultasi.index', compact('konsultasis'));
     }
 
     /**
@@ -35,8 +36,9 @@ class WbsReportController extends Controller
      */
     public function create()
     {
-        $wbsCategories = WbsCategory::all();
-        return view('backend.wbsReport.create', compact('wbsCategories'));
+        $opds = Opd::all();
+        $konsultasi_asistensi_categories = KonsultasiAsistensiCategory::getAsistensi();
+        return view('backend.konsultasi.create', compact('opds', 'konsultasi_asistensi_categories'));
     }
 
     /**
@@ -48,11 +50,12 @@ class WbsReportController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'wbs_category_id' => 'required',
-            'location' => 'required|max:50',
-            'datetime' => 'required|date',
-            'description' => 'required|max:100',
+            'konsultasi_asistensi_category_id' => 'required',
+            'opd_id' => 'required',
+            'waktu_pertemuan' => 'required',
+            'description_permasalahan' => 'required',
             'file' => 'nullable',
+            'description_file' => 'nullable',
             'user_id' => 'nullable',
         ]);
         $temporaryFile = TemporaryFile::where('filename', $request->file)->first();
@@ -61,52 +64,48 @@ class WbsReportController extends Controller
             $temporaryFile->delete();
         };
         $data['user_id'] = Auth::user()->id;
-        WbsReport::create($data);
+        Konsultasi::create($data);
         session()->flash('success');
-        return redirect(route('wbsReport.index'));
+        return redirect(route('konsultasi.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\WbsReport  $wbsReport
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function show(WbsReport $wbsReport)
+    public function show(Konsultasi $konsultasi)
     {
-        $statuses = WbsReport::STATUSES;
-        if (Auth::user()->user_detail) {
-            if ($wbsReport->user_id != Auth::user()->id) {
-                return redirect(route('wbsReport.index'));
-            }
-        }
-        return view('backend.wbsReport.show', compact('wbsReport', 'statuses'));
+        $statuses = Konsultasi::STATUSES;
+        return view('backend.konsultasi.show', compact('konsultasi', 'statuses'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\WbsReport  $wbsReport
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(WbsReport $wbsReport)
+    public function edit(Konsultasi $konsultasi)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WbsReport  $wbsReport
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WbsReport $wbsReport)
+    public function update(Request $request, Konsultasi $konsultasi)
     {
         $data = $request->validate([
             'status' => 'required',
             'response' => 'required',
         ]);
-        $wbsReport->update($data);
+        $konsultasi->update($data);
         session()->flash('success');
         return back();
     }
@@ -114,12 +113,12 @@ class WbsReportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\WbsReport  $wbsReport
+     * @param  \App\Models\Konsultasi  $konsultasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WbsReport $wbsReport)
+    public function destroy(Konsultasi $konsultasi)
     {
-        $wbsReport->delete();
+        $konsultasi->delete();
         session()->flash('success');
         return back();
     }

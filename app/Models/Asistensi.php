@@ -54,17 +54,34 @@ class Asistensi extends Model
                 'name' => 'Pending',
                 'color' => 'warning',
             ];
-        }else if($this->status == self::STATUSDITERIMA){
+        } else if ($this->status == self::STATUSDITERIMA) {
             $data = [
                 'name' => 'Diterima',
                 'color' => 'success',
             ];
-        }else{
+        } else {
             $data = [
                 'name' => 'Ditolak',
                 'color' => 'danger',
             ];
         }
         return $data;
+    }
+    public static function getTotal()
+    {
+        $data = Asistensi::getData()->get()->count();
+        return $data;
+    }
+    public static function getStatusCount()
+    {
+        $dataPending = Asistensi::getData()->where('status', self::STATUSPENDING)->get()->count();
+        $dataTerima = Asistensi::getData()->where('status', self::STATUSDITERIMA)->get()->count();
+        $dataDitolak = Asistensi::getData()->where('status', self::STATUSDITOLAK)->get()->count();
+
+        return [
+            self::STATUSPENDING => $dataPending,
+            self::STATUSDITERIMA => $dataTerima,
+            self::STATUSDITOLAK => $dataDitolak,
+        ];
     }
 }
