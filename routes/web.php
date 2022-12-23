@@ -30,6 +30,8 @@ use App\Http\Controllers\PermohonanInformasiController;
 use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\PpidInfopublicSubcategoryController;
+use App\Http\Controllers\PpidInfopublicController;
+use App\Http\Controllers\PpidInfopublicFileController;
 use App\Http\Controllers\PpidProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WbsAboutController;
@@ -69,6 +71,7 @@ Route::get('/documentCategory/{documentCategory}', [IndexController::class, 'doc
 Route::get('/ppidProfile', [IndexController::class, 'ppidProfile'])->name('ppidProfile');
 Route::get('/ppidProfileDasarHukum', [IndexController::class, 'ppidProfileDasarHukum'])->name('ppidProfileDasarHukum');
 Route::get('/ppidLayananInformasi', [IndexController::class, 'ppidLayananInformasi'])->name('ppidLayananInformasi');
+Route::get('/ppidInfoPublic', [IndexController::class, 'ppidInfoPublic'])->name('ppidInfoPublic');
 //end of ppid
 Route::get('/berita', [IndexController::class, 'berita'])->name('berita');
 Route::get('/berita/{berita}', [IndexController::class, 'detailBerita'])->name('detailBerita');
@@ -96,6 +99,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('ppidDasarHukum', PPIDDasarHukumController::class);
     Route::get('ppidDasarHukum/destroyImage/{ppidDasarHukum}', [PPIDDasarHukumController::class, 'destroyImage'])->name('ppidDasarHukum.destroyImage');
     Route::resource('ppidDasarHukumFile', PpidDasarHukumFileController::class);
+    Route::resource('ppidInfopublic', PpidInfopublicController::class);
+    Route::get('ppidInfopublicFile/destroy/{ppidInfopublicFile}', [PpidInfopublicFileController::class, 'destroy'])->name('ppidInfopublicFile.destroy');
     Route::resource('ppidProfile', PpidProfileController::class);
     Route::get('ppidDasarHukumFile/destroy/{ppidDasarHukumFile}', [PpidDasarHukumFileController::class, 'destroy'])->name('ppidDasarHukumFile.destroy');
     Route::resource('ppidLayananInformasi', PpidLayananInformasiController::class);
