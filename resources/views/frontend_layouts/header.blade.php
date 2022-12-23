@@ -76,7 +76,10 @@
                                         <li><a href="{{ route('ppidProfile') }}">Profil PPID</a></li>
                                         <li><a href="{{ route('ppidProfileDasarHukum') }}">Dasar Hukum</a></li>
                                         <li><a href="{{ route('ppidLayananInformasi') }}">Layanan Informasi</a></li>
-                                        <li><a href="">Informasi Publik</a></li>
+                                        <li><a href="{{ route('ppidInfoPublic') }}">Informasi Publik</a></li>
+                                        {{-- <li><a href="">Informasi Publik</a>
+
+                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li class="dropdown {{ current_class(['berita', 'beritaCategory', 'detailBerita']) }}">

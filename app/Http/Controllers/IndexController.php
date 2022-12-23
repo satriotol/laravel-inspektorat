@@ -14,6 +14,8 @@ use App\Models\Master;
 use App\Models\PpidProfile;
 use App\Models\PPIDDasarHukum;
 use App\Models\PpidLayananInformasi;
+use App\Models\PpidInfopublic;
+use App\Models\PpidInfopublicSubcategory;
 use App\Models\Profile;
 use App\Models\Slider;
 use App\Models\WbsAbout;
@@ -128,6 +130,34 @@ class IndexController extends Controller
         $ppidLayananInformasis = PpidLayananInformasi::getFrontenddata($parameters);
         $request->flash();
         return view('frontend.ppidLayananInformasi', compact('ppidLayananInformasis', 'aturlayananinformasi'));
+    }
+    public function ppidInfoPublic()
+    {
+        // $title = $ppidInfoPublic;
+        // $ppidInfoPublics = PpidInfopublic::getFrontenddata($ppidInfoPublic, $parameters);
+        // $berkalas       = PpidInfopublic::getFrontenddata(1)->get()->groupby('ppid_infopublic_subcategory_id');
+        $berkalas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+            $q->where('category', 1);
+        })->get();
+        $setiapsaats = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+            $q->where('category', 2);
+        })->get();
+        $dikecualikans = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+            $q->where('category', 3);
+        })->get();
+        $sertamertas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+            $q->where('category', 4);
+        })->get();
+
+        // return $berkalas;
+        // $setiapsaats    = PpidInfopublic::getFrontenddata(2)->get();
+        // $dikecualikans  = PpidInfopublic::getFrontenddata(3)->get();
+        // $sertamertas    = PpidInfopublic::getFrontenddata(4)->get();
+
+        // dd($berkalas, $setiapsaats, $dikecualikans, $sertamertas);
+        // dd($berkalas['name'], $setiapsaats['name'], $dikecualikans['name'], $sertamertas['name']);
+
+        return view('frontend.ppidInfoPublic', compact('berkalas','setiapsaats','dikecualikans','sertamertas'));
     }
     public function profil()
     {
