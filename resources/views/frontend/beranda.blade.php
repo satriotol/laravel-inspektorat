@@ -82,7 +82,7 @@
             </div>
             <div class="row row-flex">
                 @foreach ($layananLinks as $layananLink)
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center mx-auto">
                         <div class="single-item hvr-shadow text-center" data-aos="fade-up">
                             <div class="img-holder">
                                 <a href="{{ $layananLink->url }}" target="_blank">
