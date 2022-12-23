@@ -27,6 +27,7 @@
                 height: 491px;
             }
         }
+
         @media (min-width: 1440px) {
             .berita-list {
                 height: 551px;
@@ -84,16 +85,10 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-item hvr-shadow text-center" data-aos="fade-up">
                             <div class="img-holder">
-                                <img src="{{ asset('uploads/' . $layananLink->image) }}"
-                                    style="height:100px;object-fit:contain" alt="{{ $layananLink->name }}">
-                                <div class="overlay-style-one">
-                                    <div class="box">
-                                        <div class="content">
-                                            <a href="{{ $layananLink->url }}" target="_blank"><i class="fa fa-link"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="{{ $layananLink->url }}" target="_blank">
+                                    <img src="{{ asset('uploads/' . $layananLink->image) }}"
+                                        style="height:100px;object-fit:contain" alt="{{ $layananLink->name }}">
+                                </a>
                             </div>
                             <div class="text-holder">
                                 <h3>{{ $layananLink->name }}</h3>
