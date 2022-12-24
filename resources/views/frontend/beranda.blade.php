@@ -143,7 +143,7 @@
             // options
             cellAlign: 'left',
             contain: true,
-            autoPlay: 1500,
+            autoPlay: 2000,
             pageDots: false,
             wrapAround: true
         });

@@ -24,7 +24,28 @@
         <section id="single-service-area" class="business-planning-area" style="padding-top: 0px">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right">
+                    <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12">
+                        <div class="left-sidebar">
+                            <!--Start single sidebar-->
+                            <div class="single-sidebar">
+                                <ul class="page-link">
+                                    <li>
+                                        <a :class="{ 'active': routeName == 'TENTANG' }" @click="routeName = 'TENTANG'">
+                                            Tentang WBS
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a :class="{ 'active': routeName == 'PENGADUAN' }" @click="routeName = 'PENGADUAN'">
+                                            Tata Cara Pengaduan
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                         <div class="content-box">
                             <div class="row" v-if="routeName == 'TENTANG'">
                                 <div class="top-content">
@@ -51,27 +72,6 @@
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-7 col-xs-12 pull-left">
-                        <div class="left-sidebar">
-                            <!--Start single sidebar-->
-                            <div class="single-sidebar">
-                                <ul class="page-link">
-                                    <li>
-                                        <a :class="{ 'active': routeName == 'TENTANG' }" @click="routeName = 'TENTANG'">
-                                            Tentang WBS
-                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a :class="{ 'active': routeName == 'PENGADUAN' }" @click="routeName = 'PENGADUAN'">
-                                            Tata Cara Pengaduan
-                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
