@@ -24,6 +24,7 @@
                             <thead>
                                 <tr>
                                     <th>Laporan Masuk</th>
+                                    <th>OPD</th>
                                     <th>Status</th>
                                     <th>Nama</th>
                                     <th>Kategori</th>
@@ -34,6 +35,7 @@
                                 @foreach ($pertemuans as $pertemuan)
                                     <tr>
                                         <td>{{ $pertemuan->created_at }}</td>
+                                        <td>{{ $pertemuan->opd->nama_opd }}</td>
                                         <td>
                                             <span class="badge bg-{{ $pertemuan->getStatus()['color'] }}">
                                                 {{ $pertemuan->getStatus()['name'] }}

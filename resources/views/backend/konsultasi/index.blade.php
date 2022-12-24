@@ -42,8 +42,7 @@
                                             </span>
                                         </td>
                                         <td>{{ $konsultasi->user->name }}</td>
-                                        <td><a href="{{ route('konsultasiAsistensiCategory.index') }}"
-                                                target="_blank">{{ $konsultasi->konsultasi_asistensi_category->name }}</a>
+                                        <td>{{ $konsultasi->konsultasi_asistensi_category->name }}
                                         </td>
                                         <td>
                                             <form action="{{ route('konsultasi.destroy', $konsultasi->id) }}"
