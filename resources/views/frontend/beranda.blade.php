@@ -42,35 +42,14 @@
     </style>
 @endpush
 @section('content')
-    <section>
-        <div class="row">
-            <div class="col-md-8 px-0">
-                <div class="main-carousel">
-                    @foreach ($sliders as $slider)
-                        <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt=""
-                                class="w-100" style="height: 100%">
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="col-md-4 berita-slider pl-0">
-                <ul class="list-group berita-list" style="overflow-y: scroll">
-                    @foreach ($beritas as $berita)
-                        <li class="list-group-item">
-                            <a href="{{ route('detailBerita', $berita->id) }}" style="color: black">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="{{ asset('uploads/' . $berita->image) }}"
-                                            style="height: 100px; width:100%;object-fit:cover" alt="">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h4>{{ $berita->title }}</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+    <section style="background: url('{{ asset('uploads/' . $master->banner) }}');">
+        <div class="container">
+            <div class="main-carousel">
+                @foreach ($sliders as $slider)
+                    <div class="carousel-cell"><img src="{{ asset('uploads/' . $slider->image) }}" alt="" class="w-100"
+                            style="height: 100%">
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
