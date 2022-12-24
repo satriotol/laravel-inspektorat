@@ -9,7 +9,7 @@ class KonsultasiAsistensiCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'is_konsultasi', 'is_asistensi'];
+    protected $fillable = ['name', 'is_konsultasi', 'is_asistensi', 'is_pertemuan'];
 
     public static function getKonsultasi()
     {
@@ -18,5 +18,9 @@ class KonsultasiAsistensiCategory extends Model
     public static function getAsistensi()
     {
         return KonsultasiAsistensiCategory::where('is_asistensi', 1)->get();
+    }
+    public static function getPertemuan()
+    {
+        return KonsultasiAsistensiCategory::where('is_pertemuan', 1)->get();
     }
 }

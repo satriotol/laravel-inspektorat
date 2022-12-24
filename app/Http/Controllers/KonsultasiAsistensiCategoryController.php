@@ -46,7 +46,7 @@ class KonsultasiAsistensiCategoryController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'is_konsultasi' => 'nullable',
-            'is_asistensi' => 'nullable',
+            'is_pertemuan' => 'nullable',
         ]);
         KonsultasiAsistensiCategory::create($data);
         session()->flash('success');
@@ -87,8 +87,10 @@ class KonsultasiAsistensiCategoryController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'is_konsultasi' => 'nullable',
-            'is_asistensi' => 'nullable',
+            'is_pertemuan' => 'nullable',
         ]);
+        $data['is_konsultasi'] = $request->is_konsultasi;
+        $data['is_pertemuan'] = $request->is_pertemuan;
         $konsultasiAsistensiCategory->update($data);
         session()->flash('success');
         return redirect(route('konsultasiAsistensiCategory.index'));

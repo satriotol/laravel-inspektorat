@@ -1,11 +1,11 @@
 @extends('backend_layouts.main')
 @section('content')
     <div class="page-header">
-        <h1 class="page-title">Konsultasi</h1>
+        <h1 class="page-title">Konsultasi & Asistensi</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('konsultasi.index') }}">Konsultasi</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Konsultasi Tabel</li>
+                <li class="breadcrumb-item"><a href="{{ route('konsultasi.index') }}">Konsultasi & Asistensi</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Konsultasi & Asistensi Tabel</li>
             </ol>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Form Konsultasi</h3>
+                    <h3 class="card-title">Form Konsultasi & Asistensi</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.errors')

@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <li class="list-group-item">
-                                Konsultasi
+                                Konsultasi & Asistensi
                                 <div class="material-switch pull-right">
                                     <input id="someSwitchOptionPrimary" name="is_konsultasi" value="1"
                                         @isset($konsultasiAsistensiCategory) {{ $konsultasiAsistensiCategory->is_konsultasi == 1 ? ' checked' : '' }} @endisset
@@ -44,10 +44,10 @@
                         </div>
                         <div class="form-group">
                             <li class="list-group-item">
-                                Asistensi
+                                Pertemuan
                                 <div class="material-switch pull-right">
-                                    <input id="someSwitchOptionPrimary2" name="is_asistensi" value="1"
-                                        @isset($konsultasiAsistensiCategory) {{ $konsultasiAsistensiCategory->is_asistensi == 1 ? ' checked' : '' }} @endisset
+                                    <input id="someSwitchOptionPrimary2" name="is_pertemuan" value="1"
+                                        @isset($konsultasiAsistensiCategory) {{ $konsultasiAsistensiCategory->is_pertemuan == 1 ? ' checked' : '' }} @endisset
                                         type="checkbox" />
                                     <label for="someSwitchOptionPrimary2" class="label-primary"></label>
                                 </div>
