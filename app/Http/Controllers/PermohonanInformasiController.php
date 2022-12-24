@@ -23,7 +23,7 @@ class PermohonanInformasiController extends Controller
 
     public function index()
     {
-        $permohonanInformasis = PermohonanInformasi::getData()->paginate();
+        $permohonanInformasis = PermohonanInformasi::getData()->latest()->paginate();
         return view('backend.permohonanInformasi.index', compact('permohonanInformasis'));
     }
 
@@ -92,6 +92,7 @@ class PermohonanInformasiController extends Controller
             'response' => 'required',
             'status' => 'required',
         ]);
+        
         $permohonanInformasi->update($data);
         session()->flash('success');
         return back();

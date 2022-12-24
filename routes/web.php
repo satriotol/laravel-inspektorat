@@ -27,6 +27,7 @@ use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\PermohonanInformasiController;
+use App\Http\Controllers\PertemuanController;
 use App\Http\Controllers\PpidLayananInformasiController;
 use App\Http\Controllers\PpidLayananInformasiDetailController;
 use App\Http\Controllers\PpidInfopublicSubcategoryController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WbsCategoryController;
 use App\Http\Controllers\WbsReportController;
+use App\Models\Pertemuan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -116,6 +118,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('upgCategory', UpgCategoryController::class);
     Route::resource('konsultasiAsistensiCategory', KonsultasiAsistensiCategoryController::class);
     Route::resource('upgReport', UpgReportController::class);
+    Route::resource('pertemuan', PertemuanController::class);
     Route::resource('asistensi', AsistensiController::class);
     Route::resource('konsultasi', KonsultasiController::class);
     Route::resource('permohonanInformasi', PermohonanInformasiController::class);
