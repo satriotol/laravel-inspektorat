@@ -10,7 +10,7 @@ class WbsReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'wbs_category_id', 'location', 'datetime', 'description', 'file', 'status', 'response'];
+    protected $fillable = ['user_id', 'wbs_category_id', 'location', 'datetime','response_file', 'description', 'file', 'status', 'response'];
     const STATUSPENDING = 'Pending';
     const STATUSSELESAI = 'Selesai';
     const STATUSDITOLAK = 'Ditolak';

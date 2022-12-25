@@ -103,9 +103,14 @@ class WbsReportController extends Controller
     public function update(Request $request, WbsReport $wbsReport)
     {
         $data = $request->validate([
-            'status' => 'required',
             'response' => 'required',
+            'status' => 'required',
         ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->response_file)->first();
+        if ($temporaryFile) {
+            $data['response_file'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
         $wbsReport->update($data);
         session()->flash('success');
         return back();
