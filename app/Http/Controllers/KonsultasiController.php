@@ -102,9 +102,14 @@ class KonsultasiController extends Controller
     public function update(Request $request, Konsultasi $konsultasi)
     {
         $data = $request->validate([
-            'status' => 'required',
             'response' => 'required',
+            'status' => 'required',
         ]);
+        $temporaryFile = TemporaryFile::where('filename', $request->response_file)->first();
+        if ($temporaryFile) {
+            $data['response_file'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
         $konsultasi->update($data);
         session()->flash('success');
         return back();

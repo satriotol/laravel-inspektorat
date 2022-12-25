@@ -10,7 +10,7 @@ class Konsultasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'waktu_pertemuan', 'konsultasi_asistensi_category_id', 'opd_id', 'description_permasalahan', 'file', 'description_file', 'response', 'status'];
+    protected $fillable = ['user_id', 'waktu_pertemuan', 'konsultasi_asistensi_category_id', 'opd_id', 'description_permasalahan', 'file', 'description_file','response_file','response', 'status'];
     const STATUSPENDING = 'Pending';
     const STATUSDIJAWAB = 'Sudah Di Jawab';
     const STATUSDITOLAK = 'Ditolak';

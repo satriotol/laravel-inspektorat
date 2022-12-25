@@ -136,6 +136,19 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>File Pengantar Response</td>
+                                                <td>
+                                                    @isset($konsultasi->response_file)
+                                                        <a href="{{ asset('uploads/' . $konsultasi->response_file) }}"
+                                                            target="_blank" class="btn btn-primary">Buka Lampiran</a>
+                                                    @endisset
+                                                    @if (Auth::user()->user_detail == null)
+                                                        <input type="file" name="response_file"
+                                                            class="form-control upload-file" id="">
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
