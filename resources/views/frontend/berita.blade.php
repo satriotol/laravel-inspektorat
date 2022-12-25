@@ -24,23 +24,28 @@
     </section>
     <section class="blog-grid-area">
         <div class="container">
-            @isset($beritaCategory)
-                <div class="col-md-8">
-                    <div class="sec-title" style="padding-bottom: 0">
-                        <h1>{{ $beritaCategory->name }}</h1>
-                        <span class="border"></span>
-                        @isset($beritaCategory->description)
-                            <div>
-                                {!! $beritaCategory->description !!}
-                            </div>
-                        @endisset
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="{{ asset('uploads/' . $beritaCategory->image) }}" class="img-thumbnail" alt="">
-                </div>
-            @endisset
             <div class="row">
+
+                @isset($beritaCategory)
+                    @isset($beritaCategory->description)
+                        <div class="col-md-8">
+                            <div class="sec-title" style="padding-bottom: 0">
+                                <h1>{{ $beritaCategory->name }}</h1>
+                                <span class="border"></span>
+                                @isset($beritaCategory->description)
+                                    <div>
+                                        {!! $beritaCategory->description !!}
+                                    </div>
+                                @endisset
+                            </div>
+                        </div>
+                    @endisset
+                    @isset($beritaCategory->image)
+                        <div class="col-md-4">
+                            <img src="{{ asset('uploads/' . $beritaCategory->image) }}" class="img-thumbnail" alt="">
+                        </div>
+                    @endisset
+                @endisset
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                     @isset($beritaCategory)
                         @if ($beritaCategory->berita_category_galleries->count() > 0)
@@ -59,8 +64,7 @@
                             </section>
                         @endif
                     @endisset
-
-                    <div class="row row-flex">
+                    <div class="row">
                         @foreach ($beritas as $berita)
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="single-blog-post">
@@ -194,6 +198,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 @endsection

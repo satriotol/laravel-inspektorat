@@ -59,7 +59,7 @@
                 <h3>Layanan Inspektorat Kota Semarang</h3>
                 <p>Detail Layanan</p>
             </div>
-            <div class="row row-flex">
+            <div class="row">
                 @foreach ($layananLinks as $layananLink)
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center mx-auto">
                         <div class="single-item hvr-shadow text-center" data-aos="fade-up">
