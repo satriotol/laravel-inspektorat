@@ -12,6 +12,13 @@ class UpgBerandaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:upgBeranda-index|upgBeranda-create|upgBeranda-edit|upgBeranda-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:upgBeranda-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:upgBeranda-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:upgBeranda-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $upgBeranda = UpgBeranda::first();
