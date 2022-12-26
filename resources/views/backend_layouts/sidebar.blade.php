@@ -182,19 +182,19 @@
                         <h3>Unit Pelayanan Gratifikasi</h3>
                     </li>
                 @endcan
-                {{-- @can('upgBeranda-index') --}}
+                @can('upgBeranda-index')
                 <li>
                     <a class="side-menu__item {{ active_class(['upgBeranda.*']) }}" href="{{ route('upgBeranda.index') }}"><i
                             class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Tentang
                             UPG</span></a>
                 </li>
-                {{-- @endcan --}}
-                {{-- @can('upgStep-index') --}}
+                @endcan
+                @can('upgStep-index')
                 <li>
                     <a class="side-menu__item {{ active_class(['upgStep.*']) }}" href="{{ route('upgStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
                         class="side-menu__label">Tata Cara Pengaduan</span></a>
                 </li>
-                {{-- @endcan --}}
+                @endcan
                 @can('upgCategory-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['upgCategory.*']) }}"
