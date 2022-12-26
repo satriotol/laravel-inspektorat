@@ -48,12 +48,12 @@ class LinkController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'url' => 'required|url',
+            'url' => 'required',
             'image' => 'nullable',
             'description' => 'nullable',
-            'whatsapp_url' => 'nullable|url',
-            'short_description' => 'nullable|url',
-            'google_form_url' => 'nullable|url',
+            'whatsapp_url' => 'nullable',
+            'short_description' => 'nullable',
+            'google_form_url' => 'nullable',
             'is_pengaduan' => 'nullable',
             'is_layanan_utama' => 'nullable',
             'is_terkait' => 'nullable',
@@ -102,7 +102,7 @@ class LinkController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'url' => 'required|active_url',
+            'url' => 'required',
             'image' => 'nullable',
             'description' => 'nullable',
             'whatsapp_url' => 'nullable',
