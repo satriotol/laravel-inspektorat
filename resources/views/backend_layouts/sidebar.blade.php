@@ -198,7 +198,7 @@
                 @endcan
                 @canany(['konsultasiAsistensiCategory-index', 'pertemuan-index', 'konsultasi-index'])
                     <li class="sub-category">
-                        <h3>Konsultasi Asistensi</h3>
+                        <h3>Konsisten</h3>
                     </li>
                 @endcan
                 @can('konsultasiAsistensiCategory-index')
