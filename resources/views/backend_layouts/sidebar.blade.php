@@ -184,15 +184,17 @@
                 @endcan
                 @can('upgBeranda-index')
                 <li>
-                    <a class="side-menu__item {{ active_class(['upgBeranda.*']) }}" href="{{ route('upgBeranda.index') }}"><i
-                            class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Tentang
+                    <a class="side-menu__item {{ active_class(['upgBeranda.*']) }}"
+                        href="{{ route('upgBeranda.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                            class="side-menu__label">Tentang
                             UPG</span></a>
                 </li>
                 @endcan
                 @can('upgStep-index')
                 <li>
-                    <a class="side-menu__item {{ active_class(['upgStep.*']) }}" href="{{ route('upgStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
-                        class="side-menu__label">Tata Cara Pengaduan</span></a>
+                    <a class="side-menu__item {{ active_class(['upgStep.*']) }}"
+                        href="{{ route('upgStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
+                            class="side-menu__label">Tata Cara Pengaduan</span></a>
                 </li>
                 @endcan
                 @can('upgCategory-index')
@@ -209,8 +211,8 @@
                                 class="side-menu__label">Laporan</span></a>
                     </li>
                 @endcan
-                @canany(['konsultasiAsistensiCategory-index', 'konsistenBeranda', 'pertemuan-index',
-                    'konsultasi-index'])
+                @canany(['konsultasiAsistensiCategory-index', 'konsistenBeranda', 'pertemuan-index', 'konsultasi-index',
+                    'konsistenStep-index'])
                     <li class="sub-category">
                         <h3>Konsisten</h3>
                     </li>
@@ -220,6 +222,15 @@
                         <a class="side-menu__item {{ active_class(['konsistenBeranda.*']) }}"
                             href="{{ route('konsistenBeranda.index') }}"><i
                                 class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Tentang</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('konsistenStep-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['konsistenStep.*']) }}"
+                            href="{{ route('konsistenStep.index') }}"><i
+                                class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Tata
+                                Cara</span>
                         </a>
                     </li>
                 @endcan
