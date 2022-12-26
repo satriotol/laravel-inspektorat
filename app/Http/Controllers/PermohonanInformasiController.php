@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PermohonanInformasi;
 use App\Models\TemporaryFile;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +57,11 @@ class PermohonanInformasiController extends Controller
         session()->flash('success');
         return redirect(route('permohonanInformasi.index'));
     }
-
+    public function exportPdf(PermohonanInformasi $permohonanInformasi)
+    {
+        $pdf = Pdf::loadView('pdf.permohonanInformasi', compact('permohonanInformasi'));
+        return $pdf->stream();
+    }
     /**
      * Display the specified resource.
      *

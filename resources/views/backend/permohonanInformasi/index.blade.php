@@ -45,6 +45,8 @@
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
+                                                <a href="{{ route('permohonanInformasi.exportPdf', $permohonanInformasi->id) }}"
+                                                    class="btn btn-sm btn-info" target="_blank">Cetak PDF</a>
                                                 <a href="{{ route('permohonanInformasi.show', $permohonanInformasi->id) }}"
                                                     class="btn btn-sm btn-primary">Detail</a>
                                                 <input type="submit" class="btn btn-sm btn-danger"
