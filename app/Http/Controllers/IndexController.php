@@ -9,6 +9,8 @@ use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
+use App\Models\KonsistenBeranda;
+use App\Models\KonsistenStep;
 use App\Models\Link;
 use App\Models\Master;
 use App\Models\PpidProfile;
@@ -136,16 +138,16 @@ class IndexController extends Controller
         // $title = $ppidInfoPublic;
         // $ppidInfoPublics = PpidInfopublic::getFrontenddata($ppidInfoPublic, $parameters);
         // $berkalas       = PpidInfopublic::getFrontenddata(1)->get()->groupby('ppid_infopublic_subcategory_id');
-        $berkalas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+        $berkalas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q) {
             $q->where('category', 1);
         })->get();
-        $setiapsaats = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+        $setiapsaats = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q) {
             $q->where('category', 2);
         })->get();
-        $dikecualikans = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+        $dikecualikans = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q) {
             $q->where('category', 3);
         })->get();
-        $sertamertas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
+        $sertamertas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q) {
             $q->where('category', 4);
         })->get();
 
@@ -157,7 +159,7 @@ class IndexController extends Controller
         // dd($berkalas, $setiapsaats, $dikecualikans, $sertamertas);
         // dd($berkalas['name'], $setiapsaats['name'], $dikecualikans['name'], $sertamertas['name']);
 
-        return view('frontend.ppidInfoPublic', compact('berkalas','setiapsaats','dikecualikans','sertamertas'));
+        return view('frontend.ppidInfoPublic', compact('berkalas', 'setiapsaats', 'dikecualikans', 'sertamertas'));
     }
     public function profil()
     {
@@ -175,6 +177,12 @@ class IndexController extends Controller
         $wbsCategories = WbsCategory::all();
         $wbsBeranda = WbsBeranda::first();
         return view('frontend.wbs', compact('wbsBeranda', 'wbsAbout', 'wbsSteps', 'wbsCategories'));
+    }
+    public function konsisten()
+    {
+        $konsistenBeranda = KonsistenBeranda::first();
+        $konsistenSteps = KonsistenStep::orderBy('number', 'asc')->get();
+        return view('frontend.konsisten', compact('konsistenSteps', 'konsistenBeranda'));
     }
     public function wbsStore(Request $request)
     {
