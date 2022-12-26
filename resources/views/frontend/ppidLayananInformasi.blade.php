@@ -210,7 +210,7 @@
         <div class="container">
             <div class="row project-content  filter-layout">
                 <!--Start single project-->
-                <div class="col-md-6 col-sm-12 col-xs-12 filter-item industrial financial transportation">
+                <div class="col-md-4 col-sm-12 col-xs-12 filter-item industrial financial transportation">
                     <div class="single-project text-center" data-toggle="modal" data-target="#myModal1">
                         <div class="outer-img-box">
                             <div class="img-holder">
@@ -226,7 +226,7 @@
                 <!--End single project-->
 
                 <!--Start single project-->
-                <div class="col-md-6 col-sm-12 col-xs-12 filter-item industrial financial transportation">
+                <div class="col-md-4 col-sm-12 col-xs-12 filter-item industrial financial transportation">
                     <div class="single-project text-center"data-toggle="modal" data-target="#laporanModal">
                         <div class="outer-img-box">
                             <div class="img-holder">
@@ -238,6 +238,23 @@
                             <h5>Laporan Layanan Informasi dan Dokumentasi</h5>
                         </div>
 
+                    </div>
+                </div>
+                <!--End single project-->
+                <!--Start single project-->
+                <div class="col-md-4 col-sm-12 col-xs-12 filter-item industrial financial transportation">
+                    <div class="single-project text-center">
+                        <a href="{{ route('permohonanInformasi.index') }}">
+                        <div class="outer-img-box">
+                            <div class="img-holder">
+                                <img href="project-single.html" src="{{ asset('frontend_assets/images/icon/reporthand.png.png') }}"
+                                    style="height: auto; max-width: 50%;" alt="Awesome Image">
+                            </div>
+                        </div>
+                        <div class="title-holder">
+                            <h5>Permohonan Layanan Informasi</h5>
+                        </div>
+                    </a>
                     </div>
                 </div>
                 <!--End single project-->
