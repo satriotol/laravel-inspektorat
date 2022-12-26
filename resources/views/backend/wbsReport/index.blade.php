@@ -47,6 +47,8 @@
                                             <form action="{{ route('wbsReport.destroy', $wbsReport->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
+                                                <a href="{{ route('wbsReport.exportPdf', $wbsReport->id) }}"
+                                                    class="btn btn-sm btn-info" target="_blank">Cetak PDF</a>
                                                 <a href="{{ route('wbsReport.show', $wbsReport->id) }}"
                                                     class="btn btn-sm btn-primary">Detail</a>
                                                 <input type="submit" class="btn btn-sm btn-danger"

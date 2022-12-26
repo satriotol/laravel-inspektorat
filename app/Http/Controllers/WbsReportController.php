@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TemporaryFile;
 use App\Models\WbsCategory;
 use App\Models\WbsReport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,6 +92,11 @@ class WbsReportController extends Controller
      */
     public function edit(WbsReport $wbsReport)
     {
+    }
+    public function exportPdf(WbsReport $wbsReport)
+    {
+        $pdf = Pdf::loadView('pdf.wbsReport', compact('wbsReport'));
+        return $pdf->stream();
     }
 
     /**

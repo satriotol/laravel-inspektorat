@@ -167,5 +167,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('upload/image', [UploadController::class, 'storeImage'])->name('upload.storeImage');
     Route::post('upload/file', [UploadController::class, 'storeFile'])->name('upload.storeFile');
     Route::delete('revert/image', [UploadController::class, 'revert'])->name('upload.revert');
+
+    Route::get('wbsReport/exportPdf/{wbsReport}', [WbsReportController::class, 'exportPdf'])->name('wbsReport.exportPdf');
 });
 require __DIR__ . '/auth.php';
