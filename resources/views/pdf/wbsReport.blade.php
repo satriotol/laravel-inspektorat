@@ -96,22 +96,22 @@
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>:</td>
-                <td>{{ $wbsReport->user->user_detail->gender }}</td>
+                <td>{{ $wbsReport->user->user_detail?->gender }}</td>
             </tr>
             <tr>
                 <td>Nomor HP</td>
                 <td>:</td>
-                <td>{{ $wbsReport->user->user_detail->phone }}</td>
+                <td>{{ $wbsReport->user->user_detail?->phone }}</td>
             </tr>
             <tr>
                 <td>Instansi</td>
                 <td>:</td>
-                <td>{{ $wbsReport->user->user_detail->instansi }}</td>
+                <td>{{ $wbsReport->user->user_detail?->instansi }}</td>
             </tr>
             <tr>
                 <td>Alamat Lengkap</td>
                 <td>:</td>
-                <td>{{ $wbsReport->user->user_detail->address }}</td>
+                <td>{{ $wbsReport->user->user_detail?->address }}</td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -141,6 +141,19 @@
                 <td>Uraian Kejadian</td>
                 <td>:</td>
                 <td>{{ $wbsReport->description }}</td>
+            </tr>
+            <tr>
+                <th>Reponse Petugas</th>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td>{{ $wbsReport->status }}</td>
+            </tr>
+            <tr>
+                <td>Response</td>
+                <td>:</td>
+                <td>{{ $wbsReport->response }}</td>
             </tr>
         </table>
         <br><br>
