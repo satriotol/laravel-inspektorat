@@ -209,9 +209,18 @@
                                 class="side-menu__label">Laporan</span></a>
                     </li>
                 @endcan
-                @canany(['konsultasiAsistensiCategory-index', 'pertemuan-index', 'konsultasi-index'])
+                @canany(['konsultasiAsistensiCategory-index', 'konsistenBeranda', 'pertemuan-index',
+                    'konsultasi-index'])
                     <li class="sub-category">
                         <h3>Konsisten</h3>
+                    </li>
+                @endcan
+                @can('konsistenBeranda-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['konsistenBeranda.*']) }}"
+                            href="{{ route('konsistenBeranda.index') }}"><i
+                                class="side-menu__icon fe fe-file-plus"></i><span class="side-menu__label">Tentang</span>
+                        </a>
                     </li>
                 @endcan
                 @can('konsultasiAsistensiCategory-index')
