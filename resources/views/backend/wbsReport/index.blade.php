@@ -40,8 +40,7 @@
                                                 {{ $wbsReport->getStatus()['name'] }}
                                             </span>
                                         </td>
-                                        <td><a href="{{ route('wbsCategory.index') }}"
-                                                target="_blank">{{ $wbsReport->wbs_category->name }}</a>
+                                        <td>{{ $wbsReport->wbs_category->name }}
                                         </td>
                                         <td>
                                             <form action="{{ route('wbsReport.destroy', $wbsReport->id) }}" method="post">
