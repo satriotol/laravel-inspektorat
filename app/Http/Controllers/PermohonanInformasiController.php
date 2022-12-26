@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PermohonanInformasi;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -92,7 +93,11 @@ class PermohonanInformasiController extends Controller
             'response' => 'required',
             'status' => 'required',
         ]);
-        
+        $temporaryFile = TemporaryFile::where('filename', $request->response_file)->first();
+        if ($temporaryFile) {
+            $data['response_file'] = $temporaryFile->filename;
+            $temporaryFile->delete();
+        };
         $permohonanInformasi->update($data);
         session()->flash('success');
         return back();

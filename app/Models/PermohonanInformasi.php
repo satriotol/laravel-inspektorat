@@ -10,7 +10,7 @@ class PermohonanInformasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'jenis_informasi', 'alasan_permohonan', 'response', 'status'];
+    protected $fillable = ['user_id', 'jenis_informasi', 'alasan_permohonan', 'response', 'status', 'response_file'];
     const STATUSPENDING = 'Pending';
     const STATUSSELESAI = 'Selesai';
     const STATUSDITOLAK = 'Ditolak';
