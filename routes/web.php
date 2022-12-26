@@ -41,6 +41,8 @@ use App\Http\Controllers\WbsStepController;
 use App\Http\Controllers\TemaController;
 use App\Http\Controllers\UpgCategoryController;
 use App\Http\Controllers\UpgReportController;
+use App\Http\Controllers\UpgBerandaController;
+use App\Http\Controllers\UpgStepController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WbsCategoryController;
@@ -118,6 +120,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('upgCategory', UpgCategoryController::class);
     Route::resource('konsultasiAsistensiCategory', KonsultasiAsistensiCategoryController::class);
     Route::resource('upgReport', UpgReportController::class);
+    Route::resource('upgBeranda', UpgBerandaController::class);
+    Route::resource('upgStep', UpgStepController::class);
     Route::resource('pertemuan', PertemuanController::class);
     Route::resource('asistensi', AsistensiController::class);
     Route::resource('konsultasi', KonsultasiController::class);
