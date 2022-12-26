@@ -23,6 +23,8 @@ use App\Models\WbsBeranda;
 use App\Models\WbsCategory;
 use App\Models\WbsReport;
 use App\Models\WbsStep;
+use App\Models\UpgStep;
+use App\Models\UpgBeranda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Termwind\Components\Dd;
@@ -133,9 +135,6 @@ class IndexController extends Controller
     }
     public function ppidInfoPublic()
     {
-        // $title = $ppidInfoPublic;
-        // $ppidInfoPublics = PpidInfopublic::getFrontenddata($ppidInfoPublic, $parameters);
-        // $berkalas       = PpidInfopublic::getFrontenddata(1)->get()->groupby('ppid_infopublic_subcategory_id');
         $berkalas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
             $q->where('category', 1);
         })->get();
@@ -148,14 +147,6 @@ class IndexController extends Controller
         $sertamertas = PpidInfopublicSubcategory::whereHas('PpidInfopublics', function ($q){
             $q->where('category', 4);
         })->get();
-
-        // return $berkalas;
-        // $setiapsaats    = PpidInfopublic::getFrontenddata(2)->get();
-        // $dikecualikans  = PpidInfopublic::getFrontenddata(3)->get();
-        // $sertamertas    = PpidInfopublic::getFrontenddata(4)->get();
-
-        // dd($berkalas, $setiapsaats, $dikecualikans, $sertamertas);
-        // dd($berkalas['name'], $setiapsaats['name'], $dikecualikans['name'], $sertamertas['name']);
 
         return view('frontend.ppidInfoPublic', compact('berkalas','setiapsaats','dikecualikans','sertamertas'));
     }
@@ -175,6 +166,12 @@ class IndexController extends Controller
         $wbsCategories = WbsCategory::all();
         $wbsBeranda = WbsBeranda::first();
         return view('frontend.wbs', compact('wbsBeranda', 'wbsAbout', 'wbsSteps', 'wbsCategories'));
+    }
+    public function upg()
+    {
+        $upgSteps = UpgStep::orderBy('number', 'asc')->get();
+        $upgBeranda = UpgBeranda::first();
+        return view('frontend.upg', compact('upgBeranda', 'upgSteps'));
     }
     public function wbsStore(Request $request)
     {
