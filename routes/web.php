@@ -22,6 +22,7 @@ use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\KonsistenBerandaController;
 use App\Http\Controllers\KonsultasiAsistensiCategoryController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\MasterController;
@@ -127,6 +128,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
+    Route::resource('konsistenBeranda', KonsistenBerandaController::class);
     Route::get('link/destroyImage/{link}', [LinkController::class, 'destroyImage'])->name('link.destroyImage');
 
     Route::resource('documentCategory', DocumentCategoryController::class);
