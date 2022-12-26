@@ -12,6 +12,13 @@ class UpgStepController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:upgStep-index|upgStep-create|upgStep-edit|upgStep-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:upgStep-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:upgStep-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:upgStep-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $upgSteps = UpgStep::all();
