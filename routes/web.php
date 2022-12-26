@@ -68,6 +68,7 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
 Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 Route::get('/wbs', [IndexController::class, 'wbs'])->name('wbs');
+Route::get('/konsisten', [IndexController::class, 'konsisten'])->name('konsisten');
 Route::get('/upg', [IndexController::class, 'upg'])->name('upg');
 Route::post('/wbs', [IndexController::class, 'wbsStore'])->name('wbsStore');
 

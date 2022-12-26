@@ -9,6 +9,8 @@ use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Kebijakan;
 use App\Models\KebijakanCategory;
+use App\Models\KonsistenBeranda;
+use App\Models\KonsistenStep;
 use App\Models\Link;
 use App\Models\Master;
 use App\Models\PpidProfile;
@@ -172,6 +174,12 @@ class IndexController extends Controller
         $upgSteps = UpgStep::orderBy('number', 'asc')->get();
         $upgBeranda = UpgBeranda::first();
         return view('frontend.upg', compact('upgBeranda', 'upgSteps'));
+    }
+    public function konsisten()
+    {
+        $konsistenBeranda = KonsistenBeranda::first();
+        $konsistenSteps = KonsistenStep::orderBy('number', 'asc')->get();
+        return view('frontend.konsisten', compact('konsistenSteps', 'konsistenBeranda'));
     }
     public function wbsStore(Request $request)
     {
