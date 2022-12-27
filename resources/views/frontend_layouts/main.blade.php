@@ -174,6 +174,16 @@
                                                 style="color: #c0c1c8;">{{ $master->email }}</a></p>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="icon-holder">
+                                        <i class="fa-brands fa-instagram" style="color: #f60035;"></i>
+                                        {{-- <span class="icon-letter-1 bottom-envelop"></span> --}}
+                                    </div>
+                                    <div class="text-holder">
+                                        <p><a href="https://www.instagram.com/inspektoratsemarangkota/?hl=en"
+                                                target="_blank" style="color: #c0c1c8;">Instagram Inspektorat</a></p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
