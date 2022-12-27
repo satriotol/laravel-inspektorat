@@ -170,5 +170,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('wbsReport/exportPdf/{wbsReport}', [WbsReportController::class, 'exportPdf'])->name('wbsReport.exportPdf');
     Route::get('permohonanInformasi/exportPdf/{permohonanInformasi}', [PermohonanInformasiController::class, 'exportPdf'])->name('permohonanInformasi.exportPdf');
+    Route::get('upgReport/exportPdf/{upgReport}', [UpgReportController::class, 'exportPdf'])->name('upgReport.exportPdf');
 });
 require __DIR__ . '/auth.php';

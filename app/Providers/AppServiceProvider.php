@@ -6,6 +6,7 @@ use App\Models\Asistensi;
 use App\Models\Konsultasi;
 use App\Models\PermohonanInformasi;
 use App\Models\Pertemuan;
+use App\Models\UpgReport;
 use App\Models\WbsReport;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('totalPendingPermohonanInformasi', PermohonanInformasi::getData()->where('status', 'pending')->get()->count());
                 $view->with('totalPendingWbsReport', WbsReport::getData()->where('status', 'pending')->get()->count());
                 $view->with('totalPertemuan', Pertemuan::getData()->where('status', 'pending')->get()->count());
+                $view->with('totalUpg', UpgReport::getData()->where('status', 'pending')->get()->count());
             }
         });
     }

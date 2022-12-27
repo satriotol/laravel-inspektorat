@@ -183,19 +183,19 @@
                     </li>
                 @endcan
                 @can('upgBeranda-index')
-                <li>
-                    <a class="side-menu__item {{ active_class(['upgBeranda.*']) }}"
-                        href="{{ route('upgBeranda.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
-                            class="side-menu__label">Tentang
-                            UPG</span></a>
-                </li>
+                    <li>
+                        <a class="side-menu__item {{ active_class(['upgBeranda.*']) }}"
+                            href="{{ route('upgBeranda.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
+                                class="side-menu__label">Tentang
+                                UPG</span></a>
+                    </li>
                 @endcan
                 @can('upgStep-index')
-                <li>
-                    <a class="side-menu__item {{ active_class(['upgStep.*']) }}"
-                        href="{{ route('upgStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
-                            class="side-menu__label">Tata Cara Pengaduan</span></a>
-                </li>
+                    <li>
+                        <a class="side-menu__item {{ active_class(['upgStep.*']) }}"
+                            href="{{ route('upgStep.index') }}"><i class="side-menu__icon fe fe-check-square"></i><span
+                                class="side-menu__label">Tata Cara Pengaduan</span></a>
+                    </li>
                 @endcan
                 @can('upgCategory-index')
                     <li>
@@ -208,7 +208,9 @@
                     <li>
                         <a class="side-menu__item {{ active_class(['upgReport.*']) }}"
                             href="{{ route('upgReport.index') }}"><i class="side-menu__icon fe fe-file-plus"></i><span
-                                class="side-menu__label">Laporan</span></a>
+                                class="side-menu__label">Laporan</span>
+                            <span class="badge bg-pink side-badge">{{ $totalUpg }}</span>
+                        </a>
                     </li>
                 @endcan
                 @canany(['konsultasiAsistensiCategory-index', 'konsistenBeranda', 'pertemuan-index', 'konsultasi-index',

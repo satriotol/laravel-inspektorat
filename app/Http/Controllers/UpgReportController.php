@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TemporaryFile;
 use App\Models\UpgCategory;
 use App\Models\UpgReport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -114,6 +115,11 @@ class UpgReportController extends Controller
         $upgReport->update($data);
         session()->flash('success');
         return back();
+    }
+    public function exportPdf(UpgReport $upgReport)
+    {
+        $pdf = Pdf::loadView('pdf.upgReport', compact('upgReport'));
+        return $pdf->stream();
     }
 
     /**
