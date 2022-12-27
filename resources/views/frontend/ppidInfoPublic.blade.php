@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="project-filter post-filter text-center">
-                        <li data-filter=".Berkala"><span>Informasi Berkala</span></li>
+                        <li data-filter=".Berkala" class="active"><span>Informasi Berkala</span></li>
                         <li data-filter=".Setiap-Saat"><span>Informasi Setiap Saat</span></li>
                         <li data-filter=".Dikecualikan"><span>Informasi Dikecualikan</span></li>
                         <li data-filter=".Serta-Merta"><span>Informasi Serta Merta</span></li>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Setiap-Saat">
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Setiap-Saat" style="display: none">
                     <div class="table">
                         <div class="sec-title">
                             <h2>Informasi Setiap Saat</h2>
@@ -96,7 +96,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Dikecualikan">
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Dikecualikan" style="display: none">
                     <div class="table">
                         <div class="sec-title">
                             <h2>Informasi Dikecualikan</h2>
@@ -123,7 +123,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Serta-Merta">
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 Serta-Merta" style="display: none">
                     <div class="table">
                         <div class="sec-title">
                             <h2>Informasi Serta Merta</h2>
