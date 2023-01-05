@@ -31,13 +31,13 @@
                                 <ul class="page-link">
                                     <li>
                                         <a :class="{ 'active': routeName == 'TENTANG' }" @click="routeName = 'TENTANG'">
-                                            Tentang WBS
+                                            Tentang KONSISTEN
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a :class="{ 'active': routeName == 'PENGADUAN' }" @click="routeName = 'PENGADUAN'">
-                                            Tata Cara Pengaduan
+                                            Tata Cara Pengajuan
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                         </a>
                                     </li>
