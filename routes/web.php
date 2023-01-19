@@ -66,6 +66,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
 Route::get('/', [IndexController::class, 'beranda'])->name('beranda');
+Route::get('/siwasiat', function () {
+    return view('siwasiat');
+});
 Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 Route::get('/wbs', [IndexController::class, 'wbs'])->name('wbs');
 Route::get('/konsisten', [IndexController::class, 'konsisten'])->name('konsisten');
