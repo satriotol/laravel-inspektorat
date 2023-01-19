@@ -84,8 +84,8 @@
         <!-- menu for mobile device -->
         <div class="mobile-nav">
             <a href="index.html" class="logo">
-                <img src="{{asset('siwasiat_assets/Asset 2.png')}}" alt="logo_light" />
-                <img src="{{asset('siwasiat_assets/Asset 2.png')}}" alt="logo-dark" />
+                <img src="{{ asset('siwasiat_assets/Asset 2.png') }}" alt="logo_light" />
+                <img src="{{ asset('siwasiat_assets/Asset 2.png') }}" alt="logo-dark" />
             </a>
         </div>
         <!-- menu for desktop device-->
@@ -93,8 +93,8 @@
             <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="index.html">
-                        <img src="{{asset('siwasiat_assets/Asset 2.png')}}" width="200px" alt="logo_light" />
-                        <img src="{{asset('siwasiat_assets/Asset 2.png')}}" width="200px" alt="logo-dark" />
+                        <img src="{{ asset('siwasiat_assets/Asset 2.png') }}" width="200px" alt="logo_light" />
+                        <img src="{{ asset('siwasiat_assets/Asset 2.png') }}" width="200px" alt="logo-dark" />
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto">
@@ -118,7 +118,7 @@
 
 
     <div id="home" class="home-banner-area banner-type-one"
-        style="background: url(https://inspektorat.semarangkota.go.id/siwasiat/assets/img/banner/banner_1.png) no-repeat center center fixed;
+        style="background: url({{ asset('siwasiat_assets/img/banner/banner_1.png') }}) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -302,7 +302,7 @@
                     <div class="footer-widget">
                         <div class="navbar-brand">
                             <a href="/">
-                                <img src="{{asset('siwasiat_assets/Asset 2.png')}}" alt="image" />
+                                <img src="{{ asset('siwasiat_assets/Asset 2.png') }}" alt="image" />
                             </a>
                         </div>
                         <p></p>
@@ -379,25 +379,25 @@
     <!-- end copy right area-->
 
     <!-- jequery JS -->
-    <script src="{{asset('siwasiat_assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/jquery.min.js') }}"></script>
     <!-- bootstrap JS -->
-    <script src="{{asset('siwasiat_assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/bootstrap.min.js') }}"></script>
     <!-- popper JS -->
-    <script src="{{asset('siwasiat_assets/js/popper.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/popper.min.js') }}"></script>
     <!-- magnific popup JS -->
-    <script src="{{asset('siwasiat_assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- owl carousel JS -->
-    <script src="{{asset('siwasiat_assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/owl.carousel.min.js') }}"></script>
     <!-- meanmenu JS -->
-    <script src="{{asset('siwasiat_assets/js/meanmenu.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/meanmenu.min.js') }}"></script>
     <!-- form validator -->
-    <script src="{{asset('siwasiat_assets/js/form-validator.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/form-validator.min.js') }}"></script>
     <!-- contact form JS -->
-    <script src="{{asset('siwasiat_assets/js/contact-form-script.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/contact-form-script.js') }}"></script>
     <!-- ajaxchimp JS -->
-    <script src="{{asset('siwasiat_assets/js/jquery.ajaxchimp.min.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/jquery.ajaxchimp.min.js') }}"></script>
     <!-- main JS -->
-    <script src="{{asset('siwasiat_assets/js/main.js')}}"></script>
+    <script src="{{ asset('siwasiat_assets/js/main.js') }}"></script>
 </body>
 
 </html>
