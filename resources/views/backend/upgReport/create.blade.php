@@ -28,8 +28,8 @@
                             <div class="panel panel-default mb-4">
                                 <div class="panel-heading1 ">
                                     <h4 class="panel-title1">
-                                        <a class="accordion-toggle" data-bs-toggle="collapse"
-                                            data-bs-parent="#accordion" href="#collapseFour" aria-expanded="false">IDENTITAS
+                                        <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion"
+                                            href="#collapseFour" aria-expanded="false">IDENTITAS
                                             PEMBERI</a>
                                     </h4>
                                 </div>
@@ -162,8 +162,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label>File Lampiran</label>
-                                            <input type="file" name="file" class="form-control upload-file"
-                                                id="">
+                                            <input type="file" name="file"
+                                                accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+                                                class="form-control upload-file" id="">
                                         </div>
                                     </div>
                                 </div>
