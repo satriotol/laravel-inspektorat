@@ -65,7 +65,7 @@
                             <tbody>
                                 @foreach ($beritas as $berita)
                                     <tr>
-                                        <td>
+                                        <td class="text-wrap">
                                             {{ $berita->title }} <br>
                                             <div class="badge bg-primary">{{ $berita->user?->name }}</div> | <div
                                                 class="badge bg-info">{{ $berita->getVerificationStatus() }}</div>

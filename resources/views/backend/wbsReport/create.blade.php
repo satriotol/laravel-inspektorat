@@ -56,7 +56,9 @@
                         </div>
                         <div class="form-group">
                             <label>File Lampiran</label>
-                            <input type="file" name="file" class="form-control upload-file" id="">
+                            <input type="file" name="file"
+                                accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+                                class="form-control upload-file" id="">
                         </div>
                         <div class="text-end">
                             <a class="btn btn-warning" href="{{ url()->previous() }}">Kembali</a>
