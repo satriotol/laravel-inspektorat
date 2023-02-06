@@ -10,9 +10,9 @@ class UploadController extends Controller
     public function storeImage(Request $request)
     {
         $request->validate([
-            'image' => 'image',
-            'file' => 'file',
-            'logo' => 'image'
+            'image' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
+            'file' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
+            'logo' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
         ]);
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
