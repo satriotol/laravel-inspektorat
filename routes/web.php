@@ -73,7 +73,7 @@ Route::get('/profil', [IndexController::class, 'profil'])->name('profil');
 Route::get('/wbs', [IndexController::class, 'wbs'])->name('wbs');
 Route::get('/konsisten', [IndexController::class, 'konsisten'])->name('konsisten');
 Route::get('/upg', [IndexController::class, 'upg'])->name('upg');
-Route::post('/wbs', [IndexController::class, 'wbsStore'])->name('wbsStore');
+// Route::post('/wbs', [IndexController::class, 'wbsStore'])->name('wbsStore');
 
 
 Route::get('/documentCategory/{documentCategory}', [IndexController::class, 'documentCategory'])->name('documentCategory');
