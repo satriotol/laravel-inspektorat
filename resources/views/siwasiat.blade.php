@@ -189,7 +189,7 @@
 
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                {{-- <div class="col-lg-4 col-md-6 col-sm-6">
                                     <a href="https://saberpungli.inspektorat.semarangkota.go.id/" target="_blank">
                                         <div class="single-feature">
                                             <div class="single-feature-content">
@@ -199,8 +199,8 @@
                                             <div class="hover-overlay"></div>
                                         </div>
                                     </a>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                </div> --}}
+                                {{-- <div class="col-lg-4 col-md-6 col-sm-6">
                                     <a href="https://gratifikasi.inspektorat.semarangkota.go.id/" target="_blank">
                                         <div class="single-feature">
                                             <div class="single-feature-content">
@@ -210,7 +210,7 @@
                                             <div class="hover-overlay"></div>
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <a href="https://inspektorat.semarangkota.go.id/simwas" target="_blank">
                                         <div class="single-feature">
@@ -222,7 +222,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                {{-- <div class="col-lg-4 col-md-6 col-sm-6">
                                     <a href="https://korsupgah.inspektorat.semarangkota.go.id/" target="_blank">
                                         <div class="single-feature">
                                             <div class="single-feature-content">
@@ -232,7 +232,7 @@
                                             <div class="hover-overlay"></div>
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <!--<div class="col-lg-4 col-md-6 col-sm-6">-->
                                 <!--    <a href="https://inspektorat.semarangkota.go.id/sp" target="_blank">-->
                                 <!--    <div class="single-feature">-->
@@ -261,7 +261,7 @@
                                         <div class="single-feature">
                                             <div class="single-feature-content">
                                                 <i class="envy envy-paper-plane"></i>
-                                                <h3 class="mt-3">SPPD</h3>
+                                                <h3 class="mt-3">LUGAS</h3>
                                             </div>
                                             <div class="hover-overlay"></div>
                                         </div>
