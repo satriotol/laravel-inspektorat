@@ -334,6 +334,13 @@
                                 class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">User</span></a>
                     </li>
                 @endcan
+                @can('user-index')
+                    <li>
+                        <a class="side-menu__item {{ active_class(['user.*']) }}"
+                            href="{{ route('user.indexPengunjung') }}"><i class="side-menu__icon fe fe-grid"></i><span
+                                class="side-menu__label">Pengunjung</span></a>
+                    </li>
+                @endcan
                 @can('role-index')
                     <li>
                         <a class="side-menu__item {{ active_class(['role.*']) }}" href="{{ route('role.index') }}"><i

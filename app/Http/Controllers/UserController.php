@@ -28,6 +28,11 @@ class UserController extends Controller
         $users = User::getUser(Auth::user());
         return view('backend.user.index', compact('users'));
     }
+    public function indexPengunjung()
+    {
+        $users = User::getUserPengunjung(Auth::user());
+        return view('backend.user.index', compact('users'));
+    }
 
     /**
      * Show the form for creating a new resource.

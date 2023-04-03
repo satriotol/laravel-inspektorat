@@ -136,6 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RoleController::class);
     Route::resource('user', UserController::class);
+    Route::get('pengunjung', [UserController::class, 'indexPengunjung'])->name('user.indexPengunjung');
     Route::get('user/resetPassword/{user}', [UserController::class, 'reset_password'])->name('user.resetPassword');
     Route::resource('link', LinkController::class);
     Route::resource('konsistenBeranda', KonsistenBerandaController::class);

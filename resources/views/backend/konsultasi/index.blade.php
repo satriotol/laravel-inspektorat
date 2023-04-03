@@ -41,7 +41,7 @@
                                                 {{ $konsultasi->getStatus()['name'] }}
                                             </span>
                                         </td>
-                                        <td>{{ $konsultasi->user->name }}</td>
+                                        <td>{{ $konsultasi->user->name ?? '' }}</td>
                                         <td>{{ $konsultasi->konsultasi_asistensi_category->name }}
                                         </td>
                                         <td>

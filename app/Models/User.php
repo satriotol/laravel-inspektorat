@@ -98,6 +98,14 @@ class User extends Authenticatable
             return User::whereDoesntHave('user_detail')->get();
         }
     }
+    public static function getUserPengunjung($user)
+    {
+        if ($user->getUserRole($user) != 'SUPERADMIN') {
+            return User::has('user_detail')->notRole('SUPERADMIN')->get();
+        } else {
+            return User::has('user_detail')->get();
+        }
+    }
     public static function getRoles($user)
     {
         if ($user->getUserRole($user) != 'SUPERADMIN') {
