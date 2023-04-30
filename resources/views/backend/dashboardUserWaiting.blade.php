@@ -36,7 +36,6 @@
                     </div>
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
-                        {{ Auth::user()->user_detail->gender }}
                         {!! Form::select(
                             'gender',
                             $genders,
