@@ -60,6 +60,7 @@
                             <div class="panel-body tabs-menu-body p-0 pt-5">
                                 <div class="tab-content">
                                     <form @submit.prevent="login">
+                                        @csrf
                                         <div class="tab-pane active" id="tab5">
                                             <div class="wrap-input100 validate-input input-group"
                                                 data-bs-validate="Valid email is required: ex@abc.xyz">
@@ -161,7 +162,6 @@
                     message: 'Hello Vue!',
                     showPassword: false,
                     form: {
-                        _token: "{{ csrf_token() }}",
                         email: '',
                         password: '',
                         captcha: '',

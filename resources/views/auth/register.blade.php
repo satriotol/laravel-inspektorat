@@ -60,7 +60,7 @@
                             <div class="panel-body tabs-menu-body p-0 pt-5">
                                 <div class="tab-content">
                                     <form v-on:submit.prevent="register">
-
+                                        @csrf
                                         <div class="tab-pane active" id="tab5">
                                             <div class="wrap-input100 validate-input input-group"
                                                 data-bs-validate="Valid email is required: ex@abc.xyz">
