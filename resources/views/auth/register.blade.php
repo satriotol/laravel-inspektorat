@@ -170,6 +170,7 @@
                 return {
                     message: 'Hello Vue!',
                     form: {
+                        _token: "{{ csrf_token() }}",
                         name: '',
                         email: '',
                         password: '',

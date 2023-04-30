@@ -55,12 +55,16 @@ class DashboardController extends Controller
             ]);
             $otp_code = random_int(100000, 999999);
             $token = Str::random(25);
-            $verification = Verification::create([
-                'user_id' => $user->id,
-                'otp_code' => $otp_code,
-                'token' => $token,
-                'status' => 'REQUEST'
-            ]);
+            $verification = Verification::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'status' => 'REQUEST'
+                ],
+                [
+                    'otp_code' => $otp_code,
+                    'token' => $token,
+                ]
+            );
             $message = "Kode OTP Anda Adalah " . $otp_code;
             $asset = [
                 $message,

@@ -161,6 +161,7 @@
                     message: 'Hello Vue!',
                     showPassword: false,
                     form: {
+                        _token: "{{ csrf_token() }}",
                         email: '',
                         password: '',
                         captcha: '',
