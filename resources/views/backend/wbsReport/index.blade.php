@@ -34,7 +34,7 @@
                                 @foreach ($wbsReports as $wbsReport)
                                     <tr>
                                         <td>{{ $wbsReport->created_at }}</td>
-                                        <td>{{ $wbsReport->user->name }}</td>
+                                        <td>{{ $wbsReport->user->name ?? '' }}</td>
                                         <td>
                                             <span class="badge bg-{{ $wbsReport->getStatus()['color'] }}">
                                                 {{ $wbsReport->getStatus()['name'] }}

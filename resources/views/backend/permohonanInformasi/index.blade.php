@@ -38,7 +38,7 @@
                                                 {{ $permohonanInformasi->getStatus()['name'] }}
                                             </span>
                                         </td>
-                                        <td>{{ $permohonanInformasi->user->name }}</td>
+                                        <td>{{ $permohonanInformasi->user->name ?? '' }}</td>
                                         <td>
                                             <form
                                                 action="{{ route('permohonanInformasi.destroy', $permohonanInformasi->id) }}"

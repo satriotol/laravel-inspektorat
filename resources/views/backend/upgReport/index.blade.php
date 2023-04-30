@@ -34,7 +34,7 @@
                                 @foreach ($upgReports as $upgReport)
                                     <tr>
                                         <td>{{ $upgReport->created_at }}</td>
-                                        <td>{{ $upgReport->user->name }}</td>
+                                        <td>{{ $upgReport->user->name ?? '' }}</td>
                                         <td>
                                             <span class="badge bg-{{ $upgReport->getStatus()['color'] }}">
                                                 {{ $upgReport->getStatus()['name'] }}
