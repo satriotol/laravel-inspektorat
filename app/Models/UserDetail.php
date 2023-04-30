@@ -13,7 +13,7 @@ class UserDetail extends Model
 
     const GENDER1 = 'Pria';
     const GENDER2 = 'Wanita';
-    public const GENDERS = [self::GENDER1, self::GENDER2];
+    public const GENDERS = ['Pria' => self::GENDER1, 'Wanita' => self::GENDER2];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

@@ -47,6 +47,7 @@ use App\Http\Controllers\UpgBerandaController;
 use App\Http\Controllers\UpgStepController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WbsCategoryController;
 use App\Http\Controllers\WbsReportController;
 use App\Models\Pertemuan;
@@ -141,6 +142,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('link', LinkController::class);
     Route::resource('konsistenBeranda', KonsistenBerandaController::class);
     Route::resource('konsistenStep', KonsistenStepController::class);
+    Route::resource('verification', VerificationController::class);
+    Route::get('verification/test/updateOtp', [VerificationController::class, 'updateOtp'])->name('verification.updateOtp');
     Route::get('link/destroyImage/{link}', [LinkController::class, 'destroyImage'])->name('link.destroyImage');
 
     Route::resource('documentCategory', DocumentCategoryController::class);

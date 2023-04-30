@@ -116,6 +116,20 @@ class UserController extends Controller
         return redirect(route('user.index'));
     }
 
+    public function updateDetail(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'phone' => 'required',
+            'address' => 'required',
+            'gender' => 'required',
+            'jabatan' => 'required',
+            'instansi' => 'required'
+        ]);
+        $user->user_detail->update($data);
+        session()->flash('success');
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
